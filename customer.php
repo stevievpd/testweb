@@ -11,11 +11,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Inventory
+        Customer List
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Inventory</li>
+        <li><a href="home.php"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li>Customer</li>
+        <li class="active">Customer List</li>
       </ol>
     </section>
     <!-- Main content -->
@@ -46,38 +47,40 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header with-border">
-              <a href="#addnew" data-toggle="modal" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i> New</a>
+               <a href="#addnew" data-toggle="modal" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i> New</a>
             </div>
             <div class="box-body">
               <table id="example1" class="table table-bordered">
                 <thead>
-                  <th>Product ID</th>
-                  <th>Description</th>
-                  <th>Unit</th>
-                  <th>Quantity</th>
-                  <th>Price</th>
-                  <th>Time stamp</th>
+                  <th>Customer ID</th>
+                  <th>Name</th>
+                  <th>Contact Number</th>
+                  <th>Address</th>
+                  <th>Transaction ID</th>
+                  <th>Employee ID</th>
+                  <th>Date</th>
                   <th>Tools</th>
                 </thead>
                 <tbody>
                   <?php
-                    $sql = "SELECT * FROM inventory";
+                    $sql = "SELECT *, customer.id AS custid FROM customer LEFT JOIN sales ON sales.id=customer.id LEFT JOIN employees ON employees.id=customer.id LEFT JOIN items ON items.id=sales.id ";
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
-                      echo "
+                      ?>
                         <tr>
-                          <td>".$row['product_id']."</td>
-                          <td>".$row['description']."</td>
-                          <td>".$row['unit']."</td>
-                          <td>".$row['quantity']."</td>
-                          <td>".number_format($row['price'], 2)."</td>
-                          <td>".date('M d, Y', strtotime($row['stamp']))."</td>
+                          <td><?php echo $row['customer_id']; ?></td>
+                          <td><?php echo $row['cust_firstname'].' '.$row['cust_lastname']; ?></td>
+                          <td><?php echo $row['cust_contact_info']; ?></td>
+                          <td><?php echo $row['cust_address']; ?></td>
+                          <td><?php echo $row['sales_id']; ?></td>
+                          <td><?php echo $row['employee_id']; ?></td>
+                          <td><?php echo date('M d, Y', strtotime($row['date'])) ?></td>
+
                           <td>
-                            <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
-                            <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
+                            <button class="btn btn-primary btn-sm view btn-flat" data-id="<?php echo $row['custid']; ?>"><i class="fa fa-eye"></i> View</button>
                           </td>
                         </tr>
-                      ";
+                      <?php
                     }
                   ?>
                 </tbody>
@@ -88,41 +91,42 @@
       </div>
     </section>   
   </div>
-    
-  <?php include 'footer.php'; ?>
-  <?php include 'inventory_modal.php'; ?>
+
+<?php include 'footer.php'; ?>
+<?php include 'customer_modal.php'; ?>
 </div>
+
 <?php include 'includes/scripts.php'; ?>
+
 <script>
 $(function(){
-  $('#example1').on('click', '.edit', function(e){
+  $('#example1').on('click', '.view', function(e){
     e.preventDefault();
-    $('#edit').modal('show');
+    $('#view').modal('show');
     var id = $(this).data('id');
     getRow(id);
   });
 
-  $('#example1').on('click', '.delete', function(e){
-    e.preventDefault();
-    $('#delete').modal('show');
-    var id = $(this).data('id');
-    getRow(id);
-  });
 });
 
 function getRow(id){
   $.ajax({
     type: 'POST',
-    url: 'inventory_row.php',
+    url: 'customer_row.php',
     data: {id:id},
     dataType: 'json',
     success: function(response){
-      $('.invid').val(response.id);
-      $('#edit_product_id').val(response.product_id);
-      $('#edit_description').val(response.description);
-      $('#edit_unit').val(response.unit);
-      $('#edit_quantity').val(response.quantity);
-      $('#edit_price').val(response.price);
+      $('#custid').val(response.customer_id);
+      $('#employee_id').val(response.employee_id);
+      $('#cust_firstname').val(response.cust_firstname);
+      $('#cust_lastname').val(response.cust_lastname);
+      $('#sales_id').val(response.sales_id);
+      $('#item_id').val(response.item_id);
+      $('#item_description').val(response.item_description);
+      $('#item_quantity').val(response.item_quantity).html(response.item_quantity);
+      $('#item_unit').val(response.item_unit).html(response.item_unit);
+      $('#item_price').val(response.item_cost).html(response.item_cost);
+      $('#item_total').val(response.item_total).html(response.item_total);
     }
   });
 }

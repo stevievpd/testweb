@@ -34,7 +34,7 @@
           </ul>
         </li>
   
-        <li><a href="schedule_employee.php"><i class="fa fa-users"></i> <span>Customer</span></a></li>
+        <li><a href="customer.php"><i class="fa fa-users"></i> <span>Customer</span></a></li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-users"></i>
