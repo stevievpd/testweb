@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 27, 2022 at 04:18 AM
+-- Generation Time: Jul 28, 2022 at 05:16 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -42,7 +42,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`, `firstname`, `lastname`, `photo`, `created_on`) VALUES
-(1, 'admin', '$2y$10$fCOiMky4n5hCJx3cpsG20Od4wHtlkCLKmO6VLobJNRIg9ooHTkgjK', 'Harry', 'Den', 'male6.jpg', '2018-04-30');
+(1, 'admin', '$2y$10$fCOiMky4n5hCJx3cpsG20Od4wHtlkCLKmO6VLobJNRIg9ooHTkgjK', 'Roge', 'Catubig', 'profilepic.jpg', '2018-04-30');
 
 -- --------------------------------------------------------
 
@@ -127,12 +127,11 @@ INSERT INTO `attendance` (`id`, `employee_id`, `date`, `time_in`, `status`, `tim
 (102, 20, '2018-07-12', '23:52:48', 1, '00:00:00', 0),
 (103, 21, '2018-07-12', '23:54:50', 1, '00:00:00', 0),
 (104, 22, '2018-07-12', '23:56:02', 1, '00:00:00', 0),
-(105, 23, '2018-07-12', '13:57:00', 0, '00:00:00', 12.95),
-(107, 1, '2022-07-08', '14:30:00', 0, '14:30:00', 0),
+(105, 23, '2018-07-12', '01:00:00', 1, '00:00:00', 7),
+(107, 1, '2022-07-08', '07:00:00', 1, '14:30:00', 6.5),
 (108, 1, '2022-07-23', '15:04:00', 0, '14:51:00', 0.21666666666667),
 (111, 1, '1997-12-12', '05:00:00', 1, '15:00:00', 6),
-(114, 1, '0000-00-00', '11:11:00', 0, '11:11:00', 0),
-(115, 1, '2022-07-26', '17:00:00', 0, '06:00:00', 10);
+(114, 1, '0000-00-00', '11:11:00', 0, '11:11:00', 0);
 
 -- --------------------------------------------------------
 
@@ -195,10 +194,10 @@ CREATE TABLE `deductions` (
 --
 
 INSERT INTO `deductions` (`id`, `description`, `amount`) VALUES
-(1, 'SSS', 100),
-(2, 'Pagibig', 150),
-(3, 'PhilHealth', 150),
-(4, 'Project Issues', 1500);
+(7, 'Pag-ibig', 150),
+(8, 'SSS', 250),
+(9, 'Philhealth', 300),
+(10, 'Salary Loan', 900);
 
 -- --------------------------------------------------------
 
@@ -226,7 +225,7 @@ CREATE TABLE `employees` (
 --
 
 INSERT INTO `employees` (`id`, `employee_id`, `firstname`, `lastname`, `address`, `birthdate`, `contact_info`, `gender`, `position_id`, `schedule_id`, `photo`, `created_on`) VALUES
-(1, 'ABC123456789', 'Christine', 'Smith', 'Brgy. Mambulac, Silay City', '2018-04-02', '09000035719', 'Female', 1, 2, 'desktop.jpg', '2018-04-28'),
+(1, 'ABC123456789', 'Roge', 'Cawater', 'Paco, Manila PH', '2018-04-02', '09000035719', 'Male', 1, 1, 'profilepic.jpg', '2018-04-28'),
 (3, 'DYE473869250', 'Hayop ka ', 'Divinagracia', 'E.B. Magalona', '1992-05-02', '09123456789', 'Female', 2, 2, '', '2018-04-30'),
 (4, 'JIE625973480', 'Gemalyn', 'Cepe', 'Carmen, Bohol', '1995-10-02', '09468029840', 'Female', 2, 3, '', '2018-04-30'),
 (5, 'TQO238109674', 'Bruno', 'Den', 'Test', '1995-08-23', '5454578965', 'Male', 1, 2, 'thanossmile.jpg', '2018-07-11'),
@@ -256,8 +255,9 @@ INSERT INTO `employees` (`id`, `employee_id`, `firstname`, `lastname`, `address`
 --
 
 CREATE TABLE `inventory` (
-  `prodCode` int(10) NOT NULL,
-  `prodDesc` varchar(50) NOT NULL,
+  `id` int(10) NOT NULL,
+  `product_id` varchar(50) NOT NULL,
+  `description` varchar(50) NOT NULL,
   `unit` varchar(20) NOT NULL,
   `quantity` int(11) NOT NULL,
   `price` int(11) NOT NULL,
@@ -268,9 +268,9 @@ CREATE TABLE `inventory` (
 -- Dumping data for table `inventory`
 --
 
-INSERT INTO `inventory` (`prodCode`, `prodDesc`, `unit`, `quantity`, `price`, `stamp`) VALUES
-(1, 'Mouse', 'pcs', 20, 0, '2022-07-19 09:52:49'),
-(2, 'Keyboard', 'pks', 10, 0, '2022-07-19 09:53:08');
+INSERT INTO `inventory` (`id`, `product_id`, `description`, `unit`, `quantity`, `price`, `stamp`) VALUES
+(1, '0', 'Mouse', 'pcs', 20, 200, '2022-07-28 02:33:49'),
+(2, '0', 'Keyboard', 'pks', 10, 0, '2022-07-19 09:53:08');
 
 -- --------------------------------------------------------
 
@@ -291,8 +291,7 @@ CREATE TABLE `overtime` (
 --
 
 INSERT INTO `overtime` (`id`, `employee_id`, `hours`, `rate`, `date_overtime`) VALUES
-(4, '6', 240, 1500, '2031-11-08'),
-(5, '4', 283.33333333333, 3600, '2018-06-05');
+(7, '1', 8, 100, '2022-07-05');
 
 -- --------------------------------------------------------
 
@@ -511,7 +510,7 @@ ALTER TABLE `employees`
 -- Indexes for table `inventory`
 --
 ALTER TABLE `inventory`
-  ADD PRIMARY KEY (`prodCode`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `overtime`
@@ -593,7 +592,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `deductions`
 --
 ALTER TABLE `deductions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `employees`
@@ -605,13 +604,13 @@ ALTER TABLE `employees`
 -- AUTO_INCREMENT for table `inventory`
 --
 ALTER TABLE `inventory`
-  MODIFY `prodCode` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `overtime`
 --
 ALTER TABLE `overtime`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `position`
