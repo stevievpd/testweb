@@ -112,6 +112,7 @@
               getRow(id);
           });
       });
+      
 
       function getRow(id) {
           $.ajax({

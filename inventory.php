@@ -92,42 +92,44 @@
   <?php include 'footer.php'; ?>
   <?php include 'inventory_modal.php'; ?>
 </div>
+
 <?php include 'includes/scripts.php'; ?>
+
 <script>
-$(function(){
-  $('#example1').on('click', '.edit', function(e){
-    e.preventDefault();
-    $('#edit').modal('show');
-    var id = $(this).data('id');
-    getRow(id);
+  $(function(){
+    $('#example1').on('click', '.edit', function(e){
+      e.preventDefault();
+      $('#edit').modal('show');
+      var id = $(this).data('id');
+      getRow(id);
+    });
+
+    $('#example1').on('click', '.delete', function(e){
+      e.preventDefault();
+      $('#delete').modal('show');
+      var id = $(this).data('id');
+      getRow(id);
+    });
   });
 
-  $('#example1').on('click', '.delete', function(e){
-    e.preventDefault();
-    $('#delete').modal('show');
-    var id = $(this).data('id');
-    getRow(id);
-  });
-});
-
-function getRow(id){
-  $.ajax({
-    type: 'POST',
-    url: 'inventory_row.php',
-    data: {id:id},
-    dataType: 'json',
-    success: function(response){
-      $('.invid').val(response.id);
-      $('#edit_product_id').val(response.product_id);
-      $('#edit_description').val(response.description);
-      $('#edit_unit').val(response.unit);
-      $('#edit_quantity').val(response.quantity);
-      $('#edit_price').val(response.price);
-      $('#del_invid').html(response.id);
-      $('#del_invid').val(response.id);
-    }
-  });
-}
+  function getRow(id){
+    $.ajax({
+      type: 'POST',
+      url: 'inventory_row.php',
+      data: {id:id},
+      dataType: 'json',
+      success: function(response){
+        $('.invid').val(response.id);
+        $('#edit_product_id').val(response.product_id);
+        $('#edit_description').val(response.description);
+        $('#edit_unit').val(response.unit);
+        $('#edit_quantity').val(response.quantity);
+        $('#edit_price').val(response.price);
+        $('#del_invid').html(response.id);
+        $('#del_invid').val(response.id);
+      }
+    });
+  }
 </script>
 </body>
 </html>

@@ -97,51 +97,51 @@
 <?php include 'includes/scripts.php'; ?>
 
 <script>
-$(function(){
-  $('#example1').on('click', '.edit', function(e){
-    e.preventDefault();
-    $('#edit').modal('show');
-    var id = $(this).data('id');
-    getRow(id);
+  $(function(){
+    $('#example1').on('click', '.edit', function(e){
+      e.preventDefault();
+      $('#edit').modal('show');
+      var id = $(this).data('id');
+      getRow(id);
+    });
+
+    $('#example1').on('click', '.delete', function(e){
+      e.preventDefault();
+      $('#delete').modal('show');
+      var id = $(this).data('id');
+      getRow(id);
+    });
+
+    $('#example1').on('click', '.photo', function(e){
+      e.preventDefault();
+      var id = $(this).data('id');
+      getRow(id);
+    });
+
   });
 
-  $('#example1').on('click', '.delete', function(e){
-    e.preventDefault();
-    $('#delete').modal('show');
-    var id = $(this).data('id');
-    getRow(id);
-  });
-
-  $('#example1').on('click', '.photo', function(e){
-    e.preventDefault();
-    var id = $(this).data('id');
-    getRow(id);
-  });
-
-});
-
-function getRow(id){
-  $.ajax({
-    type: 'POST',
-    url: 'employee_row.php',
-    data: {id:id},
-    dataType: 'json',
-    success: function(response){
-      $('.empid').val(response.empid);
-      $('.employee_id').html(response.employee_id);
-      $('.del_employee_name').html(response.firstname+' '+response.lastname);
-      $('#employee_name').html(response.firstname+' '+response.lastname);
-      $('#edit_firstname').val(response.firstname);
-      $('#edit_lastname').val(response.lastname);
-      $('#edit_address').val(response.address);
-      $('#datepicker_edit').val(response.birthdate);
-      $('#edit_contact').val(response.contact_info);
-      $('#gender_val').val(response.gender).html(response.gender);
-      $('#position_val').val(response.position_id).html(response.description);
-      $('#schedule_val').val(response.schedule_id).html(response.time_in+' - '+response.time_out);
-    }
-  });
-}
+  function getRow(id){
+    $.ajax({
+      type: 'POST',
+      url: 'employee_row.php',
+      data: {id:id},
+      dataType: 'json',
+      success: function(response){
+        $('.empid').val(response.empid);
+        $('.employee_id').html(response.employee_id);
+        $('.del_employee_name').html(response.firstname+' '+response.lastname);
+        $('#employee_name').html(response.firstname+' '+response.lastname);
+        $('#edit_firstname').val(response.firstname);
+        $('#edit_lastname').val(response.lastname);
+        $('#edit_address').val(response.address);
+        $('#datepicker_edit').val(response.birthdate);
+        $('#edit_contact').val(response.contact_info);
+        $('#gender_val').val(response.gender).html(response.gender);
+        $('#position_val').val(response.position_id).html(response.description);
+        $('#schedule_val').val(response.schedule_id).html(response.time_in+' - '+response.time_out);
+      }
+    });
+  }
 </script>
 </body>
 </html>
