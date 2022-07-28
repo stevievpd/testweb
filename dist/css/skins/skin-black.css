@@ -79,7 +79,11 @@
 .skin-black .wrapper,
 .skin-black .main-sidebar,
 .skin-black .left-side {
+<<<<<<< HEAD
   background-color: #222d33;
+=======
+  background-color: #1a2226;
+>>>>>>> b872399b5798ae8fb9045f6f844fd01ab0136f68
 }
 .skin-black .user-panel > .info,
 .skin-black .user-panel > .info > a {

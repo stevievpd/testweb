@@ -59,7 +59,11 @@
 .skin-red .wrapper,
 .skin-red .main-sidebar,
 .skin-red .left-side {
+<<<<<<< HEAD
   background-color: #222d33;
+=======
+  background-color: #1a2226;
+>>>>>>> b872399b5798ae8fb9045f6f844fd01ab0136f68
 }
 .skin-red .user-panel > .info,
 .skin-red .user-panel > .info > a {

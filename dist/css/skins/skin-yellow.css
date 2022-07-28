@@ -59,7 +59,11 @@
 .skin-yellow .wrapper,
 .skin-yellow .main-sidebar,
 .skin-yellow .left-side {
+<<<<<<< HEAD
   background-color: #222d33;
+=======
+  background-color: #1a2226;
+>>>>>>> b872399b5798ae8fb9045f6f844fd01ab0136f68
 }
 .skin-yellow .user-panel > .info,
 .skin-yellow .user-panel > .info > a {
