@@ -18,9 +18,37 @@
         <li class="header">MANAGE</li>
         
         <li><a href="attendance.php"><i class="fa fa-calendar"></i> <span>Attendance</span></a></li>
-        <li><a href="employee.php"><i class="fa fa-users"></i> <span>Employees</span></a></li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-users"></i>
+            <span>Employees</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="employee.php"><i class="fa fa-circle-o"></i> Employee List</a></li>
+            <li><a href="overtime.php"><i class="fa fa-circle-o"></i> Overtime</a></li>
+            <li><a href="position.php"><i class="fa fa-suitcase"></i> Positions</a></li>
+            <li><a href="schedule.php"><i class="fa fa-circle-o"></i> Schedules</a></li>
+          </ul>
+        </li>
+  
         <li><a href="schedule_employee.php"><i class="fa fa-users"></i> <span>Customer</span></a></li>
-        <li><a href="inventory.php"><i class="fa fa-dashboard"></i>Inventory</a></li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-users"></i>
+            <span>Inventory</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="inventory.php"><i class="fa fa-circle-o"></i> Inventory</a></li>
+            <li><a href="Supplier.php"><i class="fa fa-circle-o"></i> Supplier</a></li>
+            <li><a href="Purhase_order.php"><i class="fa fa-suitcase"></i> Purchase Order</a></li>
+          </ul>
+        </li>
         <li class="header">PRINTABLES</li>
         <li><a href="payroll.php"><i class="fa fa-files-o"></i> <span>Payroll</span></a></li>
         <li><a href="deduction.php"><i class="fa fa-file-text"></i> Deductions</a></li>
