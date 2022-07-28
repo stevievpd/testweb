@@ -88,14 +88,14 @@
 <?php include 'includes/scripts.php'; ?>
 <script>
 $(function(){
-  $('.edit').click(function(e){
+  $('#example1').on('click', '.edit', function(e){
     e.preventDefault();
     $('#edit').modal('show');
     var id = $(this).data('id');
     getRow(id);
   });
 
-  $('.delete').click(function(e){
+  $('#example1').on('click', '.delete', function(e){
     e.preventDefault();
     $('#delete').modal('show');
     var id = $(this).data('id');
