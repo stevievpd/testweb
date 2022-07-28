@@ -39,7 +39,8 @@
 
                         <div class="col-sm-9">
                             <div class="date">
-                                <input type="text" class="form-control" id="datepicker_add" name="date" autocomplete="off" required>
+                                <input type="text" class="form-control" id="datepicker_add" name="date"
+                                    autocomplete="off" required>
                             </div>
                         </div>
                     </div>
