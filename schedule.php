@@ -11,11 +11,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Inventory
+        Schedules
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Inventory</li>
+        <li>Employees</li>
+        <li class="active">Schedules</li>
       </ol>
     </section>
     <!-- Main content -->
@@ -51,27 +52,19 @@
             <div class="box-body">
               <table id="example1" class="table table-bordered">
                 <thead>
-                  <th>Product ID</th>
-                  <th>Description</th>
-                  <th>Unit</th>
-                  <th>Quantity</th>
-                  <th>Price</th>
-                  <th>Time stamp</th>
+                  <th>Time In</th>
+                  <th>Time Out</th>
                   <th>Tools</th>
                 </thead>
                 <tbody>
                   <?php
-                    $sql = "SELECT * FROM inventory";
+                    $sql = "SELECT * FROM schedules";
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
                       echo "
                         <tr>
-                          <td>".$row['product_id']."</td>
-                          <td>".$row['description']."</td>
-                          <td>".$row['unit']."</td>
-                          <td>".$row['quantity']."</td>
-                          <td>".number_format($row['price'], 2)."</td>
-                          <td>".date('M d, Y', strtotime($row['stamp']))."</td>
+                          <td>".date('h:i A', strtotime($row['time_in']))."</td>
+                          <td>".date('h:i A', strtotime($row['time_out']))."</td>
                           <td>
                             <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
                             <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
@@ -90,7 +83,7 @@
   </div>
     
   <?php include 'footer.php'; ?>
-  <?php include 'inventory_modal.php'; ?>
+  <?php include 'schedule_modal.php'; ?>
 </div>
 <?php include 'includes/scripts.php'; ?>
 <script>
@@ -113,18 +106,15 @@ $(function(){
 function getRow(id){
   $.ajax({
     type: 'POST',
-    url: 'inventory_row.php',
+    url: 'schedule_row.php',
     data: {id:id},
     dataType: 'json',
     success: function(response){
-      $('.invid').val(response.id);
-      $('#edit_product_id').val(response.product_id);
-      $('#edit_description').val(response.description);
-      $('#edit_unit').val(response.unit);
-      $('#edit_quantity').val(response.quantity);
-      $('#edit_price').val(response.price);
-      $('#del_invid').html(response.id);
-      $('#del_invid').val(response.id);
+      $('#timeid').val(response.id);
+      $('#edit_time_in').val(response.time_in);
+      $('#edit_time_out').val(response.time_out);
+      $('#del_timeid').val(response.id);
+      $('#del_schedule').html(response.time_in+' - '+response.time_out);
     }
   });
 }
