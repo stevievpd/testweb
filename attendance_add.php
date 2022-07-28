@@ -12,6 +12,7 @@
 		$sql = "SELECT * FROM employees WHERE employee_id = '$employee_id'";
 		$query = $conn->query($sql);
 
+
 		if($query->num_rows < 1){
 			$_SESSION['error'] = 'Employee not found';
 		}

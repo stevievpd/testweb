@@ -23,14 +23,14 @@
                             <select class="form-control" name="employee" id="employee" required>
                                 <option value="" selected>- Select -</option>
                                 <?php
-                          $sql = "SELECT * FROM employees";
-                          $query = $conn->query($sql);
-                          while($row = $query->fetch_assoc()){
-                            echo "
-                            <option value='".$row['id']."'>".$row['employee_id']."</option>
-                            ";
-                          }
-                        ?>
+                                    $sql = "SELECT * FROM employees";
+                                    $query = $conn->query($sql);
+                                    while($row = $query->fetch_assoc()){
+                                        echo "
+                                        <option value='".$row['id']."'>".$row['employee_id']."</option>
+                                        ";
+                                    }
+                                ?>
                             </select>
                         </div>
                     </div>
