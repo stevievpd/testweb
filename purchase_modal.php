@@ -43,14 +43,6 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="phone_number1" class="col-sm-3 control-label">Phone Number</label>
-
-                        <div class="col-sm-9">
-                            <input type="number" class="form-control" id="phone_number1" name="phone_number1" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
                         <label for="op_number" class="col-sm-3 control-label">PO Number</label>
 
                         <div class="col-sm-9">
@@ -74,23 +66,6 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="zip_po" class="col-sm-3 control-label">Zip</label>
-
-                        <div class="col-sm-9">
-                            <input type="number" class="form-control" id="zip_po" name="zip_po" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="phone_number2" class="col-sm-3 control-label">Phone Number</label>
-
-                        <div class="col-sm-9">
-                            <input type="number" class="form-control" id="phone_number2" name="phone_number2" required>
-                        </div>
-                    </div>
-
-                    
                     <div class="form-group">
                         <label for="shipping_method" class="col-sm-3 control-label">Shipping Method</label>
 
@@ -126,7 +101,7 @@
                         <label for="address" class="col-sm-3 control-label">Quantity</label>
 
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="quantity" name="qauntity" required>
+                            <input type="number" class="form-control" id="quantity" name="qauntity" placeholder="0.00" oninput="multiply()" required>
                         </div>
                     </div>
 
@@ -134,7 +109,7 @@
                         <label for="price" class="col-sm-3 control-label">Unit Price</label>
 
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="price" name="price" required>
+                            <input type="number" class="form-control" id="price" name="price" placeholder="0.00" oninput="multiply()" required>
                         </div>
                     </div>
 
@@ -149,7 +124,7 @@
                         <label for="received" class="col-sm-3 control-label">Received by:</label>
 
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="received" name="received" required>
+                            <input type="text" class="form-control" id="received" name="received" required>
                         </div>
                     </div>
 
@@ -182,6 +157,14 @@
                                     class="fa fa-close"></i> Close</button>
                             <button type="submit" class="btn btn-primary btn-flat" name="add"><i class="fa fa-save"></i>
                     Save</button>
+                        <script>
+                            function multiply() {
+                                var quantity = document.getElementById("quantity").value;
+                                var price = document.getElementById("price").value;
+                                var total = parseFloat(quantity) * parseFloat(price);
+                                document.getElementById("amount").value = total;
+                            }
+                        </script>
                 </form>
             </div>
         </div>
@@ -231,13 +214,6 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="phone_number1" class="col-sm-3 control-label">Phone Number</label>
-
-                        <div class="col-sm-9">
-                            <input type="number" class="form-control" id="phone_number1" name="phone_number1" required>
-                        </div>
-                    </div>
 
                     <div class="form-group">
                         <label for="op_number" class="col-sm-3 control-label">PO Number</label>
@@ -260,22 +236,6 @@
 
                         <div class="col-sm-9">
                             <input type="number" class="form-control" id="vendor_id" name="vendor_id" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="zip_po" class="col-sm-3 control-label">Zip</label>
-
-                        <div class="col-sm-9">
-                            <input type="number" class="form-control" id="zip_po" name="zip_po" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="phone_number2" class="col-sm-3 control-label">Phone Number</label>
-
-                        <div class="col-sm-9">
-                            <input type="number" class="form-control" id="phone_number2" name="phone_number2" required>
                         </div>
                     </div>
 
@@ -307,7 +267,7 @@
                         <label for="payment_terms" class="col-sm-3 control-label">Item Description</label>
 
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="item_description" name="iteem_description" required>
+                            <input type="text" class="form-control" id="item_description" name="iteem_description" required>
                         </div>
                     </div>
 
@@ -315,7 +275,7 @@
                         <label for="address" class="col-sm-3 control-label">Quantity</label>
 
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="quantity" name="qauntity" required>
+                            <input type="number" class="form-control" id="quantity" name="qauntity" placeholder="0.00" oninput="multiply()" required>
                         </div>
                     </div>
 
@@ -323,7 +283,7 @@
                         <label for="price" class="col-sm-3 control-label">Unit Price</label>
 
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="price" name="price" required>
+                            <input type="number" class="form-control" id="price" name="price"  placeholder="0.00" oninput="multiply()"required>
                         </div>
                     </div>
 
@@ -331,14 +291,14 @@
                         <label for="address" class="col-sm-3 control-label">Amount</label>
 
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="amount" name="amount" required>
+                            <input type="number" class="form-control" id="amount" name="amount" readonly>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="received" class="col-sm-3 control-label">Received by:</label>
 
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="received" name="received" required>
+                            <input type="text" class="form-control" id="received" name="received" required>
                         </div>
                     </div>
 
@@ -346,7 +306,7 @@
                         <label for="subtotal" class="col-sm-3 control-label">Subtotal</label>
 
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="subtotal" name="subtotal" required>
+                            <input type="number" class="form-control" id="subtotal" name="subtotal" readonly>
                         </div>
                     </div>
 
@@ -355,7 +315,7 @@
                         <label for="freight" class="col-sm-3 control-label">Freight</label>
 
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="freight" name="freight" required>
+                            <input type="number" class="form-control" id="freight" name="freight">
                         </div>
                     </div>
                     
@@ -363,7 +323,14 @@
                         <label for="sales_tax" class="col-sm-3 control-label">Sales Tax</label>
 
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="sales_tax" name="sales_tax" required>
+                            <input type="number" class="form-control" id="sales_tax" name="sales_tax" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="sales_tax" class="col-sm-3 control-label">Order Total</label>
+
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="sales_tax" name="sales_tax" readonly>
                         </div>
                     </div>
 
@@ -373,6 +340,16 @@
                         <button type="submit" class="btn btn-success btn-flat" name="edit"><i
                                 class="fa fa-check-square-o"></i>
                             Update</button>
+
+                                <script>
+                                    function multiply() {
+                                        var quantity = document.getElementById("quantity").value;
+                                        var price = document.getElementById("price").value;
+                                        var total = parseFloat(quantity) * parseFloat(price);
+                                        document.getElementById("amount").value = total;
+                                    }
+                                </script>
+                            
                 </form>
             </div>
         </div>
@@ -406,3 +383,13 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    function multiply() {
+        var quantity = document.getElementById("quantity").value;
+        var price = document.getElementById("price").value;
+        var total = parseFloat(quantity) * parseFloat(price);
+        document.getElementById("amount").value = total;
+    }
+    </script>
