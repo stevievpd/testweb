@@ -9,13 +9,33 @@
           	</div>
           	<div class="modal-body">
             	<form class="form-horizontal" method="POST" action="overtime_add.php">
-          		  <div class="form-group">
+          		  <!-- <div class="form-group">
                   	<label for="employee" class="col-sm-3 control-label">Employee ID</label>
 
                   	<div class="col-sm-9">
                     	<input type="text" class="form-control" id="employee" name="employee" required>
                   	</div>
-                </div>
+                </div> -->
+
+				<div class="form-group">
+                        <label for="employee" class="col-sm-3 control-label">Employee ID</label>
+
+                        <div class="col-sm-9">
+                            <select class="form-control" name="employee" id="employee" required>
+                                <option value="" selected>- Select -</option>
+                                <?php
+                                    $sql = "SELECT * FROM employees";
+                                    $query = $conn->query($sql);
+                                    while($row = $query->fetch_assoc()){
+                                        echo "
+                                        <option value='".$row['id']."'>".$row['firstname']." ".$row['lastname']."</option>
+                                        ";
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+
                 <div class="form-group">
                     <label for="datepicker_add" class="col-sm-3 control-label">Date</label>
 
@@ -85,7 +105,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="mins_edit" class="col-sm-3 control-label">No. of Mins</label>
+                    <label for="mins_edit class="col-sm-3 control-label">No. of Mins</label>
 
                     <div class="col-sm-9">
                       <input type="text" class="form-control" id="mins_edit" name="mins">

@@ -6,7 +6,7 @@
 		$date = $_POST['date'];
 		$hours = $_POST['hours'] + ($_POST['mins']/60);
 		$rate = $_POST['rate'];
-		$sql = "SELECT * FROM employees WHERE employee_id = '$employee'";
+		$sql = "SELECT * FROM employees WHERE id = '$employee'";
 		$query = $conn->query($sql);
 		if($query->num_rows < 1){
 			$_SESSION['error'] = 'Employee not found';
