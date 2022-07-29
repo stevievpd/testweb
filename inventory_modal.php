@@ -106,16 +106,6 @@
                     </div>
                 </form>
             </div>
-<<<<<<< HEAD
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default btn-flapull-left" data-dismiss="modal"><i
-                        class="fa fa-close"></i> Close</button>
-                <button type="submit" class="btn btn-success btn-flatname="edit"><i
-                        class="fa fa-check-square-o"></i>
-                    Update</button>
-            </div>
-=======
-                <div class="modal-footer">
                 <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i
                         class="fa fa-close"></i> Close</button>
                 <button type="submit" class="btn btn-success btn-flat" name="edit"><i class="fa fa-check-square-o"></i>
@@ -123,39 +113,6 @@
 
 
         </div>
->>>>>>> e37a6147d12039650147477720e36cb9c0f33c3e
-    </div>
-</div>
-
-</div>
-
-<!-- Delete -->
-<div class="modal fade" id="delete">
-    <div class="modal-dialog">
-        <div class="modal-content">
-<<<<<<< HEAD
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"><b>Deleting...</b></h4>
-            </div>
-            <div class="modal-body">
-                <form class="form-horizontal" method="POST" action="inventory_delete.php">
-                    <input type="hidden" class="invid" name="id">
-                    <div class="text-center">
-                        <p>DELETE ITEM</p>
-                        <h2 id="del_invent" class="bold"></h2>
-                    </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i
-                        class="fa fa-close"></i> Close</button>
-                <button type="submit" class="btn btn-danger btn-flat" name="delete"><i class="fa fa-trash"></i>
-                    Delete</button>
-                </form>
-            </div>
-=======
-          	<div class="modal-header">
             	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
               		<span aria-hidden="true">&times;</span></button>
             	<h4 class="modal-title"><b>Deleting...</b></h4>
@@ -173,7 +130,6 @@
             	<button type="submit" class="btn btn-danger btn-flat" name="delete"><i class="fa fa-trash"></i> Delete</button>
             	</form>
           	</div>
->>>>>>> e37a6147d12039650147477720e36cb9c0f33c3e
         </div>
     </div>
 </div>

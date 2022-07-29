@@ -3,9 +3,10 @@
 
 	if(isset($_POST['id'])){
 		$id = $_POST['id'];
-		$sql = "SELECT * FROM supplier WHERE id = '$id'";
+		$sql = "SELECT * FROM purchase_order WHERE id = '$id'";
 		$query = $conn->query($sql);
 		$row = $query->fetch_assoc();
+
 		echo json_encode($row);
 	}
 ?>
