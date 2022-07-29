@@ -2,11 +2,11 @@
 require('fpdf184/fpdf.php');
 $pdf = new FPDF();
 
+
 $pdf ->AddPage();
 $pdf-> SetFont('Arial', 'B',20);
 $pdf->SetFillColor(83, 198, 83);
 $pdf->Cell(190,20,'PURCHASE ORDER',0,0,'C',true);
-
 
 $pdf->Ln(20);
 $pdf-> SetFont('Arial', 'B',10);

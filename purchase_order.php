@@ -11,11 +11,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Inventory
+        Purchase Order
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Inventory</li>
+        <li class="active">Purchase Order</li>
       </ol>
     </section>
     <!-- Main content -->
@@ -51,27 +51,29 @@
             <div class="box-body">
               <table id="example1" class="table table-bordered">
                 <thead>
-                  <th>Supplier Order Number</th>
-                  <th>Product Description</th>
-                  <th>Date</th>
-                  <th>Branch</th>
+                <th>Purchase Number</th>
+                  <th>Product Name</th>
+                  <th>Quantity</th>
                   <th>Price</th>
-                  <th>Time stamp</th>
+                  <th>Total Amount</th>
+                  <th>Purchase Date</th>
+                  <th>Expected Date</th>
                   <th>Tools</th>
                 </thead>
                 <tbody>
                   <?php
-                    $sql = "SELECT * FROM inventory";
+                    $sql = "SELECT * FROM purchase_order";
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
                       echo "
                         <tr>
-                          <td>".$row['product_id']."</td>
-                          <td>".$row['description']."</td>
-                          <td>".$row['unit']."</td>
+                          <td>".$row['id']."</td>
+                          <td>".$row['product_name']."</td>
                           <td>".$row['quantity']."</td>
-                          <td>".number_format($row['price'], 2)."</td>
-                          <td>".date('M d, Y', strtotime($row['stamp']))."</td>
+                          <td>".$row['price']."</td>
+                          <td>".$row['total']."</td>
+                          <td>".$row['purchase_date']."</td>
+                          <td>".$row['expected_date']."</td>
                           <td>
                             <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
                             <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
@@ -90,7 +92,7 @@
   </div>
     
   <?php include 'footer.php'; ?>
-  <?php include 'inventory_modal.php'; ?>
+  <?php include 'purchase_order_modal.php'; ?>
 </div>
 <?php include 'includes/scripts.php'; ?>
 <script>
@@ -113,16 +115,18 @@ $(function(){
 function getRow(id){
   $.ajax({
     type: 'POST',
-    url: 'inventory_row.php',
+    url: 'purchase_row.php',
     data: {id:id},
     dataType: 'json',
     success: function(response){
-      $('.invid').val(response.id);
-      $('#edit_product_id').val(response.product_id);
-      $('#edit_description').val(response.description);
-      $('#edit_unit').val(response.unit);
-      $('#edit_quantity').val(response.quantity);
-      $('#edit_price').val(response.price);
+      $('.purchaseid').val(response.id);
+      $('#id').val(response.product_id);
+      $('#product_name').val(response.product_name);
+      $('#quantity').val(response.quantity);
+      $('#price').val(response.price);
+      $('#total').val(response.total);
+      $('#purchase_date').val(response.purchase_date);
+      $('#expected_date').val(response.expected_date);
       $('#del_invid').html(response.id);
       $('#del_invid').val(response.id);
     }

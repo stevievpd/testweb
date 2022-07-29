@@ -112,26 +112,6 @@
     });
   });
 
-<<<<<<< HEAD
-  function getRow(id){
-    $.ajax({
-      type: 'POST',
-      url: 'inventory_row.php',
-      data: {id:id},
-      dataType: 'json',
-      success: function(response){
-        $('.invid').val(response.id);
-        $('#edit_product_id').val(response.product_id);
-        $('#edit_description').val(response.description);
-        $('#edit_unit').val(response.unit);
-        $('#edit_quantity').val(response.quantity);
-        $('#edit_price').val(response.price);
-        $('#del_invid').html(response.id);
-        $('#del_invid').val(response.id);
-      }
-    });
-  }
-=======
   $('#example1').on('click', '.delete', function(e){
     e.preventDefault();
     $('#delete').modal('show');
@@ -156,7 +136,6 @@ function getRow(id){
     }
   });
 }
->>>>>>> e37a6147d12039650147477720e36cb9c0f33c3e
 </script>
 </body>
 </html>

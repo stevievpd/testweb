@@ -89,32 +89,6 @@
                     }
                   ?>
                 </tbody>
-                <!-- <?php
-                    $sql = "SELECT * FROM supplier";
-                    $query = $conn->query($sql);
-                    while($row = $query->fetch_assoc()){
-                      ?>
-                        <tr>
-                          <td><?php echo $row['id']; ?></td>
-                          <td><img src="<?php echo (!empty($row['logo']))? './images/'.$row['logo']:'./images/profile.jpg'; ?>" width="30px" height="30px"> <a href="#edit_logo" data-toggle="modal" class="pull-right logo" data-id="<?php echo $row['id']; ?>"><span class="fa fa-edit"></span></a></td>
-                          <td><?php echo $row['supplier_name']?></td>
-                          <td><?php echo $row['business_name'] ?></td>
-                          <td><?php echo $row['address']?></td>
-                          <td><?php echo $row['phone_number']?></td>
-                          <td><?php echo $row['bank']?></td>
-                          <td><?php echo $row['bank_account']?></td>
-                          <td><?php echo $row['branch']?></td>
-                          <td><?php echo $row['tin']?></td>
-                          <td><?php echo $row['stamp']?></td>
-                          <td></td>
-                          <td>
-                            <button class="btn btn-success btn-sm edit btn-flat" data-id="<?php echo $row['id']; ?>"><i class="fa fa-edit"></i> Edit</button>
-                            <button class="btn btn-danger btn-sm delete btn-flat" data-id="<?php echo $row['id']; ?>"><i class="fa fa-trash"></i> Delete</button>
-                          </td>
-                        </tr>
-                      <?php
-                    }
-                  ?> -->
               </table>
             </div>
           </div>
@@ -151,16 +125,15 @@ function getRow(id){
     data: {id:id},
     dataType: 'json',
     success: function(response){
-      $('.invid').val(response.id);
-      $('#edit_id').val(response.id);
+      $('.supid').val(response.id);
       $('#edit_logo').val(response.logo);
       $('#edit_business_name').val(response.business_name);
+      $('#edit_product').val(response.product);
       $('#edit_address').val(response.address);
       $('#edit_email').val(response.email);
       $('#edit_phone_number').val(response.phone_number);
-      $('#edit_branch').val(response.branch);
-      $('#del_invid').html(response.id);
-      $('#del_invid').val(response.id);
+      $('.del_supplier_name').val(response.business_name);
+      $('.del_supid').val(response.id);
     }
   });
 }
