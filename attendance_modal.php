@@ -19,6 +19,7 @@
 
                     <div class="form-group">
                         <label for="employee" class="col-sm-3 control-label">Employee ID</label>
+
                         <div class="col-sm-9">
                             <select class="form-control" name="employee" id="employee" required>
                                 <option value="" selected>- Select -</option>
@@ -39,7 +40,8 @@
 
                         <div class="col-sm-9">
                             <div class="date">
-                                <input type="text" class="form-control" id="datepicker_add" name="date" autocomplete="off" required>
+                                <input type="text" class="form-control" id="datepicker_add" name="date"
+                                    autocomplete="off" required>
                             </div>
                         </div>
                     </div>
