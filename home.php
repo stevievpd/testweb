@@ -155,7 +155,7 @@
                             <div class="icon">
                                 <i class="ion ion-alert-circled"></i>
                             </div>
-                            <a href="attendance.php" class="small-box-footer">More info <i
+                            <a href="inventory.php" class="small-box-footer">More info <i
                                     class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
@@ -175,7 +175,7 @@
                             <div class="icon">
                                 <i class="ion ion-pie-graph"></i>
                             </div>
-                            <a href="attendance.php" class="small-box-footer">More info <i
+                            <a href="customer.php" class="small-box-footer">More info <i
                                     class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
