@@ -34,7 +34,7 @@
           </ul>
         </li>
   
-        <li><a href="schedule_employee.php"><i class="fa fa-users"></i> <span>Customer</span></a></li>
+        <li><a href="customer.php"><i class="fa fa-users"></i> <span>Customer</span></a></li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-users"></i>
@@ -45,8 +45,8 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="inventory.php"><i class="fa fa-circle-o"></i> Inventory</a></li>
-            <li><a href="Supplier.php"><i class="fa fa-circle-o"></i> Supplier</a></li>
-            <li><a href="Purhase_order.php"><i class="fa fa-suitcase"></i> Purchase Order</a></li>
+            <li><a href="supplier.php"><i class="fa fa-circle-o"></i> Supplier</a></li>
+            <li><a href="purhase-order.php"><i class="fa fa-suitcase"></i> Purchase Order</a></li>
           </ul>
         </li>
         <li class="header">PRINTABLES</li>

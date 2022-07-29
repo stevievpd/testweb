@@ -11,11 +11,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Inventory
+      Supplier
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Inventory</li>
+        <li class="active">Supplier</li>
       </ol>
     </section>
     <!-- Main content -->
@@ -51,26 +51,36 @@
             <div class="box-body">
               <table id="example1" class="table table-bordered">
                 <thead>
-                  <th>Product ID</th>
-                  <th>Description</th>
-                  <th>Unit</th>
-                  <th>Quantity</th>
-                  <th>Price</th>
-                  <th>Time stamp</th>
+                  <th>Supplier Number</th>
+                  <th>Supplier Name</th>
+                  <th>Business Name</th>
+                  <th>Address</th>
+                  <th>Email</th>
+                  <th>Phone Number</th>
+                  <th>Bank</th>
+                  <th>Bank Account Number</th>
+                  <th>Branch</th>
+                  <th>Tin</th>
+                  <th>Time Stamp</th>
                   <th>Tools</th>
                 </thead>
                 <tbody>
                   <?php
-                    $sql = "SELECT * FROM inventory";
+                    $sql = "SELECT * FROM supplier";
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
                       echo "
                         <tr>
-                          <td>".$row['product_id']."</td>
-                          <td>".$row['description']."</td>
-                          <td>".$row['unit']."</td>
-                          <td>".$row['quantity']."</td>
-                          <td>".number_format($row['price'], 2)."</td>
+                          <td>".$row['id']."</td>
+                          <td>".$row['supplier_name']."</td>
+                          <td>".$row['business_name']."</td>
+                          <td>".$row['address']."</td>
+                          <td>".$row['email']."</td>
+                          <td>".$row['phone_number']."</td>
+                          <td>".$row['bank']."</td>
+                          <td>".$row['bank_account']."</td>
+                          <td>".$row['branch']."</td>
+                          <td>".$row['tin']."</td>
                           <td>".date('M d, Y', strtotime($row['stamp']))."</td>
                           <td>
                             <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
@@ -90,48 +100,18 @@
   </div>
     
   <?php include 'footer.php'; ?>
-  <?php include 'inventory_modal.php'; ?>
+  <?php include 'supplier_modal.php'; ?>
 </div>
-
 <?php include 'includes/scripts.php'; ?>
-
 <script>
-  $(function(){
-    $('#example1').on('click', '.edit', function(e){
-      e.preventDefault();
-      $('#edit').modal('show');
-      var id = $(this).data('id');
-      getRow(id);
-    });
-
-    $('#example1').on('click', '.delete', function(e){
-      e.preventDefault();
-      $('#delete').modal('show');
-      var id = $(this).data('id');
-      getRow(id);
-    });
+$(function(){
+  $('#example1').on('click', '.edit', function(e){
+    e.preventDefault();
+    $('#edit').modal('show');
+    var id = $(this).data('id');
+    getRow(id);
   });
 
-<<<<<<< HEAD
-  function getRow(id){
-    $.ajax({
-      type: 'POST',
-      url: 'inventory_row.php',
-      data: {id:id},
-      dataType: 'json',
-      success: function(response){
-        $('.invid').val(response.id);
-        $('#edit_product_id').val(response.product_id);
-        $('#edit_description').val(response.description);
-        $('#edit_unit').val(response.unit);
-        $('#edit_quantity').val(response.quantity);
-        $('#edit_price').val(response.price);
-        $('#del_invid').html(response.id);
-        $('#del_invid').val(response.id);
-      }
-    });
-  }
-=======
   $('#example1').on('click', '.delete', function(e){
     e.preventDefault();
     $('#delete').modal('show');
@@ -143,20 +123,26 @@
 function getRow(id){
   $.ajax({
     type: 'POST',
-    url: 'inventory_row.php',
+    url: 'supplier_row.php',
     data: {id:id},
     dataType: 'json',
     success: function(response){
       $('.invid').val(response.id);
-      $('#edit_product_id').val(response.product_id);
-      $('#edit_description').val(response.description);
-      $('#edit_unit').val(response.unit);
-      $('#edit_quantity').val(response.quantity);
-      $('#edit_price').val(response.price);
+      $('#edit_id').val(response.id);
+      $('#edit_supplier_name').val(response.supplier_name);
+      $('#edit_business_name').val(response.business_name);
+      $('#edit_address').val(response.address);
+      $('#edit_email').val(response.email);
+      $('#edit_phone_number').val(response.phone_number);
+      $('#edit_bank').val(response.bank);
+      $('#edit_bank_account').val(response.bank_account);
+      $('#edit_branch').val(response.branch);
+      $('#edit_tin').val(response.tin);
+      $('#del_invid').html(response.id);
+      $('#del_invid').val(response.id);
     }
   });
 }
->>>>>>> e37a6147d12039650147477720e36cb9c0f33c3e
 </script>
 </body>
 </html>
