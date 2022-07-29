@@ -51,6 +51,7 @@
         </li>
         <li class="header">PRINTABLES</li>
         <li><a href="payroll.php"><i class="fa fa-files-o"></i> <span>Payroll</span></a></li>
+        <li><a href="cashadvance.php"><i class="fa fa-clock-o"></i> Cash Advance</a></li>
         <li><a href="deduction.php"><i class="fa fa-file-text"></i> Deductions</a></li>
         <li><a href="overtime.php"><i class="fa fa-clock-o"></i> Overtime</a></li>
         
