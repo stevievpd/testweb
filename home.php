@@ -184,7 +184,7 @@
                 </div>
                 <!-- /.row -->
                 <div class="row">
-                    <div class="col-xs-12">
+                    <div class="col-xs-6">
                         <div class="box">
                             <div class="box-header with-border">
                                 <h3 class="box-title">Monthly Attendance Report</h3>
@@ -193,14 +193,14 @@
                                         <div class="form-group">
                                             <label>Select Year: </label>
                                             <select class="form-control input-sm" id="select_year">
-                                                <?php
-                        for($i=2015; $i<=2065; $i++){
-                          $selected = ($i==$year)?'selected':'';
-                          echo "
-                            <option value='".$i."' ".$selected.">".$i."</option>
-                          ";
-                        }
-                      ?>
+                                            <?php
+                                                for($i=2015; $i<=2065; $i++){
+                                                $selected = ($i==$year)?'selected':'';
+                                                echo "
+                                                    <option value='".$i."' ".$selected.">".$i."</option>
+                                                ";
+                                                }
+                                            ?>
                                             </select>
                                         </div>
                                     </form>
@@ -215,6 +215,39 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-xs-6">
+                        <div class="box">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Sales Report</h3>
+                                <div class="box-tools pull-right">
+                                    <form class="form-inline">
+                                        <div class="form-group">
+                                            <label>Select Year: </label>
+                                            <select class="form-control input-sm" id="select_year">
+                                            <?php
+                                                for($i=2015; $i<=2065; $i++){
+                                                $selected = ($i==$year)?'selected':'';
+                                                echo "
+                                                    <option value='".$i."' ".$selected.">".$i."</option>
+                                                ";
+                                                }
+                                            ?>
+                                            </select>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div class="chart">
+                                    <br>
+                                    <div id="legend" class="text-center"></div>
+                                    <canvas id="barChart" style="height:350px"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
                 </div>
 
             </section>

@@ -24,7 +24,7 @@
                             <select class="form-control" name="employee" id="employee" required>
                                 <option value="" selected>- Select -</option>
                                 <?php
-                                    $sql = "SELECT * FROM employees";
+                                    $sql = "SELECT * FROM employees ORDER BY firstname ASC";
                                     $query = $conn->query($sql);
                                     while($row = $query->fetch_assoc()){
                                         echo "
