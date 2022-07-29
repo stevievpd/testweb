@@ -28,9 +28,9 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="employee.php"><i class="fa fa-circle-o"></i> Employee List</a></li>
-            <li><a href="overtime.php"><i class="fa fa-circle-o"></i> Overtime</a></li>
-            <li><a href="position.php"><i class="fa fa-suitcase"></i> Positions</a></li>
-            <li><a href="schedule.php"><i class="fa fa-circle-o"></i> Schedules</a></li>
+            <li><a href="position.php"><i class="fa fa-circle-o"></i> Positions</a></li>
+            <li><a href="schedule.php"><i class="fa fa-clock-o"></i> Schedules</a></li>
+            <li><a href="schedule_employee.php"><i class="fa fa-clock-o"></i> Employee Schedules</a></li>
           </ul>
         </li>
   
@@ -46,7 +46,7 @@
           <ul class="treeview-menu">
             <li><a href="inventory.php"><i class="fa fa-circle-o"></i> Inventory</a></li>
             <li><a href="supplier.php"><i class="fa fa-circle-o"></i> Supplier</a></li>
-            <li><a href="purhase-order.php"><i class="fa fa-suitcase"></i> Purchase Order</a></li>
+            <li><a href="purhase-order.php"><i class="fa fa-circle-o"></i> Purchase Order</a></li>
           </ul>
         </li>
         <li class="header">PRINTABLES</li>
