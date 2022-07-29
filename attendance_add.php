@@ -9,7 +9,7 @@
 		$time_out = $_POST['time_out'];
 		$time_out = date('H:i:s', strtotime($time_out));
 
-		$sql = "SELECT * FROM employees WHERE employee_id = '$employee_id'";
+		$sql = "SELECT * FROM employees WHERE id = '$employee_id'";
 		$query = $conn->query($sql);
 
 
