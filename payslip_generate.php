@@ -52,46 +52,46 @@
 			<h4 align="center">'.$from_title." - ".$to_title.'</h4>
 			<table cellspacing="0" cellpadding="3">  
     	       	<tr>  
-            		<td width="25%" align="right">Employee Name: </td>
-                 	<td width="25%"><b>'.$row['firstname']." ".$row['lastname'].'</b></td>
-				 	<td width="25%" align="right">Rate per Hour: </td>
-                 	<td width="25%" align="right">'.number_format($row['rate'], 2).'</td>
+            		<td class = "col-sm">Employee Name: </td>
+                 	<td class = "col-sm" width="35%"><b>'.$row['firstname']." ".$row['lastname'].'</b></td>
+				 	<td class = "col-sm">Rate per Hour: </td>
+                 	<td class = "col-sm">'.number_format($row['rate'], 2).'</td>
     	    	</tr>
     	    	<tr>
-    	    		<td width="25%" align="right">Employee ID: </td>
-				 	<td width="25%">'.$row['employee'].'</td>   
-				 	<td width="25%" align="right">Total Hours: </td>
-				 	<td width="25%" align="right">'.number_format($row['total_hr'], 2).'</td> 
+    	    		<td class = "col-sm">Employee ID: </td>
+				 	<td class = "col-sm">'.$row['employee'].'</td>   
+				 	<td class = "col-sm">Total Hours: </td>
+				 	<td wclass = "col-sm">'.number_format($row['total_hr'], 2).'</td> 
     	    	</tr>
     	    	<tr> 
     	    		<td></td> 
     	    		<td></td>
-				 	<td width="25%" align="right"><b>Gross Pay: </b></td>
-				 	<td width="25%" align="right"><b>'.number_format(($row['rate']*$row['total_hr']), 2).'</b></td> 
+				 	<td class = "col-sm"><b>Gross Pay: </b></td>
+				 	<td class = "col-sm"><b>'.number_format(($row['rate']*$row['total_hr']), 2).'</b></td> 
     	    	</tr>
     	    	<tr> 
     	    		<td></td> 
     	    		<td></td>
-				 	<td width="25%" align="right">Deduction: </td>
-				 	<td width="25%" align="right">'.number_format($deduction, 2).'</td> 
+				 	<td class = "col-sm">Deduction: </td>
+				 	<td class = "col-sm">'.number_format($deduction, 2).'</td> 
     	    	</tr>
     	    	<tr> 
     	    		<td></td> 
     	    		<td></td>
-				 	<td width="25%" align="right">Cash Advance: </td>
-				 	<td width="25%" align="right">'.number_format($cashadvance, 2).'</td> 
+				 	<td class = "col-sm">Cash Advance: </td>
+				 	<td class = "col-sm">'.number_format($cashadvance, 2).'</td> 
     	    	</tr>
     	    	<tr> 
     	    		<td></td> 
     	    		<td></td>
-				 	<td width="25%" align="right"><b>Total Deduction:</b></td>
-				 	<td width="25%" align="right"><b>'.number_format($total_deduction, 2).'</b></td> 
+				 	<td class = "col-sm"><b>Total Deduction:</b></td>
+				 	<td class = "col-sm"><b>'.number_format($total_deduction, 2).'</b></td> 
     	    	</tr>
     	    	<tr> 
     	    		<td></td> 
     	    		<td></td>
-				 	<td width="25%" align="right"><b>Net Pay:</b></td>
-				 	<td width="25%" align="right"><b>'.number_format($net, 2).'</b></td> 
+				 	<td class = "col-sm"><b>Net Pay:</b></td>
+				 	<td class = "col-sm"><b>'.number_format($net, 2).'</b></td> 
     	    	</tr>
     	    </table>
     	    <br><hr>
