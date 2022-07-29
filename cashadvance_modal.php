@@ -9,13 +9,32 @@
           	</div>
           	<div class="modal-body">
             	<form class="form-horizontal" method="POST" action="cashadvance_add.php">
-          		  <div class="form-group">
+          		  <!-- <div class="form-group">
                   	<label for="employee" class="col-sm-3 control-label">Employee ID</label>
 
                   	<div class="col-sm-9">
                     	<input type="text" class="form-control" id="employee" name="employee" required>
                   	</div>
-                </div>
+                </div> -->
+
+					<div class="form-group">
+                	    <label for="employee" class="col-sm-3 control-label">Employee ID</label>
+                	    <div class="col-sm-9">
+                	        <select class="form-control" name="employee" id="employee" required>
+                	            <option value="" selected>- Select -</option>
+                	            <?php
+                	                $sql = "SELECT * FROM employees";
+                	                $query = $conn->query($sql);
+                	                while($row = $query->fetch_assoc()){
+                	                    echo "
+                	                    <option value='".$row['id']."'>".$row['firstname']." ".$row['lastname']."</option>
+                	                    ";
+                	                }
+                	            ?>
+                	        </select>
+                	    </div>
+                	</div>
+
                 <div class="form-group">
                     <label for="amount" class="col-sm-3 control-label">Amount</label>
 

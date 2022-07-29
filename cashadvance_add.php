@@ -5,7 +5,7 @@
 		$employee = $_POST['employee'];
 		$amount = $_POST['amount'];
 		
-		$sql = "SELECT * FROM employees WHERE employee_id = '$employee'";
+		$sql = "SELECT * FROM employees WHERE id = '$employee'";
 		$query = $conn->query($sql);
 		if($query->num_rows < 1){
 			$_SESSION['error'] = 'Employee not found';

@@ -28,7 +28,7 @@
                                     $query = $conn->query($sql);
                                     while($row = $query->fetch_assoc()){
                                         echo "
-                                        <option value='".$row['id']."'>".$row['employee_id']."</option>
+                                        <option value='".$row['id']."'>".$row['firstname']." ".$row['lastname']."</option>
                                         ";
                                     }
                                 ?>
