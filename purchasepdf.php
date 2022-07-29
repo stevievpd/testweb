@@ -24,6 +24,6 @@ while($row=$result->fetch_object()){
     $amount_total=$row->amount_total;
 
 }
-$pdf->Cell(190,10,'LOGO HERE',0,0,'C');
+$pdf->Cell(190,10,'LOGO HERE',1,0,'C');
 $pdf ->Output();
 ?>

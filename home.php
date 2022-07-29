@@ -54,17 +54,15 @@
       ?>
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
-                    <div class="col-lg-3 col-xs-6">
+                    <div class="col-lg-2 col-xs-6">
                         <!-- small box -->
                         <div class="small-box bg-aqua">
                             <div class="inner">
                                 <?php
-                $sql = "SELECT * FROM employees";
-                $query = $conn->query($sql);
-
-                echo "<h3>".$query->num_rows."</h3>";
-              ?>
-
+                                    $sql = "SELECT * FROM employees";
+                                    $query = $conn->query($sql);
+                                    echo "<h3>".$query->num_rows."</h3>";
+                                ?>
                                 <p>Total Employees</p>
                             </div>
                             <div class="icon">
@@ -75,23 +73,23 @@
                         </div>
                     </div>
                     <!-- ./col -->
-                    <div class="col-lg-3 col-xs-6">
+                    <div class="col-lg-2 col-xs-6">
                         <!-- small box -->
                         <div class="small-box bg-green">
                             <div class="inner">
                                 <?php
-                $sql = "SELECT * FROM attendance";
-                $query = $conn->query($sql);
-                $total = $query->num_rows;
+                                    $sql = "SELECT * FROM attendance";
+                                    $query = $conn->query($sql);
+                                    $total = $query->num_rows;
 
-                $sql = "SELECT * FROM attendance WHERE status = 1";
-                $query = $conn->query($sql);
-                $early = $query->num_rows;
-                
-                $percentage = ($early/$total)*100;
+                                    $sql = "SELECT * FROM attendance WHERE status = 1";
+                                    $query = $conn->query($sql);
+                                    $early = $query->num_rows;
+                                    
+                                    $percentage = ($early/$total)*100;
 
-                echo "<h3>".number_format($percentage, 2)."<sup style='font-size: 20px'>%</sup></h3>";
-              ?>
+                                    echo "<h3>".number_format($percentage, 2)."<sup style='font-size: 20px'>%</sup></h3>";
+                                ?>
 
                                 <p>On Time Percentage</p>
                             </div>
@@ -103,17 +101,16 @@
                         </div>
                     </div>
                     <!-- ./col -->
-                    <div class="col-lg-3 col-xs-6">
+                    <div class="col-lg-2 col-xs-6">
                         <!-- small box -->
                         <div class="small-box bg-yellow">
                             <div class="inner">
                                 <?php
-                $sql = "SELECT * FROM attendance WHERE date = '$today' AND status = 1";
-                $query = $conn->query($sql);
+                                    $sql = "SELECT * FROM attendance WHERE date = '$today' AND status = 1";
+                                    $query = $conn->query($sql);
 
-                echo "<h3>".$query->num_rows."</h3>"
-              ?>
-
+                                    echo "<h3>".$query->num_rows."</h3>"
+                                ?>
                                 <p>On Time Today</p>
                             </div>
                             <div class="icon">
@@ -124,17 +121,15 @@
                         </div>
                     </div>
                     <!-- ./col -->
-                    <div class="col-lg-3 col-xs-6">
+                    <div class="col-lg-2 col-xs-6">
                         <!-- small box -->
                         <div class="small-box bg-red">
                             <div class="inner">
                                 <?php
-                $sql = "SELECT * FROM attendance WHERE date = '$today' AND status = 0";
-                $query = $conn->query($sql);
-
-                echo "<h3>".$query->num_rows."</h3>"
-              ?>
-
+                                    $sql = "SELECT * FROM attendance WHERE date = '$today' AND status = 0";
+                                    $query = $conn->query($sql);
+                                    echo "<h3>".$query->num_rows."</h3>"
+                                ?>
                                 <p>Late Today</p>
                             </div>
                             <div class="icon">
@@ -144,7 +139,48 @@
                                     class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
+
                     <!-- ./col -->
+                    <div class="col-lg-2 col-xs-6">
+                        <!-- small box -->
+                        <div class="small-box bg-orange">
+                            <div class="inner">
+                                <?php
+                                    $sql = "SELECT * FROM inventory WHERE quantity<=20";
+                                    $query = $conn->query($sql);
+                                    echo "<h3>".$query->num_rows."</h3>"
+                                ?>
+                                <p>Items are Low on Stock!</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-alert-circled"></i>
+                            </div>
+                            <a href="attendance.php" class="small-box-footer">More info <i
+                                    class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <!-- ./col -->
+                    <div class="col-lg-2 col-xs-6">
+                        <!-- small box -->
+                        <div class="small-box bg-blue">
+                            <div class="inner">
+                                <?php
+                                    $sql = "SELECT * FROM sales WHERE id>0";
+                                    $query = $conn->query($sql);
+                                    echo "<h3>".$query->num_rows."</h3>"
+                                ?>
+                                <p>Sale(s) made</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-pie-graph"></i>
+                            </div>
+                            <a href="attendance.php" class="small-box-footer">More info <i
+                                    class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+
                 </div>
                 <!-- /.row -->
                 <div class="row">
