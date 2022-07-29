@@ -2,7 +2,7 @@
 	include 'includes/session.php';
 
 	if(isset($_POST['add'])){
-		$employee_id = $_POST['employee_id'];
+		$employee_id = $_POST['employee'];
 		$date = $_POST['date'];
 		$time_in = $_POST['time_in'];
 		$time_in = date('H:i:s', strtotime($time_in));

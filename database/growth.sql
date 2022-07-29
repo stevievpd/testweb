@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 28, 2022 at 05:16 AM
+-- Generation Time: Jul 29, 2022 at 03:05 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -162,20 +162,21 @@ INSERT INTO `cashadvance` (`id`, `date_advance`, `employee_id`, `amount`) VALUES
 --
 
 CREATE TABLE `customer` (
-  `customer_id` int(11) NOT NULL,
-  `customer_name` varchar(50) NOT NULL,
-  `customer_email` varchar(50) NOT NULL,
-  `customer_address` varchar(100) NOT NULL,
-  `stamp` timestamp NOT NULL DEFAULT current_timestamp()
+  `id` int(11) NOT NULL,
+  `customer_id` varchar(50) NOT NULL,
+  `cust_firstname` varchar(50) NOT NULL,
+  `cust_lastname` varchar(50) NOT NULL,
+  `cust_contact_info` varchar(50) NOT NULL,
+  `cust_address` varchar(150) NOT NULL,
+  `transaction_id` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`customer_id`, `customer_name`, `customer_email`, `customer_address`, `stamp`) VALUES
-(1, 'Cardo Dalisay', 'cardodalisay@gmail.com', '12 Emerald lane Brgy. Culiat Quezon City, 1128', '2022-07-19 09:56:54'),
-(2, 'Maine Mendoza', 'yayadub@gmail.com', '93 General Ave, Tandang Sora Quezon City ', '2022-07-19 09:57:40');
+INSERT INTO `customer` (`id`, `customer_id`, `cust_firstname`, `cust_lastname`, `cust_contact_info`, `cust_address`, `transaction_id`) VALUES
+(1, 'ABC123456789', 'Steven Edward', 'Lizada', '09615089172', '12 Emerald lane Brgy. Culiat Quezon City', 'TRNS789456321');
 
 -- --------------------------------------------------------
 
@@ -275,6 +276,29 @@ INSERT INTO `inventory` (`id`, `product_id`, `description`, `unit`, `quantity`, 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `items`
+--
+
+CREATE TABLE `items` (
+  `id` int(11) NOT NULL,
+  `item_id` varchar(100) NOT NULL,
+  `item_description` varchar(100) NOT NULL,
+  `item_quantity` int(11) NOT NULL,
+  `item_unit` varchar(10) NOT NULL,
+  `item_cost` int(11) NOT NULL,
+  `item_total` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `items`
+--
+
+INSERT INTO `items` (`id`, `item_id`, `item_description`, `item_quantity`, `item_unit`, `item_cost`, `item_total`) VALUES
+(1, 'ZXC00123456789', 'Mouse and Keyboard', 1, 'pcs', 1, 750);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `overtime`
 --
 
@@ -355,6 +379,25 @@ INSERT INTO `purchase_order` (`id`, `purchase_date`, `expected_date`, `item`, `q
 (17, '2222-02-22', '2222-02-22', 'Laptop Huawei', 5202020, 202020, 1050912080400),
 (18, '0000-00-00', '0000-00-00', 'Laptop Huawei', 5552, 5252, 29159104),
 (19, '0011-01-12', '0000-00-00', 'Simcard', 1011, 111, 112221);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sales`
+--
+
+CREATE TABLE `sales` (
+  `id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `sales_id` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sales`
+--
+
+INSERT INTO `sales` (`id`, `date`, `sales_id`) VALUES
+(1, '2022-07-28', 'TR00123456789');
 
 -- --------------------------------------------------------
 
@@ -492,7 +535,7 @@ ALTER TABLE `cashadvance`
 -- Indexes for table `customer`
 --
 ALTER TABLE `customer`
-  ADD PRIMARY KEY (`customer_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `deductions`
@@ -513,6 +556,12 @@ ALTER TABLE `inventory`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `items`
+--
+ALTER TABLE `items`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `overtime`
 --
 ALTER TABLE `overtime`
@@ -528,6 +577,12 @@ ALTER TABLE `position`
 -- Indexes for table `purchase_order`
 --
 ALTER TABLE `purchase_order`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sales`
+--
+ALTER TABLE `sales`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -586,7 +641,7 @@ ALTER TABLE `cashadvance`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `deductions`
@@ -607,6 +662,12 @@ ALTER TABLE `inventory`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `items`
+--
+ALTER TABLE `items`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `overtime`
 --
 ALTER TABLE `overtime`
@@ -623,6 +684,12 @@ ALTER TABLE `position`
 --
 ALTER TABLE `purchase_order`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT for table `sales`
+--
+ALTER TABLE `sales`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `schedules`
