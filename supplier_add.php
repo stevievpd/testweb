@@ -12,7 +12,7 @@
 			move_uploaded_file($_FILES['logo']['tmp_name'], '../images/'.$filename);	
 		}
 	
-		$sql = "INSERT INTO supplier (logo, business_name, product, address, email, phone_number, stamp) VALUES ('$logo', '$business_name','$product', '$address', '$email', '$phone_number', NOW())";
+		$sql = "INSERT INTO supplier (logo, business_name, product, address, email, phone_number, time_stamp) VALUES ('$logo', '$business_name','$product', '$address', '$email', '$phone_number', NOW())";
 		if($conn->query($sql)){
 			$_SESSION['success'] = 'Supplier added successfully';
 		}

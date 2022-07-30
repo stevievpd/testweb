@@ -6,7 +6,7 @@
 		$sql = "SELECT * FROM inventory WHERE id = '$id'";
 		$query = $conn->query($sql);
 		$row = $query->fetch_assoc();
-
+		
 		echo json_encode($row);
 	}
 ?>
