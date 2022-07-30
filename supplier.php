@@ -79,7 +79,7 @@
                           <td>".$row['address']."</td>
                           <td>".$row['email']."</td>
                           <td>".$row['phone_number']."</td>
-                          <td>".date('M d, Y', strtotime($row['stamp']))."</td>
+                          <td>".date('M d, Y', strtotime($row['time_stamp']))."</td>
                           <td>
                             <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
                             <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
@@ -132,7 +132,7 @@ function getRow(id){
       $('#edit_address').val(response.address);
       $('#edit_email').val(response.email);
       $('#edit_phone_number').val(response.phone_number);
-      $('.del_supplier_name').val(response.business_name);
+      $('.del_supplier_name').val(response.id);
       $('.del_supid').val(response.id);
     }
   });

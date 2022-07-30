@@ -53,7 +53,6 @@
                 <thead>
                   <th>Product ID</th>
                   <th>Description</th>
-                  <th>Unit</th>
                   <th>Quantity</th>
                   <th>Price</th>
                   <th>Time stamp</th>
@@ -68,7 +67,6 @@
                         <tr>
                           <td>".$row['product_id']."</td>
                           <td>".$row['description']."</td>
-                          <td>".$row['unit']."</td>
                           <td>".$row['quantity']."</td>
                           <td>".number_format($row['price'], 2)."</td>
                           <td>".date('M d, Y', strtotime($row['stamp']))."</td>
@@ -112,25 +110,18 @@
     });
   });
 
-  $('#example1').on('click', '.delete', function(e){
-    e.preventDefault();
-    $('#delete').modal('show');
-    var id = $(this).data('id');
-    getRow(id);
-  });
-});
-
 function getRow(id){
   $.ajax({
     type: 'POST',
-    url: 'inventory_row.php',
-    data: {id:id},
-    dataType: 'json',
+      url: 'inventory_row.php',
+      data: {id:id},
+      dataType: 'json',
     success: function(response){
+      $('.del_inventory').val(response.id);
       $('.invid').val(response.id);
+      $('.inventory_id').val(response.inventory_id);
       $('#edit_product_id').val(response.product_id);
       $('#edit_description').val(response.description);
-      $('#edit_unit').val(response.unit);
       $('#edit_quantity').val(response.quantity);
       $('#edit_price').val(response.price);
     }

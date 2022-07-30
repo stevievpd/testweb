@@ -55,9 +55,9 @@
                   <th>Product Name</th>
                   <th>Quantity</th>
                   <th>Price</th>
+                  <th>Subtotal</th>
+                  <th>Sales Tax</th>
                   <th>Total Amount</th>
-                  <th>Purchase Date</th>
-                  <th>Expected Date</th>
                   <th>Tools</th>
                 </thead>
                 <tbody>
@@ -71,9 +71,9 @@
                           <td>".$row['product_name']."</td>
                           <td>".$row['quantity']."</td>
                           <td>".$row['price']."</td>
+                          <td>".$row['subtotal']."</td>
+                          <td>".$row['sales_tax']."</td>
                           <td>".$row['total']."</td>
-                          <td>".$row['purchase_date']."</td>
-                          <td>".$row['expected_date']."</td>
                           <td>
                             <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
                             <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
@@ -115,20 +115,24 @@ $(function(){
 function getRow(id){
   $.ajax({
     type: 'POST',
-    url: 'purchase_row.php',
+    url: 'purchase_order_row.php',
     data: {id:id},
     dataType: 'json',
+
     success: function(response){
+      $('.po_id').val(response.id);
       $('.purchaseid').val(response.id);
-      $('#id').val(response.product_id);
-      $('#product_name').val(response.product_name);
-      $('#quantity').val(response.quantity);
-      $('#price').val(response.price);
-      $('#total').val(response.total);
-      $('#purchase_date').val(response.purchase_date);
-      $('#expected_date').val(response.expected_date);
-      $('#del_invid').html(response.id);
-      $('#del_invid').val(response.id);
+      $('#edit_product_name').val(response.product_name);
+      $('#edit_quantity').val(response.quantity);
+      $('#edit_price').val(response.price);
+      $('#edit_amount').val(response.amount);
+      $('#edit_total_amount').val(response.total_amount);
+      $('#edit_sub_total').val(response.sub_total);
+      $('#edit_purchase_date').val(response.purchase_date);
+      $('#edit_expected_date').val(response.expected_date);
+      $('.del_purchase_order').val(response.id);
+      
+      
     }
   });
 }

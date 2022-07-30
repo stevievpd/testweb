@@ -105,32 +105,26 @@
             <div class="modal-body">
                 <form class="form-horizontal" method="POST" action="supplier_edit.php">
                     <input type="hidden" class="supid" name="id">
-                        <div class="form-group">
-                            <label for="logo" class="col-sm-3 control-label">Logo</label>
-                            <div class="col-sm-9">
-                                <input type="file" id="logo" name="logo" required>
-                            </div>
-                        </div>  
+
                             <div class="form-group">
                                 <label for="edit_business_name" class="col-sm-3 control-label">Business Name</label>
 
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="edit_business_name"
-                                        name="edit_business_name" required>
+                                    <input type="text" class="form-control" id="edit_business_name" name="business_name" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="edit_product" class="col-sm-3 control-label">Product</label>
 
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="edit_product" name="edit_product" required>
+                                    <input type="text" class="form-control" id="edit_product" name="product" >
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="edit_address" class="col-sm-3 control-label">Address</label>
 
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="edit_address" name="edit_address"
+                                    <input type="text" class="form-control" id="edit_address" name="address"
                                         required>
                                 </div>
                             </div>
@@ -138,15 +132,14 @@
                                 <label for="edit_email" class="col-sm-3 control-label">Email</label>
 
                                 <div class="col-sm-9">
-                                    <input type="email" class="form-control" id="edit_email" name="edit_email" required>
+                                    <input type="email" class="form-control" id="edit_email" name="email" >
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="edit_phone_number" class="col-sm-3 control-label">Phone Name</label>
 
                                 <div class="col-sm-9">
-                                    <input type="number" class="form-control" id="edit_phone_number"
-                                        name="edit_phone_number" required>
+                                    <input type="number" class="form-control" id="edit_phone_number" name="phone_number" >
                                 </div>
                             </div>
 
@@ -161,4 +154,5 @@
             </div>
         </div>
     </div>
+</div>
 </div>

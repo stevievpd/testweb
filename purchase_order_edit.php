@@ -2,13 +2,14 @@
 	include 'includes/session.php';
 	if(isset($_POST['edit'])){
 		$id = $_POST['id'];
-		$product_description= $_POST['product_id'];
-		$description = $_POST['description'];
-		$unit = $_POST['unit'];
+		$product_name = $_POST['product_name'];
 		$quantity = $_POST['quantity'];
 		$price = $_POST['price'];
+		$total = $_POST['total'];
+		$purchase_date = $_POST['purchase_date'];
+		$expected_date = $_POST['expected_date'];
 
-		$sql = "UPDATE inventory SET id = '$id', product_description = '$product_description', quantity = '$quantity', price = '$price', total = '$total', purchase-date = '$purchase_date' , expected_date = '$expected_date'WHERE id = '$id'";
+		$sql = "UPDATE purchase_order SET id = '$id', product_name = '$product_name', quantity = '$quantity', price = '$price', total = '$total', purchase_date = '$purchase_date' , expected_date = '$expected_date' WHERE id = '$id'";
 		if($conn->query($sql)){
 			$_SESSION['success'] = 'Inventory updated successfully';
 		}
