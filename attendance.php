@@ -102,7 +102,7 @@
               e.preventDefault();
               $('#edit').modal('show');
               var id = $(this).data('id');
-              getRow(id);
+              getRow(id); 
           });
 
           $('#example1').on('click', '.delete', function(e) {
