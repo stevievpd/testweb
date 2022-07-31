@@ -126,7 +126,6 @@ function getRow(id){
       $('#edit_quantity').val(response.quantity);
       $('#edit_price').val(response.price);
       $('#edit_sub_total').val(response.subtotal);
-
       $('#edit_sales_tax').val(response.sales_tax);
       $('#edit_total_amount').val(response.total);
       $('#edit_purchase_date').val(response.purchase_date);
