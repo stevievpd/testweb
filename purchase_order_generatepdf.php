@@ -27,13 +27,15 @@ $pdf ->AddPage();
 $pdf-> SetFont('Arial', 'B',20);
 $pdf->SetFillColor(0, 77, 0);
 $pdf->SetTextColor(255, 255, 255);
-$pdf->Cell(190,60,'PURCHASE ORDER',0,0,'C',true);
+$pdf->Ln();
+$pdf->Cell(190,75,'PURCHASE ORDER',0,0,'C',true);
 
-$pdf->Ln(5);
+$pdf->Ln(10);
 $pdf-> SetFont('Arial', 'B',10);
 $pdf->SetTextColor(255, 255, 255);
-$pdf->Cell(190,5,'Company LOGO',10,10,'C');
-$pdf->Ln(30);
+$pdf->Image('images/final_logo.jpg',75, 12, 60,30);
+$pdf->Ln(40);
+
 
 $pdf-> SetFont('Arial', 'B',10,);
 $pdf->SetTextColor(255, 255, 255);
@@ -44,17 +46,17 @@ $pdf->Cell(50,5,'244422',0,0);
 $pdf->ln();
 $pdf->SetTextColor(255, 255, 255);
 $pdf->Cell(16,5,'Address:',0,0,'L');
-$pdf->Cell(50,5,'Quezon',0,0,'L');
+$pdf->Cell(50,5,'Quezon',0,0,'L');  
 $pdf->Cell(57,5,'PO Date:',0,0,'R');
-$pdf->Cell(50,5,'faffaffa',0,0);
+$pdf->Cell(50,5, $purchase_date,0,0);
 $pdf->ln();
 $pdf->SetTextColor(255, 255, 255);
 $pdf->Cell(9,5,'City:',0,0,'L');
 $pdf->Cell(50,5,'',0,0,'L');
 $pdf-> SetFont('Arial', 'B',10);
 $pdf->Cell(69,5,'Supplier ID:',0,0,'R',true);
-$pdf->Cell(50,5,'accccc',0,0);
-$pdf->ln(15);
+$pdf->Cell(50,5, $id,0,0);
+$pdf->ln(20);
 
 $pdf->SetFillColor(0, 153, 0);
 $pdf->SetTextColor(255, 255, 255);
@@ -126,8 +128,8 @@ $pdf->Cell(42,5,'',0,0);
 $pdf->Cell(73,5,'Total Amount:',0,0,'R');
 $pdf->Cell(42,5,$total,0,0);
 $pdf->ln();
-$pdf->Line(35,155,85,155);
-$pdf->Line(38,165,85,165);
+$pdf->Line(35,170,85,170);
+$pdf->Line(35,180,85,180);
 }
 $pdf->Output();
 ?>
