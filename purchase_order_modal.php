@@ -155,14 +155,14 @@
                         <label for="edit_price" class="col-sm-3 control-label">Price</label>
 
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="edit_price" name="price" oninput="add()">
+                            <input type="number" class="form-control" id="edit_price" name="price" oninput="add()" >
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="edit_sub_total" class="col-sm-3 control-label">Subtotal</label>
 
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="edit_sub_total" name="subtotal" onchange="multiply()"  >
+                            <input type="number" class="form-control" id="edit_sub_total" name="subtotal" onchange="add()" readonly >
                         </div>
                     </div>
     
@@ -170,7 +170,7 @@
                         <label for="edit_sales_tax" class="col-sm-3 control-label">Sales Tax</label>
 
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="edit_sales_tax" name="sales_tax"onchange="multiply()" >
+                            <input type="number" class="form-control" id="edit_sales_tax" name="sales_tax"onchange="add()" readonly>
                         </div>
                     </div>
 
@@ -178,7 +178,7 @@
                         <label for="edit_total_amount" class="col-sm-3 control-label">Total Amount</label>
 
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="edit_total_amount" name="total" >
+                            <input type="number" class="form-control" id="edit_total_amount" name="total" readonly>
                         </div>
                     </div>
                     
@@ -197,6 +197,22 @@
                             <input type="date" class="form-control" id="edit_expected_date" name="expected_date">
                         </div>
                     </div>
+                                    <script>
+                                    function add() {
+                                        var edit_quantity = document.getElementById("edit_quantity").value;
+                                        var edit_price = document.getElementById("edit_price").value;
+                                        var edit_subtotal = edit_quantity * edit_price;
+                                       document.getElementById("edit_sub_total").value = edit_subtotal;
+
+                                       var subtotal = document.getElementById("edit_sub_total").value;
+                                       var editamount = subtotal * 0.12;
+                                       document.getElementById("edit_sales_tax").value = editamount;
+
+                                       var edittotal_amount = (edit_subtotal) + (editamount) ;
+                                       document.getElementById("edit_total_amount").value =edittotal_amount;
+                                            } 
+                                    </script>
+
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
@@ -208,4 +224,31 @@
             </div>
         </div>
     </div>
+</div>
+
+<!-- PDF-->
+<div class="modal fade" id="pdf">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><b>Generate PDF</b></h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" method="POST" action="purchase_order_delete.php">
+                    <input type="hidden" class="po_id" name="id">
+                    <div class="text-center">
+                        <p>GENERATE PURCHASE ORDER</p>
+                        <h2 id="purchase_order" class="bold"></h2>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+                <button type="submit" class="btn btn-success btn-flat" name="pdf"><i class="fa fa-trash"></i>PDF</button>
+                </form>
+            </div>
+        </div>
+    </div>
+                                 
 </div>
