@@ -60,7 +60,7 @@
             <li><a href="accounts.php"><i class="fa fa-users"></i> <span>Accounts</span></a></li>
 
             <li class="header">POINT OF SALES</li>
-            <li><a href="accounts.php"><i class="fa fa-file"></i> <span>Point of Sales</span></a></li>
+            <li><a href="pointofsale.php"><i class="fa fa-file"></i> <span>Point of Sales</span></a></li>
         </ul>
     </section>
     <!-- /.sidebar -->
