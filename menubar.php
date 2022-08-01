@@ -56,6 +56,12 @@
             <li><a href="cashadvance.php"><i class="fa fa-clock-o"></i> <span>Cash Advance</span></a></li>
             <li><a href="deduction.php"><i class="fa fa-file-text"></i><span> Deductions</span></a></li>
             <li><a href="overtime.php"><i class="fa fa-clock-o"></i> <span>Overtime</a></span></li>
+
+            <li class="header">SETTINGS</li>
+            <li><a href="accounts.php"><i class="fa fa-users"></i> <span>Accounts</span></a></li>
+
+            <li class="header">POINT OF SALES</li>
+            <li><a href="accounts.php"><i class="fa fa-file"></i> <span>Point of Sales</span></a></li>
         </ul>
     </section>
     <!-- /.sidebar -->

@@ -105,7 +105,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="mins_edit class="col-sm-3 control-label">No. of Mins</label>
+                    <label for="mins_edit" class="col-sm-3 control-label">No. of Mins</label>
 
                     <div class="col-sm-9">
                       <input type="text" class="form-control" id="mins_edit" name="mins">

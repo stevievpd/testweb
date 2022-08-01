@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 30, 2022 at 11:50 AM
+-- Generation Time: Aug 01, 2022 at 09:24 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -34,42 +34,17 @@ CREATE TABLE `admin` (
   `firstname` varchar(50) NOT NULL,
   `lastname` varchar(50) NOT NULL,
   `photo` varchar(200) NOT NULL,
-  `created_on` date NOT NULL
+  `created_on` date NOT NULL,
+  `type` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id`, `username`, `password`, `firstname`, `lastname`, `photo`, `created_on`) VALUES
-(1, 'admin', '$2y$10$fCOiMky4n5hCJx3cpsG20Od4wHtlkCLKmO6VLobJNRIg9ooHTkgjK', 'Roge', 'Catubig', 'profilepic.jpg', '2018-04-30');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `admin_user`
---
-
-CREATE TABLE `admin_user` (
-  `id` int(11) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  `role` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `admin_user`
---
-
-INSERT INTO `admin_user` (`id`, `username`, `password`, `role`) VALUES
-(1, 'admin', 'admin', 1),
-(2, 'news', 'news', 2),
-(4, 'a', 'a', 2),
-(5, 'sed', 'sed', 2),
-(6, 'sam', 'sam', 2),
-(7, 'sopot', 'sopot', 2),
-(8, 'sed', 'sed', 2),
-(9, 'qwe', 'qwe', 2);
+INSERT INTO `admin` (`id`, `username`, `password`, `firstname`, `lastname`, `photo`, `created_on`, `type`) VALUES
+(1, 'admin', '$2y$10$fCOiMky4n5hCJx3cpsG20Od4wHtlkCLKmO6VLobJNRIg9ooHTkgjK', 'Roge', 'Catubig', 'profilepic.jpg', '2018-04-30', 'admin'),
+(2, 'test', '098f6bcd4621d373cade4e832627b4f6', 'test', 'test', '', '2022-08-01', 'Admin');
 
 -- --------------------------------------------------------
 
@@ -122,12 +97,10 @@ INSERT INTO `attendance` (`id`, `employee_id`, `date`, `time_in`, `status`, `tim
 (97, 15, '2018-07-11', '18:19:26', 0, '00:00:00', 0),
 (98, 16, '2018-07-11', '18:20:26', 0, '00:00:00', 0),
 (99, 17, '2018-07-11', '18:21:41', 0, '00:00:00', 0),
-(100, 18, '2018-07-12', '23:46:31', 1, '00:00:00', 0),
 (101, 19, '2018-07-12', '23:50:28', 1, '00:00:00', 0),
 (102, 20, '2018-07-12', '23:52:48', 1, '00:00:00', 0),
 (103, 21, '2018-07-12', '23:54:50', 1, '00:00:00', 0),
 (104, 22, '2018-07-12', '23:56:02', 1, '00:00:00', 0),
-(105, 23, '2018-07-12', '01:00:00', 1, '00:00:00', 7),
 (107, 1, '2022-07-08', '07:00:00', 1, '14:30:00', 6.5),
 (108, 1, '2022-07-23', '15:04:00', 0, '14:51:00', 0.21666666666667),
 (111, 1, '1997-12-12', '05:00:00', 1, '15:00:00', 6),
@@ -247,7 +220,10 @@ INSERT INTO `employees` (`id`, `employee_id`, `firstname`, `lastname`, `address`
 (21, 'XRF342608719', 'Mason', 'Beckett', 'Demo', '1996-07-24', '8467067344', 'Male', 2, 1, 'profile.jpg', '2018-07-11'),
 (22, 'LVO541238690', 'Lucas', 'Cooper', 'Demo', '1995-07-18', '9632145655', 'Male', 2, 1, 'profile.jpg', '2018-07-11'),
 (25, 'BDT823670495', 'Stewie', 'Griffin', 'Qouhog', '1997-12-12', '09615089172', 'Male', 4, 2, '', '2022-07-26'),
-(26, 'EYF693714205', 'James', 'Bato', 'Tandang Sora', '2022-07-15', '22442424', 'Male', 2, 2, '', '2022-07-30');
+(26, 'EYF693714205', 'James', 'Bato', 'Tandang Sora', '2022-07-15', '22442424', 'Male', 2, 2, '', '2022-07-30'),
+(27, 'PEO648731092', 'test', 'test', '', '0000-00-00', '', '', 0, 0, '', '2022-08-01'),
+(28, 'PRO067134925', 'test', 'test', '', '0000-00-00', '', '', 0, 0, '', '2022-08-01'),
+(29, 'ROA573148690', 'test', 'test', '', '0000-00-00', '', '', 0, 0, '', '2022-08-01');
 
 -- --------------------------------------------------------
 
@@ -455,29 +431,6 @@ INSERT INTO `supplier_product` (`id`, `supProdCode`, `supProName`, `supProdDesc`
 (2, 122, 'BMI', 'Motorcycle'),
 (20, 789456, 'Ryzen 5', 'Laptop Huawei');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
-
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `username`, `email`, `password`) VALUES
-(9, '', 'admin@admin.com', 'c4ca4238a0b923820dcc509a6f75849b'),
-(10, '', 'stevie.vpd@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b'),
-(11, '', 'admin@gmail.com', '0cc175b9c0f1b6a831c399e269772661'),
-(12, '2', '2@gmail.copm', 'c81e728d9d4c2f636f067f89cc14862c');
-
 --
 -- Indexes for dumped tables
 --
@@ -486,12 +439,6 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`) VALUES
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `admin_user`
---
-ALTER TABLE `admin_user`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -579,12 +526,6 @@ ALTER TABLE `supplier_product`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -592,13 +533,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `admin_user`
---
-ALTER TABLE `admin_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `attendance`
@@ -628,7 +563,7 @@ ALTER TABLE `deductions`
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `inventory`
@@ -683,12 +618,6 @@ ALTER TABLE `supplier`
 --
 ALTER TABLE `supplier_product`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
