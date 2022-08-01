@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 29, 2022 at 03:05 AM
+-- Generation Time: Aug 01, 2022 at 09:24 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -34,42 +34,17 @@ CREATE TABLE `admin` (
   `firstname` varchar(50) NOT NULL,
   `lastname` varchar(50) NOT NULL,
   `photo` varchar(200) NOT NULL,
-  `created_on` date NOT NULL
+  `created_on` date NOT NULL,
+  `type` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id`, `username`, `password`, `firstname`, `lastname`, `photo`, `created_on`) VALUES
-(1, 'admin', '$2y$10$fCOiMky4n5hCJx3cpsG20Od4wHtlkCLKmO6VLobJNRIg9ooHTkgjK', 'Roge', 'Catubig', 'profilepic.jpg', '2018-04-30');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `admin_user`
---
-
-CREATE TABLE `admin_user` (
-  `id` int(11) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  `role` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `admin_user`
---
-
-INSERT INTO `admin_user` (`id`, `username`, `password`, `role`) VALUES
-(1, 'admin', 'admin', 1),
-(2, 'news', 'news', 2),
-(4, 'a', 'a', 2),
-(5, 'sed', 'sed', 2),
-(6, 'sam', 'sam', 2),
-(7, 'sopot', 'sopot', 2),
-(8, 'sed', 'sed', 2),
-(9, 'qwe', 'qwe', 2);
+INSERT INTO `admin` (`id`, `username`, `password`, `firstname`, `lastname`, `photo`, `created_on`, `type`) VALUES
+(1, 'admin', '$2y$10$fCOiMky4n5hCJx3cpsG20Od4wHtlkCLKmO6VLobJNRIg9ooHTkgjK', 'Roge', 'Catubig', 'profilepic.jpg', '2018-04-30', 'admin'),
+(2, 'test', '098f6bcd4621d373cade4e832627b4f6', 'test', 'test', '', '2022-08-01', 'Admin');
 
 -- --------------------------------------------------------
 
@@ -122,12 +97,10 @@ INSERT INTO `attendance` (`id`, `employee_id`, `date`, `time_in`, `status`, `tim
 (97, 15, '2018-07-11', '18:19:26', 0, '00:00:00', 0),
 (98, 16, '2018-07-11', '18:20:26', 0, '00:00:00', 0),
 (99, 17, '2018-07-11', '18:21:41', 0, '00:00:00', 0),
-(100, 18, '2018-07-12', '23:46:31', 1, '00:00:00', 0),
 (101, 19, '2018-07-12', '23:50:28', 1, '00:00:00', 0),
 (102, 20, '2018-07-12', '23:52:48', 1, '00:00:00', 0),
 (103, 21, '2018-07-12', '23:54:50', 1, '00:00:00', 0),
 (104, 22, '2018-07-12', '23:56:02', 1, '00:00:00', 0),
-(105, 23, '2018-07-12', '01:00:00', 1, '00:00:00', 7),
 (107, 1, '2022-07-08', '07:00:00', 1, '14:30:00', 6.5),
 (108, 1, '2022-07-23', '15:04:00', 0, '14:51:00', 0.21666666666667),
 (111, 1, '1997-12-12', '05:00:00', 1, '15:00:00', 6),
@@ -198,7 +171,8 @@ INSERT INTO `deductions` (`id`, `description`, `amount`) VALUES
 (7, 'Pag-ibig', 150),
 (8, 'SSS', 250),
 (9, 'Philhealth', 300),
-(10, 'Salary Loan', 900);
+(10, 'Salary Loan', 900),
+(11, 'PC', 0);
 
 -- --------------------------------------------------------
 
@@ -241,13 +215,15 @@ INSERT INTO `employees` (`id`, `employee_id`, `firstname`, `lastname`, `address`
 (15, 'CAB835624170', 'Mia', 'Hollister', 'Test', '1995-07-18', '9632145655', 'Female', 2, 3, 'profile.jpg', '2018-07-11'),
 (16, 'MGZ312906745', 'Emily', 'JK', 'Test', '1996-07-24', '9876543210', 'Female', 2, 3, 'profile.jpg', '2018-07-11'),
 (17, 'HSP067892134', 'Nakia', 'Grey', 'Test', '1995-10-24', '8467067344', 'Female', 1, 2, 'profile.jpg', '2018-07-11'),
-(18, 'BVH081749563', 'Dave', 'Cruze', 'Demo', '1990-01-02', '5454578965', 'Male', 2, 2, 'profile.jpg', '2018-07-11'),
 (19, 'ZTC714069832', 'Logan', 'Paul', 'Esp 16', '1994-12-30', '0202121255', 'Male', 1, 1, 'profile.jpg', '2018-07-11'),
 (20, 'VFT157620348', 'Jack', 'Adler', 'Test', '1991-07-25', '6545698880', 'Male', 1, 4, 'profile.jpg', '2018-07-11'),
 (21, 'XRF342608719', 'Mason', 'Beckett', 'Demo', '1996-07-24', '8467067344', 'Male', 2, 1, 'profile.jpg', '2018-07-11'),
 (22, 'LVO541238690', 'Lucas', 'Cooper', 'Demo', '1995-07-18', '9632145655', 'Male', 2, 1, 'profile.jpg', '2018-07-11'),
-(23, 'AEI036154829', 'Alex', 'Cohen', 'Demo', '1995-08-23', '9632145655', 'Male', 1, 2, 'profile.jpg', '2018-07-11'),
-(25, 'BDT823670495', 'Stewie', 'Griffin', 'Qouhog', '1997-12-12', '09615089172', 'Male', 4, 2, '', '2022-07-26');
+(25, 'BDT823670495', 'Stewie', 'Griffin', 'Qouhog', '1997-12-12', '09615089172', 'Male', 4, 2, '', '2022-07-26'),
+(26, 'EYF693714205', 'James', 'Bato', 'Tandang Sora', '2022-07-15', '22442424', 'Male', 2, 2, '', '2022-07-30'),
+(27, 'PEO648731092', 'test', 'test', '', '0000-00-00', '', '', 0, 0, '', '2022-08-01'),
+(28, 'PRO067134925', 'test', 'test', '', '0000-00-00', '', '', 0, 0, '', '2022-08-01'),
+(29, 'ROA573148690', 'test', 'test', '', '0000-00-00', '', '', 0, 0, '', '2022-08-01');
 
 -- --------------------------------------------------------
 
@@ -259,7 +235,6 @@ CREATE TABLE `inventory` (
   `id` int(10) NOT NULL,
   `product_id` varchar(50) NOT NULL,
   `description` varchar(50) NOT NULL,
-  `unit` varchar(20) NOT NULL,
   `quantity` int(11) NOT NULL,
   `price` int(11) NOT NULL,
   `stamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
@@ -269,9 +244,11 @@ CREATE TABLE `inventory` (
 -- Dumping data for table `inventory`
 --
 
-INSERT INTO `inventory` (`id`, `product_id`, `description`, `unit`, `quantity`, `price`, `stamp`) VALUES
-(1, '0', 'Mouse', 'pcs', 20, 200, '2022-07-28 02:33:49'),
-(2, '0', 'Keyboard', 'pks', 10, 0, '2022-07-19 09:53:08');
+INSERT INTO `inventory` (`id`, `product_id`, `description`, `quantity`, `price`, `stamp`) VALUES
+(3, '1111122', 'PC', 20, 200, '2022-07-30 02:33:37'),
+(4, '2222', 'Ballpen', 222, 50, '2022-07-30 03:50:47'),
+(5, '22', 'Keyboard', 111, 1111, '2022-07-30 04:38:31'),
+(6, '2222', 'Mouse', 10, 10, '2022-07-30 09:47:34');
 
 -- --------------------------------------------------------
 
@@ -347,38 +324,25 @@ INSERT INTO `position` (`id`, `description`, `rate`) VALUES
 
 CREATE TABLE `purchase_order` (
   `id` int(11) NOT NULL,
+  `product_name` varchar(200) NOT NULL,
+  `quantity` int(100) NOT NULL,
+  `price` float NOT NULL,
+  `subtotal` float NOT NULL,
+  `sales_tax` float NOT NULL,
+  `total` float NOT NULL,
   `purchase_date` date NOT NULL,
-  `expected_date` date NOT NULL,
-  `item` varchar(250) NOT NULL,
-  `quantity` bigint(250) NOT NULL,
-  `price` bigint(250) NOT NULL,
-  `amount_total` bigint(250) NOT NULL
+  `expected_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `purchase_order`
 --
 
-INSERT INTO `purchase_order` (`id`, `purchase_date`, `expected_date`, `item`, `quantity`, `price`, `amount_total`) VALUES
-(1, '2022-07-13', '2022-07-05', 'ddgdggdfdf', 4111121, 1212121, 11121112),
-(2, '0000-00-00', '0000-00-00', '', 213123123, 123123123, 0),
-(3, '0242-04-24', '0424-02-24', '', 122, 22221, 0),
-(4, '0022-03-12', '1313-03-31', '', 20, 202, 0),
-(5, '0002-02-22', '0202-02-20', '', 1222, 1212, 0),
-(6, '0012-02-21', '0121-12-22', '', 1222, 2212, 0),
-(7, '0212-02-22', '0222-11-12', '', 222, 212, 0),
-(8, '0000-00-00', '0012-02-21', '', 2122, 21210, 45007620),
-(9, '0222-02-22', '0022-02-22', '', 410, 101, 41410),
-(10, '0000-00-00', '0000-00-00', '', 5, 500, 2500),
-(11, '2222-02-22', '0000-00-00', '', 5, 500, 2500),
-(12, '2222-01-31', '2220-02-02', 'Keyboard', 200, 1000, 200000),
-(13, '0022-02-20', '0002-02-02', 'sgsgsss', 52522, 25552, 1342042144),
-(14, '2222-02-20', '0011-11-10', 'Simcard', 401011, 4244, 1701890684),
-(15, '0202-02-20', '0202-02-20', 'Simcard', 2222, 222, 493284),
-(16, '0000-00-00', '0000-00-00', '[value-4]', 0, 0, 0),
-(17, '2222-02-22', '2222-02-22', 'Laptop Huawei', 5202020, 202020, 1050912080400),
-(18, '0000-00-00', '0000-00-00', 'Laptop Huawei', 5552, 5252, 29159104),
-(19, '0011-01-12', '0000-00-00', 'Simcard', 1011, 111, 112221);
+INSERT INTO `purchase_order` (`id`, `product_name`, `quantity`, `price`, `subtotal`, `sales_tax`, `total`, `purchase_date`, `expected_date`) VALUES
+(1, 'Mouse', 100, 1010, 0, 0, 0, '2022-07-13', '2022-07-05'),
+(18, 'Keyboard', 4, 4, 0, 0, 16, '2022-07-12', '2022-07-20'),
+(21, 'Mouse', 10, 10, 0, 0, 1000, '2000-02-20', '2000-02-20'),
+(22, 'Ballpen', 20, 20, 0, 0, 20000, '2000-02-20', '2000-02-20');
 
 -- --------------------------------------------------------
 
@@ -429,34 +393,21 @@ INSERT INTO `schedules` (`id`, `time_in`, `time_out`) VALUES
 
 CREATE TABLE `supplier` (
   `id` int(11) NOT NULL,
-  `supplier_name` varchar(250) NOT NULL,
-  `address` varchar(250) NOT NULL,
-  `city` varchar(250) NOT NULL,
-  `country` varchar(250) NOT NULL,
-  `email` varchar(250) NOT NULL,
-  `phone_number` bigint(250) NOT NULL,
-  `bank` varchar(250) NOT NULL,
-  `bank_account` varchar(250) NOT NULL,
-  `branch` varchar(250) NOT NULL,
-  `tin` varchar(250) NOT NULL,
-  `stamp` timestamp NOT NULL DEFAULT current_timestamp()
+  `logo` varchar(200) NOT NULL,
+  `business_name` varchar(200) NOT NULL,
+  `product` varchar(200) NOT NULL,
+  `address` varchar(200) NOT NULL,
+  `email` varchar(200) NOT NULL,
+  `phone_number` bigint(100) NOT NULL,
+  `time_stamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `supplier`
 --
 
-INSERT INTO `supplier` (`id`, `supplier_name`, `address`, `city`, `country`, `email`, `phone_number`, `bank`, `bank_account`, `branch`, `tin`, `stamp`) VALUES
-(1, 'gssgssgsd', 'gsssg', 'gsgssg', 'Philippines', 'ambL@gmail.com', 0, '', 'sssgsg', 'ssgssd', '425-5224-1212', '0000-00-00 00:00:00'),
-(6, 'Bulla Crave', 'Tandang Sora', 'QC', 'Philippines', 'ambL@gmail.com', 0, '', 'RCBC', 'Makati', '4100-5282452-2000', '0000-00-00 00:00:00'),
-(7, 'Bulla Crave', 'Tandang Sora', 'QC', 'Philippines', 'ambL@gmail.com', 0, '', 'rcbc', 'makati', '242424-63-33', '0000-00-00 00:00:00'),
-(8, 'fsssdff', 'sfsfs', 'QC', 'Philippines', 'ambL@gmail.com', 264161125, '', '452424-24242', 'vsvSvbb', '747442-544', '2022-07-26 01:59:43'),
-(9, 'asdasd', 'gsssg', 'asdsad', 'dasdsad', 'amdsaas@gmail.com', 1212121, '', '121212', '121212121', '2121212121', '2022-07-26 02:21:54'),
-(10, '123213123', '12312321321', '321321', '3213123213', '21321321@gmail.com', 12312321321, '', '12312312', '312321321', '312321321321', '2022-07-26 02:22:50'),
-(11, 'xxxx', 'xxx', 'xxx', 'xxx', 'xxxx@gmail.com', 1212121, 'BDO Unibank Inc.', '121212', '1212121', '2121212121', '2022-07-26 02:23:50'),
-(20, 'Lizada\'s Group of Corporations', 'Singapore', 'Singapore', 'Singapore', 'Singapore@gmail.com', 9615089172, 'Security Bank', '000003800078', 'Quezon Avev', '220279220', '2022-07-26 07:09:51'),
-(21, 'jff', 'fjj', 'jffgfj', 'jfjffj', 'ambL@gmail.com', 53232123, 'Land Bank of the Philippines', 'jfg', '1dhgddhdh', '2424275201', '2022-07-26 07:43:51'),
-(22, 'hdffhf', 'hfghfghfgh', 'hfgfgfgfg', 'hffg', 'ambL@gmail.com', 264161125, 'Bank of the Philippine Islands', 'fghfgfg', 'ghfgfgh', '1101101', '2022-07-26 07:55:33');
+INSERT INTO `supplier` (`id`, `logo`, `business_name`, `product`, `address`, `email`, `phone_number`, `time_stamp`) VALUES
+(3, '', 'BBBBB', 'assadadssad', 'Tandang Sora', 'ambL@gmail.com', 264161125, '2022-07-30 05:27:53');
 
 -- --------------------------------------------------------
 
@@ -480,29 +431,6 @@ INSERT INTO `supplier_product` (`id`, `supProdCode`, `supProName`, `supProdDesc`
 (2, 122, 'BMI', 'Motorcycle'),
 (20, 789456, 'Ryzen 5', 'Laptop Huawei');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
-
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `username`, `email`, `password`) VALUES
-(9, '', 'admin@admin.com', 'c4ca4238a0b923820dcc509a6f75849b'),
-(10, '', 'stevie.vpd@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b'),
-(11, '', 'admin@gmail.com', '0cc175b9c0f1b6a831c399e269772661'),
-(12, '2', '2@gmail.copm', 'c81e728d9d4c2f636f067f89cc14862c');
-
 --
 -- Indexes for dumped tables
 --
@@ -511,12 +439,6 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`) VALUES
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `admin_user`
---
-ALTER TABLE `admin_user`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -604,12 +526,6 @@ ALTER TABLE `supplier_product`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -617,13 +533,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `admin_user`
---
-ALTER TABLE `admin_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `attendance`
@@ -647,19 +557,19 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `deductions`
 --
 ALTER TABLE `deductions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `inventory`
 --
 ALTER TABLE `inventory`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `items`
@@ -683,7 +593,7 @@ ALTER TABLE `position`
 -- AUTO_INCREMENT for table `purchase_order`
 --
 ALTER TABLE `purchase_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `sales`
@@ -701,19 +611,13 @@ ALTER TABLE `schedules`
 -- AUTO_INCREMENT for table `supplier`
 --
 ALTER TABLE `supplier`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `supplier_product`
 --
 ALTER TABLE `supplier_product`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -45,7 +45,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="phone_number" class="col-sm-3 control-label">Phone Name</label>
+                        <label for="phone_number" class="col-sm-3 control-label">Phone Number</label>
 
                         <div class="col-sm-9">
                             <input type="number" class="form-control" id="phone_number" name="phone_number" required>
@@ -136,7 +136,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="edit_phone_number" class="col-sm-3 control-label">Phone Name</label>
+                                <label for="edit_phone_number" class="col-sm-3 control-label">Phone Number</label>
 
                                 <div class="col-sm-9">
                                     <input type="number" class="form-control" id="edit_phone_number" name="phone_number" >

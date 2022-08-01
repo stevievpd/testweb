@@ -52,7 +52,7 @@
           <div class="box">
             <div class="box-header with-border">
               <div class="pull-right">
-                <form method="POST" class="form-inline" id="payForm">
+                <form method="POST" class="form-inline" id="payForm" target="_blank">
                   <div class="input-group">
                     <div class="input-group-addon">
                       <i class="fa fa-calendar"></i>
