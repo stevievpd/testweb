@@ -150,7 +150,7 @@
                                     $query = $conn->query($sql);
                                     echo "<h3>".$query->num_rows."</h3>"
                                 ?>
-                                <p>Items are Low on Stock!</p>
+                                <p>Total products</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-alert-circled"></i>

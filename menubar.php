@@ -38,7 +38,7 @@
             <li><a href="customer.php"><i class="fa fa-users"></i> <span>Customer</span></a></li>
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-users"></i>
+                    <i class="fa fa-file"></i>
                     <span>Inventory</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
