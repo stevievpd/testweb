@@ -22,37 +22,37 @@
                         <label for="add_quantity" class="col-sm-3 control-label">Quantity</label>
 
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="add_quantity" name="quantity" oninput="multiply()">
+                            <input type="number" class="form-control" id="add_quantity" name="quantity"  placeholder="0.00"  oninput="multiply()">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="add_price" class="col-sm-3 control-label">Price</label>
 
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="add_price" name="price" oninput="multiply()">
+                            <input type="number" class="form-control" id="add_price" name="price" placeholder="0.00" oninput="multiply()">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="add_sub_total" class="col-sm-3 control-label">Subtotal</label>
+                        <label for="add_subtotal" class="col-sm-3 control-label">Subtotal</label>
 
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="add_sub_total" name="sub_total" onchange="multiply()" >
+                            <input type="number" class="form-control" id="add_subtotal" name="subtotal"  placeholder="0.00"  onchange="multiply()" require readonly>
                         </div>
                 </div>
     
                     <div class="form-group">
-                        <label for="add_amount" class="col-sm-3 control-label">Sales Tax</label>
+                        <label for="sales_tax" class="col-sm-3 control-label">Sales Tax</label>
 
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="add_amount" name="amount"onchange="multiply()">
+                            <input type="number" class="form-control" id="sales_tax" name="sales_tax"  placeholder="0.00"  oninput="multiply()" readonly>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="add_total_amount" class="col-sm-3 control-label">Total Amount</label>
+                        <label for="total" class="col-sm-3 control-label">Total Amount</label>
 
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="add_total_amount" name="total_amount" readonly>
+                            <input type="number" class="form-control" id="total" name="total"  placeholder="0.00"  readonly>
                         </div>
                     </div>
 
@@ -70,124 +70,33 @@
                             <input type="date" class="form-control" id="expected_date" name="expected_date" required>
                         </div>
                 </div>    
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
-                    <button type="submit" class="btn btn-primary btn-flat" name="add"><i class="fa fa-save"></i>Save</button>
-                    <script>
+                                     <script>
                                     function multiply() {
                                         var add_quantity = document.getElementById("add_quantity").value;
                                         var add_price = document.getElementById("add_price").value;
-                                        var add_total = add_quantity * add_price;
-                                       document.getElementById("add_sub_total").value = add_total;
-                            } 
-                    </script>
+                                        var add_subtotal = add_quantity * add_price;
+                                       document.getElementById("add_subtotal").value = add_subtotal;
 
+                                       var subtotal = document.getElementById("add_subtotal").value;
+                                       var amount = subtotal * 0.12;
+                                       document.getElementById("sales_tax").value = amount;
+
+                                       var total_amount = (add_subtotal) + (amount) ;
+                                       document.getElementById("total").value =total_amount;
+                                            } 
+                                      </script>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+                    <button type="submit" class="btn btn-primary btn-flat" name="add"><i class="fa fa-save"></i>Save</button>
                 </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Edit -->
-<div class="modal fade" id="edit">
-    <div class="modal-dialog">
-        <div class="modal-content">
-           <div class="modal-header">
-            	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              		<span aria-hidden="true">&times;</span></button>
-            	<h4 class="modal-title"><b><span class="po_id"></span></b></h4>
-                </div>
-                <div class="modal-body">
-                <form class="form-horizontal" method="POST" action="purchase_order_edit.php">
-                    <input type="hidden" class="purchaseid" name="id">
-
-                    <div class="form-group">
-                        <label for="edit_product_name" class="col-sm-3 control-label">Product Name</label>
-
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="edit_product_name" name="product_name">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="edit_quantity" class="col-sm-3 control-label">Quantity</label>
-
-                        <div class="col-sm-9">
-                            <input type="number" class="form-control" id="edit_quantity" name="quantity" oninput="multiply()">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="edit_price" class="col-sm-3 control-label">Price</label>
-
-                        <div class="col-sm-9">
-                            <input type="number" class="form-control" id="edit_price" name="price" oninput="multiply()">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="edit_sub_total" class="col-sm-3 control-label">Subtotal</label>
-
-                        <div class="col-sm-9">
-                            <input type="number" class="form-control" id="edit_sub_total" name="sub_total" onchange="multiply()" readonly >
-                        </div>
-                </div>
     
-                    <div class="form-group">
-                        <label for="edit_amount" class="col-sm-3 control-label">Sales Tax</label>
-
-                        <div class="col-sm-9">
-                            <input type="number" class="form-control" id="edit_amount" name="amount"onchange="multiply()" readonly>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="edit_total_amount" class="col-sm-3 control-label">Total Amount</label>
-
-                        <div class="col-sm-9">
-                            <input type="number" class="form-control" id="edit_total_amount" name="total_amount" readonly>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="edit_purchase_date" class="col-sm-3 control-label">Purchase Date</label>
-
-                        <div class="col-sm-9">
-                            <input type="date" class="form-control" id="edit_purchase_date" name="purchase_date">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="edit_expected_date" class="col-sm-3 control-label">Expected Date</label>
-
-                        <div class="col-sm-9">
-                            <input type="date" class="form-control" id="edit_expected_date" name="expected_date">
-                        </div>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
-                        <button type="submit" class="btn btn-success btn-flat" name="edit"><i class="fa fa-check-square-o"></i>Update</button>
-                        <script>
-                                    function multiply() {
-                                        var quantity = document.getElementById("edit_quantity").value;
-                                        var price = document.getElementById("edit_price").value;
-                                        var total = quantity * price;
-                                       document.getElementById("edit_sub_total").value = total;
-
-                                       var subtotal = document.getElementById("edit_sub_total").value;
-                                       var amount_total = subtotal * 0.12;
-                                       document.getElementById("edit_amount").value = amount_total;
-
-                                       var all_total = (total) + (amount_total) ;
-                                       document.getElementById("edit_total_amount").value = all_total;
-
-                            }
-                         </script>               
-                </form>
-                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+                    
+
 <!-- Delete -->
 <div class="modal fade" id="delete">
     <div class="modal-dialog">
@@ -215,3 +124,88 @@
                                  
 </div>
 
+<!-- Edit -->
+<div class="modal fade" id="edit">
+    <div class="modal-dialog">
+        <div class="modal-content">
+           <div class="modal-header">
+            	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              		<span aria-hidden="true">&times;</span></button>
+            	<h4 class="modal-title"><b><span class="po_id"></span></b></h4>
+                </div>
+                <div class="modal-body">
+                <form class="form-horizontal" method="POST" action="purchase_order_edit.php">
+                    <input type="hidden" class="purchaseid" name="id">
+
+                    <div class="form-group">
+                        <label for="edit_product_name" class="col-sm-3 control-label">Product Name</label>
+
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="edit_product_name" name="product_name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit_quantity" class="col-sm-3 control-label">Quantity</label>
+
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="edit_quantity" name="quantity" oninput="add()">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit_price" class="col-sm-3 control-label">Price</label>
+
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="edit_price" name="price" oninput="add()">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit_sub_total" class="col-sm-3 control-label">Subtotal</label>
+
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="edit_sub_total" name="subtotal" onchange="multiply()"  >
+                        </div>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="edit_sales_tax" class="col-sm-3 control-label">Sales Tax</label>
+
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="edit_sales_tax" name="sales_tax"onchange="multiply()" >
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit_total_amount" class="col-sm-3 control-label">Total Amount</label>
+
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="edit_total_amount" name="total" >
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="edit_purchase_date" class="col-sm-3 control-label">Purchase Date</label>
+
+                        <div class="col-sm-9">
+                            <input type="date" class="form-control" id="edit_purchase_date" name="purchase_date">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit_expected_date" class="col-sm-3 control-label">Expected Date</label>
+
+                        <div class="col-sm-9">
+                            <input type="date" class="form-control" id="edit_expected_date" name="expected_date">
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+                        <button type="submit" class="btn btn-success btn-flat" name="edit"><i class="fa fa-check-square-o"></i>Update</button>
+
+                                    
+                </form>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
