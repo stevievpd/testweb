@@ -56,7 +56,7 @@ CREATE TABLE `admin_user` (
   `password` varchar(50) NOT NULL,
   `role` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
+ 
 --
 -- Dumping data for table `admin_user`
 --
