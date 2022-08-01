@@ -77,10 +77,12 @@
                           <td>
                             <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
                             <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
+                            <button class='btn btn-secondary active btn-sm btn-flat' autocomplete='on'><i class='glyphicon glyphicon-print'><a class= btn btn-primary href='purchase_order_generatepdf.php'role='button'></a></i>PDF</button> 
                           </td>
                         </tr>
                       ";
                     }
+                    
                   ?>
                 </tbody>
               </table>
@@ -110,6 +112,14 @@ $(function(){
     var id = $(this).data('id');
     getRow(id);
   });
+
+  $('#example1').on('click', '.pdf', function(e){
+    e.preventDefault();
+    $('#dpf').modal('show');
+    var id = $(this).data('id');
+    getRow(id);
+  });
+
 });
 
 function getRow(id){
@@ -125,12 +135,14 @@ function getRow(id){
       $('#edit_product_name').val(response.product_name);
       $('#edit_quantity').val(response.quantity);
       $('#edit_price').val(response.price);
-      $('#edit_sub_total').val(response.subtotal);
       $('#edit_sales_tax').val(response.sales_tax);
       $('#edit_total_amount').val(response.total);
+      $('#edit_sub_total').val(response.subtotal);
       $('#edit_purchase_date').val(response.purchase_date);
       $('#edit_expected_date').val(response.expected_date);
       $('.del_purchase_order').val(response.id);
+      $('.pdf').val(response.id);
+      $('.purchase_order').val(response.id);
       
       
     }

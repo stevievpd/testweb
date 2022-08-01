@@ -51,10 +51,12 @@
             <div class="box-body">
               <table id="example1" class="table table-bordered">
                 <thead>
+                  <th>Photo</th>
                   <th>Product ID</th>
                   <th>Description</th>
                   <th>Quantity</th>
-                  <th>Price</th>
+                  <th>Unit Price</th>
+                  <th>Unit Cost</th>
                   <th>Time stamp</th>
                   <th>Tools</th>
                 </thead>
@@ -120,7 +122,6 @@ function getRow(id){
       $('.del_inventory').val(response.id);
       $('.invid').val(response.id);
       $('.inventory_id').val(response.inventory_id);
-      $('#edit_product_id').val(response.product_id);
       $('#edit_description').val(response.description);
       $('#edit_quantity').val(response.quantity);
       $('#edit_price').val(response.price);
