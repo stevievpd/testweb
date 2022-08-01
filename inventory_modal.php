@@ -10,13 +10,6 @@
             <div class="modal-body">
                 <form class="form-horizontal" method="POST" action="inventory_add.php">
                     <div class="form-group">
-                        <label for="product_id" class="col-sm-3 control-label">Product ID</label>
-
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="product_id" name="product_id" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
                         <label for="description" class="col-sm-3 control-label">Description</label>
 
                         <div class="col-sm-9">
@@ -63,13 +56,6 @@
                 <form class="form-horizontal" method="POST" action="inventory_edit.php">
                     <input type="hidden" class="invid" name="id">
 
-                    <div class="form-group">
-                        <label for="edit_product_id" class="col-sm-3 control-label">Product ID</label>
-
-                        <div class="col-sm-9">
-                            <input type="number" class="form-control" id="edit_product_id" name="product_id">
-                        </div>
-                    </div>
                     <div class="form-group">
                         <label for="edit_description" class="col-sm-3 control-label">Description</label>
 
