@@ -71,8 +71,8 @@
                             <td>".$row['supplier_product_name']."</td>
                             <td>".$row['supplier_product_description']."</td>
                             <td>
-                                <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
-                                <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
+                                <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['supplier_product_id']."'><i class='fa fa-edit'></i> Edit</button>
+                                <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['supplier_product_id']."'><i class='fa fa-trash'></i> Delete</button>
                             </td>
                         </tr>
                       ";
@@ -114,7 +114,7 @@
           data: {id:id},
           dataType: 'json',
           success: function(response){
-            $('.product_id').val(response.id);
+            $('.product_id').val(response.supplier_product_id);
             $('#edit_prodCode').val(response.supplier_product_code);
             $('#edit_prodName').val(response.supplier_product_name);
             $('#edit_prodDesc').val(response.supplier_product_description);

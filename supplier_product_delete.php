@@ -3,7 +3,7 @@
 
 	if(isset($_POST['delete'])){
 		$productID = $_POST['id'];
-		$sql = "DELETE FROM supplier_product WHERE id = '$productID'";
+		$sql = "DELETE FROM supplier_product WHERE supplier_product_id = '$productID'";
 		if($conn->query($sql)){
 			$_SESSION['success'] = 'Product deleted successfully';
 		}

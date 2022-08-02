@@ -8,7 +8,7 @@
 		$productDesc = $_POST['productDesc'];
 
 		
-		$sql = "UPDATE supplier_product SET supplier_product_code = '$productCode', supplier_product_name = '$productName', supplier_product_description = '$productDesc' WHERE id = '$productID'";
+		$sql = "UPDATE supplier_product SET supplier_product_code = '$productCode', supplier_product_name = '$productName', supplier_product_description = '$productDesc' WHERE supplier_product_id = '$productID'";
 		if($conn->query($sql)){
 			$_SESSION['success'] = 'Product updated successfully';
 		}
