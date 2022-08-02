@@ -51,7 +51,7 @@
                         <label for="add_quantity" class="col-sm-3 control-label">Quantity</label>
 
                         <div class="col-sm-9">
-                            <input type="number" step='100' class="form-control" id="add_quantity" name="quantity"
+                            <input type="number" class="form-control" id="add_quantity" name="quantity"
                                 placeholder="0.00" oninput="multiply()">
                         </div>
                     </div>
@@ -254,13 +254,96 @@
                         document.getElementById("edit_total_amount").value = edittotal_amount;
                     }
                     </script>
-
-
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i
                                 class="fa fa-close"></i> Close</button>
                         <button type="submit" class="btn btn-success btn-flat" name="edit"><i
                                 class="fa fa-check-square-o"></i> Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- View-->
+
+<div class="modal fade" id="view">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><b><span class="po_id"></span></b></h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" method="POST" action="purchase_order_edit.php">
+                    <input type="hidden" class="purchaseid" name="id">
+
+                    <div class="form-group">
+                        <label for="edit_product_name" class="col-sm-3 control-label">Product Name</label>
+
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="edit_product_name" name="product_name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit_quantity" class="col-sm-3 control-label">Quantity</label>
+
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="edit_quantity" name="quantity">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit_price" class="col-sm-3 control-label">Price</label>
+
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="edit_price" name="price" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit_sub_total" class="col-sm-3 control-label">Subtotal</label>
+
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="edit_sub_total" name="subtotal">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit_sales_tax" class="col-sm-3 control-label">Sales Tax</label>
+
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="edit_sales_tax" name="sales_tax">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit_total_amount" class="col-sm-3 control-label">Total Amount</label>
+
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="edit_total_amount" name="total">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit_purchase_date" class="col-sm-3 control-label">Purchase Date</label>
+
+                        <div class="col-sm-9">
+                            <input type="date" class="form-control" id="edit_purchase_date" name="purchase_date">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit_expected_date" class="col-sm-3 control-label">Expected Date</label>
+
+                        <div class="col-sm-9">
+                            <input type="date" class="form-control" id="edit_expected_date" name="expected_date">
+                        </div>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+                        <button type="submit" class="btn btn-success btn-flat" name="edit"><i class="fa fa-check-square-o"></i> Update</button>
                 </form>
             </div>
         </div>
