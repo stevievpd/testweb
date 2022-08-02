@@ -6,7 +6,7 @@ require_once('./tcpdf/tcpdf.php');
 // get data from users table 
 
 
-$result = mysql_query("SELECT * FROM purchase_order"); 
+$result = mysql_query("SELECT * FROM purchase_order WHERE id="); 
 
 while($row = mysql_fetch_array($result)) 
   { 
