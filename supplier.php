@@ -67,7 +67,7 @@
                     while($row = $query->fetch_assoc()){
                       ?>
                         <tr>
-                          <td><img src="<?php echo (!empty($row['photo']))? './images/'.$row['photo']:'./images/profile.jpg'; ?>" width="30px" height="30px"></td>
+                        <td><img src="<?php echo (!empty($row['photo']))? './images/'.$row['photo']:'./images/profile.jpg';?>" width="30px" height="30px"><a href="#edit_photo" data-toggle="modal" class="pull-right photo" data-id="<?php echo $row['id']; ?>"><span class="fa fa-edit"></span></a></td>
                           <td><?php echo $row['supplier_id']; ?></td>
                           <td><?php echo $row['business_name']; ?></td>
                           <td><?php echo $row['address']; ?></td>
@@ -110,6 +110,14 @@ $(function(){
     var id = $(this).data('id');
     getRow(id);
   });
+
+  $('#example1').on('click', '.photo', function(e){
+    e.preventDefault();
+    $('#delete').modal('show');
+    var id = $(this).data('id');
+    getRow(id);
+  });
+
 });
 
 function getRow(id){
@@ -128,6 +136,7 @@ function getRow(id){
       $('#edit_phone_number').val(response.phone_number);
       $('.del_supplier_name').val(response.id);
       $('.del_supid').val(response.id);
+      $('.edit_supplier').val(response.id);
     }
   });
 }

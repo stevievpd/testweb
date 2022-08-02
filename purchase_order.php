@@ -141,6 +141,7 @@ function getRow(id){
     success: function(response){
       $('.po_id').val(response.id);
       $('.purchaseid').val(response.id);
+      $('#edit_vendor_name').val(response.vendor_name);
       $('#edit_product_name').val(response.product_name);
       $('#edit_quantity').val(response.quantity);
       $('#edit_price').val(response.price);

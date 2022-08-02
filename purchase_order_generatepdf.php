@@ -139,6 +139,7 @@ $pdf->Line(35,170,85,170);
 $pdf->Line(35,180,85,180);
 
 }
+ob_clean();
 $pdf->Output()
 
 ?>

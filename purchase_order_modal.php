@@ -13,7 +13,7 @@
                         <label for="add_vendor_name" class="col-sm-3 control-label">Vendor Name</label>
 
                         <div class="col-sm-9">
-                            <select class="form-control" name="position" id="edit_position">
+                            <select class="form-control" name="vendor_name" id="vendor_name">
                                 <option selected id="position_val"></option>
                                 <?php
                                     $sql = "SELECT * FROM supplier";
@@ -32,7 +32,7 @@
                         <label for="product_name" class="col-sm-3 control-label">Product Name</label>
 
                         <div class="col-sm-9">
-                            <select class="form-control" name="position" id="edit_position">
+                            <select class="form-control" name="product_name" id="product_name">
                                 <option selected id="position_val"></option>
                                 <?php
                                     $sql = "SELECT * FROM supplier_product";
@@ -144,11 +144,11 @@
                 <h4 class="modal-title"><b>Deleting...</b></h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" method="POST" action="purchase_order_generatepdf.php">
-                    <input type="hidden" class="pdf_po_id" name="id">
+                <form class="form-horizontal" method="POST" action="purchase_order_delete.php">
+                    <input type="hidden" class="po_id" name="id">
                     <div class="text-center">
-                        <p>Generte </p>
-                        <h2 id="pdf_purchase_order" class="bold"></h2>
+                        <p>DELETE PURCHASE ORDER </p>
+                        <h2 id="purchase_order" class="bold"></h2>
                     </div>
             </div>
             <div class="modal-footer">
@@ -177,10 +177,40 @@
                     <input type="hidden" class="purchaseid" name="id">
 
                     <div class="form-group">
+                        <label for="add_vendor_name" class="col-sm-3 control-label">Vendor Name</label>
+
+                        <div class="col-sm-9">
+                            <select class="form-control" name="vendor_name" id="edit_vendor_name">
+                                <option selected name="vendor_name" id="edit_vendor_name"></option>
+                                <?php
+                                    $sql = "SELECT * FROM supplier";
+                                    $query = $conn->query($sql);
+                                    while($prow = $query->fetch_assoc()){
+                                        echo "
+                                        <option value='".$prow['id']."'>".$prow['business_name']."</option>
+                                        ";
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <label for="edit_product_name" class="col-sm-3 control-label">Product Name</label>
 
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="edit_product_name" name="product_name">
+                        <select class="form-control" name="product_name" id="edit_product_name">
+                                <option selected name="product_name" id="edit_product_name"></option>
+                                <?php
+                                    $sql = "SELECT * FROM supplier_product";
+                                    $query = $conn->query($sql);
+                                    while($prow = $query->fetch_assoc()){
+                                        echo "
+                                        <option value='".$prow['id']."'>".$prow['supProdDesc']."</option>
+                                        ";
+                                    }
+                                ?>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">
