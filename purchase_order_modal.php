@@ -51,8 +51,7 @@
                         <label for="add_quantity" class="col-sm-3 control-label">Quantity</label>
 
                         <div class="col-sm-9">
-                            <input type="number" step='100' class="form-control" id="add_quantity" name="quantity"
-                                placeholder="0.00" oninput="multiply()">
+                            <input type="number" class="form-control" id="add_quantity" name="quantity"placeholder="0.00" oninput="multiply()">
                         </div>
                     </div>
                     <div class="form-group">
@@ -254,8 +253,6 @@
                         document.getElementById("edit_total_amount").value = edittotal_amount;
                     }
                     </script>
-
-
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i
                                 class="fa fa-close"></i> Close</button>
