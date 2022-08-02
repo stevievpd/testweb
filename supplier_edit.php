@@ -2,7 +2,6 @@
 	include 'includes/session.php';
 	
 	if(isset($_POST['edit'])){
-		$id = $_POST['id'];
 		$business_name = $_POST['business_name'];
 		$product = $_POST['product'];
 		$address = $_POST['address'];
@@ -19,7 +18,7 @@
 
 	}
 	else{
-		$_SESSION['error'] = 'Select employee to edit first';
+		$_SESSION['error'] = 'Select supplier to edit first';
 	}
 
 	header('location: supplier.php');

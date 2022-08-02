@@ -61,31 +61,25 @@
                   <th>Tools</th>
                 </thead>
                 <tbody>
-                  <?php
-                    $sql = "SELECT * FROM supplier";
+                <?php
+                   $sql = "SELECT * FROM supplier";
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
-                      echo "
+                      ?>
                         <tr>
-                          <td>".$row['id']."</td>
-                          ";
-                  ?>
-                          <td><img src="<?php echo (!empty($row['logo']))? './images/supplier_img/'.$row['logo']:'./images/profile.jpg'; ?>" width="30px" height="30px"></td>
-                  <?php
-                          echo "
-                          <td>".$row['business_name']."</td>
-                          <td>".$row['product']."</td>
-                          <td>".$row['address']."</td>
-                          <td>".$row['email']."</td>
-                          <td>".$row['phone_number']."</td>
-                          <td>".date('M d, Y', strtotime($row['time_stamp']))."</td>
+                          <td><img src="<?php echo (!empty($row['photo']))? './images/'.$row['photo']:'./images/profile.jpg'; ?>" width="30px" height="30px"></td>
+                          <td><?php echo $row['supplier_id']; ?></td>
+                          <td><?php echo $row['business_name']; ?></td>
+                          <td><?php echo $row['address']; ?></td>
+                          <td><?php echo $row['email']; ?></td>
+                          <td><?php echo $row['phone_number']; ?></td>
+                          <td><?php echo $row['time_stamp']; ?></td>
                           <td>
-                            <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
-                            <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
-                            <button class='btn btn-primary btn-sm view btn-flat' data-id='".$row['id']."'><i class='fa fa-eye'></i> View</button>
+                            <button class="btn btn-success btn-sm edit btn-flat" data-id="<?php echo $row['id']; ?>"><i class="fa fa-edit"></i> Edit</button>
+                            <button class="btn btn-danger btn-sm delete btn-flat" data-id="<?php echo $row['id']; ?>"><i class="fa fa-trash"></i> Delete</button>
                           </td>
                         </tr>
-                      ";
+                      <?php
                     }
                   ?>
                 </tbody>
@@ -126,7 +120,7 @@ function getRow(id){
     dataType: 'json',
     success: function(response){
       $('.supid').val(response.id);
-      $('#edit_logo').val(response.logo);
+      $('#edit_photo').val(response.logo);
       $('#edit_business_name').val(response.business_name);
       $('#edit_product').val(response.product);
       $('#edit_address').val(response.address);

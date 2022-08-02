@@ -1,3 +1,4 @@
+
 <!-- Add -->
 <div class="modal fade" id="addnew">
     <div class="modal-dialog">
@@ -6,16 +7,16 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title"><b>Add Supplier</b></h4>
-            </div>
-            <div class="modal-body">
+                </div>
+                <div class="modal-body">
                 <form class="form-horizontal" method="POST" action="supplier_add.php" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="logo" class="col-sm-3 control-label">logo</label>
-                        <div class="col-sm-9">
-                            <input type="file" name="logo" id="logo">
+                    <label for="photo" class="col-sm-3 control-label">Photo</label>
+
+                    <div class="col-sm-9">
+                      <input type="file" name="photo" id="photo">
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label for="business_name" class="col-sm-3 control-label">Business Name</label>
 
@@ -51,12 +52,13 @@
                             <input type="number" class="form-control" id="phone_number" name="phone_number" required>
                         </div>
                     </div>
-            </div>
-            <div class="modal-footer">
+                    </div>
+
+                 <div class="modal-footer">
                 <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i
                         class="fa fa-close"></i> Close</button>
                 <button type="submit" class="btn btn-primary btn-flat" name="add"><i
-                        class="fa fa-save"></i>Save</button>
+                        class="fa fa-save"></i> Save</button>
                 </form>
             </div>
         </div>
@@ -81,7 +83,7 @@
                         <p>DELETE SUPPLIER</p>
                         <h2 id="del_supplier_name" class="bold"></h2>
                     </div>
-            </div>
+                </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i
                         class="fa fa-close"></i> Close</button>
@@ -149,7 +151,7 @@
                                     class="fa fa-close"></i> Close</button>
                             <button type="submit" class="btn btn-success btn-flat" name="edit"><i
                                     class="fa fa-check-square-o"></i>Update</button>
-                    </form>
+                        </form>
                     </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-<!-- Add -->
+<!-- View -->
 <div class="modal fade" id="view">
     <div class="modal-dialog">
         <div class="modal-content">

@@ -77,7 +77,8 @@
                           <td>
                             <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
                             <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
-                            <button class='btn btn-secondary active btn-sm btn-flat' autocomplete='on'><i class='glyphicon glyphicon-print'><a class= btn btn-primary href='purchase_order_generatepdf.php'role='button'></a></i>PDF</button> 
+                            <button class='btn btn-light btn-sm view btn-flat' data-id='".$row['id']."'><i class='fa fa-eye'></i> View</button>
+                            <button class='btn btn-info active btn-sm btn-flat' autocomplete='on'><i class='glyphicon glyphicon-print'><a class= btn btn-primary href='purchase_order_generatepdf.php'role='button'></a></i>PDF</button> 
                           </td>
                         </tr>
                       ";
@@ -120,6 +121,14 @@ $(function(){
     getRow(id);
   });
 
+  $('#example1').on('click', '.view', function(e){
+    e.preventDefault();
+    $('#view').modal('show');
+    var id = $(this).data('id');
+    getRow(id);
+  });
+
+
 });
 
 function getRow(id){
@@ -141,7 +150,6 @@ function getRow(id){
       $('#edit_purchase_date').val(response.purchase_date);
       $('#edit_expected_date').val(response.expected_date);
       $('.del_purchase_order').val(response.id);
-      $('.pdf').val(response.id);
       $('.purchase_order').val(response.id);
       
       
