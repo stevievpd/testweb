@@ -82,6 +82,7 @@
     $content .= generateRow($from, $to, $conn, $deduction);  
     $content .= '</table>';  
     $pdf->writeHTML($content);  
+	ob_end_clean();
     $pdf->Output('payroll.pdf', 'I');
 
 ?>

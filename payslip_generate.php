@@ -98,6 +98,7 @@
 		';
 	}
     $pdf->writeHTML($contents);  
+	ob_end_clean();
     $pdf->Output('payslip.pdf', 'I');
 
 ?>
