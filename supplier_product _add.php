@@ -2,6 +2,7 @@
 	include 'includes/session.php';
 
 	if(isset($_POST['add'])){
+		$supplierName = $_POST['supplierName'];
 		$productCode = $_POST['productCode'];
 		$productName = $_POST['productName'];
         $productDesc = $_POST['productDesc'];
