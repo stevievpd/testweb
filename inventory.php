@@ -55,29 +55,29 @@
                   <th>Product ID</th>
                   <th>Description</th>
                   <th>Quantity</th>
-                  <th>Unit Price</th>
                   <th>Unit Cost</th>
-                  <th>Time stamp</th>
+                  <th>Unit Price</th>
                   <th>Tools</th>
                 </thead>
                 <tbody>
-                  <?php
-                    $sql = "SELECT * FROM inventory";
+                <?php
+                   $sql = "SELECT * FROM inventory";
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
-                      echo "
+                      ?>
                         <tr>
-                          <td>".$row['product_id']."</td>
-                          <td>".$row['description']."</td>
-                          <td>".$row['quantity']."</td>
-                          <td>".number_format($row['price'], 2)."</td>
-                          <td>".date('M d, Y', strtotime($row['stamp']))."</td>
+                          <td><img src="<?php echo (!empty($row['photo']))? './images/'.$row['photo']:'./images/profile.jpg'; ?>" width="30px" height="30px"></td>
+                          <td><?php echo $row['product_id']; ?></td>
+                          <td><?php echo $row['description']; ?></td>
+                          <td><?php echo $row['quantity']; ?></td>
+                          <td><?php echo $row['cost']; ?></td>
+                          <td><?php echo $row['price']; ?></td>
                           <td>
-                            <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
-                            <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
+                            <button class="btn btn-success btn-sm edit btn-flat" data-id="<?php echo $row['id']; ?>"><i class="fa fa-edit"></i> Edit</button>
+                            <button class="btn btn-danger btn-sm delete btn-flat" data-id="<?php echo $row['id']; ?>"><i class="fa fa-trash"></i> Delete</button>
                           </td>
                         </tr>
-                      ";
+                      <?php
                     }
                   ?>
                 </tbody>
@@ -114,16 +114,17 @@
 
 function getRow(id){
   $.ajax({
-    type: 'POST',
+      type: 'POST',
       url: 'inventory_row.php',
       data: {id:id},
       dataType: 'json',
     success: function(response){
-      $('.del_inventory').val(response.id);
       $('.invid').val(response.id);
-      $('.inventory_id').val(response.inventory_id);
+      $('.inventory_id').val(response.id);
+      $('.del_inventory').val(response.id);
       $('#edit_description').val(response.description);
       $('#edit_quantity').val(response.quantity);
+      $('#edit_cost').val(response.cost);
       $('#edit_price').val(response.price);
     }
   });
