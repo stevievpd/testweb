@@ -10,17 +10,17 @@
             <div class="modal-body">
                 <form class="form-horizontal" method="POST" action="purchase_order_add.php">
                     <div class="form-group">
-                        <label for="add_vendor_name" class="col-sm-3 control-label">Vendor Name</label>
+                        <label for="vendor_name" class="col-sm-3 control-label">Vendor Name</label>
 
                         <div class="col-sm-9">
                             <select class="form-control" name="vendor_name" id="vendor_name">
-                                <option selected id="position_val"></option>
+                                <option selected id="vendor_name"></option>
                                 <?php
                                     $sql = "SELECT * FROM supplier";
                                     $query = $conn->query($sql);
                                     while($prow = $query->fetch_assoc()){
                                         echo "
-                                        <option value='".$prow['id']."'>".$prow['business_name']."</option>
+                                        <option value='".$prow['business_name']."</option>
                                         ";
                                     }
                                 ?>
@@ -33,7 +33,7 @@
 
                         <div class="col-sm-9">
                             <select class="form-control" name="product_name" id="product_name">
-                                <option selected id="position_val"></option>
+                                <option selected id="product_name"></option>
                                 <?php
                                     $sql = "SELECT * FROM supplier_product";
                                     $query = $conn->query($sql);
@@ -82,7 +82,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="total" class="col-sm-3 control-label">Total Amount</label>
+                        <label for="total" class="col-sm-3 control-label">Grand Total</label>
 
                         <div class="col-sm-9">
                             <input type="number" class="form-control" id="total" name="total" placeholder="0.00"
@@ -296,8 +296,7 @@
 </div>
 </div>
 
-<!-- View-->
-
+<!--view-->
 <div class="modal fade" id="view">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -305,78 +304,37 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title"><b><span class="po_id"></span></b></h4>
-            </div>
-            <div class="modal-body">
-                <form class="form-horizontal" method="POST" action="purchase_order_edit.php">
-                    <input type="hidden" class="purchaseid" name="id">
-
-                    <div class="form-group">
-                        <label for="edit_product_name" class="col-sm-3 control-label">Product Name</label>
-
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="edit_product_name" name="product_name">
+                <?php
+                    $sql = "SELECT * FROM purchase_order WHERE id ";
+                    $query = $conn->query($sql);
+                    while($row1 = $query->fetch_assoc()){
+                    ?>
+                        <div class="card-body "> 
+                        <p class="text-center lead m-4 pb-5 bg-success" style=""><b>Purchase Order Details</b><span class="card-text" ></span></p>
+                        <img src="images/growth.png" class="center">           
+                        <pre>
+                        <b>Vendor Name: </b><span class="card-text" ><?php echo $row1['vendor_name']; ?> </span><br>
+                        <b>Product Name: </b><span class="card-text"><?php echo $row1['product_name']; ?> </span><br>
+                        <b>Quantity: </b><span class="card-text"><?php echo $row1['quantity']; ?> </span><br>
+                        <b>Subtotal: </b><span class="card-text"><?php echo $row1['subtotal']; ?> </span><br>
+                        <b>Sales Tax: </b><span class="card-text"><?php echo $row1['sales_tax']; ?> </span><br>
+                        <b>Purchase Date: </b><span class="card-text"><?php echo $row1['purchase_date']; ?> </span><br>
+                        <b>Expected Date: </b><span class="card-text"><?php echo $row1['expected_date']; ?> </span><br>
+                        </pre>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="edit_quantity" class="col-sm-3 control-label">Quantity</label>
-
-                        <div class="col-sm-9">
-                            <input type="number" class="form-control" id="edit_quantity" name="quantity">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="edit_price" class="col-sm-3 control-label">Price</label>
-
-                        <div class="col-sm-9">
-                            <input type="number" class="form-control" id="edit_price" name="price" >
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="edit_sub_total" class="col-sm-3 control-label">Subtotal</label>
-
-                        <div class="col-sm-9">
-                            <input type="number" class="form-control" id="edit_sub_total" name="subtotal">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="edit_sales_tax" class="col-sm-3 control-label">Sales Tax</label>
-
-                        <div class="col-sm-9">
-                            <input type="number" class="form-control" id="edit_sales_tax" name="sales_tax">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="edit_total_amount" class="col-sm-3 control-label">Total Amount</label>
-
-                        <div class="col-sm-9">
-                            <input type="number" class="form-control" id="edit_total_amount" name="total">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="edit_purchase_date" class="col-sm-3 control-label">Purchase Date</label>
-
-                        <div class="col-sm-9">
-                            <input type="date" class="form-control" id="edit_purchase_date" name="purchase_date">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="edit_expected_date" class="col-sm-3 control-label">Expected Date</label>
-
-                        <div class="col-sm-9">
-                            <input type="date" class="form-control" id="edit_expected_date" name="expected_date">
-                        </div>
-                    </div>
-                    
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
-                        <button type="submit" class="btn btn-success btn-flat" name="edit"><i class="fa fa-check-square-o"></i> Update</button>
-                </form>
+                    <?php
+                        }
+                    ?>
             </div>
         </div>
     </div>
 </div>
-</div>
+<style type="text/css">
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 190px;
+  height: 120px;
+}
+</style>

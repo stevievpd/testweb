@@ -52,12 +52,11 @@
               <table id="example1" class="table table-bordered">
                 <thead>
                 <th>Purchase Number</th>
+                <th>Vendor Name</th>
                   <th>Product Name</th>
                   <th>Quantity</th>
                   <th>Price</th>
-                  <th>Subtotal</th>
-                  <th>Sales Tax</th>
-                  <th>Total Amount</th>
+                  <th>Grand Total</th>
                   <th>Tools</th>
                 </thead>
                 <tbody>
@@ -68,11 +67,10 @@
                       echo "
                         <tr>
                           <td>".$row['id']."</td>
+                          <td>".$row['vendor_name']."</td>
                           <td>".$row['product_name']."</td>
                           <td>".$row['quantity']."</td>
                           <td>".$row['price']."</td>
-                          <td>".$row['subtotal']."</td>
-                          <td>".$row['sales_tax']."</td>
                           <td>".$row['total']."</td>
                           <td>
                             <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
