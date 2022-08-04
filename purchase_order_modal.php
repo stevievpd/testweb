@@ -310,34 +310,46 @@
                     while($row1 = $query->fetch_assoc()){
                     ?>
                 <div class="card-body">
-                    
+                <div class="row">
                     <p class=" text-center lead m-4"><b>Puchase Order Details</b><span class="card-text"></span></p>
-                    <b>PO Number: </b><span class="card-text" ><?php echo $row1['vendor_name']; ?> </span><br>
-                    <b>Status: </b><span class="card-text"><?php echo $row1['purchase_date']; ?> </span><br>
-                    <b>Purchase Date: </b><span class="card-text"><?php echo $row1['purchase_date']; ?> </span><br>
-                    <b>Expected Date: </b><span class="card-text"><?php echo $row1['expected_date']; ?> </span><br>
-                    <b>Order by: </b><span class="card-text" ><?php echo $row1['vendor_name']; ?> </span><br><br>
+                    <p  class="col-sm-6 col-md-5 col-lg-5"><b>PO Number: </b><span class="card-text"><?php echo $row1['price']; ?> </span><br></p>
+                    <p  class="col-sm-6 col-md-5 col-lg-8"><b>Status: </b><span class="card-text"><?php echo $row1['purchase_date']; ?> </span><br></p>
+                    <p  class="col-sm-6 col-md-5 col-lg-8"><b>Purchase Date: </b><span class="card-text"><?php echo $row1['purchase_date']; ?> </span><br></p>
+                    <p  class="col-sm-6 col-md-5 col-lg-8"><b>Expected Date: </b><span class="card-text"><?php echo $row1['expected_date']; ?> </span><br></p>
+                    <p  class="col-sm-6 col-md-5 col-lg-5"><b>Order by: </b><span class="card-text"><?php echo $row1['vendor_name']; ?> </span><br><br></p>
+                    </div>
 
                     <p class="lead m-4"><b>Supplier</b><span class="card-text"></span></p>
                     <div class="row">
-                    <p class="col-sm-6 col-md-5 col-lg-3"><b >Supplier Name: </b><span class="card-text"><?php echo $row1['purchase_date']; ?> </span><br></p>
-                    <p class="col-sm-6 col-md-5 col-lg-6"><b>Store Destination: </b><span class="card-text"><?php echo $row1['purchase_date']; ?> </span><br></p>
+                        <p class="col-sm-6 col-md-5 col-lg-6"><b>Supplier Name: </b><span class="card-text"><?php echo $row1['purchase_date']; ?> </span><br></p>
+                        <p class="col-sm-6 col-md-5 col-lg-5"><b>Store Destination: </b><span class="card-text"><?php echo $row1['purchase_date']; ?> </span><br></p>
+                        <p class="col-sm-6 col-md-5 col-lg-5"><b>Address: </b><span class="card-text"><?php echo $row1['purchase_date']; ?> </span><br></p>
+                        <p  class="col-sm-6 col-md-5 col-lg-8"><b>Phone Number: </b><span class="card-text"><?php echo $row1['purchase_date']; ?> </span><br></p>
+                        <p  class="col-sm-6 col-md-5 col-lg-5"><b>Email: </b><span class="card-text"><?php echo $row1['expected_date']; ?> </span><br><br></p>
                     </div>
-                    <b>Address: </b><span class="card-text"><?php echo $row1['purchase_date']; ?> </span><br>
-                    <b>Phone Number:</b><span class="card-text"><?php echo $row1['purchase_date']; ?> </span><br>
-                    <b>Email: </b><span class="card-text"><?php echo $row1['expected_date']; ?> </span><br><br>
 
                     <div class="modal-footer">
-                    <p class="lead m-4 text-left"><b>Items</b><span class="card-text"></span></p>
-                    <div class="row">
-                    <p class="col-sm-6 col-md-5 col-lg-3"><b>Item Description </b><span class="card-text"><?php echo $row1['expected_date']; ?> </span><br></p>
-                    <p class="col-sm-6 col-md-5 col-lg-2"><b>Quantity </b><span class="card-text"><?php echo $row1['total']; ?> </span><br></p>
-                    <p class="col-sm-6 col-md-5 col-lg-2"><b>Unit Cost </b><span class="card-text"><?php echo $row1['quantity']; ?> </span><br></p>
-                    <p class="col-sm-6 col-md-5 col-lg-2"><b>Amount </b><span class="card-text"><?php echo $row1['total']; ?> </span><br></p>
+                        <p class="lead m-4 text-left"><b>Items</b><span class="card-text"></span></p>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                <th ></th>
+                                    <th>Item Description </th>
+                                    <th>Quantity </th>
+                                    <th>Unit Cost </th>
+                                    <th >Amount </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span ><?php echo $row1['expected_date']; ?></span></td>
+                                    <td><span ><?php echo $row1['total']; ?> </span></td>
+                                    <td><span ><?php echo $row1['quantity']; ?></td>
+                                    <td><span ><?php echo $row1['total']; ?> </span></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    </div>
-                   
-                                      
                 </div>
                 <?php
                         }
