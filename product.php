@@ -55,7 +55,6 @@
             <div class="box-body">
               <table id="example1" class="table table-bordered">
                 <thead>
-                  <!-- <th>Supplier</th> -->
                   <th>Product Code</th>
                   <th>Product Supplier</th>
                   <th>Product Name</th>
@@ -64,15 +63,15 @@
                 </thead>
                 <tbody>
                   <?php
-                    $sql = "SELECT * FROM product";
+                    $sql = "SELECT product.product_id, product.product_code, product.product_name, product.product_description, supplier.business_name FROM product LEFT JOIN supplier ON product.supplier_id=supplier.supplier_id";
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
                       echo "
                         <tr>
                             <td>".$row['product_code']."</td>
+                            <td>".$row['business_name']."</td>
                             <td>".$row['product_name']."</td>
                             <td>".$row['product_description']."</td>
-                            <td>".$sjd ."</td>
                             <td>
                                 <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['product_id']."'><i class='fa fa-edit'></i> Edit</button>
                                 <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['product_id']."'><i class='fa fa-trash'></i> Delete</button>
@@ -121,6 +120,7 @@
             $('#edit_prodCode').val(response.product_code);
             $('#edit_prodName').val(response.product_name);
             $('#edit_prodDesc').val(response.product_description);
+            $('#edit_supplier_name').val(response.business_name);
           }
         });
       }

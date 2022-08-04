@@ -5,8 +5,9 @@
 		$productCode = $_POST['productCode'];
 		$productName = $_POST['productName'];
         $productDesc = $_POST['productDesc'];
+		$supplier = $_POST['supplier'];
 	
-		$sql = "INSERT INTO product (product_code, product_name, product_description) VALUES ('$productCode', '$productName','$productDesc')";
+		$sql = "INSERT INTO product (product_code, product_name, product_description, supplier_id) VALUES ('$productCode', '$productName','$productDesc', '$supplier')";
 		if($conn->query($sql)){
 			$_SESSION['success'] = 'Product added successfully';
 		}
