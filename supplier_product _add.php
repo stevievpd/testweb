@@ -2,12 +2,12 @@
 	include 'includes/session.php';
 
 	if(isset($_POST['add'])){
-		$supplierName = $_POST['supplierName'];
+		$supplierName = $_POST['supplier_product_id'];
 		$productCode = $_POST['productCode'];
 		$productName = $_POST['productName'];
         $productDesc = $_POST['productDesc'];
 	
-		$sql = "INSERT INTO supplier_product (supplier_product_code, supplier_product_name, supplier_product_description) VALUES ('$productCode', '$productName','$productDesc')";
+		$sql = "INSERT INTO supplier_product (supplier_product_id, supplier_product_name, supplier_product_description) VALUES ('$productCode', '$productName','$productDesc')";
 		if($conn->query($sql)){
 			$_SESSION['success'] = 'Supplier added successfully';
 		}
