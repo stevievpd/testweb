@@ -35,11 +35,11 @@
                             <select class="form-control" name="product_name" id="product_name">
                                 <option selected id="product_name"></option>
                                 <?php
-                                    $sql = "SELECT * FROM supplier_product";
+                                    $sql = "SELECT * FROM product";
                                     $query = $conn->query($sql);
                                     while($row = $query->fetch_assoc()){
                                         echo "
-                                        <option value='".$row['supProdDesc']."'>".$row['supProdDesc']."</option>
+                                        <option value='".$row['product_description']."'>".$row['product_description']."</option>
                                         ";
                                     }
                                 ?>
@@ -187,7 +187,7 @@
                                     $query = $conn->query($sql);
                                     while($prow = $query->fetch_assoc()){
                                         echo "
-                                        <option value='".$prow['id']."'>".$prow['business_name']."</option>
+                                        <option value='".$prow['supplier_id']."'>".$prow['business_name']."</option>
                                         ";
                                     }
                                 ?>
@@ -202,11 +202,11 @@
                             <select class="form-control" name="product_name" id="edit_product_name">
                                 <option selected name="product_name" id="edit_product_name"></option>
                                 <?php
-                                    $sql = "SELECT * FROM supplier_product";
+                                    $sql = "SELECT * FROM product";
                                     $query = $conn->query($sql);
                                     while($prow = $query->fetch_assoc()){
                                         echo "
-                                        <option value='".$prow['id']."'>".$prow['supProdDesc']."</option>
+                                        <option value='".$prow['product_id']."'>".$prow['product_description']."</option>
                                         ";
                                     }
                                 ?>
