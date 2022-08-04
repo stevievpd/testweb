@@ -8,7 +8,7 @@
 		$productDesc = $_POST['productDesc'];
 
 		
-		$sql = "UPDATE supplier_product SET supplier_product_code = '$productCode', supplier_product_name = '$productName', supplier_product_description = '$productDesc' WHERE id = '$productID'";
+		$sql = "UPDATE supplier_product SET product_code = '$productCode', product_name = '$productName', product_description = '$productDesc' WHERE product_id = '$productID'";
 		if($conn->query($sql)){
 			$_SESSION['success'] = 'Product updated successfully';
 		}
@@ -21,5 +21,5 @@
 		$_SESSION['error'] = 'Select products to edit first';
 	}
 
-	header('location: supplier_product.php');
+	header('location: product.php');
 ?>

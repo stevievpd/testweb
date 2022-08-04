@@ -8,7 +8,7 @@
 			move_uploaded_file($_FILES['photo']['tmp_name'], '../images/'.$filename);	
 		}
 		
-		$sql = "UPDATE supplier SET photo = '$filename' WHERE id = '$id'";
+		$sql = "UPDATE supplier SET photo = '$filename' WHERE supplier_id = '$id'";
 		if($conn->query($sql)){
 			$_SESSION['success'] = 'Supplier photo updated successfully';
 		}

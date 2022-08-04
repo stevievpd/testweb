@@ -8,15 +8,7 @@
             	<h4 class="modal-title"><b>Add Supplier Product</b></h4>
           	</div>
           	<div class="modal-body">
-            	<form class="form-horizontal" method="POST" action="supplier_product_add.php" enctype="multipart/form-data">
-
-                    <div class="form-group">
-                        <label for="supplier_name" class="col-sm-3 control-label">Supplier Name</label>
-
-                        <div class="col-sm-9">
-                          <input type="text" class="form-control" id="supplier_name" name="supplierName">
-                        </div>
-                    </div>
+            	<form class="form-horizontal" method="POST" action="product_add.php" enctype="multipart/form-data">
           		    <div class="form-group">
                   	    <label for="productcode" class="col-sm-3 control-label">Product Code</label>
                   	    <div class="col-sm-9">
@@ -56,7 +48,7 @@
             	<h4 class="modal-title"><b><span class="product_id"></span></b></h4>
           	</div>
           	<div class="modal-body">
-            	<form class="form-horizontal" method="POST" action="supplier_product_edit.php">
+            	<form class="form-horizontal" method="POST" action="product_edit.php">
                 <input type="hidden" class="product_id" name="id">
                 <div class="form-group">
                     <label for="supplier_name" class="col-sm-3 control-label">Supplier Name</label>
@@ -106,7 +98,7 @@
             	<h4 class="modal-title"><b><span class="employee_id"></span></b></h4>
           	</div>
           	<div class="modal-body">
-            	<form class="form-horizontal" method="POST" action="supplier_product_delete.php">
+            	<form class="form-horizontal" method="POST" action="product_delete.php">
             		<input type="hidden" class="product_id" name="id">
             		<div class="text-center">
 	                	<p>DELETE PRODUCT</p>

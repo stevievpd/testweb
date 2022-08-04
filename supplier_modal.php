@@ -25,13 +25,6 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="product" class="col-sm-3 control-label">Product</label>
-
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="product" name="product" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
                         <label for="address" class="col-sm-3 control-label">Address</label>
 
                         <div class="col-sm-9">
@@ -107,24 +100,14 @@
             <div class="modal-body">
                 <form class="form-horizontal" method="POST" action="supplier_edit.php">
                     <input type="hidden" class="supid" name="id">
-
                             <div class="form-group">
                                 <label for="edit_business_name" class="col-sm-3 control-label">Business Name</label>
-
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" id="edit_business_name" name="business_name" required>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="edit_product" class="col-sm-3 control-label">Product</label>
-
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="edit_product" name="product" >
-                                </div>
-                            </div>
-                            <div class="form-group">
                                 <label for="edit_address" class="col-sm-3 control-label">Address</label>
-
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" id="edit_address" name="address"
                                         required>
@@ -132,32 +115,29 @@
                             </div>
                             <div class="form-group">
                                 <label for="edit_email" class="col-sm-3 control-label">Email</label>
-
                                 <div class="col-sm-9">
                                     <input type="email" class="form-control" id="edit_email" name="email" >
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="edit_phone_number" class="col-sm-3 control-label">Phone Number</label>
-
                                 <div class="col-sm-9">
                                     <input type="number" class="form-control" id="edit_phone_number" name="phone_number" >
                                 </div>
                             </div>
-
-                        </div>
+            </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i
                                     class="fa fa-close"></i> Close</button>
                             <button type="submit" class="btn btn-success btn-flat" name="edit"><i
                                     class="fa fa-check-square-o"></i>Update</button>
-                        </form>
-                    </div>
-            </div>
+                </form>
+                        </div>
         </div>
     </div>
 </div>
-</div>
+
+
 
 <!--Edit Photo-->
 <div class="modal fade" id="edit_photo">
