@@ -13,6 +13,6 @@
 
 		$sql = "SELECT FROM purchase_order WHERE id = '$id'";
 
-
+	};
 	header('location: purchase_order.php');
 ?>

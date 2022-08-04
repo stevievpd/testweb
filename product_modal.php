@@ -8,15 +8,7 @@
             	<h4 class="modal-title"><b>Add Supplier Product</b></h4>
           	</div>
           	<div class="modal-body">
-            	<form class="form-horizontal" method="POST" action="supplier_product_add.php" enctype="multipart/form-data">
-
-                    <div class="form-group">
-                        <label for="supplier_name" class="col-sm-3 control-label">Supplier Name</label>
-
-                        <div class="col-sm-9">
-                          <input type="text" class="form-control" id="supplier_name" name="supplierName">
-                        </div>
-                    </div>
+            	<form class="form-horizontal" method="POST" action="product_add.php" enctype="multipart/form-data">
           		    <div class="form-group">
                   	    <label for="productcode" class="col-sm-3 control-label">Product Code</label>
                   	    <div class="col-sm-9">
@@ -36,6 +28,27 @@
                           <textarea style="resize: none" class="form-control" name="productDesc" id="productDesc"></textarea>
                       	</div>
                     </div>
+
+
+					<div class="form-group">
+                        <label for="supplier" class="col-sm-3 control-label">Supplier</label>
+
+                        <div class="col-sm-9">
+                            <select class="form-control" name="supplier" id="supplier" required>
+                                <option value="" selected>- Select -</option>
+                                <?php
+                                    $sql = "SELECT * FROM supplier ORDER BY business_name ASC";
+                                    $query = $conn->query($sql);
+                                    while($row = $query->fetch_assoc()){
+                                        echo "
+                                        <option value='".$row['supplier_id']."'>".$row['business_name']."</option>
+                                        ";
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+
             </div>
           	<div class="modal-footer">
             	<button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
@@ -56,16 +69,35 @@
             	<h4 class="modal-title"><b><span class="product_id"></span></b></h4>
           	</div>
           	<div class="modal-body">
-            	<form class="form-horizontal" method="POST" action="supplier_product_edit.php">
+            	<form class="form-horizontal" method="POST" action="product_edit.php">
                 <input type="hidden" class="product_id" name="id">
-                <div class="form-group">
-                    <label for="supplier_name" class="col-sm-3 control-label">Supplier Name</label>
-
+                <!-- <div class="form-group">
+                    <label for="supplier_name" class="col-sm-3 control-label">Supplier</label>
                     <div class="col-sm-9">
                       <input type="text" class="form-control" id="edit_supplier_name" name="supplierName">
                     </div>
-                </div>
-                <div class="form-group">
+                </div> -->
+                
+				<div class="form-group">
+                        <label for="supplier" class="col-sm-3 control-label">Supplier</label>
+
+                        <div class="col-sm-9">
+                            <select class="form-control" name="supplierName" id="edit_supplier_name" required>
+                                <option value="" selected>- Select -</option>
+                                <?php
+                                    $sql = "SELECT * FROM supplier ORDER BY business_name ASC";
+                                    $query = $conn->query($sql);
+                                    while($row = $query->fetch_assoc()){
+                                        echo "
+                                        <option value='".$row['supplier_id']."'>".$row['business_name']."</option>
+                                        ";
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+				
+				<div class="form-group">
                     <label for="prodCode" class="col-sm-3 control-label">Product Code</label>
 
                     <div class="col-sm-9">
@@ -106,7 +138,7 @@
             	<h4 class="modal-title"><b><span class="employee_id"></span></b></h4>
           	</div>
           	<div class="modal-body">
-            	<form class="form-horizontal" method="POST" action="supplier_product_delete.php">
+            	<form class="form-horizontal" method="POST" action="product_delete.php">
             		<input type="hidden" class="product_id" name="id">
             		<div class="text-center">
 	                	<p>DELETE PRODUCT</p>

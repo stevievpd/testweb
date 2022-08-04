@@ -14,12 +14,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Supplier Product
+        Product
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="supplier.php"></a>Supplier</li>
-        <li class="active">Supplier Product</li>
+        <li class="active">Products</li>
       </ol>
     </section>
     <!-- Main content -->
@@ -55,24 +55,26 @@
             <div class="box-body">
               <table id="example1" class="table table-bordered">
                 <thead>
-                  <th>Supplier Product Code</th>
-                  <th>Supplier Product Name</th>
-                  <th>Supplier Product Description</th>
+                  <th>Product Code</th>
+                  <th>Product Supplier</th>
+                  <th>Product Name</th>
+                  <th>Product Description</th>
                   <th>Actions</th>
                 </thead>
                 <tbody>
                   <?php
-                    $sql = "SELECT * FROM supplier_product";
+                    $sql = "SELECT product.product_id, product.product_code, product.product_name, product.product_description, supplier.business_name FROM product LEFT JOIN supplier ON product.supplier_id=supplier.supplier_id";
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
                       echo "
                         <tr>
-                            <td>".$row['supplier_product_code']."</td>
-                            <td>".$row['supplier_product_name']."</td>
-                            <td>".$row['supplier_product_description']."</td>
+                            <td>".$row['product_code']."</td>
+                            <td>".$row['business_name']."</td>
+                            <td>".$row['product_name']."</td>
+                            <td>".$row['product_description']."</td>
                             <td>
-                                <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
-                                <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
+                                <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['product_id']."'><i class='fa fa-edit'></i> Edit</button>
+                                <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['product_id']."'><i class='fa fa-trash'></i> Delete</button>
                             </td>
                         </tr>
                       ";
@@ -88,7 +90,7 @@
   </div>
     
   <?php include 'footer.php'; ?>
-  <?php include 'supplier_product_modal.php'; ?>
+  <?php include 'product_modal.php'; ?>
 </div>
 <?php include 'includes/scripts.php'; ?>
   <script>
@@ -99,7 +101,7 @@
           var id = $(this).data('id');
           getRow(id);
         });
-                $('#example1').on('click', '.delete', function(e){
+        $('#example1').on('click', '.delete', function(e){
           e.preventDefault();
           $('#delete').modal('show');
           var id = $(this).data('id');
@@ -110,14 +112,15 @@
       function getRow(id){
         $.ajax({
           type: 'POST',
-          url: 'supplier_product_row.php',
+          url: 'product_row.php',
           data: {id:id},
           dataType: 'json',
           success: function(response){
-            $('.product_id').val(response.id);
-            $('#edit_prodCode').val(response.supplier_product_code);
-            $('#edit_prodName').val(response.supplier_product_name);
-            $('#edit_prodDesc').val(response.supplier_product_description);
+            $('.product_id').val(response.product_id);
+            $('#edit_prodCode').val(response.product_code);
+            $('#edit_prodName').val(response.product_name);
+            $('#edit_prodDesc').val(response.product_description);
+            $('#edit_supplier_name').val(response.business_name);
           }
         });
       }

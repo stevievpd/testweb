@@ -2,7 +2,6 @@
 	include 'includes/session.php';
 	if(isset($_POST['add'])){
 		$business_name = $_POST['business_name'];
-		$product = $_POST['product'];
         $address = $_POST['address'];
         $email = $_POST['email'];
 		$phone_number = $_POST['phone_number'];
@@ -23,7 +22,7 @@
 		}
 	$supplier_id = substr(str_shuffle($letters), 0, 3).substr(str_shuffle($numbers), 0, 9);
 
-	$sql = "INSERT INTO supplier (supplier_id, photo, business_name, product, address, email, phone_number, time_stamp) VALUES ('$supplier_id','$filename', '$business_name','$product', '$address', '$email', '$phone_number', NOW())";
+	$sql = "INSERT INTO supplier (photo, business_name, address, email, phone_number, time_stamp) VALUES ('$filename', '$business_name', '$address', '$email', '$phone_number', NOW())";
 		if($conn->query($sql)){
 			$_SESSION['success'] = 'Supplier added successfully';
 	}
