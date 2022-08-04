@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 01, 2022 at 09:24 AM
+-- Generation Time: Aug 04, 2022 at 03:42 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -223,7 +223,10 @@ INSERT INTO `employees` (`id`, `employee_id`, `firstname`, `lastname`, `address`
 (26, 'EYF693714205', 'James', 'Bato', 'Tandang Sora', '2022-07-15', '22442424', 'Male', 2, 2, '', '2022-07-30'),
 (27, 'PEO648731092', 'test', 'test', '', '0000-00-00', '', '', 0, 0, '', '2022-08-01'),
 (28, 'PRO067134925', 'test', 'test', '', '0000-00-00', '', '', 0, 0, '', '2022-08-01'),
-(29, 'ROA573148690', 'test', 'test', '', '0000-00-00', '', '', 0, 0, '', '2022-08-01');
+(29, 'ROA573148690', 'test', 'test', '', '0000-00-00', '', '', 0, 0, '', '2022-08-01'),
+(30, 'BKE714926058', 'Robert', 'Cailog', 'Tandang Sora', '2022-08-27', '22442424', 'Male', 4, 2, '', '2022-08-02'),
+(31, 'KVZ528907163', 'Roge', 'Cawater', 'Tandang Sora', '2022-08-27', '22442424', 'Male', 1, 1, '', '2022-08-02'),
+(32, 'ZMA469157820', 'Robert', 'Capuso', 'gsssg', '2022-07-15', '22442424', 'Male', 2, 1, '', '2022-08-02');
 
 -- --------------------------------------------------------
 
@@ -233,10 +236,12 @@ INSERT INTO `employees` (`id`, `employee_id`, `firstname`, `lastname`, `address`
 
 CREATE TABLE `inventory` (
   `id` int(10) NOT NULL,
+  `photo` varchar(200) NOT NULL,
   `product_id` varchar(50) NOT NULL,
   `description` varchar(50) NOT NULL,
   `quantity` int(11) NOT NULL,
-  `price` int(11) NOT NULL,
+  `cost` float NOT NULL,
+  `price` float NOT NULL,
   `stamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -244,11 +249,10 @@ CREATE TABLE `inventory` (
 -- Dumping data for table `inventory`
 --
 
-INSERT INTO `inventory` (`id`, `product_id`, `description`, `quantity`, `price`, `stamp`) VALUES
-(3, '1111122', 'PC', 20, 200, '2022-07-30 02:33:37'),
-(4, '2222', 'Ballpen', 222, 50, '2022-07-30 03:50:47'),
-(5, '22', 'Keyboard', 111, 1111, '2022-07-30 04:38:31'),
-(6, '2222', 'Mouse', 10, 10, '2022-07-30 09:47:34');
+INSERT INTO `inventory` (`id`, `photo`, `product_id`, `description`, `quantity`, `cost`, `price`, `stamp`) VALUES
+(14, 'female4.jpg', 'SZI590183742', 'Ballpen', 10, 10, 15, '2022-08-02 09:46:32'),
+(15, 'profilepic.jpg', 'XIZ791623845', 'Laptop', 10, 25000, 30000, '2022-08-02 09:46:43'),
+(16, 'flashdrive.png', 'KCJ914053786', 'USB', 10, 300, 400, '2022-08-02 08:52:23');
 
 -- --------------------------------------------------------
 
@@ -324,11 +328,10 @@ INSERT INTO `position` (`id`, `description`, `rate`) VALUES
 
 CREATE TABLE `purchase_order` (
   `id` int(11) NOT NULL,
+  `vendor_name` varchar(200) NOT NULL,
   `product_name` varchar(200) NOT NULL,
   `quantity` int(100) NOT NULL,
   `price` float NOT NULL,
-  `subtotal` float NOT NULL,
-  `sales_tax` float NOT NULL,
   `total` float NOT NULL,
   `purchase_date` date NOT NULL,
   `expected_date` date NOT NULL
@@ -338,11 +341,8 @@ CREATE TABLE `purchase_order` (
 -- Dumping data for table `purchase_order`
 --
 
-INSERT INTO `purchase_order` (`id`, `product_name`, `quantity`, `price`, `subtotal`, `sales_tax`, `total`, `purchase_date`, `expected_date`) VALUES
-(1, 'Mouse', 100, 1010, 0, 0, 0, '2022-07-13', '2022-07-05'),
-(18, 'Keyboard', 4, 4, 0, 0, 16, '2022-07-12', '2022-07-20'),
-(21, 'Mouse', 10, 10, 0, 0, 1000, '2000-02-20', '2000-02-20'),
-(22, 'Ballpen', 20, 20, 0, 0, 20000, '2000-02-20', '2000-02-20');
+INSERT INTO `purchase_order` (`id`, `vendor_name`, `product_name`, `quantity`, `price`, `total`, `purchase_date`, `expected_date`) VALUES
+(37, 'Cake Shops', 'Laptop Huawei', 220, 20, 4928, '0002-02-02', '0002-02-02');
 
 -- --------------------------------------------------------
 
@@ -393,7 +393,8 @@ INSERT INTO `schedules` (`id`, `time_in`, `time_out`) VALUES
 
 CREATE TABLE `supplier` (
   `id` int(11) NOT NULL,
-  `logo` varchar(200) NOT NULL,
+  `supplier_id` varchar(250) NOT NULL,
+  `photo` varchar(200) NOT NULL,
   `business_name` varchar(200) NOT NULL,
   `product` varchar(200) NOT NULL,
   `address` varchar(200) NOT NULL,
@@ -406,8 +407,12 @@ CREATE TABLE `supplier` (
 -- Dumping data for table `supplier`
 --
 
-INSERT INTO `supplier` (`id`, `logo`, `business_name`, `product`, `address`, `email`, `phone_number`, `time_stamp`) VALUES
-(3, '', 'BBBBB', 'assadadssad', 'Tandang Sora', 'ambL@gmail.com', 264161125, '2022-07-30 05:27:53');
+INSERT INTO `supplier` (`id`, `supplier_id`, `photo`, `business_name`, `product`, `address`, `email`, `phone_number`, `time_stamp`) VALUES
+(21, 'WFN846201793', 'male.png', 'NIKO Pie', 'Pie', 'Makati City', 'nikkopie@gmail.com', 945421565, '2022-08-02 09:57:23'),
+(22, 'EJQ781650329', 'female4.jpg', 'Cake Shops', 'Cake', 'Tandang Sora', 'ambL@gmail.com', 1042442, '2022-08-02 05:20:56'),
+(23, 'JIG091843275', 'male.png', 'Bulla Crave', 'Laundry Machine', 'Tandang Sora', 'ambL@gmail.com', 264161125, '2022-08-02 05:38:30'),
+(24, 'DPK378142605', 'facebook-profile-image.jpeg', 'Bulla Crave', 'Laundry Machine', 'Tandang Sora', 'ambL@gmail.com', 264161125, '2022-08-02 05:54:20'),
+(25, 'WFU397408615', 'male6.jpg', 'Bulla Crave', 'Laundry Machine', 'Tandang Sora', 'ambL@gmail.com', 264161125, '2022-08-02 06:12:53');
 
 -- --------------------------------------------------------
 
@@ -563,13 +568,13 @@ ALTER TABLE `deductions`
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `inventory`
 --
 ALTER TABLE `inventory`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `items`
@@ -593,7 +598,7 @@ ALTER TABLE `position`
 -- AUTO_INCREMENT for table `purchase_order`
 --
 ALTER TABLE `purchase_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `sales`
@@ -611,7 +616,7 @@ ALTER TABLE `schedules`
 -- AUTO_INCREMENT for table `supplier`
 --
 ALTER TABLE `supplier`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `supplier_product`

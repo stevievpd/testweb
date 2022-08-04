@@ -18,9 +18,9 @@
                                 <?php
                                     $sql = "SELECT * FROM supplier";
                                     $query = $conn->query($sql);
-                                    while($prow = $query->fetch_assoc()){
+                                    while($row = $query->fetch_assoc()){
                                         echo "
-                                        <option value='".$prow['business_name']."</option>
+                                        <option value='".$row['business_name']."'>".$row['business_name']."</option>
                                         ";
                                     }
                                 ?>
@@ -37,9 +37,9 @@
                                 <?php
                                     $sql = "SELECT * FROM supplier_product";
                                     $query = $conn->query($sql);
-                                    while($prow = $query->fetch_assoc()){
+                                    while($row = $query->fetch_assoc()){
                                         echo "
-                                        <option value='".$prow['id']."'>".$prow['supProdDesc']."</option>
+                                        <option value='".$row['supProdDesc']."'>".$row['supProdDesc']."</option>
                                         ";
                                     }
                                 ?>
@@ -316,8 +316,7 @@
                         <b>Vendor Name: </b><span class="card-text" ><?php echo $row1['vendor_name']; ?> </span><br>
                         <b>Product Name: </b><span class="card-text"><?php echo $row1['product_name']; ?> </span><br>
                         <b>Quantity: </b><span class="card-text"><?php echo $row1['quantity']; ?> </span><br>
-                        <b>Subtotal: </b><span class="card-text"><?php echo $row1['subtotal']; ?> </span><br>
-                        <b>Sales Tax: </b><span class="card-text"><?php echo $row1['sales_tax']; ?> </span><br>
+                        <b>Grand Total: </b><span class="card-text"><?php echo $row1['total']; ?> </span><br>
                         <b>Purchase Date: </b><span class="card-text"><?php echo $row1['purchase_date']; ?> </span><br>
                         <b>Expected Date: </b><span class="card-text"><?php echo $row1['expected_date']; ?> </span><br>
                         </pre>
