@@ -280,6 +280,7 @@
                     <span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title"><b><span class="po_id"></span></b></h4>
                 <?php
+              
                     $sql = "SELECT * FROM purchase_order ";
                     $query = $conn->query($sql);
                     while($row1 = $query->fetch_assoc()){
@@ -299,20 +300,11 @@
                 </div>
                 <?php
                         }
-                    ?>
+                    ?>   
             </div>
         </div>
     </div>
 </div>
-<style type="text/css">
-.growth_logo {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 190px;
-    height: 120px;
-}
-</style>
 
 <!--PDF-->
 <div class="modal fade" id="pdf">
