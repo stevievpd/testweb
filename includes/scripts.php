@@ -7,7 +7,7 @@
 <script src="./bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
-  $.widget.bridge('uibutton', $.ui.button);
+$.widget.bridge('uibutton', $.ui.button);
 </script>
 <!-- Bootstrap 3.3.7 -->
 <script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -43,76 +43,110 @@
 <!-- AdminLTE for demo purposes -->
 <script src="./dist/js/demo.js"></script>
 <script>
-  $(function () {
+$(function() {
     $('#example1').DataTable({
-      responsive: true
+        responsive: true
     })
     $('#example2').DataTable({
-      'paging'      : true,
-      'lengthChange': true,
-      'searching'   : true,
-      'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : true
+        'paging': true,
+        'lengthChange': true,
+        'searching': true,
+        'ordering': true,
+        'info': true,
+        'autoWidth': true
     })
-  })
+})
 </script>
 <script>
-$(function(){
-  /** add active class and stay opened when selected */
-  var url = window.location;
+$(function() {
+    /** add active class and stay opened when selected */
+    var url = window.location;
 
-  // for sidebar menu entirely but not cover treeview
-  $('ul.sidebar-menu a').filter(function() {
-     return this.href == url;
-  }).parent().addClass('active');
+    // for sidebar menu entirely but not cover treeview
+    $('ul.sidebar-menu a').filter(function() {
+        return this.href == url;
+    }).parent().addClass('active');
 
-  // for treeview
-  $('ul.treeview-menu a').filter(function() {
-     return this.href == url;
-  }).parentsUntil(".sidebar-menu > .treeview-menu").addClass('active');
-  
+    // for treeview
+    $('ul.treeview-menu a').filter(function() {
+        return this.href == url;
+    }).parentsUntil(".sidebar-menu > .treeview-menu").addClass('active');
+
 });
 </script>
 <script>
-$(function(){
-	//Date picker
-  $('#datepicker_add').datepicker({
-    autoclose: true,
-    format: 'yyyy-mm-dd'
-  })
-  $('#datepicker_edit').datepicker({
-    autoclose: true,
-    format: 'yyyy-mm-dd'
-  })
+$(function() {
+    //Date picker
+    $('#datepicker_add').datepicker({
+        autoclose: true,
+        format: 'yyyy-mm-dd'
+    })
+    $('#datepicker_edit').datepicker({
+        autoclose: true,
+        format: 'yyyy-mm-dd'
+    })
 
-  //Timepicker
-  $('.timepicker').timepicker({
-    showInputs: false
-  })
+    //Timepicker
+    $('.timepicker').timepicker({
+        showInputs: false
+    })
 
-  //Date range picker
-  $('#reservation').daterangepicker()
-  //Date range picker with time picker
-  $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A' })
-  //Date range as a button
-  $('#daterange-btn').daterangepicker(
-    {
-      ranges   : {
-        'Today'       : [moment(), moment()],
-        'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-        'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
-        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-        'This Month'  : [moment().startOf('month'), moment().endOf('month')],
-        'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-      },
-      startDate: moment().subtract(29, 'days'),
-      endDate  : moment()
-    },
-    function (start, end) {
-      $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-    }
-  )
-  
+    //Date range picker
+    $('#reservation').daterangepicker()
+    //Date range picker with time picker
+    $('#reservationtime').daterangepicker({
+        timePicker: true,
+        timePickerIncrement: 30,
+        format: 'MM/DD/YYYY h:mm A'
+    })
+    //Date range as a button
+    $('#daterange-btn').daterangepicker({
+            ranges: {
+                'Today': [moment(), moment()],
+                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                'This Month': [moment().startOf('month'), moment().endOf('month')],
+                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month')
+                    .endOf('month')
+                ]
+            },
+            startDate: moment().subtract(29, 'days'),
+            endDate: moment()
+        },
+        function(start, end) {
+            $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+        }
+    )
+
 });
+
+
+function add() {
+    var edit_quantity = document.getElementById("edit_quantity").value;
+    var edit_price = document.getElementById("edit_price").value;
+    var edit_subtotal = edit_quantity * edit_price;
+    document.getElementById("edit_sub_total").value = edit_subtotal;
+
+    var subtotal = document.getElementById("edit_sub_total").value;
+    var editamount = subtotal * 0.12;
+    document.getElementById("edit_sales_tax").value = editamount;
+
+    var edittotal_amount = (edit_subtotal) + (editamount);
+    document.getElementById("edit_total_amount").value = edittotal_amount;
+}
+
+function multiply() {
+    var add_quantity = document.getElementById("add_quantity").value;
+    var add_price = document.getElementById("add_price").value;
+    var add_subtotal = add_quantity * add_price;
+    document.getElementById("add_subtotal").value = add_subtotal;
+
+    var subtotal = document.getElementById("add_subtotal").value;
+    var amount = subtotal * 0.12;
+    document.getElementById("sales_tax").value = amount;
+
+    var total_amount = (add_subtotal) + (amount);
+    document.getElementById("total").value = total_amount;
+}
 </script>
