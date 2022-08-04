@@ -104,21 +104,8 @@
                             <input type="date" class="form-control" id="expected_date" name="expected_date" required>
                         </div>
                     </div>
-                    <script>
-                    function multiply() {
-                        var add_quantity = document.getElementById("add_quantity").value;
-                        var add_price = document.getElementById("add_price").value;
-                        var add_subtotal = add_quantity * add_price;
-                        document.getElementById("add_subtotal").value = add_subtotal;
 
-                        var subtotal = document.getElementById("add_subtotal").value;
-                        var amount = subtotal * 0.12;
-                        document.getElementById("sales_tax").value = amount;
-
-                        var total_amount = (add_subtotal) + (amount);
-                        document.getElementById("total").value = total_amount;
-                    }
-                    </script>
+                    <?php include 'includes/scripts.php' ?>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i
@@ -148,7 +135,7 @@
                     <input type="hidden" class="po_id" name="id">
                     <div class="text-center">
                         <p>DELETE PURCHASE ORDER </p>
-                        <h2 id="purchase_order" class="bold"></h2>
+                        <h2 id="del_purchase_order" class="bold"></h2>
                     </div>
             </div>
             <div class="modal-footer">
@@ -187,7 +174,7 @@
                                     $query = $conn->query($sql);
                                     while($prow = $query->fetch_assoc()){
                                         echo "
-                                        <option value='".$prow['id']."'>".$prow['business_name']."</option>
+                                        <option value='".$prow['business_name']."'>".$prow['business_name']."</option>
                                         ";
                                     }
                                 ?>
@@ -199,14 +186,14 @@
                         <label for="edit_product_name" class="col-sm-3 control-label">Product Name</label>
 
                         <div class="col-sm-9">
-                        <select class="form-control" name="product_name" id="edit_product_name">
+                            <select class="form-control" name="product_name" id="edit_product_name">
                                 <option selected name="product_name" id="edit_product_name"></option>
                                 <?php
                                     $sql = "SELECT * FROM supplier_product";
                                     $query = $conn->query($sql);
                                     while($prow = $query->fetch_assoc()){
                                         echo "
-                                        <option value='".$prow['id']."'>".$prow['supProdDesc']."</option>
+                                        <option value='".$prow['supProdDesc']."'>".$prow['supProdDesc']."</option>
                                         ";
                                     }
                                 ?>
@@ -269,21 +256,9 @@
                             <input type="date" class="form-control" id="edit_expected_date" name="expected_date">
                         </div>
                     </div>
-                    <script>
-                    function add() {
-                        var edit_quantity = document.getElementById("edit_quantity").value;
-                        var edit_price = document.getElementById("edit_price").value;
-                        var edit_subtotal = edit_quantity * edit_price;
-                        document.getElementById("edit_sub_total").value = edit_subtotal;
 
-                        var subtotal = document.getElementById("edit_sub_total").value;
-                        var editamount = subtotal * 0.12;
-                        document.getElementById("edit_sales_tax").value = editamount;
+                    <?php include 'includes/scripts.php' ?>
 
-                        var edittotal_amount = (edit_subtotal) + (editamount);
-                        document.getElementById("edit_total_amount").value = edittotal_amount;
-                    }
-                    </script>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i
                                 class="fa fa-close"></i> Close</button>
@@ -305,14 +280,16 @@
                     <span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title"><b><span class="po_id"></span></b></h4>
                 <?php
-                    $sql = "SELECT * FROM purchase_order WHERE id ";
+              
+                    $sql = "SELECT * FROM purchase_order ";
                     $query = $conn->query($sql);
                     while($row1 = $query->fetch_assoc()){
                     ?>
-                        <div class="card-body "> 
-                        <p class="text-center lead m-4 pb-5 bg-success" style=""><b>Purchase Order Details</b><span class="card-text" ></span></p>
-                        <img src="images/growth.png" class="center">           
-                        <pre>
+                <div class="card-body ">
+                    <p class="text-center lead m-4 pb-5 bg-success" style=""><b>Purchase Order Details</b><span
+                            class="card-text"></span></p>
+                    <img src="images/growth.png" class="growth_logo">
+                    <pre>
                         <b>Vendor Name: </b><span class="card-text" ><?php echo $row1['vendor_name']; ?> </span><br>
                         <b>Product Name: </b><span class="card-text"><?php echo $row1['product_name']; ?> </span><br>
                         <b>Quantity: </b><span class="card-text"><?php echo $row1['quantity']; ?> </span><br>
@@ -320,20 +297,26 @@
                         <b>Purchase Date: </b><span class="card-text"><?php echo $row1['purchase_date']; ?> </span><br>
                         <b>Expected Date: </b><span class="card-text"><?php echo $row1['expected_date']; ?> </span><br>
                         </pre>
-                        </div>
-                    <?php
+                </div>
+                <?php
                         }
-                    ?>
+                    ?>   
             </div>
         </div>
     </div>
 </div>
-<style type="text/css">
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 190px;
-  height: 120px;
-}
-</style>
+
+<!--PDF-->
+<div class="modal fade" id="pdf">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <div><a href="purchase_order_generatepdf.php" target="iframe"></a>
+                </div>
+                <iframe src="purchase_order_generatepdf.php" height="800" width="870" name="iframe"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
