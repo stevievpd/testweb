@@ -3,15 +3,23 @@
 
 	if(isset($_POST['add'])){
 		$business_name = $_POST['business_name'];
-		$product = $_POST['product'];
         $address = $_POST['address'];
         $email = $_POST['email'];
 		$phone_number = $_POST['phone_number'];
 		if(!empty($filename)){
 			move_uploaded_file($_FILES['logo']['tmp_name'], '../images/'.$filename);	
 		}
+<<<<<<< HEAD
 	
 		$sql = "INSERT INTO supplier (logo, business_name, product, address, email, phone_number, time_stamp) VALUES ('$logo', '$business_name','$product', '$address', '$email', '$phone_number', NOW())";
+=======
+		for($i = 0; $i < 10; $i++){
+			$numbers .= $i;
+		}
+	$supplier_id = substr(str_shuffle($letters), 0, 3).substr(str_shuffle($numbers), 0, 9);
+
+	$sql = "INSERT INTO supplier (photo, business_name, address, email, phone_number, time_stamp) VALUES ('$filename', '$business_name', '$address', '$email', '$phone_number', NOW())";
+>>>>>>> 669184148367ba983e600912d6321cfd6136f746
 		if($conn->query($sql)){
 			$_SESSION['success'] = 'Supplier added successfully';
 		}

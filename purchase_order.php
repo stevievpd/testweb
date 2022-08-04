@@ -52,12 +52,11 @@
               <table id="example1" class="table table-bordered">
                 <thead>
                 <th>Purchase Number</th>
+                <th>Vendor Name</th>
                   <th>Product Name</th>
                   <th>Quantity</th>
                   <th>Price</th>
-                  <th>Subtotal</th>
-                  <th>Sales Tax</th>
-                  <th>Total Amount</th>
+                  <th>Grand Total</th>
                   <th>Tools</th>
                 </thead>
                 <tbody>
@@ -68,17 +67,17 @@
                       echo "
                         <tr>
                           <td>".$row['id']."</td>
+                          <td>".$row['vendor_name']."</td>
                           <td>".$row['product_name']."</td>
                           <td>".$row['quantity']."</td>
                           <td>".$row['price']."</td>
-                          <td>".$row['subtotal']."</td>
-                          <td>".$row['sales_tax']."</td>
                           <td>".$row['total']."</td>
                           <td>
                             <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
                             <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
                             <button class='btn btn-light btn-sm view btn-flat' data-id='".$row['id']."'><i class='fa fa-eye'></i> View</button>
-                            <button class='btn btn-info active btn-sm btn-flat' autocomplete='on'><i class='glyphicon glyphicon-print'><a class= btn btn-primary href='purchase_order_generatepdf.php'role='button'></a></i>PDF</button> 
+                            <button class='btn btn-info btn-sm pdf btn-flat' data-id='".$row['id']."'><i class='glyphicon glyphicon-print'></i> PDF</button>
+                            
                           </td>
                         </tr>
                       ";
@@ -114,19 +113,20 @@ $(function(){
     getRow(id);
   });
 
-  $('#example1').on('click', '.pdf', function(e){
-    e.preventDefault();
-    $('#dpf').modal('show');
-    var id = $(this).data('id');
-    getRow(id);
-  });
-
   $('#example1').on('click', '.view', function(e){
     e.preventDefault();
     $('#view').modal('show');
     var id = $(this).data('id');
     getRow(id);
   });
+
+  $('#example1').on('click', '.pdf', function(e){
+    e.preventDefault();
+    $('#pdf').modal('show');
+    var id = $(this).data('id');
+    getRow(id);
+  });
+
 
 
 });
@@ -141,6 +141,7 @@ function getRow(id){
     success: function(response){
       $('.po_id').val(response.id);
       $('.purchaseid').val(response.id);
+      $('#edit_vendor_name').val(response.vendor_name);
       $('#edit_product_name').val(response.product_name);
       $('#edit_quantity').val(response.quantity);
       $('#edit_price').val(response.price);

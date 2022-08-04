@@ -66,7 +66,7 @@
                     while($row = $query->fetch_assoc()){
                       ?>
                         <tr>
-                          <td><img src="<?php echo (!empty($row['photo']))? './images/'.$row['photo']:'./images/profile.jpg'; ?>" width="30px" height="30px"></td>
+                          <td><img src="<?php echo (!empty($row['photo']))? './images/'.$row['photo']:'./images/profile.jpg';?>" width="30px" height="30px"><a href="#edit_photo" data-toggle="modal" class="pull-right photo" data-id="<?php echo $row['id']; ?>"><span class="fa fa-edit"></span></a></td>
                           <td><?php echo $row['product_id']; ?></td>
                           <td><?php echo $row['description']; ?></td>
                           <td><?php echo $row['quantity']; ?></td>
@@ -110,6 +110,13 @@
       var id = $(this).data('id');
       getRow(id);
     });
+    
+    $('#example1').on('click', '.photo', function(e){
+      e.preventDefault();
+      var id = $(this).data('id');
+      getRow(id);
+    });
+
   });
 
 function getRow(id){
@@ -122,6 +129,7 @@ function getRow(id){
       $('.invid').val(response.id);
       $('.inventory_id').val(response.id);
       $('.del_inventory').val(response.id);
+      $('.edit_inventory').val(response.id);
       $('#edit_description').val(response.description);
       $('#edit_quantity').val(response.quantity);
       $('#edit_cost').val(response.cost);

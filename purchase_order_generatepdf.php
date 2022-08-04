@@ -19,8 +19,6 @@ while($row = $result->fetch_object()){
   $product_name = $row->product_name;
   $quantity = $row->quantity;
   $price = $row->price;
-  $subtotal = $row->subtotal;
-  $sales_tax = $row->sales_tax;
   $total = $row->total;
   $purchase_date = $row->purchase_date;
   $expected_date = $row->expected_date;
@@ -36,7 +34,7 @@ $pdf->Cell(190,75,'PURCHASE ORDER',0,0,'C',true);
 $pdf->Ln(10);
 $pdf-> SetFont('courier', 'B',10);
 $pdf->SetTextColor(255, 255, 255);
-$pdf->Image('images/final_logo.jpg',75, 12, 60,30);
+$pdf->Image('images/growth.jpg',75, 12, 60,30);
 $pdf->Ln(40);
 
 $pdf-> SetFont('courier', 'B',10,);
@@ -139,6 +137,7 @@ $pdf->Line(35,170,85,170);
 $pdf->Line(35,180,85,180);
 
 }
+ob_clean();
 $pdf->Output()
 
 ?>

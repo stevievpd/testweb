@@ -52,7 +52,6 @@
               <table id="example1" class="table table-bordered">
                 <thead>
                   <th>Photo</th>
-                  <th>Supplier ID</th>
                   <th>Business Name</th>
                   <th>Supplied Products</th>
                   <th>Address</th>
@@ -67,16 +66,15 @@
                     while($row = $query->fetch_assoc()){
                       ?>
                         <tr>
-                          <td><img src="<?php echo (!empty($row['photo']))? './images/'.$row['photo']:'./images/profile.jpg'; ?>" width="30px" height="30px"></td>
-                          <td><?php echo $row['supplier_id']; ?></td>
+                        <td><img src="<?php echo (!empty($row['photo']))? './images/'.$row['photo']:'./images/profile.jpg';?>" width="30px" height="30px"><a href="#edit_photo" data-toggle="modal" class="pull-right photo" data-id="<?php echo $row['id']; ?>"><span class="fa fa-edit"></span></a></td>
                           <td><?php echo $row['business_name']; ?></td>
                           <td><?php echo $row['address']; ?></td>
                           <td><?php echo $row['email']; ?></td>
                           <td><?php echo $row['phone_number']; ?></td>
                           <td><?php echo $row['time_stamp']; ?></td>
                           <td>
-                            <button class="btn btn-success btn-sm edit btn-flat" data-id="<?php echo $row['id']; ?>"><i class="fa fa-edit"></i> Edit</button>
-                            <button class="btn btn-danger btn-sm delete btn-flat" data-id="<?php echo $row['id']; ?>"><i class="fa fa-trash"></i> Delete</button>
+                            <button class="btn btn-success btn-sm edit btn-flat" data-id="<?php echo $row['supplier_id']; ?>"><i class="fa fa-edit"></i> Edit</button>
+                            <button class="btn btn-danger btn-sm delete btn-flat" data-id="<?php echo $row['supplier_id']; ?>"><i class="fa fa-trash"></i> Delete</button>
                           </td>
                         </tr>
                       <?php
@@ -110,6 +108,14 @@ $(function(){
     var id = $(this).data('id');
     getRow(id);
   });
+
+  $('#example1').on('click', '.photo', function(e){
+    e.preventDefault();
+    $('#delete').modal('show');
+    var id = $(this).data('id');
+    getRow(id);
+  });
+
 });
 
 function getRow(id){
@@ -119,15 +125,16 @@ function getRow(id){
     data: {id:id},
     dataType: 'json',
     success: function(response){
-      $('.supid').val(response.id);
+      $('.supid').val(response.supplier_id);
       $('#edit_photo').val(response.logo);
       $('#edit_business_name').val(response.business_name);
       $('#edit_product').val(response.product);
       $('#edit_address').val(response.address);
       $('#edit_email').val(response.email);
       $('#edit_phone_number').val(response.phone_number);
-      $('.del_supplier_name').val(response.id);
-      $('.del_supid').val(response.id);
+      $('.del_supplier_name').val(response.supplier_id);
+      $('.del_supid').val(response.supplier_id);
+      $('.edit_supplier').val(response.supplier_id);
     }
   });
 }

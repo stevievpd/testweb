@@ -47,7 +47,7 @@
                 <ul class="treeview-menu">
                     <li><a href="inventory.php"><i class="fa fa-circle-o"></i> Inventory</a></li>
                     <li><a href="supplier.php"><i class="fa fa-circle-o"></i> Supplier</a></li>
-                    <li><a href="supplier_product.php"><i class="fa fa-circle-o"></i> Supplier Product</a></li>
+                    <li><a href="product.php"><i class="fa fa-circle-o"></i> Supplier Product</a></li>
                     <li><a href="purchase_order.php"><i class="fa fa-circle-o"></i> Purchase Order</a></li>
                 </ul>
             </li>
