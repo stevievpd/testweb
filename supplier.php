@@ -53,10 +53,10 @@
                 <thead>
                   <th>Photo</th>
                   <th>Business Name</th>
-                  <th>Supplied Products</th>
                   <th>Address</th>
                   <th>Email</th>
                   <th>Phone Number</th>
+                  <th>Time Stamp</th>
                   <th>Tools</th>
                 </thead>
                 <tbody>
