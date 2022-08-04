@@ -11,7 +11,6 @@ $result = $conn->query($select);
 
 $pdf = new TCPDF();
 $pdf->AddPage();
-$pdf->SetFont('courier','B',14);
 
 while($row = $result->fetch_object()){
 
@@ -25,116 +24,133 @@ while($row = $result->fetch_object()){
 
 $pdf = new TCPDF();
 $pdf ->AddPage();
-$pdf-> SetFont('courier', 'B',20);
-$pdf->SetFillColor(0, 77, 0);
-$pdf->SetTextColor(255, 255, 255);
-$pdf->Ln();
-$pdf->Cell(190,75,'PURCHASE ORDER',0,0,'C',true);
+$pdf-> SetFont('helvetica', 'B',20);
+$pdf->Cell(10,5,'[Company Name]',0,0,'L');
+$pdf->Cell(160,5,'PURCHASE ORDER',0,0,'R');
+$pdf->ln(15);
 
-$pdf->Ln(10);
-$pdf-> SetFont('courier', 'B',10);
-$pdf->SetTextColor(255, 255, 255);
-$pdf->Image('images/growth.jpg',75, 12, 60,30);
-$pdf->Ln(40);
-
-$pdf-> SetFont('courier', 'B',10,);
-$pdf->SetTextColor(255, 255, 255);
-$pdf->Cell(31,5,'Company Name:',0,0,'L');
-$pdf->Cell(50,5,'',0,0);
-$pdf->Cell(50,5,'PO Number:',0,0,'R');
-$pdf->Cell(50,5,$id,0,0);
-$pdf->ln();
-
-$pdf->SetTextColor(255, 255, 255);
-$pdf->Cell(18,5,'Address:',0,0,'L');
-$pdf->Cell(50,5,'Quezon City',0,0,'L');  
-$pdf->Cell(59,5,'PO Date:',0,0,'R');
-$pdf->Cell(50,5, $purchase_date,0,0);
-$pdf->ln();
-
-$pdf->SetTextColor(255, 255, 255);
-$pdf->Cell(9,5,'City:',0,0,'L');
-$pdf->Cell(50,5,'',0,0,'L');
-$pdf-> SetFont('', 'B',10);
-$pdf->Cell(76 ,5,'Supplier ID:',0,0,'R',true);
-$pdf->Cell(50,5,'',0,0);
-$pdf->ln(20);
-
-$pdf->SetFillColor(0, 153, 0);
-$pdf->SetTextColor(255, 255, 255);
-$pdf->Cell(118,10,'Purchase From',0,0,'L',true);
-$pdf->Cell(70,10,'Ship To',0,0,'C',true);
-$pdf->ln(10);
-
-$pdf->SetTextColor(0, 0, 0);
-$pdf->Cell(30,5,'Supplier Name:',0,0,'L');
-$pdf->Cell(50,5,'',0,0);
-$pdf->Cell(53,5,'Company Name:',0,0,'R');
-$pdf->Cell(50,5,'',0,0);
-$pdf->ln(5);
-
-
-$pdf->Cell(16,5,'Address:',0,0,'L');
-$pdf->Cell(50,5,'',0,0);
-$pdf->Cell(57,5,'Address:',0,0,'R');
-$pdf->Cell(50,5,'',0,0);
+$pdf-> SetFont('helvetica ', 'B',10,);
+$pdf->Cell(27,5,'Street Address:',0,0,'L');
+$pdf->Cell(50,5,'General Ave',0,0);
 $pdf->ln();
 
 $pdf->Cell(9,5,'City:',0,0,'L');
-$pdf->Cell(50,5,'',0,0);
-$pdf->Cell(57,5,'City:',0,0,'R');
-$pdf->Cell(50,5,'',0,0);
+$pdf->Cell(50,5,'Quezon',0,0);
+$pdf->Cell(57.5,5,'DATE:',0,0,'R');
+$pdf->Cell(30,5,'mm/dd/yyyy',1,0);
 $pdf->ln();
 
-$pdf->Cell(9,5,'Zip:',0,0,'L');
-$pdf->Cell(50,5,'',0,0);
-$pdf->Cell(55,5,'Zip:',0,0,'R');
-$pdf->Cell(50,5,'',0,0);
+$pdf->Cell(7,5,'Zip:',0,0,'L');
+$pdf->Cell(50,5,'150099',0,0);
+$pdf->Cell(59.5,5,'PO #:',0,0,'R');
+$pdf->Cell(30,5,'12052000',1,0);
+$pdf->ln();
+
+$pdf->Cell(27,5,'Phone Number:',0,0,'L');
+$pdf->Cell(50,5,'00000',0,0);
 $pdf->ln(10);
 
-$pdf->SetTextColor(255, 255, 255);
-$pdf->Cell(65,8,'Shipping Method',1,0,'C',true); 
-$pdf->Cell(70,8,'Payment Terms',1,0,'C',true);
-$pdf->Cell(48,8,'Required By Date',1,0,'C',true);
-$pdf->ln();
-
+$pdf->SetFillColor(140, 217, 140);
 $pdf->SetTextColor(0, 0, 0);
-$pdf->Cell(65,5,'',1,0);//para sa shipping method
-$pdf->Cell(70,5,'',1,0);//para sa payment terms
-$pdf->Cell(48,5,'',1,0);//para sa required date
+$pdf->Cell(118,10,'VENDOR',0,0,'L',true);
+$pdf->Cell(73,10,'SHIP TO',0,0,'C',true);
 $pdf->ln(10);
 
 $pdf->SetTextColor(0, 0, 0);
-$pdf->SetTextColor(255, 255, 255);
-$pdf->Cell(60,8,'Item Description',1,0,'C',true); 
-$pdf->Cell(41,8,'Quantity',1,0,'C',true);
-$pdf->Cell(40,8,'Unit Price',1,0,'C',true);
-$pdf->Cell(42,8,'Amount',1,0,'C',true);
+$pdf->Cell(28,5,'Company Name:',0,0,'L');
+$pdf->Cell(50,5,'fafa',0,0);
+$pdf->Cell(39,5,'Name:',0,0,'R');
+$pdf->Cell(50,5,'fafa',0,0);
 $pdf->ln();
+
+$pdf->Cell(39,5,'Contact or Department:',0,0,'L');
+$pdf->Cell(50,5,'afaf',0,0);
+$pdf->Cell(45,5,'Company Name:',0,0,'R');
+$pdf->Cell(50,5,'aff',0,0);
+$pdf->ln();
+
+$pdf->Cell(27,5,'Street Address:',0,0,'L');
+$pdf->Cell(50,5,'ave',0,0);
+$pdf->Cell(55.5,5,'Street Address:',0,0,'R');
+$pdf->Cell(50,5,'faaaa',0,0);
+$pdf->ln();
+
+$pdf->Cell(9,5,'City:',0,0,'L');
+$pdf->Cell(50,5,'afa',0,0);
+$pdf->Cell(55,5,'City:',0,0,'R');
+$pdf->Cell(50,5,'faaf',0,0);
+$pdf->ln();
+
+$pdf->Cell(9,5,'ZIP:',0,0,'L');
+$pdf->Cell(50,5,'fafa',0,0);
+$pdf->Cell(54,5,'ZIP:',0,0,'R');
+$pdf->Cell(50,5,'af',0,0);
+$pdf->ln();
+
+$pdf->Cell(27,5,'Phone Number:',0,0,'L');
+$pdf->Cell(50,5,'fafa',0,0);
+$pdf->Cell(55.5,5,'Phone Number:',0,0,'R');
+$pdf->Cell(50,5,'faf',0,0);
+$pdf->ln(10);
+
 $pdf->SetTextColor(0, 0, 0);
-$pdf->Cell(60,5,$product_name,1,0);//para sa item description
-$pdf->Cell(41,5,$quantity,1,0);//para sa quantity
-$pdf->Cell(40,5,$price,1,0);//para sa unit price
-$pdf->Cell(42,5,$subtotal,1,0);//para sa amount
+$pdf->Cell(45,8,'REQUISITIONER',1,0,'C',true); 
+$pdf->Cell(48,8,'SHIP VIA',1,0,'C',true);
+$pdf->Cell(35 ,8,'F.O.B',1,0,'C',true);
+$pdf->Cell(62,8,'SHIPPING TERMS',1,0,'C',true); 
+$pdf->ln();
+
+$pdf->SetTextColor(0, 0, 0);
+$pdf->Cell(45,5,'DFHHDDD',1,0);//REQUISTIONER
+$pdf->Cell(48,5,'HDHDHDDDH',1,0);//SHIP VIA
+$pdf->Cell(35,5,'HDHDHDHDH',1,0);//F.O.M
+$pdf->Cell(62,5,'DHDHDDDH',1,0);//FOR SHIPPING TERM
+$pdf->ln(10);
+
+$pdf->SetTextColor(0, 0, 0);
+$pdf->Cell(35,8,'Item #',1,0,'C',true); 
+$pdf->Cell(55,8,'Description',1,0,'C',true); 
+$pdf->Cell(30,8,'Quantity',1,0,'C',true);
+$pdf->Cell(30,8,'Unit Price',1,0,'C',true);
+$pdf->Cell(40,8,'Total',1,0,'C',true);
+$pdf->ln();
+
+$pdf->SetTextColor(0, 0, 0);
+$pdf->Cell(35,5,'gdsdggdd',1,0);//for item #
+$pdf->Cell(55,5,'adafaa',1,0);//for Description
+$pdf->Cell(30,5,'adafaa',1,0);//for quantity
+$pdf->Cell(30,5,'gsgsdsg',1,0);//for unit price
+$pdf->Cell(40,5,'fsafaafa',1,0);//for total
 $pdf->ln(15);
 
 $pdf->SetTextColor(0, 0, 0);
-$pdf->Cell(25,5,'Receive by:',0,0,'C');
-$pdf->Cell(40,5,'',0,0);
+$pdf->Cell(30,5,'RECEIVED BY:',0,0,'L');
+$pdf->Cell(45,5,'',0,0);
+$pdf->Cell(80,5,'SUBTOTAL:',0,0,'R');
+$pdf->Cell(45,5,'100010',0,0);
 $pdf->ln();
 
-$pdf->Cell(140,5,'Sales Tax:',0,0,'R');
-$pdf->Cell(42,5,$sales_tax,0,0);
+$pdf->Cell(30,5,'APPROVED BY:',0,0,'L');
+$pdf->Cell(45,5,'',0,0);
+$pdf->Cell(79.5,5,'TAX:',0,0,'R');
+$pdf->Cell(45,5,'10001',0,0);
 $pdf->ln();
 
-$pdf->Cell(25,5,'Approved by:',0,0,'R');
-$pdf->Cell(42,5,'',0,0);
-$pdf->Cell(73,5,'Total Amount:',0,0,'R');
-$pdf->Cell(42,5,$total,0,0);
+$pdf->Cell(154.5,5,'SHIPPING:',0,0,'R');
+$pdf->Cell(55,5,'1010110',0,0);
 $pdf->ln();
 
-$pdf->Line(35,170,85,170);
-$pdf->Line(35,180,85,180);
+$pdf->Cell(154.5,5,'OTHER:',0,0,'R');
+$pdf->Cell(45,5,'0000',0,0);
+$pdf->ln();
+
+$pdf->Cell(155,5,'TOTAL AMOUNT:',0,0,'R');
+$pdf->Cell(45,5,'00000',0,0);
+$pdf->ln(10);
+
+$pdf->Cell(190,5,'If you have any concerns and questions regarding  this purchase order please contact us',0,0,'C');
+$pdf->ln();
+$pdf->Cell(160,5,'@',0,0,'C');
 
 }
 ob_clean();

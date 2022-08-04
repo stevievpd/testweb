@@ -104,8 +104,21 @@
                             <input type="date" class="form-control" id="expected_date" name="expected_date" required>
                         </div>
                     </div>
+                    <script>
+                    function multiply() {
+                        var add_quantity = document.getElementById("add_quantity").value;
+                        var add_price = document.getElementById("add_price").value;
+                        var add_subtotal = add_quantity * add_price;
+                        document.getElementById("add_subtotal").value = add_subtotal;
 
-                    <?php include 'includes/scripts.php' ?>
+                        var subtotal = document.getElementById("add_subtotal").value;
+                        var amount = subtotal * 0.12;
+                        document.getElementById("sales_tax").value = amount;
+
+                        var total_amount = (add_subtotal) + (amount);
+                        document.getElementById("total").value = total_amount;
+                    }
+                    </script>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i
@@ -174,7 +187,7 @@
                                     $query = $conn->query($sql);
                                     while($prow = $query->fetch_assoc()){
                                         echo "
-                                        <option value='".$prow['business_name']."'>".$prow['business_name']."</option>
+                                        <option value='".$prow['id']."'>".$prow['business_name']."</option>
                                         ";
                                     }
                                 ?>
@@ -193,7 +206,7 @@
                                     $query = $conn->query($sql);
                                     while($prow = $query->fetch_assoc()){
                                         echo "
-                                        <option value='".$prow['supProdDesc']."'>".$prow['supProdDesc']."</option>
+                                        <option value='".$prow['id']."'>".$prow['supProdDesc']."</option>
                                         ";
                                     }
                                 ?>
@@ -256,9 +269,21 @@
                             <input type="date" class="form-control" id="edit_expected_date" name="expected_date">
                         </div>
                     </div>
+                    <script>
+                    function add() {
+                        var edit_quantity = document.getElementById("edit_quantity").value;
+                        var edit_price = document.getElementById("edit_price").value;
+                        var edit_subtotal = edit_quantity * edit_price;
+                        document.getElementById("edit_sub_total").value = edit_subtotal;
 
-                    <?php include 'includes/scripts.php' ?>
+                        var subtotal = document.getElementById("edit_sub_total").value;
+                        var editamount = subtotal * 0.12;
+                        document.getElementById("edit_sales_tax").value = editamount;
 
+                        var edittotal_amount = (edit_subtotal) + (editamount);
+                        document.getElementById("edit_total_amount").value = edittotal_amount;
+                    }
+                    </script>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i
                                 class="fa fa-close"></i> Close</button>
@@ -280,27 +305,43 @@
                     <span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title"><b><span class="po_id"></span></b></h4>
                 <?php
-              
                     $sql = "SELECT * FROM purchase_order ";
                     $query = $conn->query($sql);
                     while($row1 = $query->fetch_assoc()){
                     ?>
-                <div class="card-body ">
-                    <p class="text-center lead m-4 pb-5 bg-success" style=""><b>Purchase Order Details</b><span
-                            class="card-text"></span></p>
-                    <img src="images/growth.png" class="growth_logo">
-                    <pre>
-                        <b>Vendor Name: </b><span class="card-text" ><?php echo $row1['vendor_name']; ?> </span><br>
-                        <b>Product Name: </b><span class="card-text"><?php echo $row1['product_name']; ?> </span><br>
-                        <b>Quantity: </b><span class="card-text"><?php echo $row1['quantity']; ?> </span><br>
-                        <b>Grand Total: </b><span class="card-text"><?php echo $row1['total']; ?> </span><br>
-                        <b>Purchase Date: </b><span class="card-text"><?php echo $row1['purchase_date']; ?> </span><br>
-                        <b>Expected Date: </b><span class="card-text"><?php echo $row1['expected_date']; ?> </span><br>
-                        </pre>
+                <div class="card-body">
+                    
+                    <p class=" text-center lead m-4"><b>Puchase Order Details</b><span class="card-text"></span></p>
+                    <b>PO Number: </b><span class="card-text" ><?php echo $row1['vendor_name']; ?> </span><br>
+                    <b>Status: </b><span class="card-text"><?php echo $row1['purchase_date']; ?> </span><br>
+                    <b>Purchase Date: </b><span class="card-text"><?php echo $row1['purchase_date']; ?> </span><br>
+                    <b>Expected Date: </b><span class="card-text"><?php echo $row1['expected_date']; ?> </span><br>
+                    <b>Order by: </b><span class="card-text" ><?php echo $row1['vendor_name']; ?> </span><br><br>
+
+                    <p class="lead m-4"><b>Supplier</b><span class="card-text"></span></p>
+                    <div class="row">
+                    <p class="col-sm-6 col-md-5 col-lg-3"><b >Supplier Name: </b><span class="card-text"><?php echo $row1['purchase_date']; ?> </span><br></p>
+                    <p class="col-sm-6 col-md-5 col-lg-6"><b>Store Destination: </b><span class="card-text"><?php echo $row1['purchase_date']; ?> </span><br></p>
+                    </div>
+                    <b>Address: </b><span class="card-text"><?php echo $row1['purchase_date']; ?> </span><br>
+                    <b>Phone Number:</b><span class="card-text"><?php echo $row1['purchase_date']; ?> </span><br>
+                    <b>Email: </b><span class="card-text"><?php echo $row1['expected_date']; ?> </span><br><br>
+
+                    <div class="modal-footer">
+                    <p class="lead m-4 text-left"><b>Items</b><span class="card-text"></span></p>
+                    <div class="row">
+                    <p class="col-sm-6 col-md-5 col-lg-3"><b>Item Description </b><span class="card-text"><?php echo $row1['expected_date']; ?> </span><br></p>
+                    <p class="col-sm-6 col-md-5 col-lg-2"><b>Quantity </b><span class="card-text"><?php echo $row1['total']; ?> </span><br></p>
+                    <p class="col-sm-6 col-md-5 col-lg-2"><b>Unit Cost </b><span class="card-text"><?php echo $row1['quantity']; ?> </span><br></p>
+                    <p class="col-sm-6 col-md-5 col-lg-2"><b>Amount </b><span class="card-text"><?php echo $row1['total']; ?> </span><br></p>
+                    </div>
+                    </div>
+                   
+                                      
                 </div>
                 <?php
                         }
-                    ?>   
+                    ?>
             </div>
         </div>
     </div>
@@ -315,7 +356,7 @@
                     <span aria-hidden="true">&times;</span></button>
                 <div><a href="purchase_order_generatepdf.php" target="iframe"></a>
                 </div>
-                <iframe src="purchase_order_generatepdf.php" height="800" width="870" name="iframe"></iframe>
+                <iframe src="purchase_order_generatepdf.php" height="800" width="865" name="iframe"></iframe>
             </div>
         </div>
     </div>
