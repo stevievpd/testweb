@@ -361,7 +361,7 @@
 
 <!--PDF-->
 <div class="modal fade" id="pdf">
-    <div class="modal-dialog  modal-lg">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
