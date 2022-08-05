@@ -10,17 +10,17 @@
             <div class="modal-body">
                 <form class="form-horizontal" method="POST" action="purchase_order_add.php">
                     <div class="form-group">
-                        <label for="vendor_name" class="col-sm-3 control-label">Vendor Name</label>
+                        <label for="vendor_name" class="col-sm-3 control-label">Business Name</label>
 
                         <div class="col-sm-9">
-                            <select class="form-control" name="vendor_name" id="vendor_name">
-                                <option selected id="vendor_name"></option>
+                            <select class="form-control" name="business_name" id="business_name">
+                                <option selected id="business_name"></option>
                                 <?php
-                                    $sql = "SELECT * FROM supplier";
+                                    $sql = "SELECT *,supplier_id FROM supplier LEFT JOIN supplier_product ON supplier_product_id = supplier.id";
                                     $query = $conn->query($sql);
                                     while($row = $query->fetch_assoc()){
                                         echo "
-                                        <option value='".$row['business_name']."'>".$row['business_name']."</option>
+                                        <option>".$row['business_name']."</option>
                                         ";
                                     }
                                 ?>
@@ -33,13 +33,13 @@
 
                         <div class="col-sm-9">
                             <select class="form-control" name="product_name" id="product_name">
-                                <option selected id="product_name"></option>
+                                <option selected id="product"></option>
                                 <?php
-                                    $sql = "SELECT * FROM supplier_product";
+                                    $sql = "SELECT *,supplier_id FROM supplier LEFT JOIN supplier_product ON supplier_product_id = supplier.id";
                                     $query = $conn->query($sql);
                                     while($row = $query->fetch_assoc()){
                                         echo "
-                                        <option value='".$row['supProdDesc']."'>".$row['supProdDesc']."</option>
+                                        <option>".$row['supplier_product_name']."</option>
                                         ";
                                     }
                                 ?>
@@ -98,7 +98,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="expected_date" class="col-sm-3 control-label">Expected Date</label>
+                        <label for="expected_date" class="col-sm-3 control-label">Expected Date</label> 
 
                         <div class="col-sm-9">
                             <input type="date" class="form-control" id="expected_date" name="expected_date" required>
@@ -206,7 +206,7 @@
                                     $query = $conn->query($sql);
                                     while($prow = $query->fetch_assoc()){
                                         echo "
-                                        <option value='".$prow['id']."'>".$prow['supProdDesc']."</option>
+                                        <option value='".$prow['id']."'>".$prow['supplier_product_description']."</option>
                                         ";
                                     }
                                 ?>
@@ -305,39 +305,37 @@
                     <span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title"><b><span class="po_id"></span></b></h4>
                 <?php
-                    $sql = "SELECT * FROM purchase_order ";
+                    $sql = "SELECT *,supplier_id FROM supplier LEFT JOIN supplier_product ON supplier_product_id = supplier.id LEFT JOIN purchase_order ON purchase_order.id=supplier.id";
                     $query = $conn->query($sql);
                     while($row1 = $query->fetch_assoc()){
                     ?>
                 <div class="card-body">
                     
                     <p class=" text-center lead m-4"><b>Puchase Order Details</b><span class="card-text"></span></p>
-                    <b>PO Number: </b><span class="card-text" ><?php echo $row1['vendor_name']; ?> </span><br>
-                    <b>Status: </b><span class="card-text"><?php echo $row1['purchase_date']; ?> </span><br>
+                    <b>PO Number: </b><span class="card-text" ><?php echo $row1['purchase_order_id']; ?> </span><br>
+                    <b>Status: </b><span class="card-text"><?php echo $row1['purchase_date']; ?> </span><br><br>
                     <b>Purchase Date: </b><span class="card-text"><?php echo $row1['purchase_date']; ?> </span><br>
                     <b>Expected Date: </b><span class="card-text"><?php echo $row1['expected_date']; ?> </span><br>
-                    <b>Order by: </b><span class="card-text" ><?php echo $row1['vendor_name']; ?> </span><br><br>
+                    <b>Order by: </b><span class="card-text" ><?php echo $row1['business_name']; ?> </span><br><br>
 
                     <p class="lead m-4"><b>Supplier</b><span class="card-text"></span></p>
                     <div class="row">
-                    <p class="col-sm-6 col-md-5 col-lg-3"><b >Supplier Name: </b><span class="card-text"><?php echo $row1['purchase_date']; ?> </span><br></p>
-                    <p class="col-sm-6 col-md-5 col-lg-6"><b>Store Destination: </b><span class="card-text"><?php echo $row1['purchase_date']; ?> </span><br></p>
+                    <p class="col-sm-6 col-md-5 col-lg-5"><b >Supplier Name: </b><span class="card-text"><?php echo $row1['business_name']; ?> </span><br></p>
+                    <p class="col-sm-6 col-md-5 col-lg-5"><b>Store Destination: </b><span class="card-text"><?php echo $row1['purchase_date']; ?> </span><br></p>
+                   
+                    <p class="col-sm-6 col-md-5 col-lg-6"><b>Address: </b><span class="card-text"><?php echo $row1['address']; ?> </span><br></p>
+                    <p class="col-sm-6 col-md-5 col-lg-8"><b>Phone Number:</b><span class="card-text"><?php echo $row1['phone_number']; ?> </span><br></p>
+                    <p class="col-sm-6 col-md-5 col-lg-5"><b>Email: </b><span class="card-text"><?php echo $row1['email']; ?> </span><br><br></p>
                     </div>
-                    <b>Address: </b><span class="card-text"><?php echo $row1['purchase_date']; ?> </span><br>
-                    <b>Phone Number:</b><span class="card-text"><?php echo $row1['purchase_date']; ?> </span><br>
-                    <b>Email: </b><span class="card-text"><?php echo $row1['expected_date']; ?> </span><br><br>
-
                     <div class="modal-footer">
                     <p class="lead m-4 text-left"><b>Items</b><span class="card-text"></span></p>
                     <div class="row">
-                    <p class="col-sm-6 col-md-5 col-lg-3"><b>Item Description </b><span class="card-text"><?php echo $row1['expected_date']; ?> </span><br></p>
-                    <p class="col-sm-6 col-md-5 col-lg-2"><b>Quantity </b><span class="card-text"><?php echo $row1['total']; ?> </span><br></p>
-                    <p class="col-sm-6 col-md-5 col-lg-2"><b>Unit Cost </b><span class="card-text"><?php echo $row1['quantity']; ?> </span><br></p>
-                    <p class="col-sm-6 col-md-5 col-lg-2"><b>Amount </b><span class="card-text"><?php echo $row1['total']; ?> </span><br></p>
+                    <p class="col-sm-6 col-md-6 col-lg-3"><b>Item Description </b><span class="card-text"><?php echo $row1['product_name']; ?> </span><br></p>
+                    <p class="col-sm-6 col-md-6 col-lg-2"><b>Quantity </b><span class="card-text"><?php echo $row1['quantity']; ?> </span><br></p>
+                    <p class="col-sm-6 col-md-6 col-lg-2"><b>Unit Cost </b><span class="card-text"><?php echo $row1['price']; ?> </span><br></p>
+                    <p class="col-sm-6 col-md-6 col-lg-2"><b>Amount </b><span class="card-text"><?php echo $row1['total']; ?> </span><br></p>
                     </div>
-                    </div>
-                   
-                                      
+                    </div>            
                 </div>
                 <?php
                         }

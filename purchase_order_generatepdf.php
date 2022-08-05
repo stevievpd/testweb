@@ -6,7 +6,7 @@ if($conn->connect_error){
   die("Error in DB connection: ".$conn->connect_errno." : ".$conn->connect_error);    
 }
 
-$select = "SELECT * FROM purchase_order ORDER BY id ";
+$select = "SELECT *,purchase_order_id FROM purchase_order LEFT JOIN supplier_product ON supplier_product_id = purchase_order.id LEFT JOIN supplier ON supplier.id=purchase_order.id";
 $result = $conn->query($select);
 
 $pdf = new TCPDF();
@@ -15,35 +15,39 @@ $pdf->AddPage();
 while($row = $result->fetch_object()){
 
   $id = $row->id;
+  $purchase_order_id = $row->purchase_order_id;
   $product_name = $row->product_name;
   $quantity = $row->quantity;
   $price = $row->price;
   $total = $row->total;
   $purchase_date = $row->purchase_date;
   $expected_date = $row->expected_date;
+  $business_name = $row->business_name;
+  $address = $row->address;
 
 $pdf = new TCPDF();
 $pdf ->AddPage();
 $pdf-> SetFont('helvetica', 'B',20);
 $pdf->Cell(10,5,'[Company Name]',0,0,'L');
+$pdf->Cell(10,5,$business_name,0,0,'L');
 $pdf->Cell(160,5,'PURCHASE ORDER',0,0,'R');
 $pdf->ln(15);
 
 $pdf-> SetFont('helvetica ', 'B',10,);
 $pdf->Cell(27,5,'Street Address:',0,0,'L');
-$pdf->Cell(50,5,'General Ave',0,0);
+$pdf->Cell(50,5,$address,0,0);
 $pdf->ln();
 
 $pdf->Cell(9,5,'City:',0,0,'L');
 $pdf->Cell(50,5,'Quezon',0,0);
 $pdf->Cell(57.5,5,'DATE:',0,0,'R');
-$pdf->Cell(30,5,'mm/dd/yyyy',1,0);
+$pdf->Cell(30,5,$purchase_date,1,0);
 $pdf->ln();
 
 $pdf->Cell(7,5,'Zip:',0,0,'L');
 $pdf->Cell(50,5,'150099',0,0);
 $pdf->Cell(59.5,5,'PO #:',0,0,'R');
-$pdf->Cell(30,5,'12052000',1,0);
+$pdf->Cell(30,5,$purchase_order_id,1,0);
 $pdf->ln();
 
 $pdf->Cell(27,5,'Phone Number:',0,0,'L');

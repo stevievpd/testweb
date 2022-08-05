@@ -67,7 +67,7 @@
                     while($row = $query->fetch_assoc()){
                       echo "
                         <tr>
-                            <td>".$row['supplier_product_code']."</td>
+                            <td>".$row['supplier_product_id']."</td>
                             <td>".$row['supplier_product_name']."</td>
                             <td>".$row['supplier_product_description']."</td>
                             <td>
