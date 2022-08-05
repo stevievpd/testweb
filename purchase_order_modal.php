@@ -35,19 +35,11 @@
                             <select class="form-control" name="product_name" id="product_name">
                                 <option selected id="product"></option>
                                 <?php
-<<<<<<< HEAD
-                                    $sql = "SELECT *,supplier_id FROM supplier LEFT JOIN supplier_product ON supplier_product_id = supplier.id";
-                                    $query = $conn->query($sql);
-                                    while($row = $query->fetch_assoc()){
-                                        echo "
-                                        <option>".$row['supplier_product_name']."</option>
-=======
                                     $sql = "SELECT * FROM product";
                                     $query = $conn->query($sql);
                                     while($row = $query->fetch_assoc()){
                                         echo "
                                         <option value='".$row['product_description']."'>".$row['product_description']."</option>
->>>>>>> ecc75d5924f9bb34970d345e7ed73ce4909f2f27
                                         ";
                                     }
                                 ?>
@@ -214,11 +206,7 @@
                                     $query = $conn->query($sql);
                                     while($prow = $query->fetch_assoc()){
                                         echo "
-<<<<<<< HEAD
-                                        <option value='".$prow['id']."'>".$prow['supplier_product_description']."</option>
-=======
                                         <option value='".$prow['product_id']."'>".$prow['product_description']."</option>
->>>>>>> ecc75d5924f9bb34970d345e7ed73ce4909f2f27
                                         ";
                                     }
                                 ?>
