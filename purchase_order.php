@@ -126,6 +126,13 @@ $(function(){
     var id = $(this).data('id');
     getRow(id);
   });
+  
+  $('#example1').on('click', '.cancel', function(e){
+    e.preventDefault();
+    $('#cancel').modal('show');
+    var id = $(this).data('id');
+    getRow(id);
+  });
 
 
 
@@ -152,6 +159,7 @@ function getRow(id){
       $('#edit_expected_date').val(response.expected_date);
       $('.del_purchase_order').val(response.id);
       $('.purchase_order').val(response.id);
+      $('.cancel_purchase_order').val(response.id);
       
       
     }
