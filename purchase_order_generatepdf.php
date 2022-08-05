@@ -162,3 +162,4 @@ $pdf->Output()
 
 ?>
 
+ELECT *, purchase_order_id FROM purchase_order LEFT JOIN supplier ON supplier_id = purchase_order.id LEFT JOIN supplier_product ON supplier_product_id = purchase_order.id

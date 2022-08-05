@@ -19,6 +19,7 @@
 		for($i = 0; $i < 10; $i++){
 			$numbers .= $i;
 		}
+		
 	$product_id = substr(str_shuffle($letters), 0, 3).substr(str_shuffle($numbers), 0, 9);
 
 	$sql = "INSERT INTO inventory (photo, product_id, description, quantity, cost, price, stamp) VALUES ('$filename', '$product_id','$description', '$quantity', '$cost', '$price', NOW())";
