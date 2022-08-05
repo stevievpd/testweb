@@ -59,8 +59,8 @@
                     </div>
                     <input type="text" class="form-control pull-right col-sm-8" id="reservation" name="date_range" value="<?php echo (isset($_GET['range'])) ? $_GET['range'] : $range_from.' - '.$range_to; ?>">
                   </div>
-                  <button type="button" class="btn btn-success btn-sm btn-flat" id="payroll"><span class="glyphicon glyphicon-print"></span> Payroll</button>
-                  <button type="button" class="btn btn-primary btn-sm btn-flat" id="payslip"><span class="glyphicon glyphicon-print"></span> Payslip</button>
+                  <button type="button" class="btn btn-success payroll_pdf btn-sm btn-flat" id="payroll_pdf"><span class="glyphicon glyphicon-print"></span> Payroll</button>
+                  <button type="button" class="btn btn-primary payslip_pdf btn-sm btn-flat" id="payslip_pdf"><span class="glyphicon glyphicon-print"></span> Payslip</button>
                 </form>
               </div>
             </div>
@@ -132,6 +132,7 @@
   </div>
     
   <?php include 'footer.php'; ?>
+  <?php include 'payroll_modal.php'; ?>
 </div>
 <?php include 'includes/scripts.php'; ?> 
 <script>
@@ -155,35 +156,48 @@ $(function(){
     window.location = 'payroll.php?range='+range;
   });
 
-  $('#payroll').click(function(e){
+  // $('#payroll').click(function(e){
+  //   e.preventDefault();
+  //   $('#payForm').attr('action', 'payroll_generate.php');
+  //   $('#payForm').submit();
+  // });
+
+  // $('#payslip').click(function(e){
+  //   e.preventDefault();
+  //   $('#payForm').attr('action', 'payslip_generate.php');
+  //   $('#payForm').submit();
+  // });
+
+  $(document).on('click', '#payroll_pdf', function(e){
     e.preventDefault();
-    $('#payForm').attr('action', 'payroll_generate.php');
-    $('#payForm').submit();
+    var date_range = $(this).val();
+    $('#payroll_preview').modal('show');
   });
 
-  $('#payslip').click(function(e){
+  $(document).on('click', '#payslip_pdf', function(e){
     e.preventDefault();
-    $('#payForm').attr('action', 'payslip_generate.php');
-    $('#payForm').submit();
+    $('#payslip_preview').modal('show');
   });
 
 });
 
-function getRow(id){
-  $.ajax({
-    type: 'POST',
-    url: 'position_row.php',
-    data: {id:id},
-    dataType: 'json',
-    success: function(response){
-      $('#posid').val(response.id);
-      $('#edit_title').val(response.description);
-      $('#edit_rate').val(response.rate);
-      $('#del_posid').val(response.id);
-      $('#del_position').html(response.description);
-    }
-  });
-}
+
+
+// function getRow(id){
+//   $.ajax({
+//     type: 'POST',
+//     url: 'position_row.php',
+//     data: {id:id},
+//     dataType: 'json',
+//     success: function(response){
+//       $('#posid').val(response.id);
+//       $('#edit_title').val(response.description);
+//       $('#edit_rate').val(response.rate);
+//       $('#del_posid').val(response.id);
+//       $('#del_position').html(response.description);
+//     }
+//   });
+// }
 
 
 </script>
