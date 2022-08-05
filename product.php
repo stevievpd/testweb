@@ -68,10 +68,9 @@
                     while($row = $query->fetch_assoc()){
                       echo "
                         <tr>
-                            <td>".$row['product_code']."</td>
-                            <td>".$row['business_name']."</td>
-                            <td>".$row['product_name']."</td>
-                            <td>".$row['product_description']."</td>
+                            <td>".$row['supplier_product_id']."</td>
+                            <td>".$row['supplier_product_name']."</td>
+                            <td>".$row['supplier_product_description']."</td>
                             <td>
                                 <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['product_id']."'><i class='fa fa-edit'></i> Edit</button>
                                 <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['product_id']."'><i class='fa fa-trash'></i> Delete</button>
