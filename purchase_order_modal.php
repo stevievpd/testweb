@@ -1,6 +1,5 @@
 <!-- Add-->
 
-
 <div class="modal fade" id="addnew">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -46,6 +45,7 @@
                             </select>
                         </div>
                     </div>
+                   
                     <div class="form-group">
                         <label for="add_quantity" class="col-sm-3 control-label">Quantity</label>
 
@@ -120,8 +120,28 @@
                         <div class="col-sm-9">
                             <input type="date" class="form-control" id="expected_date" name="expected_date" required>
                         </div>
-                    </div>
+                    </div>  
+
+                    <div class="form-group">
+                        <label for="payment_terms" class="col-sm-3 control-label">Payment Terms</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="payment_terms" id="payment_terms" required>
+                                <option value="" selected>- Select -</option>
+                                <?php
+                                    $sql = "SELECT * FROM payment_terms";
+                                    $query = $conn->query($sql);
+                                    while($prow = $query->fetch_assoc()){
+                                        echo "
+                                        <option value='".$prow['id']."'>".$prow['payment_methods']."</option>
+                                        ";
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                    </div>  
+
             </div>
+            
             <div class="modal-footer">
                 <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i
                         class="fa fa-close"></i> Close</button>
@@ -223,21 +243,6 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="edit_purchase_date" class="col-sm-3 control-label">Purchase Date</label>
-
-                        <div class="col-sm-9">
-                            <input type="date" class="form-control" id="edit_purchase_date" name="purchase_date">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="edit_expected_date" class="col-sm-3 control-label">Expected Date</label>
-
-                        <div class="col-sm-9">
-                            <input type="date" class="form-control" id="edit_expected_date" name="expected_date">
-                        </div>
-                    </div>
                     <script>
                     function add() {
                         var edit_quantity = document.getElementById("edit_quantity").value;
@@ -253,17 +258,51 @@
                         document.getElementById("edit_total_amount").value = edittotal_amount;
                     }
                     </script>
+
+                    <div class="form-group">
+                        <label for="edit_purchase_date" class="col-sm-3 control-label">Purchase Date</label>
+
+                        <div class="col-sm-9">
+                            <input type="date" class="form-control" id="edit_purchase_date" name="purchase_date">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit_expected_date" class="col-sm-3 control-label">Expected Date</label>
+
+                        <div class="col-sm-9">
+                            <input type="date" class="form-control" id="edit_expected_date" name="expected_date">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit_payment_terms" class="col-sm-3 control-label">Payment Terms</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="payment_terms" id="edit_payment_terms" required>
+                                <option value="" selected>- Select -</option>
+                                <?php
+                                    $sql = "SELECT * FROM payment_terms";
+                                    $query = $conn->query($sql);
+                                    while($prow = $query->fetch_assoc()){
+                                        echo "
+                                        <option value='".$prow['id']."'>".$prow['payment_methods']."</option>
+                                        ";
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                    </div>  
+                </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i
                                 class="fa fa-close"></i> Close</button>
                         <button type="submit" class="btn btn-success btn-flat" name="edit"><i
                                 class="fa fa-check-square-o"></i> Update</button>
-                    </div>
                 </form>
             </div>
         </div>
     </div>
-</div> -->
+</div> 
 
 <!-- Delete -->
 <div class="modal fade" id="delete">
@@ -317,7 +356,7 @@
                         class="card-text"><?php echo $row1['firstname']; ?>&nbsp;<?php echo $row1['lastname']; ?>
                     </span><br><br></p>
 
-                <p class="col-sm-6 col-md-6 col-lg-8"><b>Supplier</b><span class="card-text"></span></p><br>
+                <p class="col-sm-6 col-md-6 col-lg-8 lead"><b>Supplier</b><span class="card-text"></span></p><br>
                 <!-----------------SUPPLIER------------------->
                 <p class="col-sm-6 col-md-6 col-lg-7"><b>Supplier Name: </b><span
                         class="card-text"><?php echo $row1['business_name']; ?> </span><br></p>
@@ -331,7 +370,7 @@
                 <p class="col-sm-6 col-md-5 col-lg-6"><b>Email: </b><span
                         class="card-text"><?php echo $row1['email']; ?></span><br><br></p>
 
-                <p class="col-sm-6 col-md-5 col-lg-8"><b> Items </b><span class="card-text"></span><br></p>
+                <p class="col-sm-6 col-md-5 col-lg-8 lead"><b> Items </b><span class="card-text"></span><br></p>
 
                 <div class="modal-footer">
                     <table class="table">

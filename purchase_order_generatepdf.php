@@ -6,7 +6,7 @@ if($conn->connect_error){
   die("Error in DB connection: ".$conn->connect_errno." : ".$conn->connect_error);    
 }
 
-$select = "SELECT *, purchase_order.id FROM purchase_order LEFT JOIN supplier ON supplier.id=purchase_order.supplier_id LEFT JOIN supplier_product ON supplier_product.id=purchase_order.supplier_id";
+$select = "SELECT *, purchase_order.id FROM purchase_order LEFT JOIN supplier ON supplier.id=purchase_order.supplier_id LEFT JOIN supplier_product ON supplier_product.id=purchase_order.supplier_id LEFT JOIN admin ON admin.id=purchase_order.supplier_id";
 $result = $conn->query($select);
 
 $pdf = new TCPDF();
@@ -24,6 +24,7 @@ while($row = $result->fetch_object()){
   $expected_date = $row->expected_date;
   $business_name = $row->business_name;
   $address = $row->address;
+  $phone_number = $row->phone_number;
 
 $pdf = new TCPDF();
 $pdf ->AddPage();
@@ -50,7 +51,7 @@ $pdf->Cell(30,5,$purchase_order_id,1,0);
 $pdf->ln();
 
 $pdf->Cell(27,5,'Phone Number:',0,0,'L');
-$pdf->Cell(50,5,'00000',0,0);
+$pdf->Cell(50,5,$phone_number,0,0);
 $pdf->ln(10);
 
 $pdf->SetFillColor(140, 217, 140);
@@ -61,7 +62,7 @@ $pdf->ln(10);
 
 $pdf->SetTextColor(0, 0, 0);
 $pdf->Cell(28,5,'Company Name:',0,0,'L');
-$pdf->Cell(50,5,'fafa',0,0);
+$pdf->Cell(50,5,$business_name,0,0);
 $pdf->Cell(39,5,'Name:',0,0,'R');
 $pdf->Cell(50,5,'fafa',0,0);
 $pdf->ln();
