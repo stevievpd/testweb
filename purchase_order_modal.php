@@ -1,4 +1,4 @@
-<!-- Add -->
+<!-- Add
 <div class="modal fade" id="addnew">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -16,11 +16,11 @@
                             <select class="form-control" name="business_name" id="business_name">
                                 <option selected id="business_name"></option>
                                 <?php
-                                    $sql = "SELECT *,supplier_id FROM supplier LEFT JOIN supplier_product ON supplier_product_id = supplier.id";
+                                    $sql = "SELECT * from supplier";
                                     $query = $conn->query($sql);
                                     while($row = $query->fetch_assoc()){
                                         echo "
-                                        <option>".$row['business_name']."</option>
+                                        <option value='".$row['id']."'>".$row['business_name']."</option>
                                         ";
                                     }
                                 ?>
@@ -35,11 +35,11 @@
                             <select class="form-control" name="product_name" id="product_name">
                                 <option selected id="product"></option>
                                 <?php
-                                    $sql = "SELECT * FROM product";
+                                    $sql = "SELECT * from supplier_product";
                                     $query = $conn->query($sql);
                                     while($row = $query->fetch_assoc()){
                                         echo "
-                                        <option>".$row['product_description']."</option>
+                                        <option value='".$row['id']."'>".$row['supplier_product_name']."</option>
                                         ";
                                     }
                                 ?>
@@ -98,7 +98,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="expected_date" class="col-sm-3 control-label">Expected Date</label> 
+                        <label for="expected_date" class="col-sm-3 control-label">Expected Date</label>
 
                         <div class="col-sm-9">
                             <input type="date" class="form-control" id="expected_date" name="expected_date" required>
@@ -125,43 +125,154 @@
                                 class="fa fa-close"></i> Close</button>
                         <button type="submit" class="btn btn-primary btn-flat" name="add"><i class="fa fa-save"></i>
                             Save</button>
+                    </div>
                 </form>
-
             </div>
         </div>
     </div>
-</div>
-</div>
+</div> -->
 
 
-<!-- Delete -->
-<div class="modal fade" id="delete">
+
+
+<!-- Edit -->
+<!-- Edit -->
+<!-- Edit -->
+<!-- Edit -->
+<!-- Edit -->
+<!-- Edit -->
+<!-- Edit -->
+<!-- Edit -->
+<!-- Edit -->
+<!-- Edit -->
+<!-- Edit -->
+<!-- Edit -->
+<!-- Edit -->
+<!-- Edit -->
+<div class="modal fade" id="addnew">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"><b>Deleting...</b></h4>
+                <h4 class="modal-title"><b>Add Employee</b></h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" method="POST" action="purchase_order_delete.php">
-                    <input type="hidden" class="po_id" name="id">
-                    <div class="text-center">
-                        <p>DELETE PURCHASE ORDER </p>
-                        <h2 id="del_purchase_order" class="bold"></h2>
+                <form class="form-horizontal" method="POST" action="purchase_order_add.php"
+                    enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="supplier" class="col-sm-3 control-label">Business Name</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="supplier" id="supplier" required>
+                                <option value="" selected>- Select -</option>
+                                <?php
+                                    $sql = "SELECT * FROM supplier";
+                                    $query = $conn->query($sql);
+                                    while($brow = $query->fetch_assoc()){
+                                        echo "
+                                        <option value='".$brow['id']."'>".$brow['business_name']."</option>
+                                        ";
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="supplier_product" class="col-sm-3 control-label">Product Name</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="supplier_product" id="supplier_product" required>
+                                <option value="" selected>- Select -</option>
+                                <?php
+                                    $sql = "SELECT * FROM supplier_product";
+                                    $query = $conn->query($sql);
+                                    while($prow = $query->fetch_assoc()){
+                                        echo "
+                                        <option value='".$prow['id']."'>".$prow['supplier_product_name']."</option>
+                                        ";
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity" class="col-sm-3 control-label">Quantity</label>
+                        <div class="col-sm-9">
+                            <div class="quantity">
+                                <input type="number" class="form-control" id="quantity" name="quantity">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="price" class="col-sm-3 control-label">price</label>
+                        <div class="col-sm-9">
+                            <div class="price">
+                                <input type="number" class="form-control" id="price" name="price">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="purchase_date" class="col-sm-3 control-label">Purchase Date</label>
+
+                        <div class="col-sm-9">
+                            <input type="date" class="form-control" id="purchase_date" name="purchase_date" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="expected_date" class="col-sm-3 control-label">Expected Date</label>
+
+                        <div class="col-sm-9">
+                            <input type="date" class="form-control" id="expected_date" name="expected_date" required>
+                        </div>
                     </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i
                         class="fa fa-close"></i> Close</button>
-                <button type="submit" class="btn btn-danger btn-flat" name="delete"><i class="fa fa-trash"></i>
-                    Delete</button>
+                <button type="submit" class="btn btn-primary btn-flat" name="add"><i class="fa fa-save"></i>
+                    Save</button>
                 </form>
             </div>
         </div>
     </div>
-
 </div>
+
+
+
+
+
+
+
+<!-- Edit -->
+<!-- Edit -->
+<!-- Edit -->
+<!-- Edit -->
+<!-- Edit -->
+<!-- Edit -->
+<!-- Edit -->
+<!-- Edit -->
+<!-- Edit -->
+<!-- Edit -->
+<!-- Edit -->
+<!-- Edit -->
+<!-- Edit -->
+<!-- Edit -->
+<!-- Edit -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- Edit -->
 <div class="modal fade" id="edit">
@@ -289,53 +400,86 @@
                                 class="fa fa-close"></i> Close</button>
                         <button type="submit" class="btn btn-success btn-flat" name="edit"><i
                                 class="fa fa-check-square-o"></i> Update</button>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+<!-- Delete -->
+<div class="modal fade" id="delete">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><b>Deleting...</b></h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" method="POST" action="purchase_order_delete.php">
+                    <input type="hidden" class="po_id" name="id">
+                    <div class="text-center">
+                        <p>DELETE PURCHASE ORDER </p>
+                        <h2 id="del_purchase_order" class="bold"></h2>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i
+                        class="fa fa-close"></i> Close</button>
+                <button type="submit" class="btn btn-danger btn-flat" name="delete"><i class="fa fa-trash"></i>
+                    Delete</button>
+            </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 <!--view-->
 <div class="modal fade" id="view">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"><b><span class="po_id"></span></b></h4>
+            <div class="card-body">
                 <?php
-                    $sql = "SELECT *,supplier_id FROM supplier LEFT JOIN supplier_product ON supplier_product_id = supplier.id LEFT JOIN purchase_order ON purchase_order.id=supplier.id";
+                    $sql = "SELECT *, purchase_order.id FROM purchase_order LEFT JOIN supplier ON supplier.id=purchase_order.supplier_id LEFT JOIN supplier_product ON supplier_product.id=purchase_order.supplier_id";
                     $query = $conn->query($sql);
                     while($row1 = $query->fetch_assoc()){
-                    ?>
-                <div class="card-body">
-                    
-                    <p class=" text-center lead m-4"><b>Puchase Order Details</b><span class="card-text"></span></p>
-                    <b>PO Number: </b><span class="card-text" ><?php echo $row1['purchase_order_id']; ?> </span><br>
-                    <b>Status: </b><span class="card-text"><?php echo $row1['purchase_date']; ?> </span><br><br>
-                    <b>Purchase Date: </b><span class="card-text"><?php echo $row1['purchase_date']; ?> </span><br>
-                    <b>Expected Date: </b><span class="card-text"><?php echo $row1['expected_date']; ?> </span><br>
-                    <b>Order by: </b><span class="card-text" ><?php echo $row1['business_name']; ?> </span><br><br>
+                ?>
+                <p class=" text-center lead m-4"><b>Puchase Order Details</b><span class="card-text"></span></p>
+                <b>PO Number: </b><span class="card-text"><?php echo $row1['purchase_order_id']; ?> </span><br>
+                <b>Status: </b><span class="card-text"><?php echo $row1['purchase_date']; ?> </span><br><br>
+                <b>Purchase Date: </b><span class="card-text"><?php echo $row1['purchase_date']; ?> </span><br>
+                <b>Expected Date: </b><span class="card-text"><?php echo $row1['expected_date']; ?> </span><br>
+                <b>Order by: </b><span class="card-text"><?php echo $row1['business_name']; ?> </span><br><br>
 
-                    <p class="lead m-4"><b>Supplier</b><span class="card-text"></span></p>
-                    <div class="row">
-                    <p class="col-sm-6 col-md-5 col-lg-5"><b >Supplier Name: </b><span class="card-text"><?php echo $row1['business_name']; ?> </span><br></p>
-                    <p class="col-sm-6 col-md-5 col-lg-5"><b>Store Destination: </b><span class="card-text"><?php echo $row1['purchase_date']; ?> </span><br></p>
-                   
-                    <p class="col-sm-6 col-md-5 col-lg-6"><b>Address: </b><span class="card-text"><?php echo $row1['address']; ?> </span><br></p>
-                    <p class="col-sm-6 col-md-5 col-lg-8"><b>Phone Number:</b><span class="card-text"><?php echo $row1['phone_number']; ?> </span><br></p>
-                    <p class="col-sm-6 col-md-5 col-lg-5"><b>Email: </b><span class="card-text"><?php echo $row1['email']; ?> </span><br><br></p>
-                    </div>
-                    <div class="modal-footer">
+                <p class="lead m-4"><b>Supplier</b><span class="card-text"></span></p>
+                <!-----------------SUPPLIER------------------->
+
+                <div class="row">
+                    <p class="col-sm-6 col-md-5 col-lg-5"><b>Supplier Name: </b><span
+                            class="card-text"><?php echo $row1['business_name']; ?> </span><br></p>
+                    <p class="col-sm-6 col-md-5 col-lg-5"><b>Store Destination: </b><span
+                            class="card-text"><?php echo $row1['address']; ?> </span><br></p>
+
+                    <p class="col-sm-6 col-md-5 col-lg-6"><b>Address: </b><span
+                            class="card-text"><?php echo $row1['address']; ?> </span><br></p>
+                    <p class="col-sm-6 col-md-5 col-lg-8"><b>Phone Number:</b><span
+                            class="card-text"><?php echo $row1['phone_number']; ?> </span><br></p>
+                    <p class="col-sm-6 col-md-5 col-lg-5"><b>Email: </b><span
+                            class="card-text"><?php echo $row1['email']; ?> </span><br><br></p>
+                </div>
+                <div class="modal-footer">
                     <p class="lead m-4 text-left"><b>Items</b><span class="card-text"></span></p>
                     <div class="row">
-                    <p class="col-sm-6 col-md-6 col-lg-3"><b>Item Description </b><span class="card-text"><?php echo $row1['product_name']; ?> </span><br></p>
-                    <p class="col-sm-6 col-md-6 col-lg-2"><b>Quantity </b><span class="card-text"><?php echo $row1['quantity']; ?> </span><br></p>
-                    <p class="col-sm-6 col-md-6 col-lg-2"><b>Unit Cost </b><span class="card-text"><?php echo $row1['price']; ?> </span><br></p>
-                    <p class="col-sm-6 col-md-6 col-lg-2"><b>Amount </b><span class="card-text"><?php echo $row1['total']; ?> </span><br></p>
+                        <p class="col-sm-6 col-md-6 col-lg-3"><b>Item Description </b><span
+                                class="card-text"><?php echo $row1['supplier_product_description']; ?> </span><br></p>
+                        <p class="col-sm-6 col-md-6 col-lg-2"><b>Quantity </b><span
+                                class="card-text"><?php echo $row1['quantity']; ?> </span><br></p>
+                        <p class="col-sm-6 col-md-6 col-lg-2"><b>Unit Cost </b><span
+                                class="card-text"><?php echo $row1['price']; ?> </span><br></p>
+                        <p class="col-sm-6 col-md-6 col-lg-2"><b>Amount </b><span
+                                class="card-text"><?php echo $row1['total']; ?> </span><br></p>
                     </div>
-                    </div>            
                 </div>
                 <?php
                         }
@@ -344,7 +488,6 @@
         </div>
     </div>
 </div>
-
 <!--PDF-->
 <div class="modal fade" id="pdf">
     <div class="modal-dialog modal-lg">
@@ -359,4 +502,3 @@
         </div>
     </div>
 </div>
-

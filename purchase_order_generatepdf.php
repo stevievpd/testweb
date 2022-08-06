@@ -6,7 +6,7 @@ if($conn->connect_error){
   die("Error in DB connection: ".$conn->connect_errno." : ".$conn->connect_error);    
 }
 
-$select = "SELECT *,purchase_order_id FROM purchase_order LEFT JOIN supplier_product ON supplier_product_id = purchase_order.id LEFT JOIN supplier ON supplier.id=purchase_order.id";
+$select = "SELECT *, purchase_order.id FROM purchase_order LEFT JOIN supplier ON supplier.id=purchase_order.supplier_id LEFT JOIN supplier_product ON supplier_product.id=purchase_order.supplier_id";
 $result = $conn->query($select);
 
 $pdf = new TCPDF();
@@ -162,4 +162,3 @@ $pdf->Output()
 
 ?>
 
-ELECT *, purchase_order_id FROM purchase_order LEFT JOIN supplier ON supplier_id = purchase_order.id LEFT JOIN supplier_product ON supplier_product_id = purchase_order.id
