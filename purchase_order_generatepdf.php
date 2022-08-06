@@ -28,7 +28,6 @@ while($row = $result->fetch_object()){
 $pdf = new TCPDF();
 $pdf ->AddPage();
 $pdf-> SetFont('helvetica', 'B',20);
-$pdf->Cell(10,5,'[Company Name]',0,0,'L');
 $pdf->Cell(10,5,$business_name,0,0,'L');
 $pdf->Cell(160,5,'PURCHASE ORDER',0,0,'R');
 $pdf->ln(15);
@@ -122,9 +121,9 @@ $pdf->ln();
 $pdf->SetTextColor(0, 0, 0);
 $pdf->Cell(35,5,'gdsdggdd',1,0);//for item #
 $pdf->Cell(55,5,'adafaa',1,0);//for Description
-$pdf->Cell(30,5,'adafaa',1,0);//for quantity
-$pdf->Cell(30,5,'gsgsdsg',1,0);//for unit price
-$pdf->Cell(40,5,'fsafaafa',1,0);//for total
+$pdf->Cell(30,5,$quantity,1,0);//for quantity
+$pdf->Cell(30,5,$price,1,0);//for unit price
+$pdf->Cell(40,5,$total,1,0);//for total
 $pdf->ln(15);
 
 $pdf->SetTextColor(0, 0, 0);

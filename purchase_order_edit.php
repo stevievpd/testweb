@@ -11,7 +11,7 @@
 		$purchase_date = $_POST['purchase_date'];
 		$expected_date = $_POST['expected_date'];
 
-		$sql = "UPDATE purchase_order SET id = '$id', product_name = '$product_name', quantity = '$quantity', price = '$price', subtotal = '$subtotal', sales_tax = '$sales_tax', total = '$total', purchase_date = '$purchase_date' , expected_date = '$expected_date' WHERE id = '$id'";
+		$sql = "UPDATE purchase_order SET id = '$id', purchase_order_id = '$purchase_order_id', supplier_id = '$supplier_id', supplier_product_id = '$supplier_product_id', quantity = '$quantity', price = '$price', subtotal = '$subtotal', sales_tax = '$sales_tax', total = '$total', purchase_date = '$purchase_date' , expected_date = '$expected_date' WHERE id = '$id'";
 		if($conn->query($sql)){
 			$_SESSION['success'] = 'Inventory updated successfully';
 		}

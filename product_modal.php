@@ -37,11 +37,11 @@
                             <select class="form-control" name="supplier" id="supplier" required>
                                 <option value="" selected>- Select -</option>
                                 <?php
-                                    $sql = "SELECT * FROM supplier ORDER BY business_name ASC";
+                                    $sql = "SELECT * FROM supplier";
                                     $query = $conn->query($sql);
                                     while($row = $query->fetch_assoc()){
                                         echo "
-                                        <option value='".$row['supplier_id']."'>".$row['business_name']."</option>
+                                        <option value='".$row['id']."'>".$row['business_name']."</option>
                                         ";
                                     }
                                 ?>
