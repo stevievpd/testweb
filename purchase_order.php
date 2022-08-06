@@ -139,6 +139,7 @@ function getRow(id){
       dataType: 'json',
     success: function(response){
       $('.supid').val(response.id);
+      $('.po_id').val(response.id);
       $('.purchase_order_id').val(response.id);
       $('.del_purchase_order').val(response.id);
       $('.edit_purchase_order').val(response.id);
