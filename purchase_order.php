@@ -65,7 +65,7 @@
                     $sql = "SELECT *, purchase_order.id FROM purchase_order LEFT JOIN supplier ON supplier.id=purchase_order.supplier_id LEFT JOIN supplier_product ON supplier_product.id=purchase_order.supplier_product_id";
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
-                    $status = ($row['status'])?'<span class="label label-warning pull-right">Pending</span>':'<span class="label label-danger pull-right">Received</span>';
+                    $status = ($row['status'])?'<span class="label label-warning pull-right">Received</span>':'<span class="label label-danger pull-right">Pending</span>';
                       echo "
                       <tr>
                       <td>".$row['purchase_order_id']."</td>
