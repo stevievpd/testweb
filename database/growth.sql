@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 06, 2022 at 08:17 AM
+-- Generation Time: Aug 06, 2022 at 12:01 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -43,8 +43,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`, `firstname`, `lastname`, `photo`, `created_on`, `type`) VALUES
-(1, 'admin', '$2y$10$fCOiMky4n5hCJx3cpsG20Od4wHtlkCLKmO6VLobJNRIg9ooHTkgjK', 'Roge', 'Catubig', 'profilepic.jpg', '2018-04-30', 'admin'),
-(2, 'test', '098f6bcd4621d373cade4e832627b4f6', 'test', 'test', '', '2022-08-01', 'Admin');
+(1, 'admin', '$2y$10$fCOiMky4n5hCJx3cpsG20Od4wHtlkCLKmO6VLobJNRIg9ooHTkgjK', 'Roge', 'Catubig', 'profilepic.jpg', '2018-04-30', 'admin');
 
 -- --------------------------------------------------------
 
@@ -301,6 +300,27 @@ INSERT INTO `overtime` (`id`, `employee_id`, `hours`, `rate`, `date_overtime`) V
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `payment_terms`
+--
+
+CREATE TABLE `payment_terms` (
+  `id` int(11) NOT NULL,
+  `payment_term_id` varchar(50) NOT NULL,
+  `payment_methods` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `payment_terms`
+--
+
+INSERT INTO `payment_terms` (`id`, `payment_term_id`, `payment_methods`) VALUES
+(1, '', 'COD (Cash on Delivery)'),
+(2, '', 'CHEQUE'),
+(3, '', 'ONLINE PAYMENT');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `position`
 --
 
@@ -349,20 +369,17 @@ CREATE TABLE `purchase_order` (
   `purchase_date` date NOT NULL,
   `expected_date` date NOT NULL,
   `supplier_id` int(11) NOT NULL,
-  `supplier_product_id` int(11) NOT NULL
+  `supplier_product_id` int(11) NOT NULL,
+  `payment_id` int(11) NOT NULL,
+  `status` int(11) NOT NULL COMMENT '[0] - Pending [1] - Received [2] - Lost & Stolen'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `purchase_order`
 --
 
-INSERT INTO `purchase_order` (`id`, `purchase_order_id`, `quantity`, `price`, `total`, `purchase_date`, `expected_date`, `supplier_id`, `supplier_product_id`) VALUES
-(38, 'TRANS0000123', 10, 10, 1000, '2022-08-06', '2022-08-19', 1, 1),
-(46, 'YGD170682935', 11, 11111, 0, '1212-12-12', '0121-12-12', 1, 1),
-(47, 'IDQ561329840', 121, 2121210000, 0, '1212-12-12', '1212-12-12', 1, 1),
-(48, 'XVF529407136', 69, 69, 0, '1212-12-12', '0121-12-12', 1, 1),
-(49, 'ALK783501942', 1, 1, 1.12, '0001-11-11', '0011-11-11', 1, 1),
-(50, 'GAM503824796', 2, 50, 112, '1212-12-12', '0000-00-00', 1, 1);
+INSERT INTO `purchase_order` (`id`, `purchase_order_id`, `quantity`, `price`, `total`, `purchase_date`, `expected_date`, `supplier_id`, `supplier_product_id`, `payment_id`, `status`) VALUES
+(54, 'GVF485079231', 11, 11, 135.52, '0001-11-01', '0001-01-01', 1, 1, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -426,7 +443,7 @@ CREATE TABLE `supplier` (
 --
 
 INSERT INTO `supplier` (`id`, `photo`, `business_name`, `address`, `email`, `phone_number`, `time_stamp`) VALUES
-(1, '', 'Bulla Crave', '93 General Ave. QC', 'bullacrave@gmail.com', 2024162156, '2022-08-06 05:20:02');
+(1, '', 'Bulla Crave1', '93 General Ave. QC', 'bullacrave@gmail.com', 2024162156, '2022-08-06 09:16:11');
 
 -- --------------------------------------------------------
 
@@ -503,6 +520,12 @@ ALTER TABLE `items`
 -- Indexes for table `overtime`
 --
 ALTER TABLE `overtime`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `payment_terms`
+--
+ALTER TABLE `payment_terms`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -607,6 +630,12 @@ ALTER TABLE `overtime`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT for table `payment_terms`
+--
+ALTER TABLE `payment_terms`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `position`
 --
 ALTER TABLE `position`
@@ -622,7 +651,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `purchase_order`
 --
 ALTER TABLE `purchase_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `sales`
