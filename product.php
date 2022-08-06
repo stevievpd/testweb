@@ -47,7 +47,7 @@
         }
       ?>
       <div class="row">
-        <div class="col-xs-12">
+        <div class="col-xs-6">
           <div class="box">
             <div class="box-header with-border">
               <a href="#addnew" data-toggle="modal" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i> New</a>
@@ -56,24 +56,23 @@
               <table id="example1" class="table table-bordered">
                 <thead>
                   <th>Product Code</th>
-                  <th>Product Supplier</th>
                   <th>Product Name</th>
                   <th>Product Description</th>
-                  <th>Actions</th>
+                  <th>Tools</th>
                 </thead>
                 <tbody>
                   <?php
-                    $sql = "SELECT product.product_id, product.product_code, product.product_name, product.product_description, supplier.business_name FROM product LEFT JOIN supplier ON product.supplier_id=supplier.supplier_id";
+                    $sql = "SELECT * from supplier_product";
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
                       echo "
                         <tr>
-                            <td>".$row['supplier_product_id']."</td>
+                            <td>".$row['id']."</td>
                             <td>".$row['supplier_product_name']."</td>
                             <td>".$row['supplier_product_description']."</td>
                             <td>
-                                <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['product_id']."'><i class='fa fa-edit'></i> Edit</button>
-                                <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['product_id']."'><i class='fa fa-trash'></i> Delete</button>
+                                <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
+                                <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
                             </td>
                         </tr>
                       ";

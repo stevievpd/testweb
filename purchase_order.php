@@ -57,32 +57,35 @@
                   <th>Quantity</th>
                   <th>Unit Price</th>
                   <th>Grand Total</th>
+                  <th>Status</th>
                   <th>Tools</th>
                 </thead>
                 <tbody>
                 <?php
-                   $sql = "SELECT *, purchase_order.id FROM purchase_order LEFT JOIN supplier ON supplier.id=purchase_order.supplier_id LEFT JOIN supplier_product ON supplier_product.id=purchase_order.supplier_product_id";
-                   ;
+                    $sql = "SELECT *, purchase_order.id FROM purchase_order LEFT JOIN supplier ON supplier.id=purchase_order.supplier_id LEFT JOIN supplier_product ON supplier_product.id=purchase_order.supplier_product_id";
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
-                      ?>
-                        <tr>
-                          <td><?php echo $row['purchase_order_id']; ?></td>
-                          <td><?php echo $row['business_name']; ?></td>
-                          <td><?php echo $row['supplier_product_name']; ?></td>
-                          <td><?php echo $row['quantity']; ?></td>
-                          <td><?php echo $row['price']; ?></td>
-                          <td><?php echo $row['total']; ?></td>
-                          <td>
-                            <button class="btn btn-success btn-sm edit btn-flat" data-id="<?php echo $row['id']; ?>"><i class="fa fa-edit"></i> Edit</button>
-                            <button class="btn btn-danger btn-sm delete btn-flat" data-id="<?php echo $row['id']; ?>"><i class="fa fa-trash"></i> Delete</button>
-                            <button class="btn btn-info btn-sm view btn-flat" data-id="<?php echo $row['id']; ?>"><i class="fa fa-eye"></i> View</button>
-                            <button class="btn btn-light btn-sm pdf btn-flat" data-id="<?php echo $row['id']; ?>"><i class="fa fa-file-text"></i> PDF</button>
-                          </td>
-                        </tr>
-                      <?php
-                    }
-                  ?>
+                    $status = ($row['status'])?'<span class="label label-warning pull-right">Pending</span>':'<span class="label label-danger pull-right">Received</span>';
+                      echo "
+                      <tr>
+                      <td>".$row['purchase_order_id']."</td>
+                      <td>".$row['business_name']."</td>
+                      <td>".$row['supplier_product_name']."</td>
+                      <td>".$row['quantity']."</td>
+                      <td>".$row['price']."</td>
+                      <td>".$row['total']."</td>
+                      <td>".$row['status'].$status."</td>
+                      <td>
+                        <button class='btn btn-success btn-sm btn-flat edit' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
+                        <button class='btn btn-danger btn-sm btn-flat delete' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
+                        <button class='btn btn-primary btn-sm btn-flat view' data-id='".$row['id']."'><i class='fa fa-eye'></i> View</button>
+                        <button class='btn btn-info btn-sm btn-flat pdf' data-id='".$row['id']."'><i class='fa fa-file'></i> PDF</button>
+                      </td>
+                    </tr>
+                  ";
+                  }
+                ?>
+
                 </tbody>
               </table>
             </div>
@@ -141,7 +144,7 @@ function getRow(id){
       $('.supid').val(response.id);
       $('.po_id').val(response.id);
       $('.purchase_order_id').val(response.id);
-      $('.del_purchase_order').val(response.id);
+      $('.del_purchase_order').html(response.id);
       $('.edit_purchase_order').val(response.id);
       $('#edit_supplier').val(response.supplier_id);
       $('#edit_supplier_product').val(response.supplier_product_id);

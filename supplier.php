@@ -56,12 +56,11 @@
                   <th>Address</th>
                   <th>Email</th>
                   <th>Phone Number</th>
-                  <th>Supplied Items</th>
                   <th>Tools</th>
                 </thead>
                 <tbody>
                 <?php
-                   $sql = "SELECT * FROM supplier LEFT JOIN product ON supplier.supplier_id = product.supplier_id";
+                   $sql = "SELECT * FROM supplier";
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
                       ?>
@@ -71,10 +70,9 @@
                           <td><?php echo $row['address']; ?></td>
                           <td><?php echo $row['email']; ?></td>
                           <td><?php echo $row['phone_number']; ?></td>
-                          <td><?php echo $row['product_name']?></td>
                           <td>
-                            <button class="btn btn-success btn-sm edit btn-flat" data-id="<?php echo $row['supplier_id']; ?>"><i class="fa fa-edit"></i> Edit</button>
-                            <button class="btn btn-danger btn-sm delete btn-flat" data-id="<?php echo $row['supplier_id']; ?>"><i class="fa fa-trash"></i> Delete</button>
+                            <button class="btn btn-success btn-sm edit btn-flat" data-id="<?php echo $row['id']; ?>"><i class="fa fa-edit"></i> Edit</button>
+                            <button class="btn btn-danger btn-sm delete btn-flat" data-id="<?php echo $row['id']; ?>"><i class="fa fa-trash"></i> Delete</button>
                           </td>
                         </tr>
                       <?php
