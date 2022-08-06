@@ -133,29 +133,13 @@
 </div> -->
 
 
-
-
-<!-- Edit -->
-<!-- Edit -->
-<!-- Edit -->
-<!-- Edit -->
-<!-- Edit -->
-<!-- Edit -->
-<!-- Edit -->
-<!-- Edit -->
-<!-- Edit -->
-<!-- Edit -->
-<!-- Edit -->
-<!-- Edit -->
-<!-- Edit -->
-<!-- Edit -->
 <div class="modal fade" id="addnew">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"><b>Add Employee</b></h4>
+                <h4 class="modal-title"><b>Add Purchase order</b></h4>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" method="POST" action="purchase_order_add.php"
@@ -195,21 +179,65 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="quantity" class="col-sm-3 control-label">Quantity</label>
+                        <label for="add_quantity" class="col-sm-3 control-label">Quantity</label>
+
                         <div class="col-sm-9">
-                            <div class="quantity">
-                                <input type="number" class="form-control" id="quantity" name="quantity">
-                            </div>
+                            <input type="number" class="form-control" id="add_quantity" name="quantity"
+                                placeholder="0.00" oninput="multiply()">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="price" class="col-sm-3 control-label">price</label>
+                        <label for="add_price" class="col-sm-3 control-label">Price</label>
+
                         <div class="col-sm-9">
-                            <div class="price">
-                                <input type="number" class="form-control" id="price" name="price">
-                            </div>
+                            <input type="number" class="form-control" id="add_price" name="price" placeholder="0.00"
+                                oninput="multiply()">
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="add_subtotal" class="col-sm-3 control-label">Subtotal</label>
+
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="add_subtotal" name="subtotal"
+                                placeholder="0.00" onchange="multiply()" require readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sales_tax" class="col-sm-3 control-label">Sales Tax</label>
+
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="sales_tax" name="sales_tax" placeholder="0.00"
+                                oninput="multiply()" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="total" class="col-sm-3 control-label">Grand Total</label>
+
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="total" name="total" placeholder="0.00"
+                                readonly>
+                        </div>
+                    </div>
+                    
+                    <script>
+                    function multiply() {
+                        var add_quantity = document.getElementById("add_quantity").value;
+                        var add_price = document.getElementById("add_price").value;
+                        var add_subtotal = add_quantity * add_price;
+                        document.getElement
+                        ById("add_subtotal").value = add_subtotal;
+
+                        var subtotal = document.getElementById("add_subtotal").value;
+                        var amount = subtotal * 0.12;
+                        document.getElementById("sales_tax").value = amount;
+
+                        var total_amount = (add_subtotal) + (amount);
+                        document.getElementById("total").value = total_amount;
+                    }
+                    </script>
+
                     <div class="form-group">
                         <label for="purchase_date" class="col-sm-3 control-label">Purchase Date</label>
 
@@ -274,7 +302,7 @@
 
 
 
-<!-- Edit -->
+<!-- Edit
 <div class="modal fade" id="edit">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -405,7 +433,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- Delete -->
 <div class="modal fade" id="delete">

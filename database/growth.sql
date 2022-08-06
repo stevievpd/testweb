@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 06, 2022 at 04:09 AM
+-- Generation Time: Aug 06, 2022 at 08:17 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -21,7 +21,7 @@ SET time_zone = "+00:00";
 -- Database: `growth`
 --
 
--- -------------------------------------------------------------
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `admin`
@@ -200,7 +200,7 @@ CREATE TABLE `employees` (
 --
 
 INSERT INTO `employees` (`id`, `employee_id`, `firstname`, `lastname`, `address`, `birthdate`, `contact_info`, `gender`, `position_id`, `schedule_id`, `photo`, `created_on`) VALUES
-(1, 'ABC123456789', 'Roge', 'Cawater', 'Paco, Manila PH', '2018-04-02', '09000035719', 'Male', 1, 1, 'profilepic.jpg', '2018-04-28'),
+(1, 'ABC123456789', 'Roge', 'Cawater', 'Paco, Manila PH', '2018-04-02', '09000035719', 'Female', 4, 1, 'profilepic.jpg', '2018-04-28'),
 (3, 'DYE473869250', 'Hayop ka ', 'Divinagracia', 'E.B. Magalona', '1992-05-02', '09123456789', 'Female', 2, 2, '', '2018-04-30'),
 (4, 'JIE625973480', 'Gemalyn', 'Cepe', 'Carmen, Bohol', '1995-10-02', '09468029840', 'Female', 2, 3, '', '2018-04-30'),
 (5, 'TQO238109674', 'Bruno', 'Den', 'Test', '1995-08-23', '5454578965', 'Male', 1, 2, 'thanossmile.jpg', '2018-07-11'),
@@ -347,15 +347,22 @@ CREATE TABLE `purchase_order` (
   `price` float NOT NULL,
   `total` float NOT NULL,
   `purchase_date` date NOT NULL,
-  `expected_date` date NOT NULL
+  `expected_date` date NOT NULL,
+  `supplier_id` int(11) NOT NULL,
+  `supplier_product_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `purchase_order`
 --
 
-INSERT INTO `purchase_order` (`id`, `purchase_order_id`, `quantity`, `price`, `total`, `purchase_date`, `expected_date`) VALUES
-(37, '', 220, 20, 4928, '0002-02-02', '0002-02-02');
+INSERT INTO `purchase_order` (`id`, `purchase_order_id`, `quantity`, `price`, `total`, `purchase_date`, `expected_date`, `supplier_id`, `supplier_product_id`) VALUES
+(38, 'TRANS0000123', 10, 10, 1000, '2022-08-06', '2022-08-19', 1, 1),
+(46, 'YGD170682935', 11, 11111, 0, '1212-12-12', '0121-12-12', 1, 1),
+(47, 'IDQ561329840', 121, 2121210000, 0, '1212-12-12', '1212-12-12', 1, 1),
+(48, 'XVF529407136', 69, 69, 0, '1212-12-12', '0121-12-12', 1, 1),
+(49, 'ALK783501942', 1, 1, 1.12, '0001-11-11', '0011-11-11', 1, 1),
+(50, 'GAM503824796', 2, 50, 112, '1212-12-12', '0000-00-00', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -406,10 +413,8 @@ INSERT INTO `schedules` (`id`, `time_in`, `time_out`) VALUES
 
 CREATE TABLE `supplier` (
   `id` int(11) NOT NULL,
-  `supplier_id` varchar(250) NOT NULL,
   `photo` varchar(200) NOT NULL,
   `business_name` varchar(200) NOT NULL,
-  `product` varchar(200) NOT NULL,
   `address` varchar(200) NOT NULL,
   `email` varchar(200) NOT NULL,
   `phone_number` bigint(100) NOT NULL,
@@ -420,12 +425,8 @@ CREATE TABLE `supplier` (
 -- Dumping data for table `supplier`
 --
 
-INSERT INTO `supplier` (`id`, `supplier_id`, `photo`, `business_name`, `product`, `address`, `email`, `phone_number`, `time_stamp`) VALUES
-(21, 'WFN846201793', 'male.png', 'NIKO Pie', 'Pie', 'Makati City', 'nikkopie@gmail.com', 945421565, '2022-08-02 09:57:23'),
-(22, 'EJQ781650329', 'female4.jpg', 'Cake Shops', 'Cake', 'Tandang Sora', 'ambL@gmail.com', 1042442, '2022-08-02 05:20:56'),
-(23, 'JIG091843275', 'male.png', 'Bulla Crave', 'Laundry Machine', 'Tandang Sora', 'ambL@gmail.com', 264161125, '2022-08-02 05:38:30'),
-(24, 'DPK378142605', 'facebook-profile-image.jpeg', 'Bulla Crave', 'Laundry Machine', 'Tandang Sora', 'ambL@gmail.com', 264161125, '2022-08-02 05:54:20'),
-(25, 'WFU397408615', 'male6.jpg', 'Bulla Crave', 'Laundry Machine', 'Tandang Sora', 'ambL@gmail.com', 264161125, '2022-08-02 06:12:53');
+INSERT INTO `supplier` (`id`, `photo`, `business_name`, `address`, `email`, `phone_number`, `time_stamp`) VALUES
+(1, '', 'Bulla Crave', '93 General Ave. QC', 'bullacrave@gmail.com', 2024162156, '2022-08-06 05:20:02');
 
 -- --------------------------------------------------------
 
@@ -434,10 +435,17 @@ INSERT INTO `supplier` (`id`, `supplier_id`, `photo`, `business_name`, `product`
 --
 
 CREATE TABLE `supplier_product` (
-  `supplier_product_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `supplier_product_name` varchar(80) NOT NULL,
   `supplier_product_description` varchar(80) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `supplier_product`
+--
+
+INSERT INTO `supplier_product` (`id`, `supplier_product_name`, `supplier_product_description`) VALUES
+(1, 'Laundry Machine', 'LG Laundry Machine 12862');
 
 --
 -- Indexes for dumped tables
@@ -538,7 +546,7 @@ ALTER TABLE `supplier`
 -- Indexes for table `supplier_product`
 --
 ALTER TABLE `supplier_product`
-  ADD PRIMARY KEY (`supplier_product_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -614,7 +622,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `purchase_order`
 --
 ALTER TABLE `purchase_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `sales`
