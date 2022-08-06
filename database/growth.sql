@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 04, 2022 at 03:42 AM
+-- Generation Time: Aug 06, 2022 at 04:09 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -323,13 +323,26 @@ INSERT INTO `position` (`id`, `description`, `rate`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `product`
+--
+
+CREATE TABLE `product` (
+  `product_id` int(11) NOT NULL,
+  `product_code` varchar(250) NOT NULL,
+  `product_name` varchar(250) NOT NULL,
+  `product_description` varchar(250) NOT NULL,
+  `supplier_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `purchase_order`
 --
 
 CREATE TABLE `purchase_order` (
   `id` int(11) NOT NULL,
-  `vendor_name` varchar(200) NOT NULL,
-  `product_name` varchar(200) NOT NULL,
+  `purchase_order_id` varchar(12) NOT NULL,
   `quantity` int(100) NOT NULL,
   `price` float NOT NULL,
   `total` float NOT NULL,
@@ -341,8 +354,8 @@ CREATE TABLE `purchase_order` (
 -- Dumping data for table `purchase_order`
 --
 
-INSERT INTO `purchase_order` (`id`, `vendor_name`, `product_name`, `quantity`, `price`, `total`, `purchase_date`, `expected_date`) VALUES
-(37, 'Cake Shops', 'Laptop Huawei', 220, 20, 4928, '0002-02-02', '0002-02-02');
+INSERT INTO `purchase_order` (`id`, `purchase_order_id`, `quantity`, `price`, `total`, `purchase_date`, `expected_date`) VALUES
+(37, '', 220, 20, 4928, '0002-02-02', '0002-02-02');
 
 -- --------------------------------------------------------
 
@@ -421,20 +434,10 @@ INSERT INTO `supplier` (`id`, `supplier_id`, `photo`, `business_name`, `product`
 --
 
 CREATE TABLE `supplier_product` (
-  `id` int(11) NOT NULL,
-  `supProdCode` bigint(250) NOT NULL,
-  `supProName` varchar(250) NOT NULL,
-  `supProdDesc` varchar(250) NOT NULL
+  `supplier_product_id` int(11) NOT NULL,
+  `supplier_product_name` varchar(80) NOT NULL,
+  `supplier_product_description` varchar(80) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `supplier_product`
---
-
-INSERT INTO `supplier_product` (`id`, `supProdCode`, `supProName`, `supProdDesc`) VALUES
-(1, 10, 'LT', 'Simcard'),
-(2, 122, 'BMI', 'Motorcycle'),
-(20, 789456, 'Ryzen 5', 'Laptop Huawei');
 
 --
 -- Indexes for dumped tables
@@ -501,6 +504,13 @@ ALTER TABLE `position`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `product`
+--
+ALTER TABLE `product`
+  ADD PRIMARY KEY (`product_id`),
+  ADD KEY `supplier_id` (`supplier_id`);
+
+--
 -- Indexes for table `purchase_order`
 --
 ALTER TABLE `purchase_order`
@@ -528,7 +538,7 @@ ALTER TABLE `supplier`
 -- Indexes for table `supplier_product`
 --
 ALTER TABLE `supplier_product`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`supplier_product_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -595,6 +605,12 @@ ALTER TABLE `position`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `product`
+--
+ALTER TABLE `product`
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
 -- AUTO_INCREMENT for table `purchase_order`
 --
 ALTER TABLE `purchase_order`
@@ -617,12 +633,6 @@ ALTER TABLE `schedules`
 --
 ALTER TABLE `supplier`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
-
---
--- AUTO_INCREMENT for table `supplier_product`
---
-ALTER TABLE `supplier_product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
