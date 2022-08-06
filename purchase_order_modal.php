@@ -39,7 +39,7 @@
                                     $query = $conn->query($sql);
                                     while($row = $query->fetch_assoc()){
                                         echo "
-                                        <option value='".$row['product_description']."'>".$row['product_description']."</option>
+                                        <option>".$row['product_description']."</option>
                                         ";
                                     }
                                 ?>
@@ -187,7 +187,7 @@
                                     $query = $conn->query($sql);
                                     while($prow = $query->fetch_assoc()){
                                         echo "
-                                        <option value='".$prow['supplier_id']."'>".$prow['business_name']."</option>
+                                        <option>".$prow['business_name']."</option>
                                         ";
                                     }
                                 ?>

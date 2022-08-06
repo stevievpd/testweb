@@ -1,4 +1,4 @@
-<?	php
+<?php
 	include 'includes/session.php';
 	if(isset($_POST['edit'])){
 		$id = $_POST['id'];
