@@ -54,11 +54,10 @@
                             </select>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i
-                                class="fa fa-close"></i> Close</button>
-                        <button type="submit" class="btn btn-primary btn-flat" name="add"><i class="fa fa-save"></i>
-                            Save</button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+                <button type="submit" class="btn btn-primary btn-flat" name="add"><i class="fa fa-save"></i> Save</button>
                 </form>
             </div>
         </div>
@@ -73,23 +72,37 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"><b>Update Deduction</b></h4>
+                <h4 class="modal-title"><b>Update Customer</b></h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" method="POST" action="deduction_edit.php">
-                    <input type="hidden" class="decid" name="id">
+                <form class="form-horizontal" method="POST" action="customer_edit.php">
+                    <input type="hidden" class="editCustomer" name="id">
                     <div class="form-group">
-                        <label for="edit_description" class="col-sm-3 control-label">Description</label>
+                        <label for="editname" class="col-sm-3 control-label">First Name</label>
 
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="edit_description" name="description">
+                            <input type="text" class="form-control" id="editCustomerFirstName" name="edit_customer_first_name">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="edit_amount" class="col-sm-3 control-label">Amount</label>
+                        <label for="editname" class="col-sm-3 control-label">Last Name</label>
 
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="edit_amount" name="amount">
+                            <input type="text" class="form-control" id="editCustomerLastName" name="edit_customer_last_name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="customercontact" class="col-sm-3 control-label">Contact Number</label>
+
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="editContact" name="edit_customer_contact">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="editname" class="col-sm-3 control-label">Address</label>
+
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="editCustomerAddress" name="edit_customer_address">
                         </div>
                     </div>
             </div>
@@ -114,8 +127,8 @@
                 <h4 class="modal-title"><b>Deleting...</b></h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" method="POST" action="deduction_delete.php">
-                    <input type="hidden" class="decid" name="id">
+                <form class="form-horizontal" method="POST" action="customer_delete.php">
+                    <input type="hidden" class="customer_delete" name="id">
                     <div class="text-center">
                         <p>DELETE DEDUCTION</p>
                         <h2 id="del_deduction" class="bold"></h2>

@@ -75,8 +75,8 @@
                           <td><?php echo date('M d, Y', strtotime($row['customer_created_on'])) ?></td>
 
                           <td>
-                            <button class="btn btn-primary btn-sm view btn-flat" data-id="<?php echo $row['custid']; ?>"><i class="fa fa-edit"></i> Edit</button>
-                            <button class="btn btn-danger btn-sm view btn-flat" data-id="<?php echo $row['custid']; ?>"><i class="fa fa-trash"></i> Delete</button>
+                            <button class="btn btn-primary btn-sm edit btn-flat" data-id="<?php echo $row['custid']; ?>"><i class="fa fa-edit"></i> Edit</button>
+                            <button class="btn btn-danger btn-sm delete btn-flat" data-id="<?php echo $row['custid']; ?>"><i class="fa fa-trash"></i> Delete</button>
                           </td>
                         </tr>
                       <?php
@@ -106,6 +106,20 @@ $(function(){
     getRow(id);
   });
 
+  $('#example1').on('click', '.edit', function(e){
+    e.preventDefault();
+    $('#edit').modal('show');
+    var id = $(this).data('id');
+    getRow(id);
+  });
+
+  $('#example1').on('click', '.delete', function(e){
+    e.preventDefault();
+    $('#delete').modal('show');
+    var id = $(this).data('id');
+    getRow(id);
+  });
+
 });
 
 function getRow(id){
@@ -117,8 +131,8 @@ function getRow(id){
     success: function(response){
       $('#custid').val(response.customer_id);
       $('#employee_id').val(response.employee_id);
-      $('#cust_firstname').val(response.cust_firstname);
-      $('#cust_lastname').val(response.cust_lastname);
+      $('#cust_firstname').val(response.customer_firstname);
+      $('#cust_lastname').val(response.customer_lastname);
       $('#sales_id').val(response.sales_id);
       $('#item_id').val(response.item_id);
       $('#item_description').val(response.item_description);
@@ -126,6 +140,10 @@ function getRow(id){
       $('#item_unit').val(response.item_unit).html(response.item_unit);
       $('#item_price').val(response.item_cost).html(response.item_cost);
       $('#item_total').val(response.item_total).html(response.item_total);
+      $('#editCustomerFirstName').val(response.customer_firstname);
+      $('#editCustomerLastName').val(response.customer_lastname);
+      $('#editContact').val(response.customer_contact_info);
+      $('#editCustomerAddress').val(response.address);
     }
   });
 }
