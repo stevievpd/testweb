@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 06, 2022 at 12:01 PM
+-- Generation Time: Aug 08, 2022 at 04:31 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -136,19 +136,21 @@ INSERT INTO `cashadvance` (`id`, `date_advance`, `employee_id`, `amount`) VALUES
 CREATE TABLE `customer` (
   `id` int(11) NOT NULL,
   `customer_id` varchar(50) NOT NULL,
-  `cust_firstname` varchar(50) NOT NULL,
-  `cust_lastname` varchar(50) NOT NULL,
-  `cust_contact_info` varchar(50) NOT NULL,
-  `cust_address` varchar(150) NOT NULL,
-  `transaction_id` varchar(50) NOT NULL
+  `photo` varchar(200) NOT NULL,
+  `firstname` varchar(50) NOT NULL,
+  `lastname` varchar(50) NOT NULL,
+  `contact_info` varchar(50) NOT NULL,
+  `address` varchar(150) NOT NULL,
+  `employee_id` varchar(50) NOT NULL,
+  `created_on` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`id`, `customer_id`, `cust_firstname`, `cust_lastname`, `cust_contact_info`, `cust_address`, `transaction_id`) VALUES
-(1, 'ABC123456789', 'Steven Edward', 'Lizada', '09615089172', '12 Emerald lane Brgy. Culiat Quezon City', 'TRNS789456321');
+INSERT INTO `customer` (`id`, `customer_id`, `photo`, `firstname`, `lastname`, `contact_info`, `address`, `employee_id`, `created_on`) VALUES
+(3, 'CBI509816472', '', 'Steven Edward ', 'Lizada', '0909', '93 General Avenue Tandang Sora', '1', '2022-08-08');
 
 -- --------------------------------------------------------
 
@@ -597,7 +599,7 @@ ALTER TABLE `cashadvance`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `deductions`
