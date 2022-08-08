@@ -77,25 +77,6 @@
                       <input type="text" class="form-control" id="edit_supplier_name" name="supplierName">
                     </div>
                 </div> -->
-                
-				<div class="form-group">
-                        <label for="supplier" class="col-sm-3 control-label">Supplier</label>
-
-                        <div class="col-sm-9">
-                            <select class="form-control" name="supplierName" id="edit_supplier_name" required>
-                                <option value="" selected>- Select -</option>
-                                <?php
-                                    $sql = "SELECT * FROM supplier ORDER BY business_name ASC";
-                                    $query = $conn->query($sql);
-                                    while($row = $query->fetch_assoc()){
-                                        echo "
-                                        <option value='".$row['id']."'>".$row['business_name']."</option>
-                                        ";
-                                    }
-                                ?>
-                            </select>
-                        </div>
-                    </div>
 				
 				<div class="form-group">
                     <label for="prodCode" class="col-sm-3 control-label">Product Code</label>

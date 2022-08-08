@@ -55,21 +55,19 @@
             <div class="box-body">
               <table id="example1" class="table table-bordered">
                 <thead>
-                  <th>Product Supplier</th>
-                  <th>Product Code</th>
+                  <th>Product ID</th>
                   <th>Product Name</th>
                   <th>Product Description</th>
                   <th>Tools</th>
                 </thead>
                 <tbody>
                   <?php
-                    $sql = "SELECT supplier_product.supplier_product_id, supplier_product.supplier_product_code, supplier_product.supplier_product_name, supplier_product.supplier_product_description, supplier.business_name FROM supplier_product LEFT JOIN supplier ON supplier_product.supplier_id = supplier.id";
+                    $sql = "SELECT * FROM supplier_product";
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
                       echo "
                         <tr>
-                            <td>".$row['business_name']."</td>
-                            <td>".$row['supplier_product_code']."</td>
+                            <td>".$row['supplier_product_id']."</td>
                             <td>".$row['supplier_product_description']."</td>
                             <td>".$row['supplier_product_name']."</td>
                             <td>
@@ -117,7 +115,7 @@
           dataType: 'json',
           success: function(response){
             $('.product_id').val(response.supplier_product_id);
-            $('#edit_prodCode').val(response.supplier_product_code);
+            $('#edit_prodCode').val(response.supplier_product_id);
             $('#edit_prodName').val(response.supplier_product_name);
             $('#edit_prodDesc').val(response.supplier_product_description);
             $('#edit_supplier_name').val(response.business_name);

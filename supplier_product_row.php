@@ -3,7 +3,7 @@
 
 	if(isset($_POST['id'])){
 		$id = $_POST['id'];
-		$sql = "SELECT * FROM supplier_product, supplier WHERE supplier_product_id = '$id'";
+		$sql = "SELECT * FROM supplier_product";
 		$query = $conn->query($sql);
 		$row = $query->fetch_assoc();
 
