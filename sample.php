@@ -731,3 +731,171 @@ SELECT *, purchase_order.id FROM purchase_order LEFT JOIN supplier ON supplier.i
 
 
 id = '$purchase_order_id', purchase_order_id = '$purchase_order_id', supplier_id = '$supplier_id', supplier_product_id = '$supplier_product_id'
+
+<div class="modal fade" id="edit">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><b><span class="po_id"></span></b></h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" method="POST" action="purchase_order_edit.php">
+                    <input type="hidden" class="purchaseid" name="id">
+
+                    <div class="form-group">
+                        <label for="edit_supplier" class="col-sm-3 control-label">Business Name</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" id="edit_supplier" name="supplier" required>
+                                <option value="" selected>- Select -</option>
+                                <?php
+                                    $sql = "SELECT * FROM supplier";
+                                    $query = $conn->query($sql);
+                                    while($brow = $query->fetch_assoc()){
+                                        echo "
+                                        <option value='".$brow['id']."'>".$brow['business_name']."</option>
+                                        ";
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit_supplier_product" class="col-sm-3 control-label">Product Name</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" id="edit_supplier_product" name="supplier_product" required>
+                                <option value="" selected>- Select -</option>
+                                <?php
+                                    $sql = "SELECT * FROM supplier_product";
+                                    $query = $conn->query($sql);
+                                    while($prow = $query->fetch_assoc()){
+                                        echo "
+                                        <option value='".$prow['id']."'>".$prow['supplier_product_name']."</option>
+                                        ";
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit_quantity" class="col-sm-3 control-label">Quantity</label>
+
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="edit_quantity" name="quantity"
+                                oninput="add()">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit_price" class="col-sm-3 control-label">Price</label>
+
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="edit_price" name="price" oninput="add()">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit_sub_total" class="col-sm-3 control-label">Subtotal</label>
+
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="edit_sub_total" name="subtotal"
+                                onchange="add()" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit_sales_tax" class="col-sm-3 control-label">Sales Tax</label>
+
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="edit_sales_tax" name="sales_tax"
+                                onchange="add()" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit_total_amount" class="col-sm-3 control-label">Total Amount</label>
+
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="edit_total_amount" name="total" readonly>
+                        </div>
+                    </div>
+
+                    <script>
+                    function add() {
+                        var edit_quantity = document.getElementById("edit_quantity").value;
+                        var edit_price = document.getElementById("edit_price").value;
+                        var edit_subtotal = edit_quantity * edit_price;
+                        document.getElementById("edit_sub_total").value = edit_subtotal;
+
+                        var subtotal = document.getElementById("edit_sub_total").value;
+                        var editamount = subtotal * 0.12;
+                        document.getElementById("edit_sales_tax").value = editamount;
+
+                        var edittotal_amount = (edit_subtotal) + (editamount);
+                        document.getElementById("edit_total_amount").value = edittotal_amount;
+                    }
+                    </script>
+
+                    <div class="form-group">
+                        <label for="edit_purchase_date" class="col-sm-3 control-label">Purchase Date</label>
+
+                        <div class="col-sm-9">
+                            <input type="date" class="form-control" id="edit_purchase_date" name="purchase_date">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit_expected_date" class="col-sm-3 control-label">Expected Date</label>
+
+                        <div class="col-sm-9">
+                            <input type="date" class="form-control" id="edit_expected_date" name="expected_date">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit_payment_terms" class="col-sm-3 control-label">Payment Terms</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="payment_terms" id="edit_payment_terms" >
+                                <option value="" selected>- Select -</option>
+                                <?php
+                                    $sql = "SELECT * FROM payment_terms";
+                                    $query = $conn->query($sql);
+                                    while($prow = $query->fetch_assoc()){
+                                        echo "
+                                        <option value='".$prow['id']."'>".$prow['payment_methods']."</option>
+                                        ";
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                    </div>  
+
+                    <div class="form-group">
+                        <label for="edit_status" class="col-sm-3 control-label">Status</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="status" id="edit_status" >
+                                <option value="" selected>- Select -</option>
+                                <?php
+                                    $sql = "SELECT * FROM purchase_order";
+                                    $query = $conn->query($sql);
+                                    while($prow = $query->fetch_assoc()){
+                                        $status = ($prow['status_id'])?'<span class="label label-warning pull-right">Received</span>':'<span class="label label-danger pull-right">Pending</span>';
+                                        echo "
+                                        <option value='".$prow['id']."'>".$prow['status_id']."</option>
+                                        ";
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                    </div>  
+
+                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i
+                                class="fa fa-close"></i> Close</button>
+                        <button type="submit" class="btn btn-success btn-flat" name="edit"><i
+                                class="fa fa-check-square-o"></i> Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> 

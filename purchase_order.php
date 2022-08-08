@@ -61,10 +61,10 @@
                 </thead>
                 <tbody>
                 <?php
-                    $sql = "SELECT *, purchase_order.id FROM purchase_order LEFT JOIN supplier ON supplier.id=purchase_order.supplier_id LEFT JOIN supplier_product ON supplier_product.id=purchase_order.supplier_product_id ";
+                    $sql = "SELECT *, purchase_order.id FROM purchase_order LEFT JOIN supplier ON supplier.id=purchase_order.supplier_id LEFT JOIN supplier_product ON supplier_product.id=purchase_order.supplier_product_id LEFT JOIN status on status.id=purchase_order.status_id";
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
-                    $status = ($row['status_id'])?'<span class="label label-warning pull-right">Received</span>':'<span class="label label-danger pull-right">Pending</span>';
+                    $status = ($row['status_id'])?'<span class="label label-warning pull-right">Received</span>':'<span class="label label-danger pull-right">Pending</span>':'<span class="label label-danger pull-right">Lose</span>';
                       echo "
                       <tr>
                       <td>".$row['purchase_order_id'].$status."</td>

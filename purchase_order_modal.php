@@ -302,12 +302,11 @@
                             <select class="form-control" name="status" id="edit_status" >
                                 <option value="" selected>- Select -</option>
                                 <?php
-                                    $sql = "SELECT * FROM purchase_order";
+                                    $sql = "SELECT * FROM status";
                                     $query = $conn->query($sql);
                                     while($prow = $query->fetch_assoc()){
-                                        $status = ($prow['status_id'])?'<span class="label label-warning pull-right">Received</span>':'<span class="label label-danger pull-right">Pending</span>';
                                         echo "
-                                        <option value='".$prow['id']."'>".$prow['status_id']."</option>
+                                        <option value='".$prow['id']."'>".$prow['status_description']."</option>
                                         ";
                                     }
                                 ?>

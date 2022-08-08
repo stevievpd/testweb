@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 08, 2022 at 05:27 AM
+-- Generation Time: Aug 08, 2022 at 07:33 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -136,21 +136,19 @@ INSERT INTO `cashadvance` (`id`, `date_advance`, `employee_id`, `amount`) VALUES
 CREATE TABLE `customer` (
   `id` int(11) NOT NULL,
   `customer_id` varchar(50) NOT NULL,
-  `photo` varchar(200) NOT NULL,
-  `firstname` varchar(50) NOT NULL,
-  `lastname` varchar(50) NOT NULL,
-  `contact_info` varchar(50) NOT NULL,
-  `address` varchar(150) NOT NULL,
-  `employee_id` varchar(50) NOT NULL,
-  `created_on` date NOT NULL
+  `cust_firstname` varchar(50) NOT NULL,
+  `cust_lastname` varchar(50) NOT NULL,
+  `cust_contact_info` varchar(50) NOT NULL,
+  `cust_address` varchar(150) NOT NULL,
+  `transaction_id` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`id`, `customer_id`, `photo`, `firstname`, `lastname`, `contact_info`, `address`, `employee_id`, `created_on`) VALUES
-(3, 'CBI509816472', '', 'Steven Edward ', 'Lizada', '0909', '93 General Avenue Tandang Sora', '1', '2022-08-08');
+INSERT INTO `customer` (`id`, `customer_id`, `cust_firstname`, `cust_lastname`, `cust_contact_info`, `cust_address`, `transaction_id`) VALUES
+(1, 'ABC123456789', 'Steven Edward', 'Lizada', '09615089172', '12 Emerald lane Brgy. Culiat Quezon City', 'TRNS789456321');
 
 -- --------------------------------------------------------
 
@@ -345,6 +343,20 @@ INSERT INTO `position` (`id`, `description`, `rate`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `product`
+--
+
+CREATE TABLE `product` (
+  `product_id` int(11) NOT NULL,
+  `product_code` varchar(250) NOT NULL,
+  `product_name` varchar(250) NOT NULL,
+  `product_description` varchar(250) NOT NULL,
+  `supplier_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `purchase_order`
 --
 
@@ -359,15 +371,16 @@ CREATE TABLE `purchase_order` (
   `supplier_id` int(11) NOT NULL,
   `supplier_product_id` int(11) NOT NULL,
   `payment_id` int(11) NOT NULL,
-  `status` int(11) NOT NULL COMMENT '[0] - Pending [1] - Received [2] - Lost & Stolen'
+  `status_id` int(11) NOT NULL COMMENT '[0] - Pending [1] - Received [2] - Lost & Stolen'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `purchase_order`
 --
 
-INSERT INTO `purchase_order` (`id`, `purchase_order_id`, `quantity`, `price`, `total`, `purchase_date`, `expected_date`, `supplier_id`, `supplier_product_id`, `payment_id`, `status`) VALUES
-(54, 'GVF485079231', 11, 11, 135.52, '0001-11-01', '0001-01-01', 1, 1, 3, 1);
+INSERT INTO `purchase_order` (`id`, `purchase_order_id`, `quantity`, `price`, `total`, `purchase_date`, `expected_date`, `supplier_id`, `supplier_product_id`, `payment_id`, `status_id`) VALUES
+(63, 'NPR627945308', 222, 12111, 0, '5858-08-05', '5858-05-05', 1, 1, 3, 0),
+(64, 'UGY078215394', 33, 33, 0, '0033-03-31', '0033-03-31', 1, 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -413,6 +426,26 @@ INSERT INTO `schedules` (`id`, `time_in`, `time_out`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `status`
+--
+
+CREATE TABLE `status` (
+  `id` int(11) NOT NULL,
+  `status_description` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `status`
+--
+
+INSERT INTO `status` (`id`, `status_description`) VALUES
+(0, 'Pending'),
+(1, 'Received'),
+(2, 'Lost/Stolen');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `supplier`
 --
 
@@ -441,7 +474,6 @@ INSERT INTO `supplier` (`id`, `photo`, `business_name`, `address`, `email`, `pho
 
 CREATE TABLE `supplier_product` (
   `id` int(11) NOT NULL,
-  `supplier_product_id` varchar(100) NOT NULL,
   `supplier_product_name` varchar(80) NOT NULL,
   `supplier_product_description` varchar(80) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -450,8 +482,8 @@ CREATE TABLE `supplier_product` (
 -- Dumping data for table `supplier_product`
 --
 
-INSERT INTO `supplier_product` (`id`, `supplier_product_id`, `supplier_product_name`, `supplier_product_description`) VALUES
-(2, 'LKES3241', 'Razer Mouse', 'ASDADD');
+INSERT INTO `supplier_product` (`id`, `supplier_product_name`, `supplier_product_description`) VALUES
+(1, 'Laundry Machine', 'LG Laundry Machine 12862');
 
 --
 -- Indexes for dumped tables
@@ -524,6 +556,13 @@ ALTER TABLE `position`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `product`
+--
+ALTER TABLE `product`
+  ADD PRIMARY KEY (`product_id`),
+  ADD KEY `supplier_id` (`supplier_id`);
+
+--
 -- Indexes for table `purchase_order`
 --
 ALTER TABLE `purchase_order`
@@ -539,6 +578,12 @@ ALTER TABLE `sales`
 -- Indexes for table `schedules`
 --
 ALTER TABLE `schedules`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `status`
+--
+ALTER TABLE `status`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -579,7 +624,7 @@ ALTER TABLE `cashadvance`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `deductions`
@@ -624,10 +669,16 @@ ALTER TABLE `position`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `product`
+--
+ALTER TABLE `product`
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
 -- AUTO_INCREMENT for table `purchase_order`
 --
 ALTER TABLE `purchase_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT for table `sales`
@@ -646,12 +697,6 @@ ALTER TABLE `schedules`
 --
 ALTER TABLE `supplier`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
-
---
--- AUTO_INCREMENT for table `supplier_product`
---
-ALTER TABLE `supplier_product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
