@@ -47,7 +47,7 @@
         }
       ?>
       <div class="row">
-        <div class="col-xs-6">
+        <div class="col-lg-12">
           <div class="box">
             <div class="box-header with-border">
               <a href="#addnew" data-toggle="modal" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i> New</a>
@@ -55,24 +55,24 @@
             <div class="box-body">
               <table id="example1" class="table table-bordered">
                 <thead>
-                  <th>Product Code</th>
+                  <th>Product ID</th>
                   <th>Product Name</th>
                   <th>Product Description</th>
                   <th>Tools</th>
                 </thead>
                 <tbody>
                   <?php
-                    $sql = "SELECT product.product_id, product.product_code, product.product_name, product.product_description, supplier.business_name FROM product LEFT JOIN supplier ON product.supplier_id=supplier.supplier_id";
+                    $sql = "SELECT * FROM supplier_product";
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
                       echo "
                         <tr>
-                            <td>".$row['id']."</td>
-                            <td>".$row['supplier_product_name']."</td>
+                            <td>".$row['supplier_product_id']."</td>
                             <td>".$row['supplier_product_description']."</td>
+                            <td>".$row['supplier_product_name']."</td>
                             <td>
-                                <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
-                                <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
+                                <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['supplier_product_id']."'><i class='fa fa-edit'></i> Edit</button>
+                                <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['supplier_product_id']."'><i class='fa fa-trash'></i> Delete</button>
                             </td>
                         </tr>
                       ";
@@ -88,7 +88,7 @@
   </div>
     
   <?php include 'footer.php'; ?>
-  <?php include 'product_modal.php'; ?>
+  <?php include 'supplier_product_modal.php'; ?>
 </div>
 <?php include 'includes/scripts.php'; ?>
   <script>
@@ -110,14 +110,14 @@
       function getRow(id){
         $.ajax({
           type: 'POST',
-          url: 'product_row.php',
+          url: 'supplier_product_row.php',
           data: {id:id},
           dataType: 'json',
           success: function(response){
-            $('.product_id').val(response.product_id);
-            $('#edit_prodCode').val(response.product_code);
-            $('#edit_prodName').val(response.product_name);
-            $('#edit_prodDesc').val(response.product_description);
+            $('.product_id').val(response.supplier_product_id);
+            $('#edit_prodCode').val(response.supplier_product_id);
+            $('#edit_prodName').val(response.supplier_product_name);
+            $('#edit_prodDesc').val(response.supplier_product_description);
             $('#edit_supplier_name').val(response.business_name);
           }
         });

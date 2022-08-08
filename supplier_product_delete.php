@@ -3,7 +3,7 @@
 
 	if(isset($_POST['delete'])){
 		$productID = $_POST['id'];
-		$sql = "DELETE FROM product WHERE product_id = '$productID'";
+		$sql = "DELETE FROM supplier_product WHERE supplier_product_id = '$productID'";
 		if($conn->query($sql)){
 			$_SESSION['success'] = 'Product deleted successfully';
 		}
@@ -15,6 +15,6 @@
 		$_SESSION['error'] = 'Select item to delete first';
 	}
 
-	header('location: product.php');
+	header('location: supplier_product.php');
 	
 ?>

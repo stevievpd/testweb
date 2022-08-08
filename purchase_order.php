@@ -14,7 +14,7 @@
         Purchase Order
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href=""><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Purchase Order</li>
       </ol>
     </section>
@@ -61,7 +61,7 @@
                 </thead>
                 <tbody>
                 <?php
-                    $sql = "SELECT *, purchase_order.id FROM purchase_order LEFT JOIN supplier ON supplier.id=purchase_order.supplier_id LEFT JOIN supplier_product ON supplier_product.id=purchase_order.supplier_product_id";
+                    $sql = "SELECT *, purchase_order.id FROM purchase_order LEFT JOIN supplier ON supplier.id=purchase_order.supplier_id LEFT JOIN supplier_product ON supplier_product.id=purchase_order.supplier_product_id ";
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
                     $status = ($row['status_id'])?'<span class="label label-warning pull-right">Received</span>':'<span class="label label-danger pull-right">Pending</span>';
