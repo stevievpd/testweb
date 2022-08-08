@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 08, 2022 at 04:31 AM
+-- Generation Time: Aug 08, 2022 at 05:27 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -345,20 +345,6 @@ INSERT INTO `position` (`id`, `description`, `rate`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product`
---
-
-CREATE TABLE `product` (
-  `product_id` int(11) NOT NULL,
-  `product_code` varchar(250) NOT NULL,
-  `product_name` varchar(250) NOT NULL,
-  `product_description` varchar(250) NOT NULL,
-  `supplier_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `purchase_order`
 --
 
@@ -455,6 +441,7 @@ INSERT INTO `supplier` (`id`, `photo`, `business_name`, `address`, `email`, `pho
 
 CREATE TABLE `supplier_product` (
   `id` int(11) NOT NULL,
+  `supplier_product_id` varchar(100) NOT NULL,
   `supplier_product_name` varchar(80) NOT NULL,
   `supplier_product_description` varchar(80) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -463,8 +450,8 @@ CREATE TABLE `supplier_product` (
 -- Dumping data for table `supplier_product`
 --
 
-INSERT INTO `supplier_product` (`id`, `supplier_product_name`, `supplier_product_description`) VALUES
-(1, 'Laundry Machine', 'LG Laundry Machine 12862');
+INSERT INTO `supplier_product` (`id`, `supplier_product_id`, `supplier_product_name`, `supplier_product_description`) VALUES
+(2, 'LKES3241', 'Razer Mouse', 'ASDADD');
 
 --
 -- Indexes for dumped tables
@@ -535,13 +522,6 @@ ALTER TABLE `payment_terms`
 --
 ALTER TABLE `position`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `product`
---
-ALTER TABLE `product`
-  ADD PRIMARY KEY (`product_id`),
-  ADD KEY `supplier_id` (`supplier_id`);
 
 --
 -- Indexes for table `purchase_order`
@@ -644,12 +624,6 @@ ALTER TABLE `position`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `product`
---
-ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
---
 -- AUTO_INCREMENT for table `purchase_order`
 --
 ALTER TABLE `purchase_order`
@@ -672,6 +646,12 @@ ALTER TABLE `schedules`
 --
 ALTER TABLE `supplier`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `supplier_product`
+--
+ALTER TABLE `supplier_product`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
