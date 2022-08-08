@@ -64,7 +64,7 @@
                     $sql = "SELECT *, purchase_order.id FROM purchase_order LEFT JOIN supplier ON supplier.id=purchase_order.supplier_id LEFT JOIN supplier_product ON supplier_product.id=purchase_order.supplier_product_id";
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
-                    $status = ($row['status'])?'<span class="label label-warning pull-right">Received</span>':'<span class="label label-danger pull-right">Pending</span>';
+                    $status = ($row['status_id'])?'<span class="label label-warning pull-right">Received</span>':'<span class="label label-danger pull-right">Pending</span>';
                       echo "
                       <tr>
                       <td>".$row['purchase_order_id'].$status."</td>
@@ -139,21 +139,21 @@ function getRow(id){
       data: {id:id},
       dataType: 'json',
     success: function(response){
-      $('.supid').val(response.id);
       $('.po_id').val(response.id);
-      $('.purchase_order_id').val(response.id);
-      $('.del_purchase_order').html(response.id);
-      $('.edit_purchase_order').val(response.id);
+      $('.del_purchase_order').val(response.id);
+      $('.purchaseid').val(response.id);
       $('#edit_supplier').val(response.supplier_id);
       $('#edit_supplier_product').val(response.supplier_product_id);
       $('#edit_payment_terms').val(response.payment_id);
-      $('#edit_status').val(response.status.status);
       $('#edit_description').val(response.description);
       $('#edit_quantity').val(response.quantity);
+      $('#edit_status').val(response.status);
       $('#edit_cost').val(response.cost);
       $('#edit_price').val(response.price);
       $('#edit_purchase_date').val(response.purchase_date);
       $('#edit_expected_date').val(response.expected_date);
+
+      
     }
   });
 }

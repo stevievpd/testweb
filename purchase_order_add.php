@@ -22,7 +22,7 @@
 		
 	$purchase_order_id = substr(str_shuffle($letters), 0, 3).substr(str_shuffle($numbers), 0, 9);
 
-	$sql = "INSERT INTO purchase_order (purchase_order_id, supplier_id, supplier_product_id, payment_id, status, quantity, price, total, purchase_date, expected_date) VALUES ('$purchase_order_id','$supplier','$supplier_product','$payment_terms','$status','$quantity', '$price','$total', '$purchase_date','$expected_date')";
+	$sql = "INSERT INTO purchase_order (purchase_order_id, supplier_id, supplier_product_id, payment_id, quantity, price, total, purchase_date, expected_date,status_id) VALUES ('$purchase_order_id','$supplier','$supplier_product','$payment_terms','$quantity', '$price','$total', '$purchase_date','$expected_date','$status')";
 	if($conn->query($sql)){
 		$_SESSION['success'] = 'Purchase Order added successfully';
 	}

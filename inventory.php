@@ -68,7 +68,7 @@
                         <tr>
                           <td><img src="<?php echo (!empty($row['photo']))? './images/'.$row['photo']:'./images/profile.jpg';?>" width="30px" height="30px"><a href="#edit_photo" data-toggle="modal" class="pull-right photo" data-id="<?php echo $row['id']; ?>"><span class="fa fa-edit"></span></a></td>
                           <td><?php echo $row['product_id']; ?></td>
-                          <td><?php echo $row['description']; ?></td>
+                          <td><?php echo $row['description']; ?></td> 
                           <td><?php echo $row['quantity']; ?></td>
                           <td><?php echo $row['cost']; ?></td>
                           <td><?php echo $row['price']; ?></td>
@@ -86,7 +86,7 @@
           </div>
         </div>
       </div>
-    </section>   
+    </section> 
   </div>
     
   <?php include 'footer.php'; ?>
