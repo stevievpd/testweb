@@ -57,7 +57,6 @@
                   <th>Quantity</th>
                   <th>Unit Price</th>
                   <th>Grand Total</th>
-                  <th>Status</th>
                   <th>Tools</th>
                 </thead>
                 <tbody>
@@ -68,13 +67,12 @@
                     $status = ($row['status'])?'<span class="label label-warning pull-right">Received</span>':'<span class="label label-danger pull-right">Pending</span>';
                       echo "
                       <tr>
-                      <td>".$row['purchase_order_id']."</td>
+                      <td>".$row['purchase_order_id'].$status."</td>
                       <td>".$row['business_name']."</td>
                       <td>".$row['supplier_product_name']."</td>
                       <td>".$row['quantity']."</td>
                       <td>".$row['price']."</td>
                       <td>".$row['total']."</td>
-                      <td>".$row['status'].$status."</td>
                       <td>
                         <button class='btn btn-success btn-sm btn-flat edit' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
                         <button class='btn btn-danger btn-sm btn-flat delete' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
