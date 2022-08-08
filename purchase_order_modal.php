@@ -76,7 +76,7 @@
 
                         <div class="col-sm-9">
                             <input type="number" class="form-control" id="sales_tax" name="sales_tax" placeholder="0.00"
-                                oninput="multiply()" readonly>
+                                onchange="multiply()" readonly>
                         </div>
                     </div>
 
@@ -91,18 +91,27 @@
 
                     <script>
                     function multiply() {
-                        var add_quantity = document.getElementById("add_quantity").value;
-                        var add_price = document.getElementById("add_price").value;
-                        var add_subtotal = add_quantity * add_price;
-                        document.getElement
-                        ById("add_subtotal").value = add_subtotal;
+                        // var add_quantity = document.getElementById("add_quantity").value;
+                        // var add_price = document.getElementById("add_price").value;
+                        // var add_subtotal = add_quantity * add_price;
+                        // document.getElementById("add_subtotal").value = add_subtotal;
 
-                        var subtotal = document.getElementById("add_subtotal").value;
-                        var amount = subtotal * 0.12;
-                        document.getElementById("sales_tax").value = amount;
+                        // var subtotal = document.getElementById("add_subtotal").value;
+                        // var amount = price * 0.12;
+                        // document.getElementById("sales_tax").value = amount;
 
-                        var total_amount = (add_subtotal) + (amount);
-                        document.getElementById("total").value = total_amount;
+                        // var total_amount = (add_subtotal) - (amount);
+                        // document.getElementById("total").value = total_amount;
+
+                        var quantity = document.getElementById("add_quantity").value;
+                        var price = document.getElementById("add_price").value;
+                        var total = quantity * price;
+                        document.getElementById("add_subtotal").value = total;
+
+                        var tax = total * 0.12;
+                        document.getElementById("sales_tax").value = tax;
+                        var grand_total = total - tax;
+                        document.getElementById("total").value = grand_total;
                     }
                     </script>
                     
