@@ -10,31 +10,31 @@
             <div class="modal-body">
                 <form class="form-horizontal" method="POST" action="customer_add.php" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="firstname" class="col-sm-3 control-label">First Name</label>
+                        <label for="customer_firstname" class="col-sm-3 control-label">First Name</label>
 
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="firstname" name="firstname" required>
+                            <input type="text" class="form-control" id="customer_firstname" name="customer_firstname" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="lastname" class="col-sm-3 control-label">Last Name</label>
+                        <label for="customer_lastname" class="col-sm-3 control-label">Last Name</label>
 
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="lastname" name="lastname" required>
+                            <input type="text" class="form-control" id="customer_lastname" name="customer_lastname" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="contact_info" class="col-sm-3 control-label">contact_info</label>
+                        <label for="customer_contact_info" class="col-sm-3 control-label">contact_info</label>
 
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" name="contact_info" id="contact_info"></input>
+                            <input type="text" class="form-control" name="customer_contact_info" id="customer_contact_info"></input>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="address" class="col-sm-3 control-label">address</label>
+                        <label for="customer_address" class="col-sm-3 control-label">address</label>
 
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" name="address" id="address"></input>
+                            <input type="text" class="form-control" name="customer_address" id="customer_address"></input>
                         </div>
                     </div>
                     <div class="form-group">
@@ -47,21 +47,13 @@
                                   $query = $conn->query($sql);
                                   while($prow = $query->fetch_assoc()){
                                     echo "
-                                      <option value='".$prow['id']."'>".$prow['firstname']. ' ' .$prow['firstname']."</option>
+                                      <option value='".$prow['id']."'>".$prow['firstname']. ' ' .$prow['lastname']."</option>
                                     ";
                                   }
                                 ?>
                             </select>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="photo" class="col-sm-3 control-label">Photo</label>
-
-                        <div class="col-sm-9">
-                            <input type="file" name="photo" id="photo">
-                        </div>
-                    </div>
-
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i
                                 class="fa fa-close"></i> Close</button>

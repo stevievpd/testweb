@@ -52,7 +52,6 @@
             <div class="box-body">
               <table id="example1" class="table table-bordered">
                 <thead>
-                  <th>Photo</th>
                   <th>Customer ID</th>
                   <th>Name</th>
                   <th>Contact Number</th>
@@ -63,21 +62,21 @@
                 </thead>
                 <tbody>
                   <?php
-                    $sql = "SELECT *, customer.id AS custid FROM customer LEFT JOIN sales ON sales.id=customer.id LEFT JOIN employees ON employees.id=customer.id LEFT JOIN items ON items.id=sales.id ";
+                    $sql = "SELECT *, customer.id AS custid FROM customer LEFT JOIN employees ON employees.id=customer.employee_id";
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
                       ?>
                         <tr>
-                          <td><img src="<?php echo (!empty($row['photo']))? './images/'.$row['photo']:'./images/profile.jpg'; ?>" width="30px" height="30px"> <a href="#edit_photo" data-toggle="modal" class="pull-right photo" data-id="<?php echo $row['custid']; ?>"><span class="fa fa-edit"></span></a></td>
                           <td><?php echo $row['customer_id']; ?></td>
-                          <td><?php echo $row['firstname'].' '.$row['lastname']; ?></td>
-                          <td><?php echo $row['contact_info']; ?></td>
-                          <td><?php echo $row['address']; ?></td>
-                          <td><?php echo $row['employee_id']; ?></td>
-                          <td><?php echo date('M d, Y', strtotime($row['date'])) ?></td>
+                          <td><?php echo $row['customer_firstname'].' '.$row['customer_lastname']; ?></td>
+                          <td><?php echo $row['customer_contact_info']; ?></td>
+                          <td><?php echo $row['customer_address']; ?></td>
+                          <td><?php echo $row['firstname'].' '.$row['lastname'];?></td>
+                          <td><?php echo date('M d, Y', strtotime($row['customer_created_on'])) ?></td>
 
                           <td>
-                            <button class="btn btn-primary btn-sm view btn-flat" data-id="<?php echo $row['custid']; ?>"><i class="fa fa-eye"></i> View</button>
+                            <button class="btn btn-primary btn-sm view btn-flat" data-id="<?php echo $row['custid']; ?>"><i class="fa fa-edit"></i> Edit</button>
+                            <button class="btn btn-danger btn-sm view btn-flat" data-id="<?php echo $row['custid']; ?>"><i class="fa fa-trash"></i> Delete</button>
                           </td>
                         </tr>
                       <?php
