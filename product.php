@@ -63,17 +63,17 @@
                 </thead>
                 <tbody>
                   <?php
-                    $sql = "SELECT product.product_id, product.product_code, product.product_name, product.product_description, supplier.business_name FROM product LEFT JOIN supplier ON product.supplier_id=supplier.supplier_id";
-                    $query = $conn->query($sql);
+                   $sql = "SELECT *, purchase_order.id FROM purchase_order LEFT JOIN supplier ON supplier.id=purchase_order.supplier_id LEFT JOIN supplier_product ON supplier_product.id=purchase_order.supplier_product_id";
+                   $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
                       echo "
                         <tr>
-                            <td>".$row['supplier_product_id']."</td>
+                            <td>".$row['id']."</td>
                             <td>".$row['supplier_product_name']."</td>
                             <td>".$row['supplier_product_description']."</td>
                             <td>
-                                <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['product_id']."'><i class='fa fa-edit'></i> Edit</button>
-                                <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['product_id']."'><i class='fa fa-trash'></i> Delete</button>
+                                <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
+                                <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
                             </td>
                         </tr>
                       ";

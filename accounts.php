@@ -98,6 +98,7 @@
                                     <thead>
                                         <th>Employee ID</th>
                                         <th>Name</th>
+                                        <th>Username</th>
                                         <th>Member Since</th>
                                     </thead>
                                     <tbody>
@@ -109,6 +110,7 @@
                                         <tr>
                                             <td><?php echo $row['id']; ?></td>
                                             <td><?php echo $row['firstname'].' '.$row['lastname']; ?></td>
+                                            <td><?php echo $row['username']; ?></td>
                                             <td><?php echo date('M d, Y', strtotime($row['created_on'])) ?></td>
 
                                         </tr>
