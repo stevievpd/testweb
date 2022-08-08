@@ -44,7 +44,7 @@
         }
       ?>
       <div class="row">
-        <div class="col-xs-12">
+        <div class="col-xs-6">
           <div class="box">
             <div class="box-header with-border">
               <a href="schedule_print.php" class="btn btn-success btn-sm btn-flat"><span class="glyphicon glyphicon-print"></span> Print</a>
