@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 08, 2022 at 07:33 AM
+-- Generation Time: Aug 08, 2022 at 07:55 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -136,19 +136,21 @@ INSERT INTO `cashadvance` (`id`, `date_advance`, `employee_id`, `amount`) VALUES
 CREATE TABLE `customer` (
   `id` int(11) NOT NULL,
   `customer_id` varchar(50) NOT NULL,
-  `cust_firstname` varchar(50) NOT NULL,
-  `cust_lastname` varchar(50) NOT NULL,
-  `cust_contact_info` varchar(50) NOT NULL,
-  `cust_address` varchar(150) NOT NULL,
-  `transaction_id` varchar(50) NOT NULL
+  `customer_firstname` varchar(50) NOT NULL,
+  `customer_lastname` varchar(50) NOT NULL,
+  `customer_contact_info` varchar(50) NOT NULL,
+  `customer_address` varchar(150) NOT NULL,
+  `employee_id` varchar(50) NOT NULL,
+  `customer_created_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`id`, `customer_id`, `cust_firstname`, `cust_lastname`, `cust_contact_info`, `cust_address`, `transaction_id`) VALUES
-(1, 'ABC123456789', 'Steven Edward', 'Lizada', '09615089172', '12 Emerald lane Brgy. Culiat Quezon City', 'TRNS789456321');
+INSERT INTO `customer` (`id`, `customer_id`, `customer_firstname`, `customer_lastname`, `customer_contact_info`, `customer_address`, `employee_id`, `customer_created_on`) VALUES
+(1, 'ABC123456789', 'Steven Edward', 'Lizada', '09615089172', '12 Emerald lane Brgy. Culiat Quezon City', '1', '2022-08-08 05:54:45'),
+(2, 'ZOU721458639', 'Sam', 'Pakyu', '247584562', 'Tandang Sora', '3', '2022-08-08 05:55:10');
 
 -- --------------------------------------------------------
 
@@ -624,7 +626,7 @@ ALTER TABLE `cashadvance`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `deductions`
