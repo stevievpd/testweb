@@ -45,11 +45,12 @@ $.widget.bridge('uibutton', $.ui.button);
 <!-- Moments.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
 <script src="https://cdn.datatables.net/plug-ins/1.12.1/sorting/datetime-moment.js"></script>
+
 <script>
 $(function() {
     $.fn.dataTable.moment('MMM DD, YYYY');
     $('#example1').DataTable({
-        responsive: true
+        responsive: true,
     })
     $('#example2').DataTable({
         'paging': true,
