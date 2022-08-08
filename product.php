@@ -62,7 +62,7 @@
                 </thead>
                 <tbody>
                   <?php
-                    $sql = "SELECT * from supplier_product";
+                    $sql = "SELECT product.product_id, product.product_code, product.product_name, product.product_description, supplier.business_name FROM product LEFT JOIN supplier ON product.supplier_id=supplier.supplier_id";
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
                       echo "
