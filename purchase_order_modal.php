@@ -1,137 +1,4 @@
-<!-- Add
-<div class="modal fade" id="addnew">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"><b>Purchase Order</b></h4>
-            </div>
-            <div class="modal-body">
-                <form class="form-horizontal" method="POST" action="purchase_order_add.php">
-                    <div class="form-group">
-                        <label for="vendor_name" class="col-sm-3 control-label">Business Name</label>
-
-                        <div class="col-sm-9">
-                            <select class="form-control" name="business_name" id="business_name">
-                                <option selected id="business_name"></option>
-                                <?php
-                                    $sql = "SELECT * from supplier";
-                                    $query = $conn->query($sql);
-                                    while($row = $query->fetch_assoc()){
-                                        echo "
-                                        <option value='".$row['id']."'>".$row['business_name']."</option>
-                                        ";
-                                    }
-                                ?>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="product_name" class="col-sm-3 control-label">Product Name</label>
-
-                        <div class="col-sm-9">
-                            <select class="form-control" name="product_name" id="product_name">
-                                <option selected id="product"></option>
-                                <?php
-                                    $sql = "SELECT * from supplier_product";
-                                    $query = $conn->query($sql);
-                                    while($row = $query->fetch_assoc()){
-                                        echo "
-                                        <option value='".$row['id']."'>".$row['supplier_product_name']."</option>
-                                        ";
-                                    }
-                                ?>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="add_quantity" class="col-sm-3 control-label">Quantity</label>
-
-                        <div class="col-sm-9">
-                            <input type="number" class="form-control" id="add_quantity" name="quantity"
-                                placeholder="0.00" oninput="multiply()">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="add_price" class="col-sm-3 control-label">Price</label>
-
-                        <div class="col-sm-9">
-                            <input type="number" class="form-control" id="add_price" name="price" placeholder="0.00"
-                                oninput="multiply()">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="add_subtotal" class="col-sm-3 control-label">Subtotal</label>
-
-                        <div class="col-sm-9">
-                            <input type="number" class="form-control" id="add_subtotal" name="subtotal"
-                                placeholder="0.00" onchange="multiply()" require readonly>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="sales_tax" class="col-sm-3 control-label">Sales Tax</label>
-
-                        <div class="col-sm-9">
-                            <input type="number" class="form-control" id="sales_tax" name="sales_tax" placeholder="0.00"
-                                oninput="multiply()" readonly>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="total" class="col-sm-3 control-label">Grand Total</label>
-
-                        <div class="col-sm-9">
-                            <input type="number" class="form-control" id="total" name="total" placeholder="0.00"
-                                readonly>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="purchase_date" class="col-sm-3 control-label">Purchase Date</label>
-
-                        <div class="col-sm-9">
-                            <input type="date" class="form-control" id="purchase_date" name="purchase_date" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="expected_date" class="col-sm-3 control-label">Expected Date</label>
-
-                        <div class="col-sm-9">
-                            <input type="date" class="form-control" id="expected_date" name="expected_date" required>
-                        </div>
-                    </div>
-                    <script>
-                    function multiply() {
-                        var add_quantity = document.getElementById("add_quantity").value;
-                        var add_price = document.getElementById("add_price").value;
-                        var add_subtotal = add_quantity * add_price;
-                        document.getElementById("add_subtotal").value = add_subtotal;
-
-                        var subtotal = document.getElementById("add_subtotal").value;
-                        var amount = subtotal * 0.12;
-                        document.getElementById("sales_tax").value = amount;
-
-                        var total_amount = (add_subtotal) + (amount);
-                        document.getElementById("total").value = total_amount;
-                    }
-                    </script>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i
-                                class="fa fa-close"></i> Close</button>
-                        <button type="submit" class="btn btn-primary btn-flat" name="add"><i class="fa fa-save"></i>
-                            Save</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div> -->
-
+<!-- Add-->
 
 <div class="modal fade" id="addnew">
     <div class="modal-dialog">
@@ -178,6 +45,7 @@
                             </select>
                         </div>
                     </div>
+                   
                     <div class="form-group">
                         <label for="add_quantity" class="col-sm-3 control-label">Quantity</label>
 
@@ -220,7 +88,7 @@
                                 readonly>
                         </div>
                     </div>
-                    
+
                     <script>
                     function multiply() {
                         var add_quantity = document.getElementById("add_quantity").value;
@@ -252,8 +120,28 @@
                         <div class="col-sm-9">
                             <input type="date" class="form-control" id="expected_date" name="expected_date" required>
                         </div>
-                    </div>
+                    </div>  
+
+                    <div class="form-group">
+                        <label for="payment_terms" class="col-sm-3 control-label">Payment Terms</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="payment_terms" id="payment_terms" required>
+                                <option value="" selected>- Select -</option>
+                                <?php
+                                    $sql = "SELECT * FROM payment_terms";
+                                    $query = $conn->query($sql);
+                                    while($prow = $query->fetch_assoc()){
+                                        echo "
+                                        <option value='".$prow['id']."'>".$prow['payment_methods']."</option>
+                                        ";
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                    </div>  
+
             </div>
+            
             <div class="modal-footer">
                 <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i
                         class="fa fa-close"></i> Close</button>
@@ -266,43 +154,8 @@
 </div>
 
 
-
-
-
-
-
-<!-- Edit -->
-<!-- Edit -->
-<!-- Edit -->
-<!-- Edit -->
-<!-- Edit -->
-<!-- Edit -->
-<!-- Edit -->
-<!-- Edit -->
-<!-- Edit -->
-<!-- Edit -->
-<!-- Edit -->
-<!-- Edit -->
-<!-- Edit -->
-<!-- Edit -->
 <!-- Edit -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- Edit
 <div class="modal fade" id="edit">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -316,36 +169,33 @@
                     <input type="hidden" class="purchaseid" name="id">
 
                     <div class="form-group">
-                        <label for="add_vendor_name" class="col-sm-3 control-label">Vendor Name</label>
-
+                        <label for="edit_supplier" class="col-sm-3 control-label">Business Name</label>
                         <div class="col-sm-9">
-                            <select class="form-control" name="vendor_name" id="edit_vendor_name">
-                                <option selected name="vendor_name" id="edit_vendor_name"></option>
+                            <select class="form-control" id="edit_supplier" name="supplier" required>
+                                <option value="" selected>- Select -</option>
                                 <?php
                                     $sql = "SELECT * FROM supplier";
                                     $query = $conn->query($sql);
-                                    while($prow = $query->fetch_assoc()){
+                                    while($brow = $query->fetch_assoc()){
                                         echo "
-                                        <option>".$prow['business_name']."</option>
+                                        <option value='".$brow['id']."'>".$brow['business_name']."</option>
                                         ";
                                     }
                                 ?>
                             </select>
                         </div>
                     </div>
-
                     <div class="form-group">
-                        <label for="edit_product_name" class="col-sm-3 control-label">Product Name</label>
-
+                        <label for="edit_supplier_product" class="col-sm-3 control-label">Product Name</label>
                         <div class="col-sm-9">
-                            <select class="form-control" name="product_name" id="edit_product_name">
-                                <option selected name="product_name" id="edit_product_name"></option>
+                            <select class="form-control" id="edit_supplier_product" name="supplier_product" required>
+                                <option value="" selected>- Select -</option>
                                 <?php
-                                    $sql = "SELECT * FROM product";
+                                    $sql = "SELECT * FROM supplier_product";
                                     $query = $conn->query($sql);
                                     while($prow = $query->fetch_assoc()){
                                         echo "
-                                        <option value='".$prow['product_id']."'>".$prow['product_description']."</option>
+                                        <option value='".$prow['id']."'>".$prow['supplier_product_name']."</option>
                                         ";
                                     }
                                 ?>
@@ -393,21 +243,6 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="edit_purchase_date" class="col-sm-3 control-label">Purchase Date</label>
-
-                        <div class="col-sm-9">
-                            <input type="date" class="form-control" id="edit_purchase_date" name="purchase_date">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="edit_expected_date" class="col-sm-3 control-label">Expected Date</label>
-
-                        <div class="col-sm-9">
-                            <input type="date" class="form-control" id="edit_expected_date" name="expected_date">
-                        </div>
-                    </div>
                     <script>
                     function add() {
                         var edit_quantity = document.getElementById("edit_quantity").value;
@@ -423,17 +258,51 @@
                         document.getElementById("edit_total_amount").value = edittotal_amount;
                     }
                     </script>
+
+                    <div class="form-group">
+                        <label for="edit_purchase_date" class="col-sm-3 control-label">Purchase Date</label>
+
+                        <div class="col-sm-9">
+                            <input type="date" class="form-control" id="edit_purchase_date" name="purchase_date">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit_expected_date" class="col-sm-3 control-label">Expected Date</label>
+
+                        <div class="col-sm-9">
+                            <input type="date" class="form-control" id="edit_expected_date" name="expected_date">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit_payment_terms" class="col-sm-3 control-label">Payment Terms</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="payment_terms" id="edit_payment_terms" required>
+                                <option value="" selected>- Select -</option>
+                                <?php
+                                    $sql = "SELECT * FROM payment_terms";
+                                    $query = $conn->query($sql);
+                                    while($prow = $query->fetch_assoc()){
+                                        echo "
+                                        <option value='".$prow['id']."'>".$prow['payment_methods']."</option>
+                                        ";
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                    </div>  
+                </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i
                                 class="fa fa-close"></i> Close</button>
                         <button type="submit" class="btn btn-success btn-flat" name="edit"><i
                                 class="fa fa-check-square-o"></i> Update</button>
-                    </div>
                 </form>
             </div>
         </div>
     </div>
-</div> -->
+</div> 
 
 <!-- Delete -->
 <div class="modal fade" id="delete">
@@ -469,45 +338,60 @@
         <div class="modal-content">
             <div class="card-body">
                 <?php
-                    $sql = "SELECT *, purchase_order.id FROM purchase_order LEFT JOIN supplier ON supplier.id=purchase_order.supplier_id LEFT JOIN supplier_product ON supplier_product.id=purchase_order.supplier_id";
+                    $sql = "SELECT *, purchase_order.id FROM purchase_order LEFT JOIN supplier ON supplier.id=purchase_order.supplier_id LEFT JOIN supplier_product ON supplier_product.id=purchase_order.supplier_id LEFT JOIN admin ON admin.id=purchase_order.supplier_id";
                     $query = $conn->query($sql);
                     while($row1 = $query->fetch_assoc()){
                 ?>
+                <!-----------------PURCHASE ORDER------------------->
                 <p class=" text-center lead m-4"><b>Puchase Order Details</b><span class="card-text"></span></p>
-                <b>PO Number: </b><span class="card-text"><?php echo $row1['purchase_order_id']; ?> </span><br>
-                <b>Status: </b><span class="card-text"><?php echo $row1['purchase_date']; ?> </span><br><br>
-                <b>Purchase Date: </b><span class="card-text"><?php echo $row1['purchase_date']; ?> </span><br>
-                <b>Expected Date: </b><span class="card-text"><?php echo $row1['expected_date']; ?> </span><br>
-                <b>Order by: </b><span class="card-text"><?php echo $row1['business_name']; ?> </span><br><br>
+                <p class="col-sm-6 col-md-6 col-lg-6"><b>PO Number: </b><span
+                        class="card-text"><?php echo $row1['purchase_order_id'];?> </span><br></p>
+                <p class="col-sm-6 col-md-6 col-lg-6"><b>Status: </b><span
+                        class="card-text"><?php echo $row1['status']; ?> </span><br><br></p>
+                <p class="col-sm-6 col-md-6 col-lg-6"><b>Purchase Date: </b><span
+                        class="card-text"><?php echo $row1['purchase_date']; ?> </span><br></p>
+                <p class="col-sm-6 col-md-6 col-lg-8"><b>Expected Date: </b><span
+                        class="card-text"><?php echo $row1['expected_date']; ?> </span><br></p>
+                <p class="col-sm-6 col-md-6 col-lg-6"><b>Order by: </b><span
+                        class="card-text"><?php echo $row1['firstname']; ?>&nbsp;<?php echo $row1['lastname']; ?>
+                    </span><br><br></p>
 
-                <p class="lead m-4"><b>Supplier</b><span class="card-text"></span></p>
+                <p class="col-sm-6 col-md-6 col-lg-8 lead"><b>Supplier</b><span class="card-text"></span></p><br>
                 <!-----------------SUPPLIER------------------->
+                <p class="col-sm-6 col-md-6 col-lg-7"><b>Supplier Name: </b><span
+                        class="card-text"><?php echo $row1['business_name']; ?> </span><br></p>
+                <p class="col-sm-6 col-md-6 col-lg-7"><b>Store Destination: </b><span
+                        class="card-text"><?php echo $row1['address']; ?> </span><br></p>
 
-                <div class="row">
-                    <p class="col-sm-6 col-md-5 col-lg-5"><b>Supplier Name: </b><span
-                            class="card-text"><?php echo $row1['business_name']; ?> </span><br></p>
-                    <p class="col-sm-6 col-md-5 col-lg-5"><b>Store Destination: </b><span
-                            class="card-text"><?php echo $row1['address']; ?> </span><br></p>
+                <p class="col-sm-6 col-md-5 col-lg-6"><b>Address: </b><span
+                        class="card-text"><?php echo $row1['address']; ?> </span><br></p>
+                <p class="col-sm-6 col-md-5 col-lg-8"><b>Phone Number: </b><span
+                        class="card-text"><?php echo $row1['phone_number']; ?> </span><br></p>
+                <p class="col-sm-6 col-md-5 col-lg-6"><b>Email: </b><span
+                        class="card-text"><?php echo $row1['email']; ?></span><br><br></p>
 
-                    <p class="col-sm-6 col-md-5 col-lg-6"><b>Address: </b><span
-                            class="card-text"><?php echo $row1['address']; ?> </span><br></p>
-                    <p class="col-sm-6 col-md-5 col-lg-8"><b>Phone Number:</b><span
-                            class="card-text"><?php echo $row1['phone_number']; ?> </span><br></p>
-                    <p class="col-sm-6 col-md-5 col-lg-5"><b>Email: </b><span
-                            class="card-text"><?php echo $row1['email']; ?> </span><br><br></p>
-                </div>
+                <p class="col-sm-6 col-md-5 col-lg-8 lead"><b> Items </b><span class="card-text"></span><br></p>
+
                 <div class="modal-footer">
-                    <p class="lead m-4 text-left"><b>Items</b><span class="card-text"></span></p>
-                    <div class="row">
-                        <p class="col-sm-6 col-md-6 col-lg-3"><b>Item Description </b><span
-                                class="card-text"><?php echo $row1['supplier_product_description']; ?> </span><br></p>
-                        <p class="col-sm-6 col-md-6 col-lg-2"><b>Quantity </b><span
-                                class="card-text"><?php echo $row1['quantity']; ?> </span><br></p>
-                        <p class="col-sm-6 col-md-6 col-lg-2"><b>Unit Cost </b><span
-                                class="card-text"><?php echo $row1['price']; ?> </span><br></p>
-                        <p class="col-sm-6 col-md-6 col-lg-2"><b>Amount </b><span
-                                class="card-text"><?php echo $row1['total']; ?> </span><br></p>
-                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Item Description</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Unit Cost</th>
+                                <th scope="col">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-left"><?php echo $row1['supplier_product_description']?></td>
+                                <td class="text-left"><?php echo $row1['quantity']?></td>
+                                <td class="text-left"><?php echo $row1['price']?></td>
+                                <td class="text-left"><?php echo $row1['total']?></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
                 </div>
                 <?php
                         }

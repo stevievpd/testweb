@@ -3,6 +3,7 @@
 	if(isset($_POST['add'])){
 		$supplier = $_POST['supplier'];
 		$supplier_product = $_POST['supplier_product'];
+		$payment_terms = $_POST['payment_terms'];
         $quantity = $_POST['quantity'];
         $price = $_POST['price'];
         $total = $_POST['total'];
@@ -20,7 +21,7 @@
 		
 	$purchase_order_id = substr(str_shuffle($letters), 0, 3).substr(str_shuffle($numbers), 0, 9);
 
-	$sql = "INSERT INTO purchase_order (purchase_order_id, supplier_id, supplier_product_id, quantity, price, total, purchase_date, expected_date) VALUES ('$purchase_order_id','$supplier','$supplier_product','$quantity', '$price','$total', '$purchase_date','$expected_date')";
+	$sql = "INSERT INTO purchase_order (purchase_order_id, supplier_id, supplier_product_id, payment_id, quantity, price, total, purchase_date, expected_date) VALUES ('$purchase_order_id','$supplier','$supplier_product','$payment_terms','$quantity', '$price','$total', '$purchase_date','$expected_date')";
 	if($conn->query($sql)){
 		$_SESSION['success'] = 'Product added successfully';
 	}

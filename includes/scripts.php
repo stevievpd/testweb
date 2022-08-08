@@ -42,8 +42,12 @@ $.widget.bridge('uibutton', $.ui.button);
 <script src="./dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="./dist/js/demo.js"></script>
+<!-- Moments.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
+<script src="https://cdn.datatables.net/plug-ins/1.12.1/sorting/datetime-moment.js"></script>
 <script>
 $(function() {
+    $.fn.dataTable.moment('MMM DD, YYYY');
     $('#example1').DataTable({
         responsive: true
     })
