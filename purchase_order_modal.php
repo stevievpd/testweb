@@ -140,6 +140,10 @@
                         </div>
                     </div>  
 
+                    <div class="form-group">
+                        <input  type="hidden" for="status" class="col-sm-3 control-label" id="status"  name="status" value="0"></input>
+                    </div>  
+
             </div>
             
             <div class="modal-footer">
@@ -171,7 +175,7 @@
                     <div class="form-group">
                         <label for="edit_supplier" class="col-sm-3 control-label">Business Name</label>
                         <div class="col-sm-9">
-                            <select class="form-control" id="edit_supplier" name="supplier" required>
+                            <select class="form-control" id="edit_supplier" name="supplier" >
                                 <option value="" selected>- Select -</option>
                                 <?php
                                     $sql = "SELECT * FROM supplier";
@@ -188,7 +192,7 @@
                     <div class="form-group">
                         <label for="edit_supplier_product" class="col-sm-3 control-label">Product Name</label>
                         <div class="col-sm-9">
-                            <select class="form-control" id="edit_supplier_product" name="supplier_product" required>
+                            <select class="form-control" id="edit_supplier_product" name="supplier_product">
                                 <option value="" selected>- Select -</option>
                                 <?php
                                     $sql = "SELECT * FROM supplier_product";
@@ -278,7 +282,7 @@
                     <div class="form-group">
                         <label for="edit_payment_terms" class="col-sm-3 control-label">Payment Terms</label>
                         <div class="col-sm-9">
-                            <select class="form-control" name="payment_terms" id="edit_payment_terms" required>
+                            <select class="form-control" name="payment_terms" id="edit_payment_terms">
                                 <option value="" selected>- Select -</option>
                                 <?php
                                     $sql = "SELECT * FROM payment_terms";
@@ -292,6 +296,26 @@
                             </select>
                         </div>
                     </div>  
+
+                    <div class="form-group">
+                        <label for="edit_status" class="col-sm-3 control-label">Status</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="status" id="edit_status">
+                                <option value="" selected>- Select -</option>
+                                <?php
+                                    $sql = "SELECT * FROM purchase_order";
+                                    $query = $conn->query($sql);
+                                    while($prow = $query->fetch_assoc()){
+                                        echo "
+                                        <option value='".$prow['id']."'>".$prow['status']."</option>
+                                        ";
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                    </div>  
+
+
                 </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i
