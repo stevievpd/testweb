@@ -908,3 +908,4 @@ var subtotal = document.getElementById("edit_sub_total").value;
 
     var edittotal_amount = (edit_subtotal) - (editamount);
     document.getElementById("edit_total_amount").value = edittotal_amount;
+

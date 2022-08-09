@@ -69,17 +69,17 @@
                
 			
                 <div class="form-group">
-                    <label for="prodName" class="col-sm-3 control-label">Product Name</label>
+                    <label for="edit_productName" class="col-sm-3 control-label">Product Name</label>
 
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="edit_prodName" name="productName">
+                      <input type="text" class="form-control" id="edit_productName" name="productname">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="prodDesc" class="col-sm-3 control-label">Product Description</label>
 
                     <div class="col-sm-9">
-                      <textarea class="form-control" id="edit_prodDesc" name="productDesc"></textarea>
+                      <textarea class="form-control" id="edit_prodDesc" name="productdescription"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
