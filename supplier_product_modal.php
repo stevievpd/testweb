@@ -8,22 +8,17 @@
             	<h4 class="modal-title"><b>Add Supplier Product</b></h4>
           	</div>
           	<div class="modal-body">
-            	<form class="form-horizontal" method="POST" action="supplier_product_add.php" enctype="multipart/form-data">
-          		    <div class="form-group">
-                  	    <label for="productcode" class="col-sm-3 control-label">Product Code</label>
-                  	    <div class="col-sm-9">
-                        	<input type="text" class="form-control" id="productCode" name="productCode" required>
-                  	    </div>
-                    </div>
+            	<form class="form-horizontal" method="POST" action="supplier_product_add.php">
+
                     <div class="form-group">
-                      	<label for="productname" class="col-sm-3 control-label">Product Name</label>
+                      	<label for="productName" class="col-sm-3 control-label">Product Name</label>
 
                       	<div class="col-sm-9">
                         	<input type="text" class="form-control" id="productName" name="productName" required>
                       	</div>
                     </div>
                     <div class="form-group">
-                      	<label for="productdescription" class="col-sm-3 control-label">Product Description</label>
+                      	<label for="productDesc" class="col-sm-3 control-label">Product Description</label>
                       	<div class="col-sm-9">
                           <textarea style="resize: none" class="form-control" name="productDesc" id="productDesc"></textarea>
                       	</div>

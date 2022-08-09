@@ -55,24 +55,24 @@
             <div class="box-body">
               <table id="example1" class="table table-bordered">
                 <thead>
-                  <th>Product ID</th>
+                  <th>Product Code</th>
                   <th>Product Name</th>
                   <th>Product Description</th>
                   <th>Tools</th>
                 </thead>
                 <tbody>
                   <?php
-                    $sql = "SELECT * FROM supplier_product";
+                    $sql = "SELECT *, supplier.id FROM supplier LEFT JOIN supplier_product ON supplier_product.id= supplier_product.supplier_product_code";
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
                       echo "
                         <tr>
-                            <td>".$row['supplier_product_id']."</td>
-                            <td>".$row['supplier_product_description']."</td>
+                            <td>".$row['supplier_product_code']."</td>
                             <td>".$row['supplier_product_name']."</td>
+                            <td>".$row['supplier_product_description']."</td>
                             <td>
-                                <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['supplier_product_id']."'><i class='fa fa-edit'></i> Edit</button>
-                                <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['supplier_product_id']."'><i class='fa fa-trash'></i> Delete</button>
+                                <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
+                                <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
                             </td>
                         </tr>
                       ";

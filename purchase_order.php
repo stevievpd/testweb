@@ -71,9 +71,9 @@
                       <td>".$row['purchase_order_id'].$status."</td>
                       <td>".$row['business_name']."</td>
                       <td>".$row['supplier_product_name']."</td>
-                      <td>".$row['quantity']."</td>
-                      <td>".$row['price']."</td>
-                      <td>".$row['total']."</td>
+                      <td>₱ ".$row['quantity']."</td>
+                      <td>₱ ".$row['price']."</td>
+                      <td>₱ ".$row['total']."</td>
                       <td>
                         <button class='btn btn-success btn-sm btn-flat edit' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
                         <button class='btn btn-danger btn-sm btn-flat delete' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
