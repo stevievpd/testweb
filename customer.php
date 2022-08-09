@@ -44,7 +44,7 @@
         }
       ?>
       <div class="row">
-        <div class="col-xs-12">
+        <div class="col-lg-12">
           <div class="box">
             <div class="box-header with-border">
                <a href="#addnew" data-toggle="modal" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i> New</a>
@@ -73,7 +73,6 @@
                           <td><?php echo $row['customer_address']; ?></td>
                           <td><?php echo $row['firstname'].' '.$row['lastname'];?></td>
                           <td><?php echo date('M d, Y', strtotime($row['customer_created_on'])) ?></td>
-
                           <td>
                             <button class="btn btn-primary btn-sm edit btn-flat" data-id="<?php echo $row['custid']; ?>"><i class="fa fa-edit"></i> Edit</button>
                             <button class="btn btn-danger btn-sm delete btn-flat" data-id="<?php echo $row['custid']; ?>"><i class="fa fa-trash"></i> Delete</button>
@@ -130,6 +129,8 @@ function getRow(id){
     dataType: 'json',
     success: function(response){
       $('#custid').val(response.customer_id);
+      $('.customer_delete').val(response.custid);
+      $('.editCustomer').val(response.custid);
       $('#employee_id').val(response.employee_id);
       $('#cust_firstname').val(response.customer_firstname);
       $('#cust_lastname').val(response.customer_lastname);

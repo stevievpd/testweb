@@ -12,9 +12,7 @@
 		}
 	}
 	else{
-		$_SESSION['error'] = 'Select item to delete first';
+		$_SESSION['error'] = 'Select a customer to delete first';
 	}
-
 	header('location: customer.php');
-	
 ?>
