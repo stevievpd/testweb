@@ -899,3 +899,12 @@ id = '$purchase_order_id', purchase_order_id = '$purchase_order_id', supplier_id
         </div>
     </div>
 </div> 
+
+
+
+var subtotal = document.getElementById("edit_sub_total").value;
+    var editamount = subtotal * 0.12;
+    document.getElementById("edit_sales_tax").value = editamount;
+
+    var edittotal_amount = (edit_subtotal) - (editamount);
+    document.getElementById("edit_total_amount").value = edittotal_amount;

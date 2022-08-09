@@ -1,5 +1,4 @@
 <!-- Add-->
-
 <div class="modal fade" id="addnew">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -75,7 +74,7 @@
                         <label for="sales_tax" class="col-sm-3 control-label">Sales Tax</label>
 
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="sales_tax" name="sales_tax" placeholder="0.00"
+                            <input type="number" class="form-control" id="add_sales_tax" name="sales_tax" placeholder="0.00"
                                 onchange="multiply()" readonly>
                         </div>
                     </div>
@@ -84,36 +83,10 @@
                         <label for="total" class="col-sm-3 control-label">Grand Total</label>
 
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="total" name="total" placeholder="0.00"
+                            <input type="number" class="form-control" id="add_total" name="total" placeholder="0.00"
                                 readonly>
                         </div>
                     </div>
-
-                    <script>
-                    function multiply() {
-                        // var add_quantity = document.getElementById("add_quantity").value;
-                        // var add_price = document.getElementById("add_price").value;
-                        // var add_subtotal = add_quantity * add_price;
-                        // document.getElementById("add_subtotal").value = add_subtotal;
-
-                        // var subtotal = document.getElementById("add_subtotal").value;
-                        // var amount = price * 0.12;
-                        // document.getElementById("sales_tax").value = amount;
-
-                        // var total_amount = (add_subtotal) - (amount);
-                        // document.getElementById("total").value = total_amount;
-
-                        var quantity = document.getElementById("add_quantity").value;
-                        var price = document.getElementById("add_price").value;
-                        var total = quantity * price;
-                        document.getElementById("add_subtotal").value = total;
-
-                        var tax = total * 0.12;
-                        document.getElementById("sales_tax").value = tax;
-                        var grand_total = total - tax;
-                        document.getElementById("total").value = grand_total;
-                    }
-                    </script>
                     
                     <div class="form-group">
                         <label for="purchase_date" class="col-sm-3 control-label">Purchase Date</label>
@@ -254,22 +227,6 @@
                             <input type="number" class="form-control" id="edit_total_amount" name="total" readonly>
                         </div>
                     </div>
-
-                    <script>
-                    function add() {
-                        var edit_quantity = document.getElementById("edit_quantity").value;
-                        var edit_price = document.getElementById("edit_price").value;
-                        var edit_subtotal = edit_quantity * edit_price;
-                        document.getElementById("edit_sub_total").value = edit_subtotal;
-
-                        var subtotal = document.getElementById("edit_sub_total").value;
-                        var editamount = subtotal * 0.12;
-                        document.getElementById("edit_sales_tax").value = editamount;
-
-                        var edittotal_amount = (edit_subtotal) + (editamount);
-                        document.getElementById("edit_total_amount").value = edittotal_amount;
-                    }
-                    </script>
 
                     <div class="form-group">
                         <label for="edit_purchase_date" class="col-sm-3 control-label">Purchase Date</label>

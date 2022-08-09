@@ -65,7 +65,7 @@
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
                     
-                    $status = ($row['status_id'])?'<span class="label label-warning pull-right">Received</span>':'<span class="label label-danger pull-right">Pending</span>';
+                    $status = ($row['status_id'])?'<span class="label label-success pull-right">Received</span>':'<span class="label label-warning pull-right">Pending</span>';
                       echo "
                       <tr>
                       <td>".$row['purchase_order_id'].$status."</td>
@@ -148,7 +148,7 @@ function getRow(id){
       $('#edit_payment_terms').val(response.payment_id);
       $('#edit_description').val(response.description);
       $('#edit_quantity').val(response.quantity);
-      $('#edit_status').val(response.status);
+      $('#edit_status').val(response.status_id);
       $('#edit_cost').val(response.cost);
       $('#edit_price').val(response.price);
       $('#edit_purchase_date').val(response.purchase_date);

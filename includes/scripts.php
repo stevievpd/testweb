@@ -127,31 +127,30 @@ $(function() {
 });
 
 
-function add() {
-    var edit_quantity = document.getElementById("edit_quantity").value;
-    var edit_price = document.getElementById("edit_price").value;
-    var edit_subtotal = edit_quantity * edit_price;
-    document.getElementById("edit_sub_total").value = edit_subtotal;
-
-    var subtotal = document.getElementById("edit_sub_total").value;
-    var editamount = subtotal * 0.12;
-    document.getElementById("edit_sales_tax").value = editamount;
-
-    var edittotal_amount = (edit_subtotal) + (editamount);
-    document.getElementById("edit_total_amount").value = edittotal_amount;
-}
-
 function multiply() {
     var add_quantity = document.getElementById("add_quantity").value;
     var add_price = document.getElementById("add_price").value;
     var add_subtotal = add_quantity * add_price;
-    document.getElementById("add_subtotal").value = add_subtotal;
+    var add_sales_tax= add_subtotal * 0.12;
+    document.getElementById("add_sales_tax").value = add_sales_tax;
 
-    var subtotal = document.getElementById("add_subtotal").value;
-    var amount = subtotal * 0.12;
-    document.getElementById("sales_tax").value = amount;
+   var add_sub_total = add_subtotal - add_sales_tax;
 
-    var total_amount = (add_subtotal) + (amount);
-    document.getElementById("total").value = total_amount;
+    document.getElementById("add_subtotal").value = add_sub_total;
+    document.getElementById("add_total").value = add_subtotal;
 }
+
+function add() {
+    var edit_quantity = document.getElementById("edit_quantity").value;
+    var edit_price = document.getElementById("edit_price").value;
+    var edit_subtotal = edit_quantity * edit_price;
+    var edit_sales_tax= edit_subtotal * 0.12;
+    document.getElementById("edit_sales_tax").value = edit_sales_tax;
+
+   var edit_sub_total = edit_subtotal - edit_sales_tax;
+
+    document.getElementById("edit_sub_total").value = edit_sub_total;
+    document.getElementById("edit_total_amount").value = edit_subtotal;
+}
+
 </script>
