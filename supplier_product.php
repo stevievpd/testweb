@@ -62,7 +62,7 @@
                 </thead>
                 <tbody>
                   <?php
-                    $sql = "SELECT *, supplier.id FROM supplier LEFT JOIN supplier_product ON supplier_product.id= supplier_product.supplier_product_code";
+                    $sql = "SELECT *, supplier.id FROM supplier LEFT JOIN supplier_product ON supplier_product.id=supplier.id";
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
                       echo "
@@ -118,7 +118,7 @@
             $('#edit_prodCode').val(response.supplier_product_id);
             $('#edit_prodName').val(response.supplier_product_name);
             $('#edit_prodDesc').val(response.supplier_product_description);
-            $('#edit_supplier_name').val(response.business_name);
+            $('#edit_supplier').val(response.supplier_product_id);
           }
         });
       }

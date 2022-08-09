@@ -66,20 +66,8 @@
           	<div class="modal-body">
             	<form class="form-horizontal" method="POST" action="supplier_product_edit.php">
                 <input type="hidden" class="product_id" name="id">
-                <!-- <div class="form-group">
-                    <label for="supplier_name" class="col-sm-3 control-label">Supplier</label>
-                    <div class="col-sm-9">
-                      <input type="text" class="form-control" id="edit_supplier_name" name="supplierName">
-                    </div>
-                </div> -->
-				
-				<div class="form-group">
-                    <label for="prodCode" class="col-sm-3 control-label">Product Code</label>
-
-                    <div class="col-sm-9">
-                      <input type="text" class="form-control" id="edit_prodCode" name="productCode">
-                    </div>
-                </div>
+               
+			
                 <div class="form-group">
                     <label for="prodName" class="col-sm-3 control-label">Product Name</label>
 
@@ -94,6 +82,23 @@
                       <textarea class="form-control" id="edit_prodDesc" name="productDesc"></textarea>
                     </div>
                 </div>
+                <div class="form-group">
+                        <label for="edit_supplier" class="col-sm-3 control-label">Supplier</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="supplier" id="edit_supplier" >
+                                <option value="" selected>- Select -</option>
+                                <?php
+                                    $sql = "SELECT *, supplier.id FROM supplier LEFT JOIN supplier_product ON supplier_product.id=supplier.id";
+                                    $query = $conn->query($sql);
+                                    while($prow = $query->fetch_assoc()){
+                                        echo "
+                                        <option value='".$prow['id']."'>".$prow['business_name']."</option>
+                                        ";
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                    </div>  
           	</div>
           	<div class="modal-footer">
             	<button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
