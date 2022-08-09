@@ -144,7 +144,7 @@ function getRow(id){
       $('#editCustomerFirstName').val(response.customer_firstname);
       $('#editCustomerLastName').val(response.customer_lastname);
       $('#editContact').val(response.customer_contact_info);
-      $('#editCustomerAddress').val(response.address);
+      $('#editCustomerAddress').val(response.customer_address);
     }
   });
 }
