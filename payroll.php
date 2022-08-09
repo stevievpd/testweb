@@ -156,28 +156,28 @@ $(function(){
     window.location = 'payroll.php?range='+range;
   });
 
-  // $('#payroll').click(function(e){
-  //   e.preventDefault();
-  //   $('#payForm').attr('action', 'payroll_generate.php');
-  //   $('#payForm').submit();
-  // });
-
-  // $('#payslip').click(function(e){
-  //   e.preventDefault();
-  //   $('#payForm').attr('action', 'payslip_generate.php');
-  //   $('#payForm').submit();
-  // });
-
-  $(document).on('click', '#payroll_pdf', function(e){
+  $('#payroll_pdf').click(function(e){
     e.preventDefault();
-    var date_range = $(this).val();
-    $('#payroll_preview').modal('show');
+    $('#payForm').attr('action', 'payroll_generate.php');
+    $('#payForm').submit();
   });
 
-  $(document).on('click', '#payslip_pdf', function(e){
+  $('#payslip_pdf').click(function(e){
     e.preventDefault();
-    $('#payslip_preview').modal('show');
+    $('#payForm').attr('action', 'payslip_generate.php');
+    $('#payForm').submit();
   });
+
+  // $(document).on('click', '#payroll_pdf', function(e){
+  //   e.preventDefault();
+  //   var date_range = $(this).val();
+  //   $('#payroll_preview').modal('show');
+  // });
+
+  // $(document).on('click', '#payslip_pdf', function(e){
+  //   e.preventDefault();
+  //   $('#payslip_preview').modal('show');
+  // });
 
 });
 
