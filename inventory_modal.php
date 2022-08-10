@@ -15,6 +15,26 @@
                               <input type="file" name="photo" id="photo">
                             </div>
                     </div>
+
+                    <div class="form-group">
+                        <label for="position" class="col-sm-3 control-label">Position</label>
+
+                        <div class="col-sm-9">
+                            <select class="form-control" id="product_id" name="productID"required>
+                            <option value="" selected>- Select -</option>
+                            <?php
+                                $sql = "SELECT * FROM supplier_product";
+                                $query = $conn->query($sql);
+                                while($prow = $query->fetch_assoc()){
+                                    echo "
+                                    <option value='".$prow['supplier_product_id']."'>".$prow['supplier_product_name']."</option>
+                                    ";
+                                }
+                            ?>
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label for="description" class="col-sm-3 control-label">Description</label>
                         <div class="col-sm-9">
@@ -55,16 +75,14 @@
     <div class="modal-dialog">
         <div class="modal-content">
            <div class="modal-header">
-            	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              		<span aria-hidden="true">&times;</span></button>
+            	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             	<h4 class="modal-title"><b><span class="inventory_id"></span></b></h4>
-                </div>
-                <div class="modal-body">
+            </div>
+            <div class="modal-body">
                 <form class="form-horizontal" method="POST" action="inventory_edit.php">
                     <input type="hidden" class="invid" name="id">
                     <div class="form-group">
                         <label for="edit_description" class="col-sm-3 control-label">Description</label>
-
                         <div class="col-sm-9">
                             <input type="text" class="form-control" id="edit_description" name="description">
                         </div>
