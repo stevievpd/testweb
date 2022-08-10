@@ -5,7 +5,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"><b>Add Inventory</b></h4>
+                <h4 class="modal-title"><b>Add Item to Inventory</b></h4>
                 </div>
                 <div class="modal-body">
                 <form class="form-horizontal" method="POST" action="inventory_add.php" enctype="multipart/form-data">
@@ -17,7 +17,6 @@
                     </div>
                     <div class="form-group">
                         <label for="description" class="col-sm-3 control-label">Description</label>
-
                         <div class="col-sm-9">
                             <input type="text" class="form-control" id="description" name="description" required>
                         </div>
@@ -30,15 +29,13 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="cost" class="col-sm-3 control-label">Cost</label>
-
+                        <label for="cost" class="col-sm-3 control-label">Buying Cost</label>
                         <div class="col-sm-9">
                             <input type="number" class="form-control" id="cost" name="cost" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="price" class="col-sm-3 control-label">Price</label>
-
+                        <label for="price" class="col-sm-3 control-label">Selling Price</label>
                         <div class="col-sm-9">
                             <input type="number" class="form-control" id="price" name="price" required>
                         </div>
