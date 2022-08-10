@@ -107,9 +107,9 @@ $(function(){
     getRow(id);
   });
 
-  $('#example1').on('click', '.photo', function(e){
+  $('#example1').on('click', '.edit_photo', function(e){
     e.preventDefault();
-    $('#delete').modal('show');
+    $('#edit_photo').modal('show');
     var id = $(this).data('id');
     getRow(id);
   });
@@ -123,8 +123,7 @@ function getRow(id){
     data: {id:id},
     dataType: 'json',
     success: function(response){
-
-      $('.supid').val(id);
+      $('.supid').val(response.id);
       $('#del_supplier').html(response.business_name);
       $('#edit_photo').val(response.logo);
       $('#edit_business_name').val(response.business_name);

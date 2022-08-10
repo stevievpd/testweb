@@ -3,7 +3,7 @@
 
 	if(isset($_POST['delete'])){
 		$id = $_POST['id'];
-		$sql = "DELETE FROM supplier WHERE supplier_id = '$id'";
+		$sql = "DELETE FROM supplier WHERE id = '$id'";
 		if($conn->query($sql)){
 			$_SESSION['success'] = 'Supplier deleted successfully';
 		}
