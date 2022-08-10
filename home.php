@@ -68,8 +68,7 @@
                             <div class="icon">
                                 <i class="ion ion-person-stalker"></i>
                             </div>
-                            <a href="employee.php" class="small-box-footer">More info <i
-                                    class="fa fa-arrow-circle-right"></i></a>
+                            <a href="employee.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -184,7 +183,7 @@
                 </div>
                 <!-- /.row -->
                 <div class="row">
-                    <div class="col-xs-6">
+                    <div class="col-lg-6">
                         <div class="box">
                             <div class="box-header with-border">
                                 <h3 class="box-title">Monthly Attendance Report</h3>
@@ -193,14 +192,14 @@
                                         <div class="form-group">
                                             <label>Select Year: </label>
                                             <select class="form-control input-sm" id="select_year">
-                                            <?php
-                                                for($i=2015; $i<=2065; $i++){
-                                                $selected = ($i==$year)?'selected':'';
-                                                echo "
-                                                    <option value='".$i."' ".$selected.">".$i."</option>
-                                                ";
-                                                }
-                                            ?>
+                                                <?php
+                                                    for($i=2015; $i<=2065; $i++){
+                                                    $selected = ($i==$year)?'selected':'';
+                                                    echo "
+                                                        <option value='".$i."' ".$selected.">".$i."</option>
+                                                    ";
+                                                    }
+                                                ?>
                                             </select>
                                         </div>
                                     </form>
@@ -216,7 +215,7 @@
                         </div>
                     </div>
 
-                    <div class="col-xs-6">
+                    <div class="col-lg-6">
                         <div class="box">
                             <div class="box-header with-border">
                                 <h3 class="box-title">Sales Report</h3>
@@ -247,9 +246,40 @@
                             </div>
                         </div>
                     </div>
-                   
-                </div>
 
+                    <div class="col-lg-6">
+                        <div class="box">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Employee Positions</h3>
+                                <div class="box-tools pull-right">
+                                    <form class="form-inline">
+                                        <div class="form-group">
+                                            <label>Select Year: </label>
+                                            <select class="form-control input-sm" id="select_year">
+                                            <?php
+                                                for($i=2015; $i<=2065; $i++){
+                                                $selected = ($i==$year)?'selected':'';
+                                                echo "
+                                                    <option value='".$i."' ".$selected.">".$i."</option>
+                                                ";
+                                                }
+                                            ?>
+                                            </select>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div class="chart">
+                                    <br>
+                                    <div id="legend" class="text-center"></div>
+                                    <canvas id="position_chart" style="height:350px"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </section>
             <!-- right col -->
         </div>
@@ -260,29 +290,29 @@
 
     <!-- Chart Data -->
     <?php
-  $and = 'AND YEAR(date) = '.$year;
-  $months = array();
-  $ontime = array();
-  $late = array();
-  for( $m = 1; $m <= 12; $m++ ) {
-    $sql = "SELECT * FROM attendance WHERE MONTH(date) = '$m' AND status = 1 $and";
-    $oquery = $conn->query($sql);
-    array_push($ontime, $oquery->num_rows);
+        $and = 'AND YEAR(date) = '.$year;
+        $months = array();
+        $ontime = array();
+        $late = array();
+        for( $m = 1; $m <= 12; $m++ ) {
+            $sql = "SELECT * FROM attendance WHERE MONTH(date) = '$m' AND status = 1 $and";
+            $oquery = $conn->query($sql);
+            array_push($ontime, $oquery->num_rows);
 
-    $sql = "SELECT * FROM attendance WHERE MONTH(date) = '$m' AND status = 0 $and";
-    $lquery = $conn->query($sql);
-    array_push($late, $lquery->num_rows);
+            $sql = "SELECT * FROM attendance WHERE MONTH(date) = '$m' AND status = 0 $and";
+            $lquery = $conn->query($sql);
+            array_push($late, $lquery->num_rows);
 
-    $num = str_pad( $m, 2, 0, STR_PAD_LEFT );
-    $month =  date('M', mktime(0, 0, 0, $m, 1));
-    array_push($months, $month);
-  }
+            $num = str_pad( $m, 2, 0, STR_PAD_LEFT );
+            $month =  date('M', mktime(0, 0, 0, $m, 1));
+            array_push($months, $month);
+        }
 
-  $months = json_encode($months);
-  $late = json_encode($late);
-  $ontime = json_encode($ontime);
+        $months = json_encode($months);
+        $late = json_encode($late);
+        $ontime = json_encode($ontime);
 
-?>
+    ?>
     <!-- End Chart Data -->
     <?php include 'includes/scripts.php'; ?>
     <script>
@@ -354,6 +384,44 @@
         $('#select_year').change(function() {
             window.location.href = 'home.php?year=' + $(this).val();
         });
+    });
+    </script>
+    
+    <script>
+    const ctx = document.getElementById('#position_chart').getContext('2d');
+    const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
     });
     </script>
 </body>
