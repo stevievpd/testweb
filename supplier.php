@@ -123,16 +123,15 @@ function getRow(id){
     data: {id:id},
     dataType: 'json',
     success: function(response){
-      $('.supid').val(response.supplier_id);
+
+      $('.supid').val(id);
+      $('#del_supplier').html(response.business_name);
       $('#edit_photo').val(response.logo);
       $('#edit_business_name').val(response.business_name);
-      $('#edit_product').val(response.product);
       $('#edit_address').val(response.address);
       $('#edit_email').val(response.email);
       $('#edit_phone_number').val(response.phone_number);
-      $('.del_supplier_name').val(response.supplier_id);
-      $('.del_supid').val(response.supplier_id);
-      $('.edit_supplier').val(response.supplier_id);
+      
     }
   });
 }
