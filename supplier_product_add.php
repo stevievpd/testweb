@@ -1,14 +1,19 @@
 <?php
 	include 'includes/session.php';
-
 	if(isset($_POST['add'])){
-		$supplierName = $_POST['supplier_product_id'];
-		$productCode = $_POST['productCode'];
+		$supplier = $_POST['supplier'];
 		$productName = $_POST['productName'];
         $productDesc = $_POST['productDesc'];
-		$supplier = $_POST['supplier'];
-	
-		$sql = "INSERT INTO supplier_product (supplier_product_code, supplier_product_name, supplier_product_description, supplier_id) VALUES ('$productCode', '$productName','$productDesc', '$supplier')";
+		
+		$numbers = '';
+		
+		for($i = 0; $i < 12; $i++){
+			$numbers .= $i;
+		}
+		
+		$supplier_product_id = substr(str_shuffle($numbers), 0, 13);
+
+		$sql = "INSERT INTO supplier_product (supplier_product_id, supplier_product_name, supplier_product_description, supplier_id) VALUES ('$supplier_product_id','$productName','$productDesc','$supplier')";
 		if($conn->query($sql)){
 			$_SESSION['success'] = 'Product added successfully';
 		}

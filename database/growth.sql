@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 08, 2022 at 07:55 AM
+-- Generation Time: Aug 10, 2022 at 05:19 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -140,17 +140,16 @@ CREATE TABLE `customer` (
   `customer_lastname` varchar(50) NOT NULL,
   `customer_contact_info` varchar(50) NOT NULL,
   `customer_address` varchar(150) NOT NULL,
-  `employee_id` varchar(50) NOT NULL,
-  `customer_created_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `customer_created_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `employee_id` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`id`, `customer_id`, `customer_firstname`, `customer_lastname`, `customer_contact_info`, `customer_address`, `employee_id`, `customer_created_on`) VALUES
-(1, 'ABC123456789', 'Steven Edward', 'Lizada', '09615089172', '12 Emerald lane Brgy. Culiat Quezon City', '1', '2022-08-08 05:54:45'),
-(2, 'ZOU721458639', 'Sam', 'Pakyu', '247584562', 'Tandang Sora', '3', '2022-08-08 05:55:10');
+INSERT INTO `customer` (`id`, `customer_id`, `customer_firstname`, `customer_lastname`, `customer_contact_info`, `customer_address`, `customer_created_on`, `employee_id`) VALUES
+(2, 'EWA591426087', 'Steven ', 'Lizada', '09615089172', 'Tandang sora QCc', '2022-08-10 03:19:10', '1');
 
 -- --------------------------------------------------------
 
@@ -373,7 +372,7 @@ CREATE TABLE `purchase_order` (
   `supplier_id` int(11) NOT NULL,
   `supplier_product_id` int(11) NOT NULL,
   `payment_id` int(11) NOT NULL,
-  `status_id` int(11) NOT NULL COMMENT '[0] - Pending [1] - Received [2] - Lost & Stolen'
+  `status_id` int(11) NOT NULL COMMENT '[0] - Pending [1] - Received\r\n'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -381,8 +380,8 @@ CREATE TABLE `purchase_order` (
 --
 
 INSERT INTO `purchase_order` (`id`, `purchase_order_id`, `quantity`, `price`, `total`, `purchase_date`, `expected_date`, `supplier_id`, `supplier_product_id`, `payment_id`, `status_id`) VALUES
-(63, 'NPR627945308', 222, 12111, 0, '5858-08-05', '5858-05-05', 1, 1, 3, 0),
-(64, 'UGY078215394', 33, 33, 0, '0033-03-31', '0033-03-31', 1, 1, 1, 0);
+(70, 'FKY380157624', 1, 500, 440, '0009-09-09', '0009-09-09', 1, 1, 3, 0),
+(71, 'HYI023491856', 1, 100, 0, '0002-02-02', '0002-02-02', 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -442,8 +441,7 @@ CREATE TABLE `status` (
 
 INSERT INTO `status` (`id`, `status_description`) VALUES
 (0, 'Pending'),
-(1, 'Received'),
-(2, 'Lost/Stolen');
+(1, 'Received');
 
 -- --------------------------------------------------------
 
@@ -453,6 +451,7 @@ INSERT INTO `status` (`id`, `status_description`) VALUES
 
 CREATE TABLE `supplier` (
   `id` int(11) NOT NULL,
+  `supplier_id` varchar(50) NOT NULL,
   `photo` varchar(200) NOT NULL,
   `business_name` varchar(200) NOT NULL,
   `address` varchar(200) NOT NULL,
@@ -465,8 +464,9 @@ CREATE TABLE `supplier` (
 -- Dumping data for table `supplier`
 --
 
-INSERT INTO `supplier` (`id`, `photo`, `business_name`, `address`, `email`, `phone_number`, `time_stamp`) VALUES
-(1, '', 'Bulla Crave1', '93 General Ave. QC', 'bullacrave@gmail.com', 2024162156, '2022-08-06 09:16:11');
+INSERT INTO `supplier` (`id`, `supplier_id`, `photo`, `business_name`, `address`, `email`, `phone_number`, `time_stamp`) VALUES
+(1, 'AXA1231541224', '', 'Motor Trade', '93 General Ave. QC', 'motortrade@gmail.com', 2024162156, '2022-08-09 10:14:00'),
+(2, 'AVX1452398425', '', 'Russi', 'Quezon City', 'Russi@gmail.com', 2024162156, '2022-08-09 10:09:43');
 
 -- --------------------------------------------------------
 
@@ -476,16 +476,11 @@ INSERT INTO `supplier` (`id`, `photo`, `business_name`, `address`, `email`, `pho
 
 CREATE TABLE `supplier_product` (
   `id` int(11) NOT NULL,
+  `supplier_product_id` varchar(50) NOT NULL,
   `supplier_product_name` varchar(80) NOT NULL,
-  `supplier_product_description` varchar(80) NOT NULL
+  `supplier_product_description` varchar(80) NOT NULL,
+  `supplier_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `supplier_product`
---
-
-INSERT INTO `supplier_product` (`id`, `supplier_product_name`, `supplier_product_description`) VALUES
-(1, 'Laundry Machine', 'LG Laundry Machine 12862');
 
 --
 -- Indexes for dumped tables
@@ -680,7 +675,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `purchase_order`
 --
 ALTER TABLE `purchase_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT for table `sales`
@@ -699,6 +694,12 @@ ALTER TABLE `schedules`
 --
 ALTER TABLE `supplier`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `supplier_product`
+--
+ALTER TABLE `supplier_product`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

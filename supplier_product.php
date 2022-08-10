@@ -55,24 +55,24 @@
             <div class="box-body">
               <table id="example1" class="table table-bordered">
                 <thead>
-                  <th>Product ID</th>
+                  <th>Product Code</th>
                   <th>Product Name</th>
                   <th>Product Description</th>
                   <th>Tools</th>
                 </thead>
                 <tbody>
                   <?php
-                    $sql = "SELECT * FROM supplier_product";
+                    $sql = "SELECT *, supplier_product.id from supplier_product LEFT JOIN supplier on supplier.id=supplier_product.id";
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
                       echo "
                         <tr>
                             <td>".$row['supplier_product_id']."</td>
-                            <td>".$row['supplier_product_description']."</td>
                             <td>".$row['supplier_product_name']."</td>
+                            <td>".$row['supplier_product_description']."</td>
                             <td>
-                                <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['supplier_product_id']."'><i class='fa fa-edit'></i> Edit</button>
-                                <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['supplier_product_id']."'><i class='fa fa-trash'></i> Delete</button>
+                                <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
+                                <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
                             </td>
                         </tr>
                       ";
@@ -114,11 +114,13 @@
           data: {id:id},
           dataType: 'json',
           success: function(response){
-            $('.product_id').val(response.supplier_product_id);
-            $('#edit_prodCode').val(response.supplier_product_id);
+            $('.product_id').val(response.id);
             $('#edit_prodName').val(response.supplier_product_name);
             $('#edit_prodDesc').val(response.supplier_product_description);
-            $('#edit_supplier_name').val(response.business_name);
+            $('#edit_supplier').val(response.supplier_id);
+            $('#product_id').val(response.id);
+            $('#del_product').html(response.supplier_product_description);
+
           }
         });
       }

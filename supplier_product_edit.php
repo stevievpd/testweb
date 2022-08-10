@@ -3,21 +3,21 @@
 
 	if(isset($_POST['edit'])){
 		$productID = $_POST['id'];
-		$productCode = $_POST['productCode'];
-		$productName = $_POST['productName'];
-		$productDesc = $_POST['productDesc'];
-		$supplier = $_POST['supplierName'];
+		$supplier_product_name = $_POST['supplier_product_name'];
+		$supplier_product_description = $_POST['supplier_product_description'];
+		$supplier = $_POST['supplier'];
 		
-		$sql = "UPDATE supplier_product SET supplier_product_code = '$productCode', supplier_product_name = '$productName', supplier_product_description = '$productDesc', supplier_id = '$supplier' WHERE supplier_product_id = '$productID'";
+		$sql = "UPDATE supplier_product SET supplier_product_name = '$supplier_product_name', supplier_product_description = '$supplier_product_description' , supplier_id = '$supplier' WHERE id = '$id'";
 		if($conn->query($sql)){
-			$_SESSION['success'] = 'Product updated successfully';
+			$_SESSION['success'] = 'Supplier product updated successfully';
 		}
 		else{
 			$_SESSION['error'] = $conn->error;
 		}
+
 	}
 	else{
-		$_SESSION['error'] = 'Select products to edit first';
+		$_SESSION['error'] = 'Select product to edit first';
 	}
 
 	header('location: supplier_product.php');

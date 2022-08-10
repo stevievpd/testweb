@@ -2,8 +2,8 @@
 	include 'includes/session.php';
 
 	if(isset($_POST['delete'])){
-		$productID = $_POST['id'];
-		$sql = "DELETE FROM supplier_product WHERE supplier_product_id = '$productID'";
+		$id = $_POST['id'];
+		$sql = "DELETE FROM supplier_product WHERE id = '$id'";
 		if($conn->query($sql)){
 			$_SESSION['success'] = 'Product deleted successfully';
 		}
