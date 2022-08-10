@@ -143,6 +143,7 @@ function getRow(id){
       $('.po_id').val(response.id);
       $('.del_purchase_order').val(response.id);
       $('.purchaseid').val(response.id);
+      $('#del_purchase_order').html(response.purchase_order_id);
       $('#edit_supplier').val(response.supplier_id);
       $('#edit_supplier_product').val(response.supplier_product_id);
       $('#edit_payment_terms').val(response.payment_id);

@@ -127,8 +127,8 @@ function getRow(id){
       dataType: 'json',
     success: function(response){
       $('.invid').val(response.id);
+      $('#del_inventory').html(response.description);
       $('.inventory_id').val(response.id);
-      $('.del_inventory').val(response.id);
       $('.edit_inventory').val(response.id);
       $('#edit_description').val(response.description);
       $('#edit_quantity').val(response.quantity);
