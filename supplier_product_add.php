@@ -4,21 +4,16 @@
 		$supplier = $_POST['supplier'];
 		$productName = $_POST['productName'];
         $productDesc = $_POST['productDesc'];
-		$letters = '';
+		
 		$numbers = '';
 		
-		$letters = '';
-		$numbers = '';
-		foreach (range('A', 'Z') as $char) {
-		    $letters .= $char;
-		}
-		for($i = 0; $i < 10; $i++){
+		for($i = 0; $i < 12; $i++){
 			$numbers .= $i;
 		}
 		
-	$supplier_product_code = substr(str_shuffle($letters), 0, 3).substr(str_shuffle($numbers), 0, 9);
+		$supplier_product_id = substr(str_shuffle($numbers), 0, 13);
 
-		$sql = "INSERT INTO supplier_product (supplier_product_code, supplier_product_name, supplier_product_description, supplier_product_id) VALUES ('$supplier_product_code','$productName','$productDesc','$supplier')";
+		$sql = "INSERT INTO supplier_product (supplier_product_id, supplier_product_name, supplier_product_description, supplier_id) VALUES ('$supplier_product_id','$productName','$productDesc','$supplier')";
 		if($conn->query($sql)){
 			$_SESSION['success'] = 'Product added successfully';
 		}

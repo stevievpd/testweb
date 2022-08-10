@@ -5,7 +5,7 @@
 		$id = $_POST['id'];
 		$sql = "DELETE FROM supplier_product WHERE id = '$id'";
 		if($conn->query($sql)){
-			$_SESSION['success'] = 'Purchase order deleted successfully';
+			$_SESSION['success'] = 'Product deleted successfully';
 		}
 		else{
 			$_SESSION['error'] = $conn->error;

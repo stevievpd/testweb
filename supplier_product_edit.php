@@ -3,11 +3,11 @@
 
 	if(isset($_POST['edit'])){
 		$productID = $_POST['id'];
-		$productname = $_POST['productname'];
-		$productdescription = $_POST['productdescription'];
+		$supplier_product_name = $_POST['supplier_product_name'];
+		$supplier_product_description = $_POST['supplier_product_description'];
 		$supplier = $_POST['supplier'];
 		
-		$sql = "UPDATE supplier_product SET supplier_product_name = '$productname', supplier_product_description = '$productdescription' , supplier_product_id = '$supplier' WHERE id = '$id'";
+		$sql = "UPDATE supplier_product SET supplier_product_name = '$supplier_product_name', supplier_product_description = '$supplier_product_description' , supplier_id = '$supplier' WHERE id = '$id'";
 		if($conn->query($sql)){
 			$_SESSION['success'] = 'Supplier product updated successfully';
 		}

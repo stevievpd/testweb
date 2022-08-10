@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 09, 2022 at 12:23 PM
+-- Generation Time: Aug 10, 2022 at 05:19 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -136,19 +136,20 @@ INSERT INTO `cashadvance` (`id`, `date_advance`, `employee_id`, `amount`) VALUES
 CREATE TABLE `customer` (
   `id` int(11) NOT NULL,
   `customer_id` varchar(50) NOT NULL,
-  `cust_firstname` varchar(50) NOT NULL,
-  `cust_lastname` varchar(50) NOT NULL,
-  `cust_contact_info` varchar(50) NOT NULL,
-  `cust_address` varchar(150) NOT NULL,
-  `transaction_id` varchar(50) NOT NULL
+  `customer_firstname` varchar(50) NOT NULL,
+  `customer_lastname` varchar(50) NOT NULL,
+  `customer_contact_info` varchar(50) NOT NULL,
+  `customer_address` varchar(150) NOT NULL,
+  `customer_created_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `employee_id` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`id`, `customer_id`, `cust_firstname`, `cust_lastname`, `cust_contact_info`, `cust_address`, `transaction_id`) VALUES
-(1, 'ABC123456789', 'Steven Edward', 'Lizada', '09615089172', '12 Emerald lane Brgy. Culiat Quezon City', 'TRNS789456321');
+INSERT INTO `customer` (`id`, `customer_id`, `customer_firstname`, `customer_lastname`, `customer_contact_info`, `customer_address`, `customer_created_on`, `employee_id`) VALUES
+(2, 'EWA591426087', 'Steven ', 'Lizada', '09615089172', 'Tandang sora QCc', '2022-08-10 03:19:10', '1');
 
 -- --------------------------------------------------------
 
@@ -477,16 +478,9 @@ CREATE TABLE `supplier_product` (
   `id` int(11) NOT NULL,
   `supplier_product_id` varchar(50) NOT NULL,
   `supplier_product_name` varchar(80) NOT NULL,
-  `supplier_product_description` varchar(80) NOT NULL
+  `supplier_product_description` varchar(80) NOT NULL,
+  `supplier_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `supplier_product`
---
-
-INSERT INTO `supplier_product` (`id`, `supplier_product_id`, `supplier_product_name`, `supplier_product_description`) VALUES
-(1, 'NVY389570214', 'Nmax 150', 'Motorcycles'),
-(2, 'CEL968423571', 'Honda Beat 150', 'Motorcycles');
 
 --
 -- Indexes for dumped tables
@@ -627,7 +621,7 @@ ALTER TABLE `cashadvance`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `deductions`
@@ -700,6 +694,12 @@ ALTER TABLE `schedules`
 --
 ALTER TABLE `supplier`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `supplier_product`
+--
+ALTER TABLE `supplier_product`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

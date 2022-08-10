@@ -62,7 +62,7 @@
                 </thead>
                 <tbody>
                   <?php
-                    $sql = "SELECT *, supplier.id from supplier LEFT JOIN supplier_product on supplier_product.id=supplier.id";
+                    $sql = "SELECT *, supplier_product.id from supplier_product LEFT JOIN supplier on supplier.id=supplier_product.id";
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
                       echo "
@@ -114,10 +114,13 @@
           data: {id:id},
           dataType: 'json',
           success: function(response){
-            $('.product_id').val(response.supplier_product_id);
+            $('.product_id').val(response.id);
             $('#edit_prodName').val(response.supplier_product_name);
             $('#edit_prodDesc').val(response.supplier_product_description);
-            $('#edit_supplier').val(response.supplier_product_id);
+            $('#edit_supplier').val(response.supplier_id);
+            $('#product_id').val(response.id);
+            $('#del_product').html(response.supplier_product_description);
+
           }
         });
       }
