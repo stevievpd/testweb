@@ -909,3 +909,6 @@ var subtotal = document.getElementById("edit_sub_total").value;
     var edittotal_amount = (edit_subtotal) - (editamount);
     document.getElementById("edit_total_amount").value = edittotal_amount;
 
+
+    SELECT *, supplier.id from supplier LEFT JOIN supplier_product on supplier_product.id=supplier.id
+
