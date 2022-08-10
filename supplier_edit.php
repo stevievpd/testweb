@@ -2,6 +2,7 @@
 	include 'includes/session.php';
 	
 	if(isset($_POST['edit'])){
+		$id = $_POST['id'];
 		$business_name = $_POST['business_name'];
 		$address = $_POST['address'];
 		$email = $_POST['email'];
