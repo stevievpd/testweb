@@ -29,13 +29,20 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="employee.php"><i class="fa fa-circle-o"></i> Employee List</a></li>
-                    <li><a href="position.php"><i class="fa fa-circle-o"></i> Positions</a></li>
-                    <li><a href="schedule.php"><i class="fa fa-clock-o"></i> Schedules</a></li>
-                    <li><a href="schedule_employee.php"><i class="fa fa-clock-o"></i> Employee Schedules</a></li>
+                    <li><a href="overtime.php"><i class="fa fa-circle-o"></i> Overtime</a></li>
+                    <li><a href="cashadvance.php"><i class="fa fa-circle-o"></i> Cash Advance</a></li>
+                    <li><a href="schedule.php"><i class="fa fa-circle-o"></i> Schedules</a></li>
                 </ul>
             </li>
 
-            <li><a href="customer.php"><i class="fa fa-users"></i> <span>Customer</span></a></li>
+           
+            <li><a href="position.php"><i class="fa fa-suitcase"></i> Positions</a></li>
+            <li><a href="deduction.php"><i class="fa fa-file-text"></i><span> Deductions</span></a></li>
+            <li class="header">PRINTABLES</li>
+            <li><a href="payroll.php"><i class="fa fa-files-o"></i> <span>Payroll</span></a></li>
+            <li><a href="schedule_employee.php"><i class="fa fa-clock-o"></i> <span>Schedule</span></a></li>
+
+            <li class="header">SHOP</li>
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-file"></i>
@@ -51,11 +58,7 @@
                     <li><a href="purchase_order.php"><i class="fa fa-circle-o"></i> Purchase Order</a></li>
                 </ul>
             </li>
-            <li class="header">PRINTABLES</li>
-            <li><a href="payroll.php"><i class="fa fa-files-o"></i> <span>Payroll</span></a></li>
-            <li><a href="cashadvance.php"><i class="fa fa-clock-o"></i> <span>Cash Advance</span></a></li>
-            <li><a href="deduction.php"><i class="fa fa-file-text"></i><span> Deductions</span></a></li>
-            <li><a href="overtime.php"><i class="fa fa-clock-o"></i> <span>Overtime</a></span></li>
+            <li><a href="customer.php"><i class="fa fa-users"></i> <span>Customer</span></a></li>
 
             <li class="header">SETTINGS</li>
             <li><a href="accounts.php"><i class="fa fa-users"></i> <span>Accounts</span></a></li>
