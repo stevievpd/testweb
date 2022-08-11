@@ -1,6 +1,5 @@
 <?php
 	include 'includes/session.php';
-
 	if(isset($_POST['delete'])){
 		$id = $_POST['id'];
 		$sql = "DELETE FROM inventory WHERE id = '$id'";

@@ -131,7 +131,6 @@ function getRow(id){
       $('.invid').val(response.id);
       $('#del_inventory').html(response.description);
       $('.inventory_id').val(response.id);
-      $('.edit_inventory').val(response.id);
       $('#edit_description').val(response.description);
       $('#edit_quantity').val(response.quantity);
       $('#edit_cost').val(response.cost);
