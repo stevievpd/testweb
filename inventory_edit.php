@@ -6,8 +6,13 @@
 		$quantity = $_POST['quantity'];
 		$cost = $_POST['cost'];
 		$price = $_POST['price'];
+		$cost = $_POST['cost'];
 
+<<<<<<< HEAD
 		$sql = "UPDATE inventory SET description = '$description', quantity = '$quantity', cost = '$cost',price = '$price' WHERE id = '$id'";
+=======
+		$sql = "UPDATE inventory SET description = '$description', quantity = '$quantity', price = '$price', cost = '$cost' WHERE id = '$id'";
+>>>>>>> 18a4124cbb593a64542ddf4fc2506963c93a22d7
 		if($conn->query($sql)){
 			$_SESSION['success'] = 'Inventory updated successfully';
 		}

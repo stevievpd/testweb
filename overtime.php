@@ -44,11 +44,8 @@
         }
       ?>
       <div class="row">
-<<<<<<< HEAD
         <div class="col-lg-12">
-=======
         <div class="col-xs-12">
->>>>>>> 676cbdc0b104a251b7ec155f53cb2bf7a8d3af40
           <div class="box">
             <div class="box-header with-border">
               <a href="#addnew" data-toggle="modal" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i> New</a>
