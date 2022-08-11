@@ -62,7 +62,7 @@
                 </thead>
                 <tbody>
                 <?php
-                   $sql = "SELECT * FROM inventory LEFT JOIN supplier_product on supplier_product.supplier_product_id = inventory.product_id";
+                   $sql = "SELECT *, inventory.id as inventoryID FROM inventory LEFT JOIN supplier_product on supplier_product.supplier_product_id = inventory.product_id";
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
                       ?>
@@ -75,8 +75,8 @@
                           <td><?php echo $row['cost']; ?></td>
                           <td><?php echo $row['price']; ?></td>
                           <td>
-                            <button class="btn btn-success btn-sm edit btn-flat" data-id="<?php echo $row['id']; ?>"><i class="fa fa-edit"></i> Edit</button>
-                            <button class="btn btn-danger btn-sm delete btn-flat" data-id="<?php echo $row['id']; ?>"><i class="fa fa-trash"></i> Delete</button>
+                            <button class="btn btn-success btn-sm edit btn-flat" data-id="<?php echo $row['inventoryID']; ?>"><i class="fa fa-edit"></i> Edit</button>
+                            <button class="btn btn-danger btn-sm delete btn-flat" data-id="<?php echo $row['inventoryID']; ?>"><i class="fa fa-trash"></i> Delete</button>
                           </td>
                         </tr>
                       <?php
@@ -135,7 +135,6 @@ function getRow(id){
       $('#edit_quantity').val(response.quantity);
       $('#edit_cost').val(response.cost);
       $('#edit_price').val(response.price);
-
     }
   });
 }
