@@ -6,8 +6,9 @@
 		$description = $_POST['description'];
 		$quantity = $_POST['quantity'];
 		$price = $_POST['price'];
+		$cost = $_POST['cost'];
 
-		$sql = "UPDATE inventory SET description = '$description', quantity = '$quantity', price = '$price' WHERE id = '$id'";
+		$sql = "UPDATE inventory SET description = '$description', quantity = '$quantity', price = '$price', cost = '$cost' WHERE id = '$id'";
 		if($conn->query($sql)){
 			$_SESSION['success'] = 'Inventory updated successfully';
 		}
