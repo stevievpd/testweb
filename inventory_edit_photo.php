@@ -7,7 +7,6 @@
 		if(!empty($filename)){
 			move_uploaded_file($_FILES['photo']['tmp_name'], '../images/'.$filename);	
 		}
-		
 		$sql = "UPDATE inventory SET photo = '$filename' WHERE id = '$id'";
 		if($conn->query($sql)){
 			$_SESSION['success'] = 'Inventory photo updated successfully';
