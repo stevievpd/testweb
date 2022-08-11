@@ -89,13 +89,14 @@
 <?php include 'includes/scripts.php'; ?>
 <script>
 $(function(){
-  $('.edit').click(function(e){
-    e.preventDefault();
-    $('#edit').modal('show');
-    var id = $(this).data('id');
-    getRow(id);
-  });
+    $('#example1').on('click', '.edit', function(e){
+      e.preventDefault();
+      $('#edit').modal('show');
+      var id = $(this).data('id');
+      getRow(id);
+    });
 });
+
 
 function getRow(id){
   $.ajax({
