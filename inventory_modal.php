@@ -17,7 +17,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="position" class="col-sm-3 control-label">Position</label>
+                        <label for="position" class="col-sm-3 control-label">Product</label>
 
                         <div class="col-sm-9">
                             <select class="form-control" id="product_id" name="productID"required>
@@ -45,19 +45,19 @@
                         <label for="quantity" class="col-sm-3 control-label">Quantity</label>
 
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="quantity" name="quantity" required>
+                            <input type="number" class="form-control" id="quantity" name="quantity" placeholder="₱ 0.00" required >
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="cost" class="col-sm-3 control-label">Buying Cost</label>
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="cost" name="cost" required>
+                            <input type="number" class="form-control" id="cost" name="cost"  placeholder="₱ 0.00" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="price" class="col-sm-3 control-label">Selling Price</label>
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="price" name="price" required>
+                            <input type="number" class="form-control" id="price" name="price"  placeholder="₱ 0.00" required>
                         </div>
                     </div>
                 <div class="modal-footer">
@@ -91,21 +91,21 @@
                         <label for="edit_quantity" class="col-sm-3 control-label">Quantity</label>
 
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="edit_quantity" name="quantity" >
+                            <input type="number" class="form-control" id="edit_quantity" name="quantity"  placeholder="₱ 0.00">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="edit_cost" class="col-sm-3 control-label">Unit Cost</label>
 
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="edit_cost" name="cost">
+                            <input type="number" class="form-control" id="edit_cost" name="cost" placeholder="₱ 0.00">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="edit_price" class="col-sm-3 control-label">Unit Price</label>
 
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="edit_price" name="price">
+                            <input type="number" class="form-control" id="edit_price" name="price" placeholder="₱ 0.00">
                         </div>
                     </div>
                     <div class="modal-footer">

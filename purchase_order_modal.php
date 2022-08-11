@@ -49,15 +49,15 @@
                         <label for="add_quantity" class="col-sm-3 control-label">Quantity</label>
 
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="add_quantity" name="quantity"
-                                placeholder="0.00" oninput="multiply()">
+                            <input type="number" class="form-control" id="add_quantity" name="quantity"  placeholder="₱ 0.00"
+                                 oninput="multiply()">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="add_price" class="col-sm-3 control-label">Price</label>
 
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="add_price" name="price" placeholder="0.00"
+                            <input type="number" class="form-control" id="add_price" name="price"  placeholder="₱ 0.00"
                                 oninput="multiply()">
                         </div>
                     </div>
@@ -65,8 +65,8 @@
                         <label for="add_subtotal" class="col-sm-3 control-label">Subtotal</label>
 
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="add_subtotal" name="subtotal"
-                                placeholder="0.00" onchange="multiply()" require readonly>
+                            <input type="number" class="form-control" id="add_subtotal" name="subtotal"  placeholder="₱ 0.00"
+                               onchange="multiply()" require readonly>
                         </div>
                     </div>
 
@@ -74,7 +74,7 @@
                         <label for="sales_tax" class="col-sm-3 control-label">Sales Tax</label>
 
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="add_sales_tax" name="sales_tax" placeholder="0.00"
+                            <input type="number" class="form-control" id="add_sales_tax" name="sales_tax"  placeholder="₱ 0.00"
                                 onchange="multiply()" readonly>
                         </div>
                     </div>
@@ -83,7 +83,7 @@
                         <label for="total" class="col-sm-3 control-label">Grand Total</label>
 
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="add_total" name="total" placeholder="0.00"
+                            <input type="number" class="form-control" id="add_total" name="total"  placeholder="₱ 0.00"
                                 readonly>
                         </div>
                     </div>
@@ -191,7 +191,7 @@
                         <label for="edit_quantity" class="col-sm-3 control-label">Quantity</label>
 
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="edit_quantity" name="quantity"
+                            <input type="number" class="form-control" id="edit_quantity" name="quantity"  placeholder="₱ 0.00"
                                 oninput="add()">
                         </div>
                     </div>
@@ -199,14 +199,14 @@
                         <label for="edit_price" class="col-sm-3 control-label">Price</label>
 
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="edit_price" name="price" oninput="add()">
+                            <input type="number" class="form-control" id="edit_price" name="price"  placeholder="₱ 0.00" oninput="add()">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="edit_sub_total" class="col-sm-3 control-label">Subtotal</label>
 
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="edit_sub_total" name="subtotal"
+                            <input type="number" class="form-control" id="edit_sub_total" name="subtotal"  placeholder="₱ 0.00"
                                 onchange="add()" readonly>
                         </div>
                     </div>
@@ -215,7 +215,7 @@
                         <label for="edit_sales_tax" class="col-sm-3 control-label">Sales Tax</label>
 
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="edit_sales_tax" name="sales_tax"
+                            <input type="number" class="form-control" id="edit_sales_tax" name="sales_tax"  placeholder="₱ 0.00"
                                 onchange="add()" readonly>
                         </div>
                     </div>
@@ -224,7 +224,7 @@
                         <label for="edit_total_amount" class="col-sm-3 control-label">Total Amount</label>
 
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="edit_total_amount" name="total" readonly>
+                            <input type="number" class="form-control" id="edit_total_amount" name="total"  placeholder="₱ 0.00" readonly>
                         </div>
                     </div>
 
