@@ -107,9 +107,9 @@ $(function(){
     getRow(id);
   });
 
-  $('#example1').on('click', '.edit_photo', function(e){
+  $('#example1').on('click', '.photo', function(e){
     e.preventDefault();
-    $('#edit_photo').modal('show');
+    $('#photo').modal('show');
     var id = $(this).data('id');
     getRow(id);
   });

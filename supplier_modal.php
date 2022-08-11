@@ -137,8 +137,6 @@
     </div>
 </div>
 
-
-
 <!--Edit Photo-->
 <div class="modal fade" id="edit_photo">
     <div class="modal-dialog">
