@@ -360,7 +360,7 @@
         <div class="modal-content">
             <div class="card-body">
                 <?php
-                    $sql = "SELECT *, purchase_order.id FROM purchase_order LEFT JOIN supplier ON supplier.id=purchase_order.supplier_id LEFT JOIN supplier_product ON supplier_product.id=purchase_order.supplier_id LEFT JOIN admin ON admin.id=purchase_order.supplier_id LEFT JOIN status ON status.id =purchase_order.status_id";
+                    $sql = "SELECT *, purchase_order.id FROM purchase_order LEFT JOIN supplier ON supplier.id=purchase_order.supplier_id LEFT JOIN supplier_product ON supplier_product.id=purchase_order.supplier_product_id LEFT JOIN status ON status.id =purchase_order.status_id";
                     $query = $conn->query($sql);
                     while($row1 = $query->fetch_assoc()){
                 ?>
@@ -374,8 +374,7 @@
                         class="card-text"><?php echo $row1['purchase_date']; ?> </span><br></p>
                 <p class="col-sm-6 col-md-6 col-lg-8"><b>Expected Date: </b><span
                         class="card-text"><?php echo $row1['expected_date']; ?> </span><br></p>
-                <p class="col-sm-6 col-md-6 col-lg-6"><b>Order by: </b><span
-                        class="card-text"><?php echo $row1['firstname']; ?>&nbsp;<?php echo $row1['lastname']; ?>
+                <p class="col-sm-6 col-md-6 col-lg-6"><b>Order by: </b><span>
                     </span><br><br></p>
 
                 <p class="col-sm-6 col-md-6 col-lg-8 lead"><b>Supplier</b><span class="card-text"></span></p><br>
