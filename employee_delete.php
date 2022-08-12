@@ -3,7 +3,8 @@
 
 	if(isset($_POST['delete'])){
 		$id = $_POST['id'];
-		$sql = "DELETE FROM employees WHERE id = '$id'";
+		$sql = "DELETE employees, attendance FROM employees LEFT JOIN position ON position.id=employees.position_id LEFT JOIN schedules ON schedules.id=employees.schedule_id LEFT JOIN attendance ON attendance.employee_id=employees.id WHERE employees.id='$id'";
+
 		if($conn->query($sql)){
 			$_SESSION['success'] = 'Employee deleted successfully';
 		}
