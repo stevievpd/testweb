@@ -44,6 +44,23 @@
                             </select>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="product_description" class="col-sm-3 control-label">Product Description</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="product_description" id="product_description" required>
+                                <option value="" selected>- Select -</option>
+                                <?php
+                                    $sql = "SELECT * FROM supplier_product";
+                                    $query = $conn->query($sql);
+                                    while($prow = $query->fetch_assoc()){
+                                        echo "
+                                        <option value='".$prow['id']."'>".$prow['supplier_product_description']."</option>
+                                        ";
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
                    
                     <div class="form-group">
                         <label for="add_quantity" class="col-sm-3 control-label">Quantity</label>
@@ -181,6 +198,23 @@
                                     while($prow = $query->fetch_assoc()){
                                         echo "
                                         <option value='".$prow['id']."'>".$prow['supplier_product_name']."</option>
+                                        ";
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit_product_description" class="col-sm-3 control-label">Product Description</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="product_description" id="edit_product_description" required>
+                                <option value="" selected>- Select -</option>
+                                <?php
+                                    $sql = "SELECT * FROM supplier_product";
+                                    $query = $conn->query($sql);
+                                    while($prow = $query->fetch_assoc()){
+                                        echo "
+                                        <option value='".$prow['id']."'>".$prow['supplier_product_description']."</option>
                                         ";
                                     }
                                 ?>

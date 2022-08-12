@@ -19,6 +19,8 @@ while($row = $result->fetch_object()){
   $product_name = $row->product_name;
   $quantity = $row->quantity;
   $price = $row->price;
+  $subtotal = $row->subtotal;
+  $sales_tax = $row->sales_tax;
   $total = $row->total;
   $purchase_date = $row->purchase_date;
   $expected_date = $row->expected_date;
@@ -131,25 +133,21 @@ $pdf->SetTextColor(0, 0, 0);
 $pdf->Cell(30,5,'RECEIVED BY:',0,0,'L');
 $pdf->Cell(45,5,'',0,0);
 $pdf->Cell(80,5,'SUBTOTAL:',0,0,'R');
-$pdf->Cell(45,5,'100010',0,0);
+$pdf->Cell(45,5, $subtotal,0,0);
 $pdf->ln();
 
 $pdf->Cell(30,5,'APPROVED BY:',0,0,'L');
 $pdf->Cell(45,5,'',0,0);
-$pdf->Cell(79.5,5,'TAX:',0,0,'R');
-$pdf->Cell(45,5,'10001',0,0);
+$pdf->Cell(80.5,5,'TAX:',0,0,'R');
+$pdf->Cell(48,5, $sales_tax,0,0);
 $pdf->ln();
 
-$pdf->Cell(154.5,5,'SHIPPING:',0,0,'R');
+$pdf->Cell(155,5,'SHIPPING:',0,0,'R');
 $pdf->Cell(55,5,'1010110',0,0);
 $pdf->ln();
 
-$pdf->Cell(154.5,5,'OTHER:',0,0,'R');
-$pdf->Cell(45,5,'0000',0,0);
-$pdf->ln();
-
 $pdf->Cell(155,5,'TOTAL AMOUNT:',0,0,'R');
-$pdf->Cell(45,5,'00000',0,0);
+$pdf->Cell(45,5, $total,0,0);
 $pdf->ln(10);
 
 $pdf->Cell(190,5,'If you have any concerns and questions regarding  this purchase order please contact us',0,0,'C');

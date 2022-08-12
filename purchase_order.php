@@ -147,6 +147,7 @@ function getRow(id){
       $('#edit_supplier').val(response.supplier_id);
       $('#edit_supplier_product').val(response.supplier_product_id);
       $('#edit_payment_terms').val(response.payment_id);
+      $('#edit_product_description').val(response.product_description_id);
       $('#edit_description').val(response.description);
       $('#edit_quantity').val(response.quantity);
       $('#edit_cost').val(response.cost);
