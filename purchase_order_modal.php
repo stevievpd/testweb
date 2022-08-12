@@ -224,7 +224,7 @@
                         <label for="edit_total_amount" class="col-sm-3 control-label">Total Amount</label>
 
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="edit_total_amount" name="total"  placeholder="₱ 0.00" readonly>
+                            <input type="number" class="form-control" id="edit_total_amount" name="total"  placeholder="₱ 0.00"     readonly>
                         </div>
                     </div>
 
