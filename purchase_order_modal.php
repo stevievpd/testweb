@@ -165,10 +165,12 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title"><b><span class="po_id"></span></b></h4>
+                <h3 id="edit_purchase_order" class="bold"></h3>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" method="POST" action="purchase_order_edit.php">
                     <input type="hidden" class="purchaseid" name="id">
+
 
                     <div class="form-group">
                         <label for="edit_supplier" class="col-sm-3 control-label">Business Name</label>

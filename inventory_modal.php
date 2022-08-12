@@ -77,6 +77,7 @@
            <div class="modal-header">
             	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             	<h4 class="modal-title"><b><span class="inventory_id"></span></b></h4>
+                <h3 id="edit_inventory" class="bold"></h3>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" method="POST" action="inventory_edit.php">
