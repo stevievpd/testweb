@@ -326,7 +326,7 @@
         <div class="modal-content">
             <div class="card-body">
                 <?php
-                    $sql = "SELECT *, purchase_order.id FROM purchase_order LEFT JOIN supplier ON supplier.id=purchase_order.supplier_id LEFT JOIN supplier_product ON supplier_product.id=purchase_order.supplier_id LEFT JOIN admin ON admin.id=purchase_order.supplier_id";
+                    $sql = "SELECT *, purchase_order.id FROM purchase_order LEFT JOIN supplier ON supplier.id=purchase_order.supplier_id LEFT JOIN supplier_product ON supplier_product.id=purchase_order.supplier_id LEFT JOIN admin ON admin.id=purchase_order.supplier_id LEFT JOIN status ON status.id =purchase_order.status_id";
                     $query = $conn->query($sql);
                     while($row1 = $query->fetch_assoc()){
                 ?>
@@ -335,7 +335,7 @@
                 <p class="col-sm-6 col-md-6 col-lg-6"><b>PO Number: </b><span
                         class="card-text"><?php echo $row1['purchase_order_id'];?> </span><br></p>
                 <p class="col-sm-6 col-md-6 col-lg-6"><b>Status: </b><span
-                        class="card-text"><?php echo $row1['status']; ?> </span><br><br></p>
+                        class="card-text"><?php echo $row1['status_description']; ?> </span><br><br></p>
                 <p class="col-sm-6 col-md-6 col-lg-6"><b>Purchase Date: </b><span
                         class="card-text"><?php echo $row1['purchase_date']; ?> </span><br></p>
                 <p class="col-sm-6 col-md-6 col-lg-8"><b>Expected Date: </b><span
