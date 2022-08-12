@@ -61,7 +61,7 @@
                 </thead>
                 <tbody>
                 <?php
-                    $sql = "SELECT *, purchase_order.id FROM purchase_order LEFT JOIN supplier ON supplier.id=purchase_order.supplier_id LEFT JOIN supplier_product ON supplier_product.id=purchase_order.supplier_product_id LEFT JOIN status on status.id=purchase_order.status_id";
+                    $sql = "SELECT *, purchase_order.id FROM purchase_order LEFT JOIN supplier ON supplier.id=purchase_order.supplier_id LEFT JOIN supplier_product ON supplier_product.id=purchase_order.supplier_product_id LEFT JOIN status on status.id=purchase_order.status_id ";
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
                     
@@ -142,7 +142,8 @@ function getRow(id){
     success: function(response){
       $('.po_id').val(response.id);
       $('.del_purchase_order').val(response.id);
-      $('.purchaseid').val(response.id);
+      $('.purchaseid').html(response.purchase_order_id);
+      $('#edit_purchase_order').html(response.purchase_order_id);
       $('#del_purchase_order').html(response.purchase_order_id);
       $('#edit_supplier').val(response.supplier_id);
       $('#edit_supplier_product').val(response.supplier_product_id);

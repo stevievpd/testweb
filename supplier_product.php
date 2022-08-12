@@ -117,6 +117,7 @@
           dataType: 'json',
           success: function(response){
             $('.product_id').val(response.id);
+            $('#edit_supplier_product').html(response.supplier_product_id);
             $('#edit_prodName').val(response.supplier_product_name);
             $('#edit_prodDesc').val(response.supplier_product_description);
             $('#edit_supplier').val(response.supplier_id);
