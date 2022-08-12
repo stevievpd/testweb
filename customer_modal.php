@@ -24,21 +24,21 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="customer_contact_info" class="col-sm-3 control-label">contact_info</label>
+                        <label for="customer_contact_info" class="col-sm-3 control-label">Contact Information </label>
 
                         <div class="col-sm-9">
                             <input type="text" class="form-control" name="customer_contact_info" id="customer_contact_info"></input>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="customer_address" class="col-sm-3 control-label">address</label>
+                        <label for="customer_address" class="col-sm-3 control-label">Address</label>
 
                         <div class="col-sm-9">
                             <input type="text" class="form-control" name="customer_address" id="customer_address"></input>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="employee" class="col-sm-3 control-label">employee</label>
+                        <label for="employee" class="col-sm-3 control-label">Employee</label>
                         <div class="col-sm-9">
                             <select class="form-control" name="employee" id="employee" required>
                                 <option value="" selected>- Select -</option>
