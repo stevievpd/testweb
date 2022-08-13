@@ -173,8 +173,6 @@ function getRow(id){
       $('#edit_purchase_date').val(response.purchase_date);
       $('#edit_expected_date').val(response.expected_date);
       $('#edit_status').val(response.status_id);
-
-      
     }
   });
 }
