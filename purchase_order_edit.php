@@ -14,6 +14,7 @@
 		$purchase_date = $_POST['purchase_date'];
 		$expected_date = $_POST['expected_date'];
 
+		$sql = "UPDATE purchase_order SET  quantity = '$quantity', price = '$price', subtotal = '$subtotal', sales_tax = '$sales_tax', total = '$total', purchase_date = '$purchase_date', supplier_id = '$supplier', supplier_product_id = '$supplier_product',payment_id = '$payment_terms', status_id = '$status' WHERE id = '$id'";
 		if($conn->query($sql)){
 			$_SESSION['success'] = 'Purchase Order updated successfully';
 		}
