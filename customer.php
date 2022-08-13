@@ -67,7 +67,7 @@
                     while($row = $query->fetch_assoc()){
                       ?>
                         <tr>
-                          <td><?php echo $row['customer_id']; ?></td>
+                          <td><?php echo $row['customer_id']; ?><a href="employee.php"><span class="label label-success pull-right">Details</span></a></td>
                           <td><?php echo $row['customer_firstname'].' '.$row['customer_lastname']; ?></td>
                           <td><?php echo $row['customer_contact_info']; ?></td>
                           <td><?php echo $row['customer_address']; ?></td>

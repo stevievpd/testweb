@@ -1,6 +1,12 @@
 <?php include 'includes/session.php'; ?>
 <?php include 'header.php'; ?>
 
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
 
@@ -188,7 +194,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-2 col-xs-4">
+                    <div class="col-lg-2 col-xs-2">
                         <?php
                         $connect = mysqli_connect("localhost", "root", "", "testing1");
                         $tab_query = "SELECT * FROM category ORDER BY category_id ASC";
@@ -221,21 +227,22 @@
                                     <div class="row text-center py-5">
                                         <div class="col-md-10 col-sm-6 my-8 my-md-5">
                                             <div class="col-md-2" style="margin-bottom:20px; ">                                           
-                                                <div class="card shadow">                                                
-                                                    <div class="card-body">
-                                                        <img src="./images/'.$sub_row["product_image"].'" class="img-responsive img-fluid card-img-top" />
-                                                        <h5>'.$sub_row["product_name"].'</h5>
-                                                    </div>                                      
-                                                </div>
+                                                    <div class="card shadow">                                                
+                                                        <div class="card-body">
+                                                            <img src="./images/'.$sub_row["product_image"].'" class="img-responsive img-fluid card-img-top" />
+                                                            <h5>'.$sub_row["product_name"].'</h5>
+                                                        </div>                                      
+                                                    </div>
                                             </div>
                                         </div>
-                                    </div>                               
+                                    </div>                              
                                 ';
                                 }
                             $tab_content .= '<div style="clear:both"></div></div>';
                             $i++;
                             }
                     ?>
+
                         <div class="container">
                             <br/>
                             <ul class="nav nav-tabs">
