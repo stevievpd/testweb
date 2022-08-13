@@ -62,7 +62,7 @@
                 </thead>
                 <tbody>
                 <?php
-                   $sql = "SELECT *, inventory.id as inventoryID FROM inventory LEFT JOIN supplier_product on supplier_product.supplier_product_id = inventory.product_id";
+                   $sql = "SELECT *From inventory";
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
                       ?>

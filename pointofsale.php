@@ -16,7 +16,7 @@
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                 
+
                 </ol>
             </section>
 
@@ -44,6 +44,7 @@
                       unset($_SESSION['success']);
                     }
                   ?>
+
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
                     <div class="col-lg-2 col-xs-6">
@@ -186,23 +187,69 @@
                                     class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
-
-                    <ul class="nav nav-tabs">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">Keyboard</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Software</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link disabled" href="#">Hardware</a>
-                        </li>
-                    </ul>
-
                 </div>
+                 <h3 class="box-title"><b>STOCKS</b></h3>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="table-responsive">
+                                            <table class="table table-borderless table-nowrap table-centered mb-0">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th>Photo</th>
+                                                    <th>Product</th>
+                                                    <th>Price</th>
+                                                    <th>Quantity</th>
+                                                    <th>Total</th>
 
+                                                </tr>
+                                            </thead>
+                                            <tbody>                                                      
+                                                <?php
+                                                $sql = "SELECT *, inventory.id as inventoryID FROM inventory LEFT JOIN supplier_product on supplier_product.supplier_product_id = inventory.product_id";
+                                                    $query = $conn->query($sql);
+                                                    while($row = $query->fetch_assoc()){
+                                                    ?>
+                                                        <tr>    
+                                                        <td><img src="<?php echo (!empty($row['photo']))? './images/'.$row['photo']:'./images/profile.jpg';?>" width="50px" height="50px"><a href="#edit_photo" data-toggle="modal" class="pull-right photo" data-id="<?php echo $row['id']; ?>"></a></td>
+                                                        <td><?php echo $row['description']; ?></td> 
+                                                        <td>₱ <?php echo $row['price']; ?></td>
+                                                        <td>
+                                                            <input type="number" min="1"class="form-control" id="quantity" name="quantity"  placeholder="₱ 0.00" style="width: 90px;" oninput="add()">
+                                                        </td>
+                                                        <td> <input type="number" min="1" class="form-control" id="total" name="total"  placeholder="₱ 0.00" style="width: 90px;" oninput="add()">                      
+                                                        </td>
+                        
+                                                        
+                                                        <script>
+                                                function add() {
+                                                var price = document.getElementById("price").value;
+                                                var quantity = document.getElementById("quantity").value;
+                                                var total = price * quantity;
+                                                document.getElementById("total").value = total;
+                                                }
+                                                </script>
+                                                        </tr>
+                                                    <?php
+                                                    }
+                                                ?>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
         </div>
+          <!-- stocks -->
+          
         <?php include 'footer.php'; ?>
-
     </div>
+   
