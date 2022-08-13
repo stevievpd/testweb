@@ -36,7 +36,7 @@
             </li>
 
            
-            <li><a href="position.php"><i class="fa fa-suitcase"></i> Positions</a></li>
+            <li><a href="position.php"><i class="fa fa-suitcase"></i><span> Positions</span></a></li>
             <li><a href="deduction.php"><i class="fa fa-file-text"></i><span> Deductions</span></a></li>
             <li class="header">PRINTABLES</li>
             <li><a href="payroll.php"><i class="fa fa-files-o"></i> <span>Payroll</span></a></li>
@@ -62,6 +62,7 @@
 
             <li class="header">SETTINGS</li>
             <li><a href="accounts.php"><i class="fa fa-users"></i> <span>Accounts</span></a></li>
+            <li><a href="att_index.php"><i class="fa fa-clock-o"></i> <span>Time IN/OUT</span></a></li>
 
             <li class="header">POINT OF SALES</li>
             <li><a href="pointofsale.php"><i class="fa fa-file"></i> <span>Point of Sales</span></a></li>

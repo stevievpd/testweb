@@ -51,7 +51,7 @@
                                         class="fa fa-plus"></i> New</a>
                             </div>
                             <div class="box-body">
-                                <table id="example1" class="table table-bordered">
+                                <table id="example1" class="table table-striped">
                                     <thead>
                                         <th class="hidden"></th>
                                         <th>Date</th>
