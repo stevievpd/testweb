@@ -187,69 +187,74 @@
                                     class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
-                </div>
-                 <h3 class="box-title"><b>STOCKS</b></h3>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="table-responsive">
-                                            <table class="table table-borderless table-nowrap table-centered mb-0">
-                                            <thead class="table-light">
-                                                <tr>
-                                                    <th>Photo</th>
-                                                    <th>Product</th>
-                                                    <th>Price</th>
-                                                    <th>Quantity</th>
-                                                    <th>Total</th>
 
-                                                </tr>
-                                            </thead>
-                                            <tbody>                                                      
-                                                <?php
-                                                $sql = "SELECT *, inventory.id as inventoryID FROM inventory LEFT JOIN supplier_product on supplier_product.supplier_product_id = inventory.product_id";
-                                                    $query = $conn->query($sql);
-                                                    while($row = $query->fetch_assoc()){
-                                                    ?>
-                                                        <tr>    
-                                                        <td><img src="<?php echo (!empty($row['photo']))? './images/'.$row['photo']:'./images/profile.jpg';?>" width="50px" height="50px"><a href="#edit_photo" data-toggle="modal" class="pull-right photo" data-id="<?php echo $row['id']; ?>"></a></td>
-                                                        <td><?php echo $row['description']; ?></td> 
-                                                        <td>₱ <?php echo $row['price']; ?></td>
-                                                        <td>
-                                                            <input type="number" min="1"class="form-control" id="quantity" name="quantity"  placeholder="₱ 0.00" style="width: 90px;" oninput="add()">
-                                                        </td>
-                                                        <td> <input type="number" min="1" class="form-control" id="total" name="total"  placeholder="₱ 0.00" style="width: 90px;" oninput="add()">                      
-                                                        </td>
-                        
-                                                        
-                                                        <script>
-                                                function add() {
-                                                var price = document.getElementById("price").value;
-                                                var quantity = document.getElementById("quantity").value;
-                                                var total = price * quantity;
-                                                document.getElementById("total").value = total;
-                                                }
-                                                </script>
-                                                        </tr>
-                                                    <?php
-                                                    }
-                                                ?>
+                    <div class="col-lg-2 col-xs-4">
+                        <?php
+                        $connect = mysqli_connect("localhost", "root", "", "testing1");
+                        $tab_query = "SELECT * FROM category ORDER BY category_id ASC";
+                        $tab_result = mysqli_query($connect, $tab_query);
+                        $tab_menu = '';
+                        $tab_content = '';
+                        $i = 0;
+                            while($row = mysqli_fetch_array($tab_result)){
+                                if($i == 0){
+                                    $tab_menu .= '
+                                    <li class="active"><a href="#'.$row["category_id"].'" data-toggle="tab">'.$row["category_name"].'</a></li>
+                                    ';
+                                    $tab_content .= '
+                                    <div id="'.$row["category_id"].'" class="tab-pane fade in active">
+                                    ';
+                                }
+                                else{
+                                    $tab_menu .= '
+                                    <li><a href="#'.$row["category_id"].'" data-toggle="tab">'.$row["category_name"].'</a></li>
+                                    ';
+                                    $tab_content .= '
+                                    <div id="'.$row["category_id"].'" class="tab-pane fade">
+                                    ';
+                                }
 
-                                                </tbody>
-                                            </table>
+                            $product_query = "SELECT * FROM product WHERE category_id = '".$row["category_id"]."'";
+                            $product_result = mysqli_query($connect, $product_query);
+                            while($sub_row = mysqli_fetch_array($product_result)){
+                                $tab_content .= '                              
+                                    <div class="row text-center py-5">
+                                        <div class="col-md-10 col-sm-6 my-8 my-md-5">
+                                            <div class="col-md-2" style="margin-bottom:20px; ">                                           
+                                                <div class="card shadow">                                                
+                                                    <div class="card-body">
+                                                        <img src="./images/'.$sub_row["product_image"].'" class="img-responsive img-fluid card-img-top" />
+                                                        <h5>'.$sub_row["product_name"].'</h5>
+                                                    </div>                                      
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div> 
+                                    </div>                              
+                                ';
+                                }
+                            $tab_content .= '<div style="clear:both"></div></div>';
+                            $i++;
+                            }
+                    ?>
+                        <div class="container">
+                            <br/>
+                            <ul class="nav nav-tabs">
+                                <?php
+                                    echo $tab_menu;
+                                ?>
+                            </ul>
+                            <div class="tab-content">
+                                <br />
+                                <?php
+                                    echo $tab_content;
+                                ?>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </section>
         </div>
-          <!-- stocks -->
-          
-        <?php include 'footer.php'; ?>
+
+    <?php include 'footer.php'; ?>
     </div>
-   
