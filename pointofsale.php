@@ -229,7 +229,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>                              
+                                    </div>                               
                                 ';
                                 }
                             $tab_content .= '<div style="clear:both"></div></div>';
