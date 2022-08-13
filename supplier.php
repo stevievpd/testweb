@@ -66,7 +66,7 @@
                       ?>
                         <tr>
                         <td><img src="<?php echo (!empty($row['photo']))? './images/'.$row['photo']:'./images/profile.jpg';?>" width="30px" height="30px"><a href="#edit_photo" data-toggle="modal" class="pull-right photo" data-id="<?php echo $row['id']; ?>"><span class="fa fa-edit"></span></a></td>
-                          <td><i class="fa fa-handshake-o" aria-hidden="true"></i> <?php echo $row['business_name']; ?></td>
+                          <td><i class='fa fa-id-card-o' aria-hidden='true'></i> <?php echo $row['business_name']; ?></td>
                           <td><i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo $row['address']; ?></td>
                           <td><i class="fa fa-envelope" aria-hidden="true"></i> <?php echo $row['email']; ?></td>
                           <td><i class="fa fa-phone" aria-hidden="true"></i> <?php echo $row['phone_number']; ?></td>
