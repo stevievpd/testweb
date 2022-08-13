@@ -77,7 +77,7 @@
                       <td>
                         <button class='btn btn-success btn-sm btn-flat edit' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
                         <button class='btn btn-danger btn-sm btn-flat delete' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
-                        <button class='btn btn-primary btn-sm btn-flat view' data-id='".$row['id']."'><i class='fa fa-eye'></i> View</button>
+                        <button data-toggle='modal' class='btn btn-primary btn-sm btn-flat view' href='#poview' data-id='".$row['id']."'><i class='fa fa-eye'></i> View</button>
                         <button class='btn btn-info btn-sm btn-flat pdf' data-id='".$row['id']."'><i class='fa fa-file'></i> PDF</button>
                       </td>
                     </tr>
@@ -92,6 +92,17 @@
         </div>
       </div>
     </section>   
+  </div>
+  <!-- MODAL EDITAR-->
+  <div id="poview" class="modal fade modal" role="dialog">
+      <div class="vertical-alignment-helper">
+          <div class="modal-dialog vertical-align-center">
+            <div class="modal-content">
+
+
+            </div>
+          </div>
+      </div>
   </div>
     
   <?php include 'footer.php'; ?>
@@ -117,10 +128,13 @@
     });
 
     $('#example1').on('click', '.view', function(e){
-      e.preventDefault();
-      $('#view').modal('show');
-      var id = $(this).data('id');
-      getRow(id);
+      var ID = $(this).attr('data-id');
+      $.ajax({url:"view_po.php?ID="+ID,cache:false,success:function(result){
+        $(".modal-content").html(result);
+      }});
+      // $('#view').modal('show');
+      // var id = $(this).data('id');
+      // getRow(id);
     });
     
     $('#example1').on('click', '.pdf', function(e){
