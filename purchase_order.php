@@ -14,7 +14,7 @@
         Purchase Order
       </h1>
       <ol class="breadcrumb">
-        <li><a href=""><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="home.php"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Purchase Order</li>
       </ol>
     </section>
@@ -68,9 +68,9 @@
                     $status = ($row['status_id'])?'<span class="label label-success pull-right">Received</span>':'<span class="label label-warning pull-right">Pending</span>';
                       echo "
                       <tr>
-                      <td>".$row['purchase_order_id'].$status."</td>
-                      <td>".$row['business_name']."</td>
-                      <td>".$row['supplier_product_name']."</td>
+                      <td><i class='fa fa-list-ol' aria-hidden='true'></i> ".$row['purchase_order_id'].$status."</td>
+                      <td><i class='fa fa-id-card-o' aria-hidden='true'></i> ".$row['business_name']."</td>
+                      <td><i class='fa fa-th-large' aria-hidden='true'></i> ".$row['supplier_product_name']."</td>
                       <td>₱ ".$row['quantity']."</td>
                       <td>₱ ".$row['price']."</td>
                       <td>₱ ".$row['total']."</td>

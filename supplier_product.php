@@ -17,7 +17,7 @@
         Product
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="home.php"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="supplier.php"></a>Supplier</li>
         <li class="active">Products</li>
       </ol>
@@ -68,10 +68,10 @@
                     while($row = $query->fetch_assoc()){
                       echo "
                         <tr>
-                            <td>".$row['business_name']."</td>
-                            <td>".$row['supplier_product_id']."</td>
-                            <td>".$row['supplier_product_name']."</td>
-                            <td>".$row['supplier_product_description']."</td>
+                            <td><i class='fa fa-user-circle-o' aria-hidden='true'></i> ".$row['business_name']."</td>
+                            <td><i class='fa fa-list-ol' aria-hidden='true'></i> ".$row['supplier_product_id']."</td>
+                            <td><i class='fa fa-th-large' aria-hidden='true'> ".$row['supplier_product_name']."</td>
+                            <td><i class='fa fa-file-text' aria-hidden='true'></i> ".$row['supplier_product_description']."</td>
                             <td>
                                 <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
                                 <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
