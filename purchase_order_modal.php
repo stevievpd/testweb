@@ -172,7 +172,7 @@
                     <div class="form-group">
                         <label for="edit_supplier" class="col-sm-3 control-label">Business Name</label>
                         <div class="col-sm-9">
-                            <select class="form-control" id="edit_supplier" name="supplier" required>
+                            <select class="form-control" id="edit_supplier" name="supplier">
                                 <option value="" selected>- Select -</option>
                                 <?php
                                     $sql = "SELECT * FROM supplier";
@@ -189,7 +189,7 @@
                     <div class="form-group">
                         <label for="edit_supplier_product" class="col-sm-3 control-label">Product Name</label>
                         <div class="col-sm-9">
-                            <select class="form-control" id="edit_supplier_product" name="supplier_product" required>
+                            <select class="form-control" id="edit_supplier_product" name="supplier_product">
                                 <option value="" selected>- Select -</option>
                                 <?php
                                     $sql = "SELECT * FROM supplier_product";
@@ -206,7 +206,7 @@
                     <div class="form-group">
                         <label for="edit_product_description" class="col-sm-3 control-label">Product Description</label>
                         <div class="col-sm-9">
-                            <select class="form-control" name="product_description" id="edit_product_description" required>
+                            <select class="form-control" name="product_description" id="edit_product_description">
                                 <option value="" selected>- Select -</option>
                                 <?php
                                     $sql = "SELECT * FROM supplier_product";
