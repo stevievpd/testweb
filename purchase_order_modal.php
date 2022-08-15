@@ -61,7 +61,6 @@
                             </select>
                         </div>
                     </div>
-                   
                     <div class="form-group">
                         <label for="add_quantity" class="col-sm-3 control-label">Quantity</label>
 
@@ -86,7 +85,6 @@
                                onchange="multiply()" require readonly>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label for="sales_tax" class="col-sm-3 control-label">Sales Tax</label>
 
@@ -95,7 +93,6 @@
                                 onchange="multiply()" readonly>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label for="total" class="col-sm-3 control-label">Grand Total</label>
 
@@ -104,7 +101,6 @@
                                 readonly>
                         </div>
                     </div>
-                    
                     <div class="form-group">
                         <label for="purchase_date" class="col-sm-3 control-label">Purchase Date</label>
 
@@ -112,7 +108,6 @@
                             <input type="date" class="form-control" id="purchase_date" name="purchase_date" required>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label for="expected_date" class="col-sm-3 control-label">Expected Date</label>
 
@@ -120,7 +115,6 @@
                             <input type="date" class="form-control" id="expected_date" name="expected_date" required>
                         </div>
                     </div>  
-
                     <div class="form-group">
                         <label for="payment_terms" class="col-sm-3 control-label">Payment Terms</label>
                         <div class="col-sm-9">
@@ -138,7 +132,6 @@
                             </select>
                         </div>
                     </div>  
-
                     <div class="form-group">
                         <div class="col-sm-9">
                             <input  type="hidden" value="0" class="form-control" name="status" id="status"></input>
@@ -175,7 +168,7 @@
                             <select class="form-control" id="edit_supplier" name="supplier">
                                 <option value="" selected>- Select -</option>
                                 <?php
-                                    $sql = "SELECT business_name, id FROM supplier";
+                                    $sql = "SELECT * FROM supplier";
                                     $query = $conn->query($sql);
                                     while($brow = $query->fetch_assoc()){
                                         echo "
@@ -294,7 +287,6 @@
                             </select>
                         </div>
                     </div>  
-
                 </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i
@@ -330,7 +322,7 @@
                 <button type="submit" class="btn btn-danger btn-flat" name="delete"><i class="fa fa-trash"></i>
                     Delete</button>
             </div>
-            </form>
+                </form>
         </div>
     </div>
 </div>
@@ -402,6 +394,7 @@
         </div>
     </div>
 </div>
+
 <!--PDF-->
 <div class="modal fade" id="pdf">
     <div class="modal-dialog modal-lg">
@@ -416,4 +409,5 @@
         </div>
     </div>
 </div>
+
 

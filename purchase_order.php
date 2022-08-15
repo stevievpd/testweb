@@ -64,16 +64,12 @@
                     $sql = "SELECT *, purchase_order.id as purchid FROM purchase_order LEFT JOIN supplier ON supplier.id=purchase_order.supplier_id LEFT JOIN supplier_product ON supplier_product.id=purchase_order.supplier_product_id LEFT JOIN status on status.id=purchase_order.status_id ";
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
-                    
                     $status = ($row['status_id'])?'<span class="label label-success pull-right">Received</span>':'<span class="label label-warning pull-right">Pending</span>';
                       echo "
                       <tr>
-                      <td><i class='fa fa-list-ol' aria-hidden='true'></i> ".$row['purchase_order_id'].$status."</td>
-                      <td><i class='fa fa-id-card-o' aria-hidden='true'></i> ".$row['business_name']."</td>
-                      <td><i class='fa fa-th-large' aria-hidden='true'></i> ".$row['supplier_product_name']."</td>
                       <td>".$row['purchase_order_id'].$status."</td>
                       <td>".$row['business_name']."</td>
-                      <td>".$row['supplier_product_name']."</td>
+                      <td>".$row['supplier_product_name']."</td>                            
                       <td>".$row['quantity']."</td>
                       <td>₱ ".$row['price']."</td>
                       <td>₱ ".$row['total']."</td>
@@ -82,7 +78,7 @@
                         <button class='btn btn-danger btn-sm btn-flat delete' data-id='".$row['purchid']."'><i class='fa fa-trash'></i> Delete</button>
                         <button data-toggle='modal' class='btn btn-primary btn-sm btn-flat view' href='#poview' data-id='".$row['purchid']."'><i class='fa fa-eye'></i> View</button>
                         <button class='btn btn-info btn-sm btn-flat pdf' data-id='".$row['purchid']."'><i class='fa fa-file'></i> PDF</button>
-                        <button class='btn btn-success btn-sm btn-flat received' data-id='".$row['purchid']."'><i class='fa fa-check-square-o'></i> Received</button>
+                        <button class='btn btn-success btn-sm btn-flat status' data-id='".$row['purchid']."'><i class='fa fa-check-square-o'></i> Status</button>
                       </td>
                     </tr>
                   ";
@@ -110,6 +106,7 @@
   </div>
     
   <?php include 'footer.php'; ?>
+  <?php include 'aaa.php'; ?>
   <?php include 'purchase_order_modal.php'; ?>
 </div>
 
@@ -147,14 +144,14 @@
       var id = $(this).data('id');
       getRow(id);
     });
- 
-    $('#example1').on('click', '.received', function(e){
+
+    $('#example1').on('click', '.status', function(e){
       e.preventDefault();
-      $('#received').modal('show');
+      $('#status').modal('show');
       var id = $(this).data('id');
       getRow(id);
     });
-
+    
   });
 
 function getRow(id){
