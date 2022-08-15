@@ -175,7 +175,7 @@
                             <select class="form-control" id="edit_supplier" name="supplier">
                                 <option value="" selected>- Select -</option>
                                 <?php
-                                    $sql = "SELECT * FROM supplier";
+                                    $sql = "SELECT business_name, id FROM supplier";
                                     $query = $conn->query($sql);
                                     while($brow = $query->fetch_assoc()){
                                         echo "

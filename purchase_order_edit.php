@@ -15,7 +15,11 @@
 		$payment_terms = $_POST['payment_terms'];
 		$status = $_POST['status'];
 
+<<<<<<< HEAD
 		$sql = "UPDATE purchase_order SET quantity = '$quantity', price = '$price', subtotal = '$subtotal', sales_tax = '$sales_tax', total = '$total', purchase_date = '$purchase_date',  expected_date = '$expected_date', supplier_id = '$supplier', supplier_product_id = '$supplier_product', product_description_id = '$product_description', payment_id = '$payment_terms', status_id = '$status' WHERE id = '$id'";
+=======
+		$sql = "UPDATE purchase_order SET quantity = '$quantity', price = '$price', subtotal = '$subtotal', sales_tax = '$sales_tax', total = '$total', purchase_date = '$purchase_date', supplier_id = '$supplier', supplier_product_id = '$supplier_product', product_description_id = '$product_description',payment_id = '$payment_terms', status_id = '$status' WHERE id = '$id'";
+>>>>>>> d952b44b58fe4a228cf3219472a0e8d0e5dc6907
 		if($conn->query($sql)){
 			$_SESSION['success'] = 'Purchase Order updated successfully';
 		}
