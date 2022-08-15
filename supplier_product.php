@@ -55,10 +55,10 @@
             <div class="box-body">
               <table id="example1" class="table table-bordered">
                 <thead>
-                  <th>Supplier</th>
-                  <th>Product Code</th>
-                  <th>Product Name</th>
-                  <th>Product Description</th>
+                  <th><i class='fa fa-user-circle-o' aria-hidden='true'></i> Supplier</th>
+                  <th><i class='fa fa-list-ol' aria-hidden='true'></i> Product Code</th>
+                  <th><i class='fa fa-th-large' aria-hidden='true'> Product Name</th>
+                  <th><i class='fa fa-file-text' aria-hidden='true'></i> Product Description</th>
                   <th>Tools</th>
                 </thead>
                 <tbody>
@@ -68,10 +68,10 @@
                     while($row = $query->fetch_assoc()){
                       echo "
                         <tr>
-                            <td><i class='fa fa-user-circle-o' aria-hidden='true'></i> ".$row['business_name']."</td>
-                            <td><i class='fa fa-list-ol' aria-hidden='true'></i> ".$row['supplier_product_id']."</td>
-                            <td><i class='fa fa-th-large' aria-hidden='true'> ".$row['supplier_product_name']."</td>
-                            <td><i class='fa fa-file-text' aria-hidden='true'></i> ".$row['supplier_product_description']."</td>
+                            <td>".$row['business_name']."</td>
+                            <td>".$row['supplier_product_id']."</td>
+                            <td>".$row['supplier_product_name']."</td>
+                            <td>".$row['supplier_product_description']."</td>
                             <td>
                                 <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
                                 <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>

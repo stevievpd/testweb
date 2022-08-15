@@ -52,9 +52,9 @@
               <table id="example1" class="table table-bordered">
                 <thead>
                   <th>Photo</th>
-                  <th>Product ID</th>
-                  <th>Product Name</th>
-                  <th>Description</th>
+                  <th><i class="fa fa-list-ol" aria-hidden="true"></i> Product ID</th>
+                  <th><i class='fa fa-th-large' aria-hidden='true'></i> Product Name</th>
+                  <th><i class="fa fa-file-text" aria-hidden="true"></i> Description</th>
                   <th>Quantity</th>
                   <th>Unit Cost</th>
                   <th>Unit Price</th>
