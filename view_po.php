@@ -5,8 +5,8 @@
     $id = $_GET['ID'];
 ?>
 <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span></button>
+    <button type="button" class="close" aria-label="Close">
+        <span aria-hidden="true"><a href="purchase_order.php">&times;</a></span></button>
     <h4 class="modal-title"><b>Purchase Order Details</b></h4>
 </div>
 

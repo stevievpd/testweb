@@ -61,23 +61,24 @@
                 </thead>
                 <tbody>
                 <?php
-                    $sql = "SELECT *, purchase_order.id FROM purchase_order LEFT JOIN supplier ON supplier.id=purchase_order.supplier_id LEFT JOIN supplier_product ON supplier_product.id=purchase_order.supplier_product_id LEFT JOIN status on status.id=purchase_order.status_id ";
+                    $sql = "SELECT *, purchase_order.id as purchid FROM purchase_order LEFT JOIN supplier ON supplier.id=purchase_order.supplier_id LEFT JOIN supplier_product ON supplier_product.id=purchase_order.supplier_product_id LEFT JOIN status on status.id=purchase_order.status_id ";
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
+                    
                     $status = ($row['status_id'])?'<span class="label label-success pull-right">Received</span>':'<span class="label label-warning pull-right">Pending</span>';
                       echo "
                       <tr>
                       <td><i class='fa fa-list-ol' aria-hidden='true'></i> ".$row['purchase_order_id'].$status."</td>
                       <td><i class='fa fa-id-card-o' aria-hidden='true'></i> ".$row['business_name']."</td>
                       <td><i class='fa fa-th-large' aria-hidden='true'></i> ".$row['supplier_product_name']."</td>
-                      <td> ".$row['quantity']."</td>
+                      <td>₱ ".$row['quantity']."</td>
                       <td>₱ ".$row['price']."</td>
                       <td>₱ ".$row['total']."</td>
                       <td>
-                        <button class='btn btn-success btn-sm btn-flat edit' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
-                        <button class='btn btn-danger btn-sm btn-flat delete' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
-                        <button data-toggle='modal' class='btn btn-primary btn-sm btn-flat view' href='#poview' data-id='".$row['id']."'><i class='fa fa-eye'></i> View</button>
-                        <button class='btn btn-info btn-sm btn-flat pdf' data-id='".$row['id']."'><i class='fa fa-file'></i> PDF</button>
+                        <button class='btn btn-success btn-sm btn-flat edit' data-id='".$row['purchid']."'><i class='fa fa-edit'></i> Edit</button>
+                        <button class='btn btn-danger btn-sm btn-flat delete' data-id='".$row['purchid']."'><i class='fa fa-trash'></i> Delete</button>
+                        <button data-toggle='modal' class='btn btn-primary btn-sm btn-flat view' href='#poview' data-id='".$row['purchid']."'><i class='fa fa-eye'></i> View</button>
+                        <button class='btn btn-info btn-sm btn-flat pdf' data-id='".$row['purchid']."'><i class='fa fa-file'></i> PDF</button>
                       </td>
                     </tr>
                   ";
@@ -155,7 +156,7 @@ function getRow(id){
     success: function(response){
       $('.po_id').val(response.id);
       $('.del_purchase_order').val(response.id);
-      $('.purchaseid').html(response.purchase_order_id);
+      $('.purchaseid').val(response.id);
       $('#edit_purchase_order').html(response.purchase_order_id);
       $('#del_purchase_order').html(response.purchase_order_id);
       $('#edit_supplier').val(response.supplier_id);
@@ -172,6 +173,7 @@ function getRow(id){
       $('#edit_purchase_date').val(response.purchase_date);
       $('#edit_expected_date').val(response.expected_date);
       $('#edit_status').val(response.status_id);
+
     }
   });
 }
