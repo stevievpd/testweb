@@ -295,24 +295,6 @@
                         </div>
                     </div>  
 
-                    <div class="form-group">
-                        <label for="edit_status" class="col-sm-3 control-label">Status</label>
-                        <div class="col-sm-9">
-                            <select class="form-control" name="status" id="edit_status" >
-                                <option value="" selected>- Select -</option>
-                                <?php
-                                    $sql = "SELECT * FROM status";
-                                    $query = $conn->query($sql);
-                                    while($prow = $query->fetch_assoc()){
-                                        echo "
-                                        <option value='".$prow['id']."'>".$prow['status_description']."</option>
-                                        ";
-                                    }
-                                ?>
-                            </select>
-                        </div>
-                    </div>  
-
                 </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i
@@ -434,3 +416,4 @@
         </div>
     </div>
 </div>
+

@@ -52,9 +52,9 @@
               <table id="example1" class="table table-bordered">
                 <thead>
                   <th>Photo</th>
-                  <th>Product ID</th>
-                  <th>Product Name</th>
-                  <th>Description</th>
+                  <th><i class="fa fa-list-ol" aria-hidden="true"></i> Product ID</th>
+                  <th><i class='fa fa-th-large' aria-hidden='true'></i> Product Name</th>
+                  <th><i class="fa fa-file-text" aria-hidden="true"></i> Description</th>
                   <th>Quantity</th>
                   <th>Unit Cost</th>
                   <th>Unit Price</th>
@@ -68,9 +68,9 @@
                       ?>
                         <tr>
                           <td><img src="<?php echo (!empty($row['photo']))? './images/'.$row['photo']:'./images/profile.jpg';?>" width="30px" height="30px"><a href="#edit_photo" data-toggle="modal" class="pull-right photo" data-id="<?php echo $row['id']; ?>"><span class="fa fa-edit"></span></a></td>
-                          <td><i class="fa fa-list-ol" aria-hidden="true"></i> <?php echo $row['product_id'];  ?></td>
-                          <td><i class='fa fa-th-large' aria-hidden='true'></i> <?php echo $row['supplier_product_name']; ?></td>
-                          <td><i class="fa fa-file-text" aria-hidden="true"></i> <?php echo $row['description']; ?></td> 
+                          <td><?php echo $row['product_id'];  ?></td>
+                          <td><?php echo $row['supplier_product_name']; ?></td>
+                          <td><?php echo $row['description']; ?></td> 
                           <td> <?php echo $row['quantity']; ?></td>
                           <td>₱ <?php echo $row['cost']; ?></td>
                           <td>₱ <?php echo $row['price']; ?></td>

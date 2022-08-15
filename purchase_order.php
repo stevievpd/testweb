@@ -51,9 +51,9 @@
             <div class="box-body">
               <table id="example1" class="table table-bordered">
                 <thead>
-                  <th>PO Number</th>
-                  <th>Business Name</th>
-                  <th>Product Name</th>
+                  <th><i class='fa fa-list-ol' aria-hidden='true'></i> PO Number</th>
+                  <th><i class='fa fa-id-card-o' aria-hidden='true'></i> Business Name</th>
+                  <th><i class='fa fa-th-large' aria-hidden='true'></i> Product Name</th>
                   <th>Quantity</th>
                   <th>Unit Price</th>
                   <th>Grand Total</th>
@@ -68,17 +68,18 @@
                     $status = ($row['status_id'])?'<span class="label label-success pull-right">Received</span>':'<span class="label label-warning pull-right">Pending</span>';
                       echo "
                       <tr>
-                      <td><i class='fa fa-list-ol' aria-hidden='true'></i> ".$row['purchase_order_id'].$status."</td>
-                      <td><i class='fa fa-id-card-o' aria-hidden='true'></i> ".$row['business_name']."</td>
-                      <td><i class='fa fa-th-large' aria-hidden='true'></i> ".$row['supplier_product_name']."</td>
-                      <td>₱ ".$row['quantity']."</td>
+                      <td>".$row['purchase_order_id'].$status."</td>
+                      <td>".$row['business_name']."</td>
+                      <td>".$row['supplier_product_name']."</td>
+                      <td>".$row['quantity']."</td>
                       <td>₱ ".$row['price']."</td>
                       <td>₱ ".$row['total']."</td>
                       <td>
-                        <button class='btn btn-success btn-sm btn-flat edit' data-id='".$row['purchid']."'><i class='fa fa-edit'></i> Edit</button>
+                        <button class='btn btn-secondary btn-sm btn-flat edit' data-id='".$row['purchid']."'><i class='fa fa-edit'></i> Edit</button>
                         <button class='btn btn-danger btn-sm btn-flat delete' data-id='".$row['purchid']."'><i class='fa fa-trash'></i> Delete</button>
                         <button data-toggle='modal' class='btn btn-primary btn-sm btn-flat view' href='#poview' data-id='".$row['purchid']."'><i class='fa fa-eye'></i> View</button>
                         <button class='btn btn-info btn-sm btn-flat pdf' data-id='".$row['purchid']."'><i class='fa fa-file'></i> PDF</button>
+                        <button class='btn btn-success btn-sm btn-flat received' data-id='".$row['purchid']."'><i class='fa fa-check-square-o'></i> Received</button>
                       </td>
                     </tr>
                   ";
@@ -143,7 +144,13 @@
       var id = $(this).data('id');
       getRow(id);
     });
-
+ 
+    $('#example1').on('click', '.received', function(e){
+      e.preventDefault();
+      $('#received').modal('show');
+      var id = $(this).data('id');
+      getRow(id);
+    });
 
   });
 
