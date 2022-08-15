@@ -71,7 +71,7 @@
                       <td><i class='fa fa-list-ol' aria-hidden='true'></i> ".$row['purchase_order_id'].$status."</td>
                       <td><i class='fa fa-id-card-o' aria-hidden='true'></i> ".$row['business_name']."</td>
                       <td><i class='fa fa-th-large' aria-hidden='true'></i> ".$row['supplier_product_name']."</td>
-                      <td>₱ ".$row['quantity']."</td>
+                      <td>".$row['quantity']."</td>
                       <td>₱ ".$row['price']."</td>
                       <td>₱ ".$row['total']."</td>
                       <td>

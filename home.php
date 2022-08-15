@@ -183,7 +183,7 @@
                 </div>
                 <!-- /.row -->
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
                         <div class="box">
                             <div class="box-header with-border">
                                 <h3 class="box-title">Monthly Attendance Report</h3>
@@ -215,7 +215,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-6">
+                    <!-- <div class="col-lg-6">
                         <div class="box">
                             <div class="box-header with-border">
                                 <h3 class="box-title">Sales Report</h3>
@@ -245,9 +245,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
-                    <div class="col-lg-6">
+                    <!-- <div class="col-lg-6">
                         <div class="box">
                             <div class="box-header with-border">
                                 <h3 class="box-title">Employee Positions</h3>
@@ -277,7 +277,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                 </div>
             </section>
