@@ -125,7 +125,8 @@ function getRow(id){
     success: function(response){
       $('.supid').val(response.id);
       $('#del_supplier').html(response.business_name);
-      $('#edit_photo').val(response.logo);
+      $('#edit_photo').val(response.photo);
+      $('.supid').html(response.photo);
       $('#edit_business_name').val(response.business_name);
       $('#edit_address').val(response.address);
       $('#edit_email').val(response.email);

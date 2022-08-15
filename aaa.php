@@ -13,8 +13,7 @@
                     <div class="form-group">
                         <label for="status" class="col-sm-3 control-label">Status</label>
                         <div class="col-sm-9">
-                            <select class="form-control" id="edit_status" name="status">
-                                <option value="" selected>- Select -</option>
+                            <select class="form-control" id="edit_status" name="status">                          
                                 <?php
                                     $sql = "SELECT * FROM status";  
                                     $query = $conn->query($sql);

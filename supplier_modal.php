@@ -144,11 +144,11 @@
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title"><b><span class="edit_supplier"></span></b></h4>
+              <h4 class="modal-title"><b><span class="edit_inventory"></span></b></h4>
             </div>
             <div class="modal-body">
-              <form class="form-horizontal" method="POST" action="supplier_edit_photo.php" enctype="multipart/form-data">
-                <input type="hidden" class="supid" name="id">
+              <form class="form-horizontal" method="POST" action="inventory_edit_photo.php" enctype="multipart/form-data">
+                <input type="hidden" class="invid" name="id">
                 <div class="form-group">
                     <label for="photo" class="col-sm-3 control-label">Photo</label>
                     <div class="col-sm-9">
@@ -163,4 +163,4 @@
             </div>
         </div>
     </div>
-</div>    
+</div>   
