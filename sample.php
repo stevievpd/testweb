@@ -195,3 +195,94 @@
                         </div>
                     </div>
                 </div>
+
+
+                <div class="form-group">
+                        <label for="edit_supplier" class="col-sm-3 control-label">Business Name</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" id="edit_supplier" name="supplier">
+                                <option value="" selected>- Select -</option>
+                                <?php
+                                    $sql = "SELECT * FROM supplier";
+                                    $query = $conn->query($sql);
+                                    while($brow = $query->fetch_assoc()){
+                                        echo "
+                                        <option value='".$brow['id']."'>".$brow['business_name']."</option>
+                                        ";
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit_supplier_product" class="col-sm-3 control-label">Product Name</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" id="edit_supplier_product" name="supplier_product">
+                                <option value="" selected>- Select -</option>
+                                <?php
+                                    $sql = "SELECT * FROM supplier_product";
+                                    $query = $conn->query($sql);
+                                    while($prow = $query->fetch_assoc()){
+                                        echo "
+                                        <option value='".$prow['id']."'>".$prow['supplier_product_name']."</option>
+                                        ";
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit_product_description" class="col-sm-3 control-label">Product Description</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="product_description" id="edit_product_description">
+                                <option value="" selected>- Select -</option>
+                                <?php
+                                    $sql = "SELECT * FROM supplier_product";
+                                    $query = $conn->query($sql);
+                                    while($prow = $query->fetch_assoc()){
+                                        echo "
+                                        <option value='".$prow['id']."'>".$prow['supplier_product_description']."</option>
+                                        ";
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    
+                    <div class="form-group">
+                        <label for="edit_payment_terms" class="col-sm-3 control-label">Payment Terms</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="payment_terms" id="edit_payment_terms">
+                                <option value="" selected>- Select -</option>
+                                <?php
+                                    $sql = "SELECT * FROM payment_terms";
+                                    $query = $conn->query($sql);
+                                    while($prow = $query->fetch_assoc()){
+                                        echo "
+                                        <option value='".$prow['id']."'>".$prow['payment_methods']."</option>
+                                        ";
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit_status" class="col-sm-3 control-label">Status</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="status" id="edit_status">
+                                <option value="" selected>- Select -</option>
+                                <?php
+                                    $sql = "SELECT * FROM status";
+                                    $query = $conn->query($sql);
+                                    while($prow = $query->fetch_assoc()){
+                                        echo "
+                                        <option value='".$prow['id']."'>".$prow['status_description']."</option>
+                                        ";
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
