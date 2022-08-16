@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 16, 2022 at 05:22 AM
+-- Generation Time: Aug 16, 2022 at 05:38 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -45,7 +45,7 @@ CREATE TABLE `admin` (
 --
 
 CREATE TABLE `attendance` (
-  `id` int(11) NOT NULL,
+  `attendance_id` int(11) NOT NULL,
   `employee_id` int(11) NOT NULL,
   `date` date NOT NULL,
   `time_in` time NOT NULL,
@@ -86,8 +86,7 @@ CREATE TABLE `category` (
 --
 
 CREATE TABLE `customer` (
-  `id` int(11) NOT NULL,
-  `customer_id` varchar(50) NOT NULL,
+  `customer_id` int(11) NOT NULL,
   `customer_firstname` varchar(50) NOT NULL,
   `customer_lastname` varchar(50) NOT NULL,
   `customer_contact_info` varchar(50) NOT NULL,
@@ -112,6 +111,17 @@ CREATE TABLE `deductions` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `department`
+--
+
+CREATE TABLE `department` (
+  `department_id` int(11) NOT NULL,
+  `employee_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `employees`
 --
 
@@ -124,7 +134,8 @@ CREATE TABLE `employees` (
   `birthdate` date NOT NULL,
   `contact_info` varchar(100) NOT NULL,
   `gender` varchar(10) NOT NULL,
-  `position_id` int(11) NOT NULL,
+  `job_id` int(11) NOT NULL,
+  `department_id` int(11) NOT NULL,
   `schedule_id` int(11) NOT NULL,
   `photo` varchar(200) NOT NULL,
   `created_on` date NOT NULL
@@ -166,6 +177,18 @@ CREATE TABLE `items` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `job`
+--
+
+CREATE TABLE `job` (
+  `job_id` int(11) NOT NULL,
+  `description` varchar(150) NOT NULL,
+  `rate` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `overtime`
 --
 
@@ -187,18 +210,6 @@ CREATE TABLE `payment_terms` (
   `payment_terms_id` int(11) NOT NULL,
   `payment_methods` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `position`
---
-
-CREATE TABLE `position` (
-  `position_id` int(11) NOT NULL,
-  `description` varchar(150) NOT NULL,
-  `rate` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -267,7 +278,7 @@ CREATE TABLE `schedules` (
 --
 
 CREATE TABLE `status` (
-  `id` int(11) NOT NULL,
+  `status_id` int(11) NOT NULL,
   `status_description` varchar(50) NOT NULL,
   `purchaseorder_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -318,7 +329,7 @@ ALTER TABLE `admin`
 -- Indexes for table `attendance`
 --
 ALTER TABLE `attendance`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`attendance_id`),
   ADD KEY `employee_id` (`employee_id`);
 
 --
@@ -339,7 +350,7 @@ ALTER TABLE `category`
 -- Indexes for table `customer`
 --
 ALTER TABLE `customer`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`customer_id`),
   ADD KEY `employee_id` (`employee_id`);
 
 --
@@ -350,11 +361,20 @@ ALTER TABLE `deductions`
   ADD KEY `employee_id` (`employee_id`);
 
 --
+-- Indexes for table `department`
+--
+ALTER TABLE `department`
+  ADD PRIMARY KEY (`department_id`),
+  ADD KEY `employee_id` (`employee_id`);
+
+--
 -- Indexes for table `employees`
 --
 ALTER TABLE `employees`
   ADD PRIMARY KEY (`employee_id`),
-  ADD KEY `position_id` (`position_id`);
+  ADD KEY `position_id` (`job_id`),
+  ADD KEY `schedule_id` (`schedule_id`),
+  ADD KEY `department_id` (`department_id`);
 
 --
 -- Indexes for table `inventory`
@@ -370,6 +390,12 @@ ALTER TABLE `items`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `job`
+--
+ALTER TABLE `job`
+  ADD PRIMARY KEY (`job_id`);
+
+--
 -- Indexes for table `overtime`
 --
 ALTER TABLE `overtime`
@@ -381,12 +407,6 @@ ALTER TABLE `overtime`
 --
 ALTER TABLE `payment_terms`
   ADD PRIMARY KEY (`payment_terms_id`);
-
---
--- Indexes for table `position`
---
-ALTER TABLE `position`
-  ADD PRIMARY KEY (`position_id`);
 
 --
 -- Indexes for table `product`
@@ -420,7 +440,7 @@ ALTER TABLE `schedules`
 -- Indexes for table `status`
 --
 ALTER TABLE `status`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`status_id`),
   ADD KEY `purchaseorder_id` (`purchaseorder_id`);
 
 --
@@ -450,7 +470,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `attendance_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `cashadvance`
@@ -468,13 +488,19 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `deductions`
 --
 ALTER TABLE `deductions`
   MODIFY `deduction_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `department`
+--
+ALTER TABLE `department`
+  MODIFY `department_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `employees`
@@ -495,6 +521,12 @@ ALTER TABLE `items`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `job`
+--
+ALTER TABLE `job`
+  MODIFY `job_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `overtime`
 --
 ALTER TABLE `overtime`
@@ -505,12 +537,6 @@ ALTER TABLE `overtime`
 --
 ALTER TABLE `payment_terms`
   MODIFY `payment_terms_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `position`
---
-ALTER TABLE `position`
-  MODIFY `position_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -577,10 +603,17 @@ ALTER TABLE `deductions`
   ADD CONSTRAINT `deductions_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`employee_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Constraints for table `department`
+--
+ALTER TABLE `department`
+  ADD CONSTRAINT `department_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`employee_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `employees`
 --
 ALTER TABLE `employees`
-  ADD CONSTRAINT `employees_ibfk_1` FOREIGN KEY (`position_id`) REFERENCES `position` (`position_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `employees_ibfk_1` FOREIGN KEY (`job_id`) REFERENCES `job` (`job_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `employees_ibfk_2` FOREIGN KEY (`department_id`) REFERENCES `department` (`department_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `inventory`
@@ -599,6 +632,13 @@ ALTER TABLE `overtime`
 --
 ALTER TABLE `product`
   ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`supplier_id`) REFERENCES `supplier` (`supplier_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `purchase_order`
+--
+ALTER TABLE `purchase_order`
+  ADD CONSTRAINT `purchase_order_ibfk_1` FOREIGN KEY (`supplier_id`) REFERENCES `supplier` (`supplier_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `purchase_order_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `schedules`
