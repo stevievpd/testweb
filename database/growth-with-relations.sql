@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 16, 2022 at 05:38 AM
+-- Generation Time: Aug 16, 2022 at 10:06 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -51,7 +51,10 @@ CREATE TABLE `attendance` (
   `time_in` time NOT NULL,
   `status` int(1) NOT NULL,
   `time_out` time NOT NULL,
-  `num_hr` double NOT NULL
+  `num_hr` double NOT NULL,
+  `created_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `delete_flag` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -61,10 +64,13 @@ CREATE TABLE `attendance` (
 --
 
 CREATE TABLE `cashadvance` (
-  `id` int(11) NOT NULL,
+  `cashadvance_id` int(11) NOT NULL,
   `date_advance` date NOT NULL,
   `employee_id` int(15) NOT NULL,
-  `amount` double NOT NULL
+  `amount` double NOT NULL,
+  `created_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `delete_flag` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -76,8 +82,11 @@ CREATE TABLE `cashadvance` (
 CREATE TABLE `category` (
   `category_id` int(11) NOT NULL,
   `category_name` varchar(200) NOT NULL,
-  `product_id` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `product_id` int(11) NOT NULL,
+  `created_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `delete_flag` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -92,7 +101,10 @@ CREATE TABLE `customer` (
   `customer_contact_info` varchar(50) NOT NULL,
   `customer_address` varchar(150) NOT NULL,
   `customer_created_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `employee_id` int(50) NOT NULL
+  `employee_id` int(50) NOT NULL,
+  `created_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `delete_flag` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -105,7 +117,10 @@ CREATE TABLE `deductions` (
   `deduction_id` int(11) NOT NULL,
   `description` varchar(100) NOT NULL,
   `amount` double NOT NULL,
-  `employee_id` int(11) NOT NULL
+  `employee_id` int(11) NOT NULL,
+  `created_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `delete_flag` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -116,8 +131,18 @@ CREATE TABLE `deductions` (
 
 CREATE TABLE `department` (
   `department_id` int(11) NOT NULL,
-  `employee_id` int(11) NOT NULL
+  `department_name` varchar(50) NOT NULL,
+  `created_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `delete_flag` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `department`
+--
+
+INSERT INTO `department` (`department_id`, `department_name`, `created_on`, `updated_on`, `delete_flag`) VALUES
+(1, 'IT Department', '2022-08-16 15:43:47', '2022-08-16 15:43:47', 0);
 
 -- --------------------------------------------------------
 
@@ -138,8 +163,17 @@ CREATE TABLE `employees` (
   `department_id` int(11) NOT NULL,
   `schedule_id` int(11) NOT NULL,
   `photo` varchar(200) NOT NULL,
-  `created_on` date NOT NULL
+  `created_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `delete_flag` tinyint(1) NOT NULL COMMENT '[1] - True [0] - False'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `employees`
+--
+
+INSERT INTO `employees` (`employee_id`, `employee_code`, `firstname`, `lastname`, `address`, `birthdate`, `contact_info`, `gender`, `job_id`, `department_id`, `schedule_id`, `photo`, `created_on`, `updated_on`, `delete_flag`) VALUES
+(2, 'FVCKROGE123', 'Roge', 'Cadugyot', 'Munoz QC', '2022-08-10', '69696921', 'Bayot', 1, 1, 1, '', '2022-08-16 15:36:39', '2022-08-16 09:36:04', 1);
 
 -- --------------------------------------------------------
 
@@ -155,7 +189,10 @@ CREATE TABLE `inventory` (
   `quantity` int(11) NOT NULL,
   `cost` float NOT NULL,
   `price` float NOT NULL,
-  `stamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `stamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `created_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `delete_flag` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -171,7 +208,10 @@ CREATE TABLE `items` (
   `item_quantity` int(11) NOT NULL,
   `item_unit` varchar(10) NOT NULL,
   `item_cost` int(11) NOT NULL,
-  `item_total` int(11) NOT NULL
+  `item_total` int(11) NOT NULL,
+  `created_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `delete_flag` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -183,8 +223,18 @@ CREATE TABLE `items` (
 CREATE TABLE `job` (
   `job_id` int(11) NOT NULL,
   `description` varchar(150) NOT NULL,
-  `rate` double NOT NULL
+  `rate` double NOT NULL,
+  `created_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `delete_flag` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `job`
+--
+
+INSERT INTO `job` (`job_id`, `description`, `rate`, `created_on`, `updated_on`, `delete_flag`) VALUES
+(1, 'Programmer', 550, '2022-08-16 15:42:08', '2022-08-16 15:42:08', 0);
 
 -- --------------------------------------------------------
 
@@ -193,11 +243,14 @@ CREATE TABLE `job` (
 --
 
 CREATE TABLE `overtime` (
-  `id` int(11) NOT NULL,
+  `overtime_id` int(11) NOT NULL,
   `employee_id` int(15) NOT NULL,
   `hours` double NOT NULL,
   `rate` double NOT NULL,
-  `date_overtime` date NOT NULL
+  `date_overtime` date NOT NULL,
+  `created_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `delete_flag` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -208,7 +261,10 @@ CREATE TABLE `overtime` (
 
 CREATE TABLE `payment_terms` (
   `payment_terms_id` int(11) NOT NULL,
-  `payment_methods` varchar(50) NOT NULL
+  `payment_methods` varchar(50) NOT NULL,
+  `created_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `delete_flag` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -222,7 +278,10 @@ CREATE TABLE `product` (
   `product_code` varchar(250) NOT NULL,
   `product_name` varchar(250) NOT NULL,
   `product_description` varchar(250) NOT NULL,
-  `supplier_id` int(11) NOT NULL
+  `supplier_id` int(11) NOT NULL,
+  `created_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `delete_flag` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -244,7 +303,10 @@ CREATE TABLE `purchase_order` (
   `supplier_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `payment_id` int(11) NOT NULL,
-  `status_id` int(11) NOT NULL COMMENT '[0] - Pending [1] - Received\r\n'
+  `status_id` int(11) NOT NULL COMMENT '[0] - Pending [1] - Received\r\n',
+  `created_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `delete_flag` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -255,7 +317,10 @@ CREATE TABLE `purchase_order` (
 
 CREATE TABLE `sales` (
   `sales_id` int(11) NOT NULL,
-  `date` date NOT NULL
+  `date` date NOT NULL,
+  `created_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `delete_flag` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -268,20 +333,18 @@ CREATE TABLE `schedules` (
   `schedule_id` int(11) NOT NULL,
   `time_in` time NOT NULL,
   `time_out` time NOT NULL,
-  `employee_id` int(11) NOT NULL
+  `employee_id` int(11) NOT NULL,
+  `created_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `delete_flag` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `status`
+-- Dumping data for table `schedules`
 --
 
-CREATE TABLE `status` (
-  `status_id` int(11) NOT NULL,
-  `status_description` varchar(50) NOT NULL,
-  `purchaseorder_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `schedules` (`schedule_id`, `time_in`, `time_out`, `employee_id`, `created_on`, `updated_on`, `delete_flag`) VALUES
+(2, '09:00:00', '18:00:00', 2, '2022-08-16 15:49:07', '2022-08-16 15:49:07', 0);
 
 -- --------------------------------------------------------
 
@@ -297,8 +360,10 @@ CREATE TABLE `supplier` (
   `address` varchar(200) NOT NULL,
   `email` varchar(200) NOT NULL,
   `phone_number` bigint(100) NOT NULL,
-  `time_stamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `product_id` int(11) NOT NULL
+  `product_id` int(11) NOT NULL,
+  `created_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `delete_flag` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -312,7 +377,10 @@ CREATE TABLE `supplier_product` (
   `supplier_product_id` varchar(50) NOT NULL,
   `supplier_product_name` varchar(80) NOT NULL,
   `supplier_product_description` varchar(80) NOT NULL,
-  `supplier_id` int(11) NOT NULL
+  `supplier_id` int(11) NOT NULL,
+  `created_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_on` datetime NOT NULL,
+  `delete_flag` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -336,7 +404,7 @@ ALTER TABLE `attendance`
 -- Indexes for table `cashadvance`
 --
 ALTER TABLE `cashadvance`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`cashadvance_id`),
   ADD KEY `employee_id` (`employee_id`);
 
 --
@@ -364,8 +432,7 @@ ALTER TABLE `deductions`
 -- Indexes for table `department`
 --
 ALTER TABLE `department`
-  ADD PRIMARY KEY (`department_id`),
-  ADD KEY `employee_id` (`employee_id`);
+  ADD PRIMARY KEY (`department_id`);
 
 --
 -- Indexes for table `employees`
@@ -399,7 +466,7 @@ ALTER TABLE `job`
 -- Indexes for table `overtime`
 --
 ALTER TABLE `overtime`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`overtime_id`),
   ADD KEY `employee_id` (`employee_id`);
 
 --
@@ -437,13 +504,6 @@ ALTER TABLE `schedules`
   ADD KEY `employee_id` (`employee_id`);
 
 --
--- Indexes for table `status`
---
-ALTER TABLE `status`
-  ADD PRIMARY KEY (`status_id`),
-  ADD KEY `purchaseorder_id` (`purchaseorder_id`);
-
---
 -- Indexes for table `supplier`
 --
 ALTER TABLE `supplier`
@@ -476,7 +536,7 @@ ALTER TABLE `attendance`
 -- AUTO_INCREMENT for table `cashadvance`
 --
 ALTER TABLE `cashadvance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cashadvance_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -500,13 +560,13 @@ ALTER TABLE `deductions`
 -- AUTO_INCREMENT for table `department`
 --
 ALTER TABLE `department`
-  MODIFY `department_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `department_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `employee_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `employee_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `inventory`
@@ -524,13 +584,13 @@ ALTER TABLE `items`
 -- AUTO_INCREMENT for table `job`
 --
 ALTER TABLE `job`
-  MODIFY `job_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `job_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `overtime`
 --
 ALTER TABLE `overtime`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `overtime_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `payment_terms`
@@ -560,7 +620,7 @@ ALTER TABLE `sales`
 -- AUTO_INCREMENT for table `schedules`
 --
 ALTER TABLE `schedules`
-  MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `supplier`
@@ -603,12 +663,6 @@ ALTER TABLE `deductions`
   ADD CONSTRAINT `deductions_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`employee_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `department`
---
-ALTER TABLE `department`
-  ADD CONSTRAINT `department_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`employee_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Constraints for table `employees`
 --
 ALTER TABLE `employees`
@@ -645,12 +699,6 @@ ALTER TABLE `purchase_order`
 --
 ALTER TABLE `schedules`
   ADD CONSTRAINT `schedules_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`employee_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `status`
---
-ALTER TABLE `status`
-  ADD CONSTRAINT `status_ibfk_1` FOREIGN KEY (`purchaseorder_id`) REFERENCES `purchase_order` (`purchase_order_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `supplier`
