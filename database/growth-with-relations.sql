@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 16, 2022 at 10:06 AM
+-- Generation Time: Aug 18, 2022 at 12:01 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `growth`
+-- Database: `growth-with-relations`
 --
 
 -- --------------------------------------------------------
@@ -38,6 +38,13 @@ CREATE TABLE `admin` (
   `type` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `username`, `password`, `firstname`, `lastname`, `photo`, `created_on`, `type`) VALUES
+(1, 'admin', '$2y$10$rvKMwNpFI3J1vMSEAMDQr.RLpGq6rp4/QwZOFbWQDdRX3hoDmCACy', 'steven', 'lizada', '', '2022-08-18', 'admin');
+
 -- --------------------------------------------------------
 
 --
@@ -56,6 +63,19 @@ CREATE TABLE `attendance` (
   `updated_on` datetime NOT NULL DEFAULT current_timestamp(),
   `delete_flag` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `attendance`
+--
+
+INSERT INTO `attendance` (`attendance_id`, `employee_id`, `date`, `time_in`, `status`, `time_out`, `num_hr`, `created_on`, `updated_on`, `delete_flag`) VALUES
+(1, 1, '2022-08-18', '09:00:00', 1, '06:05:59', 8, '2022-08-18 11:37:55', '2022-08-18 11:37:55', 0),
+(2, 2, '2022-08-19', '06:00:00', 1, '09:00:00', 8, '2022-08-18 11:38:40', '2022-08-18 11:38:40', 0),
+(3, 3, '2022-08-20', '09:05:59', 0, '06:05:59', 8, '2022-08-18 11:39:12', '2022-08-18 11:39:12', 0),
+(4, 4, '2022-08-21', '10:05:59', 0, '06:05:59', 7, '2022-08-18 11:43:48', '2022-08-18 11:43:48', 0),
+(5, 5, '2022-08-19', '09:05:59', 0, '09:00:00', 8, '2022-08-18 11:53:04', '2022-08-18 11:53:04', 0),
+(6, 6, '2022-08-22', '06:00:00', 0, '09:00:00', 8, '2022-08-18 11:53:43', '2022-08-18 11:53:43', 0),
+(7, 7, '2022-08-23', '09:05:59', 0, '06:05:59', 8, '2022-08-18 11:54:23', '2022-08-18 11:54:23', 0);
 
 -- --------------------------------------------------------
 
@@ -142,7 +162,13 @@ CREATE TABLE `department` (
 --
 
 INSERT INTO `department` (`department_id`, `department_name`, `created_on`, `updated_on`, `delete_flag`) VALUES
-(1, 'IT Department', '2022-08-16 15:43:47', '2022-08-16 15:43:47', 0);
+(1, 'IT Department', '2022-08-16 15:43:47', '2022-08-16 15:43:47', 0),
+(2, 'Accounting Department', '2022-08-18 10:29:35', '2022-08-18 10:29:35', 0),
+(3, 'Billing Department', '2022-08-18 10:29:59', '2022-08-18 10:29:59', 0),
+(4, 'Marketing Department', '2022-08-18 10:31:48', '2022-08-18 10:31:48', 0),
+(5, 'Production Department', '2022-08-18 10:32:51', '2022-08-18 10:32:51', 0),
+(6, 'Engineering Department', '2022-08-18 10:33:34', '2022-08-18 10:33:34', 0),
+(7, 'Risk Management Department', '2022-08-18 10:34:57', '2022-08-18 10:34:57', 0);
 
 -- --------------------------------------------------------
 
@@ -173,7 +199,15 @@ CREATE TABLE `employees` (
 --
 
 INSERT INTO `employees` (`employee_id`, `employee_code`, `firstname`, `lastname`, `address`, `birthdate`, `contact_info`, `gender`, `job_id`, `department_id`, `schedule_id`, `photo`, `created_on`, `updated_on`, `delete_flag`) VALUES
-(2, 'FVCKROGE123', 'Roge', 'Cadugyot', 'Munoz QC', '2022-08-10', '69696921', 'Bayot', 1, 1, 1, '', '2022-08-16 15:36:39', '2022-08-16 09:36:04', 1);
+(1, '142542242', 'Roge', 'Cawater', '1109 Escoda Street Paco Manila', '1997-10-19', '090651211', 'Male', 1, 1, 0, '', '2022-08-18 11:27:27', '2022-08-18 11:27:27', 0),
+(2, '4252442343', 'Steven', 'Cadugyot', 'Gloria III Tandang Sora Quezon City', '1997-05-16', '09411218563', 'Male', 2, 1, 0, '', '2022-08-18 11:29:15', '2022-08-18 11:29:15', 0),
+(3, '515411526', 'Sam', 'Bal', 'Pag-asa Quezon City', '1997-08-20', '0945135681', 'Male', 5, 1, 1, '', '2022-08-18 11:30:40', '2022-08-18 11:30:40', 0),
+(4, '624224242', 'Nikko', 'Abad', 'Pasay City Metro Manila', '1997-05-19', '0946514621', 'Male', 2, 1, 0, '', '2022-08-18 11:42:56', '2022-08-18 11:42:56', 0),
+(5, '882253424', 'Ann', 'Leyco', 'Muños QC', '1996-07-11', '09454576138', 'Female', 11, 2, 0, '', '2022-08-18 11:48:17', '2022-08-18 11:48:17', 0),
+(6, '651121892', 'Rose', 'Velasco', 'Sampaloc Manila', '1996-08-13', '09264106540', 'Female', 12, 2, 0, '', '2022-08-18 11:48:17', '2022-08-18 11:48:17', 0),
+(7, '7156419124', 'Mary', 'Sapungan', 'Project 8 Visayas Ave. QC', '1996-08-03', '0935987526', 'Female', 13, 2, 0, '', '2022-08-18 11:49:15', '2022-08-18 11:49:15', 0),
+(64, 'SUA657048123', 'sam', 'bal', 'paco escoda manila', '0000-00-00', '09452368544', 'Male', 47, 1, 0, '', '2022-08-18 17:50:00', '2022-08-18 17:50:00', 0),
+(65, 'VUO902843761', 'Leo', 'Nikko', 'General Ave. Tandang Sora', '0000-00-00', '0935654111', 'Male', 2, 1, 0, '', '2022-08-18 17:57:19', '2022-08-18 17:57:19', 0);
 
 -- --------------------------------------------------------
 
@@ -234,7 +268,52 @@ CREATE TABLE `job` (
 --
 
 INSERT INTO `job` (`job_id`, `description`, `rate`, `created_on`, `updated_on`, `delete_flag`) VALUES
-(1, 'Programmer', 550, '2022-08-16 15:42:08', '2022-08-16 15:42:08', 0);
+(1, 'Programmer', 550, '2022-08-16 15:42:08', '2022-08-16 15:42:08', 0),
+(2, 'Software Developer', 537, '2022-08-18 10:28:13', '2022-08-18 10:28:13', 0),
+(3, 'Computer Hardware', 537, '2022-08-18 10:36:42', '2022-08-18 10:36:42', 0),
+(4, 'Troubleshooting', 537, '2022-08-18 10:37:22', '2022-08-18 10:37:22', 0),
+(5, 'IT Technician', 750, '2022-08-18 10:38:54', '2022-08-18 10:38:54', 0),
+(6, 'Support Specialist', 850, '2022-08-18 10:39:18', '2022-08-18 10:39:18', 0),
+(7, 'IT Security Specialist', 850, '2022-08-18 10:41:54', '2022-08-18 10:41:54', 0),
+(8, 'System Analyst', 850, '2022-08-18 10:41:54', '2022-08-18 10:41:54', 0),
+(9, 'Network Engineer', 850, '2022-08-18 10:41:54', '2022-08-18 10:41:54', 0),
+(10, 'Software Engineer', 850, '2022-08-18 10:41:54', '2022-08-18 10:41:54', 0),
+(11, 'Accounting Manager', 850, '2022-08-18 10:48:54', '2022-08-18 10:48:54', 0),
+(12, 'Accounting officer', 650, '2022-08-18 10:48:54', '2022-08-18 10:48:54', 0),
+(13, 'Accounting Clerk', 537, '2022-08-18 10:48:54', '2022-08-18 10:48:54', 0),
+(14, 'General accountant', 750, '2022-08-18 10:48:54', '2022-08-18 10:48:54', 0),
+(15, 'Auditor', 537, '2022-08-18 10:48:54', '2022-08-18 10:48:54', 0),
+(16, 'Treasurer', 537, '2022-08-18 10:48:54', '2022-08-18 10:48:54', 0),
+(17, 'Financial Analyst', 537, '2022-08-18 10:48:54', '2022-08-18 10:48:54', 0),
+(18, 'Billing Manager', 850, '2022-08-18 10:52:18', '2022-08-18 10:52:18', 0),
+(19, 'Billing Specialist', 650, '2022-08-18 10:52:18', '2022-08-18 10:52:18', 0),
+(20, 'Billing Clerk', 0, '2022-08-18 10:52:18', '2022-08-18 10:52:18', 0),
+(21, 'Billing Officer', 0, '2022-08-18 10:52:18', '2022-08-18 10:52:18', 0),
+(22, 'Chief Marketing Officer (CMO)', 950, '2022-08-18 10:56:15', '2022-08-18 10:56:15', 0),
+(23, 'Financial Analyst', 750, '2022-08-18 10:56:15', '2022-08-18 10:56:15', 0),
+(24, 'Digital Marketing Manager', 650, '2022-08-18 10:56:15', '2022-08-18 10:56:15', 0),
+(25, 'Communications Manager', 537, '2022-08-18 10:56:15', '2022-08-18 10:56:15', 0),
+(26, 'Content Marketing Specialist', 537, '2022-08-18 10:56:15', '2022-08-18 10:56:15', 0),
+(27, 'Production Manager', 950, '2022-08-18 11:08:52', '2022-08-18 11:08:52', 0),
+(28, 'Production Supervisor', 850, '2022-08-18 11:08:52', '2022-08-18 11:08:52', 0),
+(29, 'Production Operator', 650, '2022-08-18 11:08:52', '2022-08-18 11:08:52', 0),
+(30, 'Production Monitoring', 650, '2022-08-18 11:08:52', '2022-08-18 11:08:52', 0),
+(31, 'Production Officer', 537, '2022-08-18 11:08:52', '2022-08-18 11:08:52', 0),
+(32, 'Chief Engineering', 1500, '2022-08-18 11:14:03', '2022-08-18 11:14:03', 0),
+(33, 'VP Engineering', 1000, '2022-08-18 11:14:03', '2022-08-18 11:14:03', 0),
+(34, 'Director Of Engineering', 950, '2022-08-18 11:14:03', '2022-08-18 11:14:03', 0),
+(35, 'Engineering Manager', 850, '2022-08-18 11:14:03', '2022-08-18 11:14:03', 0),
+(36, 'Individual Contributors ', 750, '2022-08-18 11:14:03', '2022-08-18 11:14:03', 0),
+(37, ' Environmental Compliance Specialist', 2500, '2022-08-18 11:24:05', '2022-08-18 11:24:05', 0),
+(38, 'Loss Control Consultant', 2000, '2022-08-18 11:24:05', '2022-08-18 11:24:05', 0),
+(39, ' Compliance Consultant', 1800, '2022-08-18 11:24:05', '2022-08-18 11:24:05', 0),
+(40, ' Compliance Officer', 1500, '2022-08-18 11:24:05', '2022-08-18 11:24:05', 0),
+(41, 'Risk Analyst', 1300, '2022-08-18 11:24:05', '2022-08-18 11:24:05', 0),
+(42, 'Risk and Compliance Investigator', 1000, '2022-08-18 11:24:05', '2022-08-18 11:24:05', 0),
+(43, ' Model Risk Specialist', 850, '2022-08-18 11:24:05', '2022-08-18 11:24:05', 0),
+(44, 'Regulatory Affairs Managers', 750, '2022-08-18 11:24:05', '2022-08-18 11:24:05', 0),
+(47, 'Risk Manager', 650, '2022-08-18 11:24:05', '2022-08-18 11:24:05', 0),
+(48, 'Chief Risk Officer', 537, '2022-08-18 11:24:05', '2022-08-18 11:24:05', 0);
 
 -- --------------------------------------------------------
 
@@ -252,6 +331,13 @@ CREATE TABLE `overtime` (
   `updated_on` datetime NOT NULL DEFAULT current_timestamp(),
   `delete_flag` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `overtime`
+--
+
+INSERT INTO `overtime` (`overtime_id`, `employee_id`, `hours`, `rate`, `date_overtime`, `created_on`, `updated_on`, `delete_flag`) VALUES
+(1, 1, 2, 150, '2022-08-18', '2022-08-18 13:20:27', '2022-08-18 13:20:27', 0);
 
 -- --------------------------------------------------------
 
@@ -344,7 +430,13 @@ CREATE TABLE `schedules` (
 --
 
 INSERT INTO `schedules` (`schedule_id`, `time_in`, `time_out`, `employee_id`, `created_on`, `updated_on`, `delete_flag`) VALUES
-(2, '09:00:00', '18:00:00', 2, '2022-08-16 15:49:07', '2022-08-16 15:49:07', 0);
+(0, '09:00:00', '18:00:00', 1, '2022-08-18 11:33:38', '2022-08-18 11:33:38', 0),
+(2, '06:00:00', '09:00:00', 2, '2022-08-18 11:33:38', '2022-08-18 11:33:38', 0),
+(3, '05:00:00', '14:00:00', 3, '2022-08-18 11:40:15', '2022-08-18 11:40:15', 0),
+(4, '06:00:00', '15:00:00', 4, '2022-08-18 11:44:23', '2022-08-18 11:44:23', 0),
+(5, '07:00:00', '16:00:00', 5, '2022-08-18 11:51:34', '2022-08-18 11:51:34', 0),
+(6, '06:00:00', '09:00:00', 6, '2022-08-18 11:52:04', '2022-08-18 11:52:04', 0),
+(7, '10:00:00', '17:00:00', 7, '2022-08-18 11:52:23', '2022-08-18 11:52:23', 0);
 
 -- --------------------------------------------------------
 
@@ -524,13 +616,13 @@ ALTER TABLE `supplier_product`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `attendance_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `attendance_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `cashadvance`
@@ -560,13 +652,13 @@ ALTER TABLE `deductions`
 -- AUTO_INCREMENT for table `department`
 --
 ALTER TABLE `department`
-  MODIFY `department_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `department_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `employee_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `employee_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `inventory`
@@ -584,13 +676,13 @@ ALTER TABLE `items`
 -- AUTO_INCREMENT for table `job`
 --
 ALTER TABLE `job`
-  MODIFY `job_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `job_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `overtime`
 --
 ALTER TABLE `overtime`
-  MODIFY `overtime_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `overtime_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `payment_terms`
@@ -620,7 +712,7 @@ ALTER TABLE `sales`
 -- AUTO_INCREMENT for table `schedules`
 --
 ALTER TABLE `schedules`
-  MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `supplier`

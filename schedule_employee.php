@@ -59,12 +59,12 @@
                 </thead>
                 <tbody>
                   <?php
-                    $sql = "SELECT *, employees.id AS empid FROM employees LEFT JOIN schedules ON schedules.id=employees.schedule_id";
+                    $sql = "SELECT e.employee_id as empid, e.firstname, e.lastname, s.time_in, s.time_out from employees e INNER JOIN schedules as s on e.employee_id = s.employee_id";
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
                       echo "
                         <tr>
-                          <td>".$row['employee_id']."</td>
+                          <td>".$row['empid']."</td>
                           <td>".$row['firstname'].' '.$row['lastname']."</td>
                           <td>".date('h:i A', strtotime($row['time_in'])).' - '.date('h:i A', strtotime($row['time_out']))."</td>
                           <td>

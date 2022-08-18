@@ -2,8 +2,8 @@
 	include 'includes/session.php';
 
 	if(isset($_POST['id'])){
-		$id = $_POST['id'];
-		$sql = "SELECT *, employees.id AS empid FROM employees LEFT JOIN schedules ON schedules.id=employees.schedule_id WHERE employees.id = '$id'";
+		$empid = $_POST['id'];
+		$sql = "SELECT e.employee_id as empid, e.firstname, e.lastname, s.time_in, s.time_out from employees e INNER JOIN schedules as s on e.employee_id = s.employee_id WHERE e.employee_id = '$empid'";
 		$query = $conn->query($sql);
 		$row = $query->fetch_assoc();
 

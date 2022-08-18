@@ -58,19 +58,19 @@
                   <th>Employee ID</th>
                   <th>Name</th>
                   <th>No. of Hours</th>
-                  <th>Rate</th>
+                  <th>Rate</th> 
                   <th>Tools</th>
                 </thead>
                 <tbody>
                   <?php
-                    $sql = "SELECT *, overtime.id AS otid, employees.employee_id AS empid FROM overtime LEFT JOIN employees ON employees.id=overtime.employee_id ORDER BY date_overtime DESC";
+                   $sql = "SELECT e.employee_id, e.firstname, e.lastname, o.overtime_id as otid, o.date_overtime, o.hours, o.rate from employees e INNER JOIN overtime as o on e.employee_id=o.employee_id ORDER BY date_overtime DESC";
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
                       echo "
                         <tr>
                           <td class='hidden'></td>
                           <td>".date('M d, Y', strtotime($row['date_overtime']))."</td>
-                          <td>".$row['empid']."</td>
+                          <td>".$row['employee_id']."</td>
                           <td>".$row['firstname'].' '.$row['lastname']."</td>
                           <td>".$row['hours']."</td>
                           <td>".$row['rate']."</td>

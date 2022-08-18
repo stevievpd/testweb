@@ -61,7 +61,7 @@
                 </thead>
                 <tbody>
                   <?php
-                    $sql = "SELECT *, cashadvance.id AS caid, employees.employee_id AS empid FROM cashadvance LEFT JOIN employees ON employees.id=cashadvance.employee_id ORDER BY date_advance DESC";
+                    $sql = "SELECT c.date_advance, c.amount, c.cashadvance_id as caid, e.employee_id, e.firstname, e.lastname  from cashadvance c INNER JOIN employees as e on e.employee_id= c.employee_id ORDER BY c.date_advance DESC";
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
                       echo "
@@ -92,8 +92,8 @@
   <?php include 'cashadvance_modal.php'; ?>
 </div>
 <?php include 'includes/scripts.php'; ?>
-<script>
-$(function(){
+<script>    
+$(function(){ 
   $('.edit').click(function(e){
     e.preventDefault();
     $('#edit').modal('show');

@@ -63,7 +63,7 @@
                                     </thead>
                                     <tbody>
                                         <?php
-                                          $sql = "SELECT *, employees.employee_id AS empid, attendance.id AS attid FROM attendance LEFT JOIN employees ON employees.id=attendance.employee_id ORDER BY attendance.date DESC, attendance.time_in DESC";
+                                          $sql = "SELECT e.employee_id, e.firstname, e.lastname, a.date, a.time_in, a.status, a.time_out, attendance_id as attid from attendance a INNER JOIN employees as e on a.employee_id = e.employee_id ORDER BY a.date DESC, a.time_in DESC";
                                           $query = $conn->query($sql);
                                           while($row = $query->fetch_assoc()){
                                             $status = ($row['status'])?'<span class="label label-warning pull-right">ontime</span>':'<span class="label label-danger pull-right">late</span>';
@@ -71,7 +71,7 @@
                                               <tr>
                                                 <td class='hidden'></td>
                                                 <td>".date('M d, Y', strtotime($row['date']))."</td>
-                                                <td>".$row['empid']."</td>
+                                                <td>".$row['employee_id']."</td>
                                                 <td>".$row['firstname'].' '.$row['lastname']."</td>
                                                 <td>".date('h:i A', strtotime($row['time_in'])).$status."</td>
                                                 <td>".date('h:i A', strtotime($row['time_out']))."</td>

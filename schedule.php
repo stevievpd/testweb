@@ -58,7 +58,7 @@
                 </thead>
                 <tbody>
                   <?php
-                    $sql = "SELECT * FROM schedules";
+                    $sql = "SELECT time_in, time_out, schedule_id as sid from schedules";
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
                       echo "
@@ -66,8 +66,8 @@
                           <td>".date('h:i A', strtotime($row['time_in']))."</td>
                           <td>".date('h:i A', strtotime($row['time_out']))."</td>
                           <td>
-                            <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
-                            <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
+                            <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['sid']."'><i class='fa fa-edit'></i> Edit</button>
+                            <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['sid']."'><i class='fa fa-trash'></i> Delete</button>
                           </td>
                         </tr>
                       ";

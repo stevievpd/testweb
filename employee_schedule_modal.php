@@ -12,12 +12,11 @@
             		<input type="hidden" id="empid" name="id">
                 <div class="form-group">
                     <label for="edit_schedule" class="col-sm-3 control-label">Schedule</label>
-
                     <div class="col-sm-9">
                       <select class="form-control" id="edit_schedule" name="schedule">
                         <option selected id="schedule_val"></option>
                         <?php
-                          $sql = "SELECT * FROM schedules";
+                          $sql = "SELECT employee_id, time_in, time_out FROM schedules";
                           $query = $conn->query($sql);
                           while($srow = $query->fetch_assoc()){
                             echo "

@@ -54,7 +54,7 @@
       ?>
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
-                    <div class="col-lg-2 col-xs-6">
+                    <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
                         <div class="small-box bg-aqua">
                             <div class="inner">
@@ -72,7 +72,7 @@
                         </div>
                     </div>
                     <!-- ./col -->
-                    <div class="col-lg-2 col-xs-6">
+                    <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
                         <div class="small-box bg-green">
                             <div class="inner">
@@ -100,7 +100,7 @@
                         </div>
                     </div>
                     <!-- ./col -->
-                    <div class="col-lg-2 col-xs-6">
+                    <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
                         <div class="small-box bg-yellow">
                             <div class="inner">
@@ -120,7 +120,7 @@
                         </div>
                     </div>
                     <!-- ./col -->
-                    <div class="col-lg-2 col-xs-6">
+                    <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
                         <div class="small-box bg-red">
                             <div class="inner">
@@ -139,46 +139,7 @@
                         </div>
                     </div>
 
-                    <!-- ./col -->
-                    <div class="col-lg-2 col-xs-6">
-                        <!-- small box -->
-                        <div class="small-box bg-orange">
-                            <div class="inner">
-                                <?php
-                                    $sql = "SELECT * FROM inventory WHERE quantity<=20";
-                                    $query = $conn->query($sql);
-                                    echo "<h3>".$query->num_rows."</h3>"
-                                ?>
-                                <p>Total products</p>
-                            </div>
-                            <div class="icon">
-                                <i class="ion ion-alert-circled"></i>
-                            </div>
-                            <a href="inventory.php" class="small-box-footer">More info <i
-                                    class="fa fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                    <!-- ./col -->
-                    <!-- ./col -->
-                    <div class="col-lg-2 col-xs-6">
-                        <!-- small box -->
-                        <div class="small-box bg-blue">
-                            <div class="inner">
-                                <?php
-                                    $sql = "SELECT * FROM sales WHERE id>0";
-                                    $query = $conn->query($sql);
-                                    echo "<h3>".$query->num_rows."</h3>"
-                                ?>
-                                <p>Sale(s) made</p>
-                            </div>
-                            <div class="icon">
-                                <i class="ion ion-pie-graph"></i>
-                            </div>
-                            <a href="customer.php" class="small-box-footer">More info <i
-                                    class="fa fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                    <!-- ./col -->
+
 
                 </div>
                 <!-- /.row -->
